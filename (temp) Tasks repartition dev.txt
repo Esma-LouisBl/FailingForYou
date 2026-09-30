@@ -15,3 +15,16 @@
 -menu options [Julien]
 -tooling [Julien]
 -trad auto [Julien]
+
+
+JULIEN
+Tâches attribuées avec auto-estimation du temps : 16 semaines/24-26 semaines
+
+-système de connexion : 2 semaines
+-menu de connexion : 1 semaine
+-menu options : 1 semaine
+-mini jeu dessin : 4 semaines
+-mini jeu photos + personnalisation : 4 semaines
+-système sabotage : 1 semaine
+-tooling : 2 semaines
+-trad auto : 1 semaine
