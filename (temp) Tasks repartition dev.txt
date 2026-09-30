@@ -1,15 +1,15 @@
 -connexion [Julien]
--création love interest [Max]
--personnalisation du personnage jouable [Max]
+-création love interest [Max] | 2 semaines
+-personnalisation du personnage jouable [Max] | 1 semaine
 -mini jeu textuel + égalité [Louis] | 2 semaines
 -mini jeu dessin [Julien]
 -mini jeu photos + personnalisation [Julien]
--mini jeu sonore [Max]
+-mini jeu sonore [Max] | 2 semaines
 -système sabotage [Julien]
--shop sabotages [Max]
+-shop sabotages [Max] | 1 semaine
 -sabotages [Louis] | estimation difficile, +/- 1 semaine par sabotage
--event achat objets [Max]
--event final : shop [Max]
+-event achat objets [Max] | 2 semaines
+-event final : shop [Max] | 1 semaine
 -event final : validation et reveal du vainqueur [Louis] | 2 semaines
 -chat ingame [Louis] | 2 semaines et demi
 -menu options [Julien]
