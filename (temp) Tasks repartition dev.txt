@@ -1,17 +1,17 @@
 -connexion [Julien]
--création love interest [Max] | 2 semaines
--personnalisation du personnage jouable [Max] | 1 semaine
--mini jeu textuel + égalité [Louis] | 2 semaines
+-création love interest [Max]
+-personnalisation du personnage jouable [Max]
+-mini jeu textuel + égalité [Louis]
 -mini jeu dessin [Julien]
 -mini jeu photos + personnalisation [Julien]
 -mini jeu sonore [Max] | 2 semaines
 -système sabotage [Julien]
--shop sabotages [Max] | 1 semaine
--sabotages [Louis] | estimation difficile, +/- 1 semaine par sabotage
--event achat objets [Max] | 2 semaines
--event final : shop [Max] | 1 semaine
--event final : validation et reveal du vainqueur [Louis] | 2 semaines
--chat ingame [Louis] | 2 semaines et demi
+-shop sabotages [Max]
+-sabotages [Louis]
+-event achat objets [Max]
+-event final : shop [Max]
+-event final : validation et reveal du vainqueur [Louis]
+-chat ingame [Louis]
 -menu options [Julien]
 -tooling [Julien]
 -trad auto [Julien]
@@ -28,3 +28,22 @@ Tâches attribuées avec auto-estimation du temps : 16 semaines/24-26 semaines
 -système sabotage : 1 semaine
 -tooling : 2 semaines
 -trad auto : 1 semaine
+
+
+LOUIS
+Tâches attribuées avec auto-estimation du temps : 6 semaines/24-26 semaines
+
+-mini jeu textuel + égalité : 2 semaines
+-sabotages : estimation difficile, +/- 1 semaine par sabotage
+-event final : validation et reveal du vainqueur : 2 semaines
+-chat ingame : 2 semaines et demi
+
+MAXENCE
+Tâches attribuées avec auto-estimation du temps : 9 semaines/24-26 semaines
+
+-création love interest : 2 semaines
+-personnalisation du personnage jouable : 1 semaine
+-mini jeu sonore : 2 semaines
+-shop sabotages : 1 semaine
+-event achat objets : 2 semaines
+-event final : shop : 1 semaine
