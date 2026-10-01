@@ -45,7 +45,7 @@ Tâches attribuées avec auto-estimation du temps : 18 semaines/24-26 semaines
 	modifi photo : 3 jours
 	physique de l'UI : 1 semaine
 	chgt de couleur des lettres : 4 jours
-	ajout de sons lors de l'envoi : 2 jours
+	passage de la gomme au crayon de façon intempestive : 2 jours
 	vibrations : 2 jours
 	créature intrusive : 2 semaines
 	jumpscare : 2 jours
