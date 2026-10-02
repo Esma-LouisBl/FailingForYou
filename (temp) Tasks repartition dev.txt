@@ -38,7 +38,6 @@ Tâches attribuées avec auto-estimation du temps : 18 semaines/24-26 semaines
 -chat ingame : 2 semaines et demi
 -sabotages : environ 11 semaines et demi (soit un peu plus de 2 mois)
 	sprites qui se déplacent sur l'écran : 3 jours
-	ajout d'un mot dans la réponse : 2 jours
 	changement des polices de texte : 2 jours
 	contrainte de l'utilisation d'un mot : 4 jours
 	modification d'un son : 3 jours
