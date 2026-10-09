@@ -1,0 +1,537 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ed6a95224d46044999e66337ec4be7, type: 3}
+  m_Name: FolderColorSettings
+  m_EditorClassIdentifier: 
+  folderColors:
+  - guid: 377adc7f759785a47a261652fd9570fa
+    color: {r: 0.69230765, g: 1, b: 0.5, a: 1}
+  - guid: ebd1142a792659d48826c6f876722a42
+    color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  - guid: 2c510c3e2df5bc045aa4654598a507df
+    color: {r: 1, g: 0.6615385, b: 0.5, a: 1}
+  - guid: 58007f224a0fecd47b949275a7da746c
+    color: {r: 1, g: 0.82307696, b: 0.5, a: 1}
+  - guid: 762addcff09e9a743bfb1cd010b2b1e8
+    color: {r: 1, g: 0.9846154, b: 0.5, a: 1}
+  - guid: 8c90f023e57e38240bd525bd7e186fc6
+    color: {r: 0.85384613, g: 1, b: 0.5, a: 1}
+  - guid: 1fa6b430f378ff04999b77be8f2aee0f
+    color: {r: 0.5307692, g: 1, b: 0.5, a: 1}
+  - guid: 7f78668edd0953949925f54d256776ce
+    color: {r: 0.5, g: 1, b: 0.63076925, a: 1}
+  - guid: fa820127d2212984eba840b7569a07bf
+    color: {r: 0.5, g: 1, b: 0.79230773, a: 1}
+  - guid: 709f11a7f3c4041caa4ef136ea32d874
+    color: {r: 0.5, g: 1, b: 0.9538462, a: 1}
+  - guid: c8400b741c3e2414d8e32f4193033deb
+    color: {r: 0.5, g: 0.8846153, b: 1, a: 1}
+  - guid: c2ce426ee7167994289e828225d48f9a
+    color: {r: 0.5, g: 0.72307694, b: 1, a: 1}
+  - guid: c447a89220d50994a92ac46451c984cd
+    color: {r: 0.5, g: 0.56153846, b: 1, a: 1}
+  - guid: 657e90e1da03692469b58eb55c6d0165
+    color: {r: 0.5999999, g: 0.5, b: 1, a: 1}
+  - guid: 0f7de87dbcb53cb49b43a58cf08bfa1c
+    color: {r: 1, g: 0.7153846, b: 0.5, a: 1}
+  - guid: b1650b654a4f1b3429ccff44224b5f25
+    color: {r: 1, g: 0.7692308, b: 0.5, a: 1}
+  - guid: 083747f805852e04794f6e86a70f9f7e
+    color: {r: 0.6692307, g: 1, b: 0.5, a: 1}
+  - guid: b45c7b45c9256a745978ed0eb3cf5663
+    color: {r: 0.6576923, g: 1, b: 0.5, a: 1}
+  - guid: d2e45ca1b6714194e90f7eb923c3f243
+    color: {r: 0.65192306, g: 1, b: 0.5, a: 1}
+  - guid: f1525dbf8ebd59e438b504fa19c4fd6c
+    color: {r: 0.6461538, g: 1, b: 0.5, a: 1}
+  - guid: a03c3ea914b8ed649a14606e1430e404
+    color: {r: 0.64153844, g: 1, b: 0.5, a: 1}
+  - guid: 0d0397844cfd0974f8ee136097d11380
+    color: {r: 0.6407692, g: 1, b: 0.5, a: 1}
+  - guid: 54d61064c2612804c9547e313fb726f0
+    color: {r: 0.6406837, g: 1, b: 0.5, a: 1}
+  - guid: 08f20128864a55d45abd8a30563f2f5c
+    color: {r: 0.64059824, g: 1, b: 0.5, a: 1}
+  - guid: 23bfd4374c8423f4ebf6716985b8c720
+    color: {r: 0.64051276, g: 1, b: 0.5, a: 1}
+  - guid: cf18653914b5e6f429d4566a7897264c
+    color: {r: 0.6404273, g: 1, b: 0.5, a: 1}
+  - guid: a1a250fa69b80b34c9ca9b9086296b97
+    color: {r: 0.6403419, g: 1, b: 0.5, a: 1}
+  - guid: 465b9dfce90e5db47b3b735df83f25fd
+    color: {r: 0.6402564, g: 1, b: 0.5, a: 1}
+  - guid: 300d5aad29f8cf04c8a1a3f0dfa3e014
+    color: {r: 0.64017093, g: 1, b: 0.5, a: 1}
+  - guid: 8723713565b9be445bb695a476bc77c6
+    color: {r: 0.64008546, g: 1, b: 0.5, a: 1}
+  - guid: 4929a85ce2b13ee4799e6f2a768bd5e9
+    color: {r: 0.6400428, g: 1, b: 0.5, a: 1}
+  - guid: c2e223f21744b544bbb7e93020199efb
+    color: {r: 0.64, g: 1, b: 0.5, a: 1}
+  - guid: d27bb367daea26d46a8fa5f6ca02865e
+    color: {r: 0.6392307, g: 1, b: 0.5, a: 1}
+  - guid: 6fee1744ec071184db72fc2443e77ece
+    color: {r: 0.6389743, g: 1, b: 0.5, a: 1}
+  - guid: c480d34b00248444d91a61e015b14e2a
+    color: {r: 0.6387179, g: 1, b: 0.5, a: 1}
+  - guid: b1808ca0399d069499d3ecb4e031c3e2
+    color: {r: 0.6384615, g: 1, b: 0.5, a: 1}
+  - guid: 15ff4c71a3c972440810ac633b69764d
+    color: {r: 0.63769233, g: 1, b: 0.5, a: 1}
+  - guid: 98f6937bb72a7254b92b4656f28b7333
+    color: {r: 0.6374359, g: 1, b: 0.5, a: 1}
+  - guid: 810757384532c3a4b9e4681f869acf1e
+    color: {r: 0.6371795, g: 1, b: 0.5, a: 1}
+  - guid: 0d066166ea67f71429de1af8cf635915
+    color: {r: 0.6369231, g: 1, b: 0.5, a: 1}
+  - guid: ecbf3577da9f5be4fa280507f592d747
+    color: {r: 0.63653845, g: 1, b: 0.5, a: 1}
+  - guid: 92540a55e648a2448bb430e825f01bc4
+    color: {r: 0.63641024, g: 1, b: 0.5, a: 1}
+  - guid: 0cb111b6bede3a1478c9b179a609d822
+    color: {r: 0.636282, g: 1, b: 0.5, a: 1}
+  - guid: 373a11f85d89ed2478f8c9616440ea26
+    color: {r: 0.6361538, g: 1, b: 0.5, a: 1}
+  - guid: 01b17d2e9e8e92c468aa520552226c3d
+    color: {r: 0.63596153, g: 1, b: 0.5, a: 1}
+  - guid: ab9dbe1f15e41e241a375833da5ff97e
+    color: {r: 0.635923, g: 1, b: 0.5, a: 1}
+  - guid: 3060a1729644a5a489574203c0653563
+    color: {r: 0.63588464, g: 1, b: 0.5, a: 1}
+  - guid: c4bb86f41e1c4a84585e1ebef18ea9a7
+    color: {r: 0.6358461, g: 1, b: 0.5, a: 1}
+  - guid: 9f8d1e8e1482b84468258a26a4887d07
+    color: {r: 0.63580763, g: 1, b: 0.5, a: 1}
+  - guid: b4a241a573ddd2841a4f3eb890a36bf2
+    color: {r: 0.6357692, g: 1, b: 0.5, a: 1}
+  - guid: 055912d614133a949a9ea99034287d3f
+    color: {r: 0.6357211, g: 1, b: 0.5, a: 1}
+  - guid: 2105bcd81068f6244a97aeccbe8818d8
+    color: {r: 0.635673, g: 1, b: 0.5, a: 1}
+  - guid: bdb28f0aecd0e4f43ba84d12dc7a9e0f
+    color: {r: 0.63565695, g: 1, b: 0.5, a: 1}
+  - guid: 5ad1202d40533db4fba20e21a57fec29
+    color: {r: 0.635641, g: 1, b: 0.5, a: 1}
+  - guid: 2fb6eaa3dd222634591fa7ebc5245eda
+    color: {r: 0.635625, g: 1, b: 0.5, a: 1}
+  - guid: 499043ab5c8e7ce4d9f83dddbe4c9bfa
+    color: {r: 0.6356009, g: 1, b: 0.5, a: 1}
+  - guid: 67d3f94386c0b71468666520386ce0b9
+    color: {r: 0.63558894, g: 1, b: 0.5, a: 1}
+  - guid: d55bbb2250d24b94785e2ee08c45c5f4
+    color: {r: 0.63557684, g: 1, b: 0.5, a: 1}
+  - guid: d8fc0da1e1391e8409064c221f02358b
+    color: {r: 0.63556087, g: 1, b: 0.5, a: 1}
+  - guid: 0f2b8542dea4ed449a71c582716ed888
+    color: {r: 0.6355448, g: 1, b: 0.5, a: 1}
+  - guid: 79a89eaf9d5b7364e9a9f0e6ae485f84
+    color: {r: 0.6355288, g: 1, b: 0.5, a: 1}
+  - guid: af8606f905937fc419c0dfcad970cd1d
+    color: {r: 0.63548076, g: 1, b: 0.5, a: 1}
+  - guid: 7a9331e21bfaa0a4aaac4ffe7d8d644c
+    color: {r: 0.6354648, g: 1, b: 0.5, a: 1}
+  - guid: 9b80990f4a80a944c9394e21c9c2187c
+    color: {r: 0.6354487, g: 1, b: 0.5, a: 1}
+  - guid: 7782cde83489d9a4ca40e344c67aa02a
+    color: {r: 0.63543266, g: 1, b: 0.5, a: 1}
+  - guid: eb2e86322ed960149a79e8ed8199b52b
+    color: {r: 0.63540864, g: 1, b: 0.5, a: 1}
+  - guid: 6860196879fb52a408948f34a9ad992a
+    color: {r: 0.63538456, g: 1, b: 0.5, a: 1}
+  - guid: ae35102a88f9145439386a0fcf0a72e5
+    color: {r: 0.63525635, g: 1, b: 0.5, a: 1}
+  - guid: 158d38828d286af468fbdb3b594ad9bc
+    color: {r: 0.63512814, g: 1, b: 0.5, a: 1}
+  - guid: 02c5cb48c15b7f445b5f7947b3caab23
+    color: {r: 0.63499993, g: 1, b: 0.5, a: 1}
+  - guid: 77d19422e209c5843b939e6dcd6b4971
+    color: {r: 0.63492304, g: 1, b: 0.5, a: 1}
+  - guid: 1f1bf5e92afde20428b1ccf93f8648a0
+    color: {r: 0.6348461, g: 1, b: 0.5, a: 1}
+  - guid: c8112cf1a9acc7f47946446bdc61e7a7
+    color: {r: 0.6347692, g: 1, b: 0.5, a: 1}
+  - guid: 2632d5734cb07bb419c6b6aa4e4b245d
+    color: {r: 0.6346922, g: 1, b: 0.5, a: 1}
+  - guid: ea07d809d9bc44b4ba4025cb56b199b3
+    color: {r: 0.6346153, g: 1, b: 0.5, a: 1}
+  - guid: 1eaf920277ad1b043b6175001766791c
+    color: {r: 0.6344871, g: 1, b: 0.5, a: 1}
+  - guid: a91fd8f80ac0aee48bf00ae0d84167c4
+    color: {r: 0.634359, g: 1, b: 0.5, a: 1}
+  - guid: 63e5c7d3bb1a4a34fabadecc9726f54e
+    color: {r: 0.63423073, g: 1, b: 0.5, a: 1}
+  - guid: accc5b93ebf3b0040baaec2298c7d394
+    color: {r: 0.6341026, g: 1, b: 0.5, a: 1}
+  - guid: bdae6fa333d2d94449c27856e21d936a
+    color: {r: 0.6340769, g: 1, b: 0.5, a: 1}
+  - guid: 50d54accc2af0c746b0729b097981b93
+    color: {r: 0.6340512, g: 1, b: 0.5, a: 1}
+  - guid: eaf414b899169f04bb4b0d65424a40bf
+    color: {r: 0.6340257, g: 1, b: 0.5, a: 1}
+  - guid: d3aa9f1d4a89e9d438bd7a3048417f2f
+    color: {r: 0.634, g: 1, b: 0.5, a: 1}
+  - guid: 6f3426c410532ce438e1d80868d45500
+    color: {r: 0.6339743, g: 1, b: 0.5, a: 1}
+  - guid: 15ebc39fcc93fdf478b190c392816c1e
+    color: {r: 0.6339487, g: 1, b: 0.5, a: 1}
+  - guid: 7a2f99f17af3b58498907ae93ce16887
+    color: {r: 0.63392305, g: 1, b: 0.5, a: 1}
+  - guid: 2b7a81baadcf96f41ad7f4b44f2ca2b8
+    color: {r: 0.6338974, g: 1, b: 0.5, a: 1}
+  - guid: 352b4412576d5134aaf72b172a328810
+    color: {r: 0.6338718, g: 1, b: 0.5, a: 1}
+  - guid: 05b745a985085ca4aa6cd3ef0b947167
+    color: {r: 0.63384616, g: 1, b: 0.5, a: 1}
+  - guid: 73b29a5af2f04864699941fc23d5e110
+    color: {r: 0.6334615, g: 1, b: 0.5, a: 1}
+  - guid: 790edab37fb30a74b8e438c04b447d60
+    color: {r: 0.6332692, g: 1, b: 0.5, a: 1}
+  - guid: 726a49d6d35281a4aa8f6015d79246fd
+    color: {r: 0.6332418, g: 1, b: 0.5, a: 1}
+  - guid: 24cb991248d4645448d297cef8db2667
+    color: {r: 0.63321424, g: 1, b: 0.5, a: 1}
+  - guid: fa6a1647ec1d24048a454ab29a4ae703
+    color: {r: 0.63318676, g: 1, b: 0.5, a: 1}
+  - guid: 9a4ba80779d8f594a99ac095c656b95e
+    color: {r: 0.6331593, g: 1, b: 0.5, a: 1}
+  - guid: 4f574493adcd0c841bc7be2e53b79af8
+    color: {r: 0.63313186, g: 1, b: 0.5, a: 1}
+  - guid: b626fdcb395bf5a448c33f78241beace
+    color: {r: 0.6331181, g: 1, b: 0.5, a: 1}
+  - guid: f916eef3fd3b4bd459215b28ba6255e0
+    color: {r: 0.6331043, g: 1, b: 0.5, a: 1}
+  - guid: 20e6b1dc6b2c2aa41a7bab869daa1ce5
+    color: {r: 0.6330769, g: 1, b: 0.5, a: 1}
+  - guid: 5985db0dc6b663146adf62e089060cc6
+    color: {r: 0.633, g: 1, b: 0.5, a: 1}
+  - guid: 5da04b10582d51f42a06a7be2bffd814
+    color: {r: 0.632923, g: 1, b: 0.5, a: 1}
+  - guid: 2523bec4bc0c4b54898b5ad26591d08c
+    color: {r: 0.6328461, g: 1, b: 0.5, a: 1}
+  - guid: ee2b2b6fe8d82c3448ade70b9e30300b
+    color: {r: 0.6328205, g: 1, b: 0.5, a: 1}
+  - guid: 1daac01325da73f41a38e1da80d8bba4
+    color: {r: 0.6327948, g: 1, b: 0.5, a: 1}
+  - guid: 46f0b48d71e410342872ac48531da35e
+    color: {r: 0.6327691, g: 1, b: 0.5, a: 1}
+  - guid: b8aa3d7aa8ea4b04b8c6bf02a715a645
+    color: {r: 0.6326922, g: 1, b: 0.5, a: 1}
+  - guid: 5fcaa22efc92f24499ee8812f2fda081
+    color: {r: 0.63230765, g: 1, b: 0.5, a: 1}
+  - guid: 34e749ac19246214591a2e3f58dc6365
+    color: {r: 0.63199997, g: 1, b: 0.5, a: 1}
+  - guid: 7601d0cb4fcf4ef468b1faeee7bbf3f0
+    color: {r: 0.63169223, g: 1, b: 0.5, a: 1}
+  - guid: 634f0556bc4961f44846882dac5d1c7f
+    color: {r: 0.63153845, g: 1, b: 0.5, a: 1}
+  - guid: afabc0828ac7433468e40b80f5c9524c
+    color: {r: 0.6313846, g: 1, b: 0.5, a: 1}
+  - guid: 1bfcb6f3f32d11a4296ade8dc07d56bb
+    color: {r: 0.6310768, g: 1, b: 0.5, a: 1}
+  - guid: 3eb13a869216f634eb89b030d30bf879
+    color: {r: 0.6307692, g: 1, b: 0.5, a: 1}
+  - guid: 652ea22ae970f014187104e2330ca034
+    color: {r: 0.63046145, g: 1, b: 0.5, a: 1}
+  - guid: f10fbb8567e7a7749831005ce1e1ee4f
+    color: {r: 0.63041747, g: 1, b: 0.5, a: 1}
+  - guid: 14146fca20e58f94987416948b38d79d
+    color: {r: 0.6303955, g: 1, b: 0.5, a: 1}
+  - guid: 085eef268cecafb4abf2e2810428f9f3
+    color: {r: 0.6303736, g: 1, b: 0.5, a: 1}
+  - guid: 564bc17539291c64683b5b20c06eda8b
+    color: {r: 0.6303296, g: 1, b: 0.5, a: 1}
+  - guid: a26a5fd0a07d6964faab3ddc4d7454ee
+    color: {r: 0.6302857, g: 1, b: 0.5, a: 1}
+  - guid: 3e64b45ed42e33641b9cc1f6ee7e2975
+    color: {r: 0.6302417, g: 1, b: 0.5, a: 1}
+  - guid: e3fad7777e2bfd04f8ad002a7797348c
+    color: {r: 0.630227, g: 1, b: 0.5, a: 1}
+  - guid: b390700058f059c4987901fdd16c2578
+    color: {r: 0.6302124, g: 1, b: 0.5, a: 1}
+  - guid: a4ef7ba8f76fa854cb4799bbe62695c0
+    color: {r: 0.63019776, g: 1, b: 0.5, a: 1}
+  - guid: bf3d446fc36c1f348926ae1391cfef67
+    color: {r: 0.6301538, g: 1, b: 0.5, a: 1}
+  - guid: bc7d71f1ce4ba474ba6eed2c30b44aec
+    color: {r: 0.62999994, g: 1, b: 0.5, a: 1}
+  - guid: f6bca334cff41934c987b04a7cfe77ee
+    color: {r: 0.6299807, g: 1, b: 0.5, a: 1}
+  - guid: 89043e9d4033c29428eb797d22d85626
+    color: {r: 0.62997115, g: 1, b: 0.5, a: 1}
+  - guid: c69d0773e094d8442b66666dc0b49caa
+    color: {r: 0.6299615, g: 1, b: 0.5, a: 1}
+  - guid: 1746873c72693e54fbf636563628b50f
+    color: {r: 0.62995183, g: 1, b: 0.5, a: 1}
+  - guid: a68eb7a82e2c73847beb5b90cd65acc1
+    color: {r: 0.6299423, g: 1, b: 0.5, a: 1}
+  - guid: ae5df816b1e348a4681e184662e59bb5
+    color: {r: 0.62992305, g: 1, b: 0.5, a: 1}
+  - guid: 3bb69ba1a673375489a94fa875c3aa98
+    color: {r: 0.62990373, g: 1, b: 0.5, a: 1}
+  - guid: dd9e54c58fb9c984ba69d3525a8f8d53
+    color: {r: 0.6298845, g: 1, b: 0.5, a: 1}
+  - guid: 43bf94bbbaa20b6489f07cd1abe42972
+    color: {r: 0.62987494, g: 1, b: 0.5, a: 1}
+  - guid: a658654fb5a277445af5f1628ae61d88
+    color: {r: 0.6298653, g: 1, b: 0.5, a: 1}
+  - guid: edb137ec1a2c56540a187929d6b97b54
+    color: {r: 0.62985563, g: 1, b: 0.5, a: 1}
+  - guid: 9f3e6400a1a8b4141a9fa24f0e8aa430
+    color: {r: 0.6298461, g: 1, b: 0.5, a: 1}
+  - guid: 8b8fdb465dad5174893b51876d9cc64c
+    color: {r: 0.62982404, g: 1, b: 0.5, a: 1}
+  - guid: 311ccd7ecfc60694bb8a40a3af3a76f6
+    color: {r: 0.6298168, g: 1, b: 0.5, a: 1}
+  - guid: 3956bb4fb9de7644d9070720d0e5c4c7
+    color: {r: 0.6298094, g: 1, b: 0.5, a: 1}
+  - guid: 7fdb708ebb7c8be48bd50bb6fb36299e
+    color: {r: 0.6298021, g: 1, b: 0.5, a: 1}
+  - guid: f59bd8d1da17e3c49b541b79d1adfbf9
+    color: {r: 0.6297911, g: 1, b: 0.5, a: 1}
+  - guid: 13b772a9b225b1343bbb9313504db84f
+    color: {r: 0.6297802, g: 1, b: 0.5, a: 1}
+  - guid: 6cb1c158bca76a644b857ca01845204b
+    color: {r: 0.6297582, g: 1, b: 0.5, a: 1}
+  - guid: 980bce33e6d8c5247bedb2ddc2310b77
+    color: {r: 0.62974715, g: 1, b: 0.5, a: 1}
+  - guid: b0cc8067328d24b4ba59a946ec4b8622
+    color: {r: 0.6297362, g: 1, b: 0.5, a: 1}
+  - guid: 4f3c9013358962e4786b12d363c7a3fc
+    color: {r: 0.6297252, g: 1, b: 0.5, a: 1}
+  - guid: 66e179864f87850459121eef3b80e0d9
+    color: {r: 0.6297142, g: 1, b: 0.5, a: 1}
+  - guid: d3549ac1479ae014986f98b9f63e3011
+    color: {r: 0.62970316, g: 1, b: 0.5, a: 1}
+  - guid: dd17b65ce1c2f3248980bdc8408c808e
+    color: {r: 0.6296922, g: 1, b: 0.5, a: 1}
+  - guid: 5500daad38c4cd742b6f37bc59c91849
+    color: {r: 0.6296813, g: 1, b: 0.5, a: 1}
+  - guid: 36c52dde2f6aec644aa226d1a864b2b6
+    color: {r: 0.62967026, g: 1, b: 0.5, a: 1}
+  - guid: f210b76f529cc1040968dfa087adb628
+    color: {r: 0.62966484, g: 1, b: 0.5, a: 1}
+  - guid: dab62b7547b4c7244ac46c329804de12
+    color: {r: 0.6296593, g: 1, b: 0.5, a: 1}
+  - guid: 64830aa6b410d984a94143eb0c9a057e
+    color: {r: 0.62965375, g: 1, b: 0.5, a: 1}
+  - guid: 263d37a9ed8fb8a4dbff1095a7b20695
+    color: {r: 0.6296483, g: 1, b: 0.5, a: 1}
+  - guid: c150c74713eeaeb47a387a0f34529ad4
+    color: {r: 0.62964094, g: 1, b: 0.5, a: 1}
+  - guid: 624750768480fa840b40449a42006488
+    color: {r: 0.62963367, g: 1, b: 0.5, a: 1}
+  - guid: 3c83bbce17084ee4bb71193b542a5d10
+    color: {r: 0.6296263, g: 1, b: 0.5, a: 1}
+  - guid: ff89542cb898b9345ada2af3e88721e5
+    color: {r: 0.62960434, g: 1, b: 0.5, a: 1}
+  - guid: 31f64c354c60cc748a3c0956b14def5b
+    color: {r: 0.6295933, g: 1, b: 0.5, a: 1}
+  - guid: 177682847d7bda74daa089260df1122e
+    color: {r: 0.6295824, g: 1, b: 0.5, a: 1}
+  - guid: 2661a72b34311dc419a0f1eda6e2aaab
+    color: {r: 0.6295604, g: 1, b: 0.5, a: 1}
+  - guid: a4837ad94997ddf4d800cba09641c72a
+    color: {r: 0.6295384, g: 1, b: 0.5, a: 1}
+  - guid: 0cd019316f743a94a8131c7c60d8ebd6
+    color: {r: 0.6294944, g: 1, b: 0.5, a: 1}
+  - guid: b4af6267cb928f34fa47fdf8f80eccf9
+    color: {r: 0.62945056, g: 1, b: 0.5, a: 1}
+  - guid: aed4a4fd57ff1f44abf1397c968a94ae
+    color: {r: 0.6294066, g: 1, b: 0.5, a: 1}
+  - guid: a70645f2a323cb648b815b5b79b56419
+    color: {r: 0.6293626, g: 1, b: 0.5, a: 1}
+  - guid: 46773e0f27a85d643867f04d902fa007
+    color: {r: 0.6293186, g: 1, b: 0.5, a: 1}
+  - guid: 5429986c563a23a4c86f7b6724e41a70
+    color: {r: 0.62927467, g: 1, b: 0.5, a: 1}
+  - guid: 4fdbbd392bd572f47bb039e44f2b5e21
+    color: {r: 0.6292307, g: 1, b: 0.5, a: 1}
+  - guid: b3bebf2a796db5c4c8c98b891492e895
+    color: {r: 0.6290769, g: 1, b: 0.5, a: 1}
+  - guid: 8e63bfe98ed333f4d9b0e8c81c98c513
+    color: {r: 0.6290256, g: 1, b: 0.5, a: 1}
+  - guid: 1f8371074a46da248ba15efa18140ff3
+    color: {r: 0.6289743, g: 1, b: 0.5, a: 1}
+  - guid: 051bc52e2cc851f49a0c1f2babb04074
+    color: {r: 0.62892306, g: 1, b: 0.5, a: 1}
+  - guid: aea01893c4a887048868eaa5b37c656a
+    color: {r: 0.62886155, g: 1, b: 0.5, a: 1}
+  - guid: fa7c8a088aea3f04580b62c8e2a388ec
+    color: {r: 0.6287999, g: 1, b: 0.5, a: 1}
+  - guid: 06703c0fac6f21140ab99ef3eeb8a4f7
+    color: {r: 0.62876916, g: 1, b: 0.5, a: 1}
+  - guid: a72c0fe8d07e9fd49911db527eddbc39
+    color: {r: 0.6287384, g: 1, b: 0.5, a: 1}
+  - guid: cd9a0ca39fab66c448fdc3e25da9d482
+    color: {r: 0.62870765, g: 1, b: 0.5, a: 1}
+  - guid: e92e9b5fef66ccb4d991a260767c3be4
+    color: {r: 0.6286974, g: 1, b: 0.5, a: 1}
+  - guid: 53002e457d153bf49aad4b2b28d4353c
+    color: {r: 0.6286871, g: 1, b: 0.5, a: 1}
+  - guid: a29cd7621a70a044bb205cc8cfd96b3c
+    color: {r: 0.6286819, g: 1, b: 0.5, a: 1}
+  - guid: f04cb37e5f34ee749b8be696cb9c6ba3
+    color: {r: 0.62868065, g: 1, b: 0.5, a: 1}
+  - guid: a4e1653f734aa924a947707391413c6c
+    color: {r: 0.6286794, g: 1, b: 0.5, a: 1}
+  - guid: 05bf45e6c53189b428920bb4f1f4244d
+    color: {r: 0.6286781, g: 1, b: 0.5, a: 1}
+  - guid: d9e1126c6a21b924ebe296adf0d3e282
+    color: {r: 0.6286776, g: 1, b: 0.5, a: 1}
+  - guid: eb1d9debba52ef04999d361f88e67f06
+    color: {r: 0.6286775, g: 1, b: 0.5, a: 1}
+  - guid: 4777e69010a7d0c4e92e16a1b690014a
+    color: {r: 0.6286774, g: 1, b: 0.5, a: 1}
+  - guid: 898e607de9d654d40a5fcdd6a6aff11c
+    color: {r: 0.62867737, g: 1, b: 0.5, a: 1}
+  - guid: f82c3c8b428ad15498a91dbfd2f7ad87
+    color: {r: 0.62867725, g: 1, b: 0.5, a: 1}
+  - guid: db8731a93272f9a48b7fc3d035e88bfa
+    color: {r: 0.6286768, g: 1, b: 0.5, a: 1}
+  - guid: 8bb6f9b7646a3004493b32151b5572ab
+    color: {r: 0.628646, g: 1, b: 0.5, a: 1}
+  - guid: 2a60afc166377a04f91b256be2d2e3fb
+    color: {r: 0.62861526, g: 1, b: 0.5, a: 1}
+  - guid: 47d64f495dba6cf4da8615f022f5a801
+    color: {r: 0.62853837, g: 1, b: 0.5, a: 1}
+  - guid: 70577ba991466c849818d6af55bb4f9f
+    color: {r: 0.6284614, g: 1, b: 0.5, a: 1}
+  - guid: 4aaaca3090257be40b80f33b9e955446
+    color: {r: 0.62838453, g: 1, b: 0.5, a: 1}
+  - guid: cd437bc70be1b084a991333055bbe475
+    color: {r: 0.62830764, g: 1, b: 0.5, a: 1}
+  - guid: 91d2fe16f6fe54e479292316bafa8f87
+    color: {r: 0.6281538, g: 1, b: 0.5, a: 1}
+  - guid: a3fe0c14d0e92e342a72a5c3c47eded6
+    color: {r: 0.6281153, g: 1, b: 0.5, a: 1}
+  - guid: dbea3fa76aeb43b44b1f6830cafcbb78
+    color: {r: 0.6280768, g: 1, b: 0.5, a: 1}
+  - guid: 940f5a2b53a9afb46bde9acd4da241dc
+    color: {r: 0.62806714, g: 1, b: 0.5, a: 1}
+  - guid: db3e0776ef8fe584c831c880b2a1ea35
+    color: {r: 0.6280576, g: 1, b: 0.5, a: 1}
+  - guid: 3ef946b2e8b58064792753e801ad224d
+    color: {r: 0.628048, g: 1, b: 0.5, a: 1}
+  - guid: 789a9c2912bfd734799ee3c31240dfe5
+    color: {r: 0.62804675, g: 1, b: 0.5, a: 1}
+  - guid: 385e3bf47ee12f24682dd4103f561388
+    color: {r: 0.6280466, g: 1, b: 0.5, a: 1}
+  - guid: 913bfea2739371c46a3056a6a6d8e18a
+    color: {r: 0.6280464, g: 1, b: 0.5, a: 1}
+  - guid: 656606d7f7813c346b0ea3624a4f8301
+    color: {r: 0.6280462, g: 1, b: 0.5, a: 1}
+  - guid: 8ba665e9db40d08479de3a1b6934e14e
+    color: {r: 0.62804615, g: 1, b: 0.5, a: 1}
+  - guid: 6023f3c3e07698e4f9010137ab86baeb
+    color: {r: 0.6280459, g: 1, b: 0.5, a: 1}
+  - guid: a851972c2284c6443b0ae83bb47cc878
+    color: {r: 0.6280458, g: 1, b: 0.5, a: 1}
+  - guid: ed59a766c9857544b8823d78f1630576
+    color: {r: 0.62804556, g: 1, b: 0.5, a: 1}
+  - guid: 493bdf03ac4d1314ca4fee7db68863fe
+    color: {r: 0.6280444, g: 1, b: 0.5, a: 1}
+  - guid: 98ae12b83d1422244894c54371348d2e
+    color: {r: 0.628044, g: 1, b: 0.5, a: 1}
+  - guid: f26405488d3a04c4cac669dc19e97a01
+    color: {r: 0.62804365, g: 1, b: 0.5, a: 1}
+  - guid: 026ae72260e26614fa8552d0c1cf7c89
+    color: {r: 0.6280432, g: 1, b: 0.5, a: 1}
+  - guid: 03066727d57033a42ad3c5771d322cca
+    color: {r: 0.6280419, g: 1, b: 0.5, a: 1}
+  - guid: ae8e33ae58475c94e9f7ea32d1d1aff5
+    color: {r: 0.6280408, g: 1, b: 0.5, a: 1}
+  - guid: 099a29d5880973a49a3d84f30b4ea72c
+    color: {r: 0.6280396, g: 1, b: 0.5, a: 1}
+  - guid: 4f3b3f854a379684a92d54e1034c3a1a
+    color: {r: 0.62803835, g: 1, b: 0.5, a: 1}
+  - guid: e13f31983d04611469a690fc65e81b02
+    color: {r: 0.6280287, g: 1, b: 0.5, a: 1}
+  - guid: a537e10eb38767b4085a7bec020f9675
+    color: {r: 0.6280191, g: 1, b: 0.5, a: 1}
+  - guid: 12f412d6d520d5c45bb49d177690e507
+    color: {r: 0.62800956, g: 1, b: 0.5, a: 1}
+  - guid: 5fa8ca1b7ce0a0041a2ddfebeef8c8fe
+    color: {r: 0.62800634, g: 1, b: 0.5, a: 1}
+  - guid: 4ebeb715b0d0f844bad181703daa09db
+    color: {r: 0.6280031, g: 1, b: 0.5, a: 1}
+  - guid: 54fe12cb57fcc5e48bfd592d260140d7
+    color: {r: 0.6279999, g: 1, b: 0.5, a: 1}
+  - guid: 0d008bcb408806c45980331a665c65a7
+    color: {r: 0.627923, g: 1, b: 0.5, a: 1}
+  - guid: 7b315d9102b18b541b0b2346c9ad63ed
+    color: {r: 0.6278461, g: 1, b: 0.5, a: 1}
+  - guid: f0c2d33d2e9aea44195c265bd08ff498
+    color: {r: 0.6277691, g: 1, b: 0.5, a: 1}
+  - guid: 45e9a7bff88078f49ae15609740702eb
+    color: {r: 0.6276922, g: 1, b: 0.5, a: 1}
+  - guid: 53fcbe612a118f946adf10d43a93e8e0
+    color: {r: 0.6230769, g: 1, b: 0.5, a: 1}
+  - guid: 4117f1b568bf549bcbef06885cea4fa4
+    color: {r: 0.61153847, g: 1, b: 0.5, a: 1}
+  - guid: 7da832fb78540468a8eb474a1e122e46
+    color: {r: 0.6057692, g: 1, b: 0.5, a: 1}
+  - guid: 85ba79a06b12e2c45a68716c1f80f4da
+    color: {r: 0.59999996, g: 1, b: 0.5, a: 1}
+  - guid: 2eca16f6fb10fa846803a50c901f80b7
+    color: {r: 0.58846146, g: 1, b: 0.5, a: 1}
+  - guid: f54d1bd14bd3ca042bd867b519fee8cc
+    color: {r: 0.576923, g: 1, b: 0.5, a: 1}
+  - guid: 6ab70aee4d56447429c680537fbf93ed
+    color: {r: 0.5723077, g: 1, b: 0.5, a: 1}
+  - guid: 243e06394e614e5d99fab26083b707fa
+    color: {r: 0.5676923, g: 1, b: 0.5, a: 1}
+  - guid: 731f1baa9d144a9897cb1d341c2092b8
+    color: {r: 0.56653845, g: 1, b: 0.5, a: 1}
+  - guid: 512a49d95c0c4332bdd98131869c23c9
+    color: {r: 0.5653846, g: 1, b: 0.5, a: 1}
+  - guid: 4aecb92fff08436c8303b10eab8da368
+    color: {r: 0.56423074, g: 1, b: 0.5, a: 1}
+  - guid: e9f693669af91aa45ad615fc681ed29f
+    color: {r: 0.56307685, g: 1, b: 0.5, a: 1}
+  - guid: d0603b6d5186471b96c778c3949c7ce2
+    color: {r: 0.5584615, g: 1, b: 0.5, a: 1}
+  - guid: c373a5766fc6caf44b156b336b9f29f7
+    color: {r: 0.5538461, g: 1, b: 0.5, a: 1}
+  - guid: ea7985d415e3edd448eb33a945ddd74d
+    color: {r: 0.5423076, g: 1, b: 0.5, a: 1}
+  - guid: 26aeb2019a0800b449f5b2a9f34debc0
+    color: {r: 0.53653836, g: 1, b: 0.5, a: 1}
+  - guid: 4ec7c96e7acdae24184dcb697c2d6a72
+    color: {r: 0.53509605, g: 1, b: 0.5, a: 1}
+  - guid: 37e284dbc866de041a2b94ce5a87529b
+    color: {r: 0.53365374, g: 1, b: 0.5, a: 1}
+  - guid: 8e0a5d02f1c7b254187012c03e67bb4d
+    color: {r: 0.53221154, g: 1, b: 0.5, a: 1}
+  - guid: 9bfb5638f97cb6246be11a32ccb6015f
+    color: {r: 0.5, g: 1, b: 0.523077, a: 1}
+  - guid: 879a957518c90cd4ab4a0c4014279ecc
+    color: {r: 0.5, g: 1, b: 0.57692313, a: 1}
+  customPresets:
+  - {r: 1, g: 0.48235294, b: 0.48235294, a: 1}
+  - {r: 1, g: 0.60784316, b: 0.48235294, a: 1}
+  - {r: 1, g: 0.8156863, b: 0.48235294, a: 1}
+  - {r: 0.9607843, g: 0.9411765, b: 0.48235294, a: 1}
+  - {r: 0.6156863, g: 0.9411765, b: 0.627451, a: 1}
+  - {r: 0.48235294, g: 0.83137256, b: 0.7058824, a: 1}
+  - {r: 0.48235294, g: 0.72156864, b: 0.9411765, a: 1}
+  - {r: 0.48235294, g: 0.56078434, b: 0.9411765, a: 1}
+  - {r: 0.6901961, g: 0.48235294, b: 0.9411765, a: 1}
+  - {r: 0.9098039, g: 0.48235294, b: 0.9411765, a: 1}
+  - {r: 0.9411765, g: 0.48235294, b: 0.72156864, a: 1}
+  - {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+  - {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
+  - {r: 0.3764706, g: 0.3764706, b: 0.3764706, a: 1}
+  - {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
+  quickColors: []
+  applyToSubfolders: 1
+  ignoreColored: 0
+  quickPopupOnHold: 1
