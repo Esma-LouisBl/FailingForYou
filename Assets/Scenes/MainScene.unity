@@ -689,7 +689,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1774780518894797315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_Name
-      value: TV SET
+      value: Scene
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -732,7 +732,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3258353298184223541, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
