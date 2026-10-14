@@ -12,13 +12,405 @@ namespace FishNet.Transporting.Tugboat
     [AddComponentMenu("FishNet/Transport/Tugboat")]
     public class Tugboat : Transport
     {
+        public Server.ServerSocket ServerSocket = new();
+        public Client.ClientSocket ClientSocket = new();
+        [SerializeField]
+        private string _ipv6BindAddress;
+        
+        // Maximum number of players which may be connected at once
+        [Range(1, 5)]
+        [SerializeField]
+        private int _maximumClients = 5;
+    
+        // Port to use
+        private ushort _port = 7770;
+    
+        // PacketLayer to use with LiteNetLib
+        private PacketLayerBase _packetLayer;
+    
+        // Maximum UDP packet size allowed
+        private const int MAXIMUM_UDP_MTU = 1350;
+    
+        // Maximum timeout value to use
+        private const ushort MAX_TIMEOUT_SECONDS = 1800;
+    
+        // Current timeout for the client
+        private int _clientTimeout = MAX_TIMEOUT_SECONDS;
+    
+        // Current timeout for the server
+        private int _serverTimeout = MAX_TIMEOUT_SECONDS;
+        
+        #region Verif
+        
+        // While true, forces sockets to send data directly to interface without routing
+        internal bool DontRoute => _dontRoute;
+        [SerializeField]
+        private bool _dontRoute;
+        
+        // Address to connect.
+        [SerializeField]
+        private string _clientAddress = "localhost";
+        
+        // Allows the same address and port to be used multiple times by the server. This can be useful if you wish to launch multiple builds or server instances on the same machine using the same configuration.
+        internal bool ReuseAddress => _reuseAddress;
+        [SerializeField]
+        private bool _reuseAddress;
+        
+        // True to stop local server and client sockets using a new thread.
+        internal bool StopSocketsOnThread => _stopSocketsOnThread;
+        [Tooltip("True to stop local server and client sockets using a new thread.")]
+        [SerializeField]
+        private bool _stopSocketsOnThread = false;
+        
+        #endregion
+        
+        // Called when a connection state changes for the local client.
+        public override event Action<ClientConnectionStateArgs> OnClientConnectionState;
+        
+        // Called when a connection state changes for the local server.
+        public override event Action<ServerConnectionStateArgs> OnServerConnectionState;
+        
+        // Called when a connection state changes for a remote client.
+        public override event Action<RemoteConnectionStateArgs> OnRemoteConnectionState;
+        
+        ~Tugboat()
+        {
+            Shutdown();
+        }
+
+        public override void Initialize(NetworkManager networkManager, int transportIndex)
+        {
+            base.Initialize(networkManager, transportIndex);
+            networkManager.TimeManager.OnUpdate += TimeManager_OnUpdate;
+        }
+        
+        protected void OnDestroy()
+        {
+            Shutdown();
+            if (NetworkManager != null)
+                NetworkManager.TimeManager.OnUpdate -= TimeManager_OnUpdate;
+        }
+        
+        // Gets the address of a remote connection Id.
+        public override string GetConnectionAddress(int connectionId)
+        {
+            return ServerSocket.GetConnectionAddress(connectionId);
+        }
+        
+        // Initializes client or server socket
+        private void InitializeSocket(bool asServer)
+        {
+            if (asServer)
+                ServerSocket.Initialize(this, MAXIMUM_UDP_MTU, _packetLayer, true);
+            else
+                ClientSocket.Initialize(this, MAXIMUM_UDP_MTU, _packetLayer);
+        }
+        
+        // Gets the current local ConnectionState.
+        public override LocalConnectionState GetConnectionState(bool server)
+        {
+            if (server)
+                return ServerSocket.GetConnectionState();
+            else
+                return ClientSocket.GetConnectionState();
+        }
+        
+        // Gets the current ConnectionState of a remote client on the server.
+        public override RemoteConnectionState GetConnectionState(int connectionId)
+        {
+            return ServerSocket.GetConnectionState(connectionId);
+        }
+        
+        // Handles a ConnectionStateArgs for the local server.
+        public override void HandleServerConnectionState(ServerConnectionStateArgs connectionStateArgs)
+        {
+            OnServerConnectionState?.Invoke(connectionStateArgs);
+        }
+        
+        // Handles a ConnectionStateArgs for a remote client.
+        public override void HandleRemoteConnectionState(RemoteConnectionStateArgs connectionStateArgs)
+        {
+            OnRemoteConnectionState?.Invoke(connectionStateArgs);
+        }
+        
+        // Handles a ConnectionStateArgs for the local client.
+        public override void HandleClientConnectionState(ClientConnectionStateArgs connectionStateArgs)
+        {
+            OnClientConnectionState?.Invoke(connectionStateArgs);
+        }
+    
+        // Starts server
+        private bool StartServer()
+        {
+            InitializeSocket(asServer: true);
+            UpdateTimeout();
+            return ServerSocket.StartConnection(_port, _maximumClients, _ipv6BindAddress); //ipv4 address to remove
+        }
+    
+        // Stops server
+        private bool StopServer()
+        {
+            if (ServerSocket == null)
+                return false;
+
+            return ServerSocket.StopConnection();
+        }
+    
+        // Starts the client
+        private bool StartClient(string address)
+        {
+            InitializeSocket(asServer: false);
+            UpdateTimeout();
+            return ClientSocket.StartConnection(address, _port, "code");
+        }
+    
+        // Updates clients timeout values
+        private void UpdateTimeout()
+        {
+            ClientSocket.UpdateTimeout(_clientTimeout);
+            ServerSocket.UpdateTimeout(_serverTimeout);
+        }
+        
+        // Stops the client
+        private bool StopClient()
+        {
+            if (ClientSocket == null)
+                return false;
+
+            return ClientSocket.StopConnection();
+        }
+        
+        // Gets the MTU for a channel. This should take header size into consideration
+        // For example, if MTU is 1200 and a packet header for this channel is 10 in size, this method should return 1190
+        public override int GetMTU(byte channel)
+        {
+            return MAXIMUM_UDP_MTU - NetConstants.MaxUdpHeaderSize;
+        }
+        
+        // Starts the local server or client using configured settings
+        public override bool StartConnection(bool server)
+        {
+            if (server)
+                return StartServer();
+
+            return StartClient(_clientAddress);
+        }
+        
+        // Stops the local server or client
+        public override bool StopConnection(bool server)
+        {
+            if (server)
+                return StopServer();
+
+            return StopClient();
+        }
+        
+        // If channelId is invalid then channelId becomes forced to reliable
+        private void SanitizeChannel(ref byte channelId)
+        {
+            if (channelId >= TransportManager.CHANNEL_COUNT)
+            {
+                NetworkManager.LogWarning($"Channel of {channelId} is out of range of supported channels. Channel will be defaulted to reliable.");
+                channelId = 0;
+            }
+        }
+        
+        // Called every update to poll for data.
+        private void TimeManager_OnUpdate()
+        {
+            ServerSocket?.PollSocket();
+            ClientSocket?.PollSocket();
+        }
+        
+        // Processes data received by the socket.
+        public override void IterateIncoming(bool asServer)
+        {
+            if (asServer)
+                ServerSocket.IterateIncoming();
+            else
+                ClientSocket.IterateIncoming();
+        }
+        
+        // Processes data to be sent by the socket.
+        public override void IterateOutgoing(bool asServer)
+        {
+            if (asServer)
+                ServerSocket.IterateOutgoing();
+            else
+                ClientSocket.IterateOutgoing();
+        }
+        
+        // Sends to the server or all clients.
+        public override void SendToServer(byte channelId, ArraySegment<byte> segment)
+        {
+            SanitizeChannel(ref channelId);
+            ClientSocket.SendToServer(channelId, segment);
+        }
+        
+        // Sends data to a client.
+        public override void SendToClient(byte channelId, ArraySegment<byte> segment, int connectionId)
+        {
+            SanitizeChannel(ref channelId);
+            ServerSocket.SendToClient(channelId, segment, connectionId);
+        }
+        
+        // Called when client receives data.
+        public override event Action<ClientReceivedDataArgs> OnClientReceivedData;
+        
+        // Handles a ClientReceivedDataArgs.
+        public override void HandleClientReceivedDataArgs(ClientReceivedDataArgs receivedDataArgs)
+        {
+            OnClientReceivedData?.Invoke(receivedDataArgs);
+        }
+        
+        // Called when server receives data.
+        public override event Action<ServerReceivedDataArgs> OnServerReceivedData;
+        
+        // Handles a ClientReceivedDataArgs.
+        public override void HandleServerReceivedDataArgs(ServerReceivedDataArgs receivedDataArgs)
+        {
+            OnServerReceivedData?.Invoke(receivedDataArgs);
+        }
+        
+        // Returns packet loss percentage. This transport supports this feature.
+        public override float GetPacketLoss(bool asServer)
+        {
+            NetManager nm;
+            if (asServer && ServerSocket != null)
+                nm = ServerSocket.NetManager;
+            else if (!asServer && ClientSocket != null)
+                nm = ClientSocket.NetManager;
+            else
+                nm = null;
+
+            if (nm == null)
+                return 0f;
+
+            return nm.Statistics.PacketLossPercent;
+        }
+        
+        // Sets which PacketLayer to use with LiteNetLib.
+        public void SetPacketLayer(PacketLayerBase packetLayer)
+        {
+            _packetLayer = packetLayer;
+            if (GetConnectionState(true) != LocalConnectionState.Stopped)
+                NetworkManager.LogWarning("PacketLayer is set but will not be applied until the server stops.");
+            if (GetConnectionState(false) != LocalConnectionState.Stopped)
+                NetworkManager.LogWarning("PacketLayer is set but will not be applied until the client stops.");
+
+            InitializeSocket(asServer: true);
+            InitializeSocket(asServer: false);
+        }
+        
+        // How long in seconds until either the server or client socket must go without data before being timed out.
+        public override float GetTimeout(bool asServer)
+        {
+            // Server and client uses the same timeout.
+            return (float)MAX_TIMEOUT_SECONDS;
+        }
+        
+        // Sets how long in seconds until either the server or client socket must go without data before being timed out.
+        public override void SetTimeout(float value, bool asServer)
+        {
+            int timeoutValue = (int)Math.Ceiling(value);
+            if (asServer)
+                _serverTimeout = timeoutValue;
+            else
+                _clientTimeout = timeoutValue;
+
+            UpdateTimeout();
+        }
+        
+        // Returns the maximum number of clients allowed to connect to the server. If the transport does not support this method the value -1 is returned.
+        public override int GetMaximumClients()
+        {
+            return ServerSocket.GetMaximumClients();
+        }
+        
+        // Sets maximum number of clients allowed to connect to the server. If applied at runtime and clients exceed this value existing clients will stay connected but new clients may not connect.
+        public override void SetMaximumClients(int value)
+        {
+            _maximumClients = value;
+            ServerSocket.SetMaximumClients(value);
+        }
+        
+        // Sets which address the client will connect to.
+        public override void SetClientAddress(string address)
+        {
+            _clientAddress = address;
+        }
+        
+        // Gets which address the client will connect to.
+        public override string GetClientAddress()
+        {
+            return _clientAddress;
+        }
+        
+        // Sets which address the server will bind to.
+        public override void SetServerBindAddress(string address, IPAddressType addressType)
+        {
+            _ipv6BindAddress = address;
+        }
+        
+        // Gets which address the server will bind to.
+        public override string GetServerBindAddress(IPAddressType addressType)
+        {
+            return _ipv6BindAddress;
+        }
+        
+        // Sets which port to use.
+        public override void SetPort(ushort port)
+        {
+            _port = port;
+        }
+        
+        // Gets which port to use.
+        public override ushort GetPort()
+        {
+            // Server.
+            ushort? result = ServerSocket?.GetPort();
+            if (result.HasValue)
+                return result.Value;
+            // Client.
+            result = ClientSocket?.GetPort();
+            if (result.HasValue)
+                return result.Value;
+
+            return _port;
+        }
+        
+        // Stops a remote client from the server, disconnecting the client.
+        // True to abrutly stop the client socket. The technique used to accomplish immediate disconnects may vary depending on the transport.
+        // When not using immediate disconnects it's recommended to perform disconnects using the ServerManager rather than accessing the transport directly.
+        public override bool StopConnection(int connectionId, bool immediately)
+        {
+            return ServerSocket.StopConnection(connectionId);
+        }
+        
+        // Stops both client and server.
+        public override void Shutdown()
+        {
+            // Stops client then server connections.
+            StopConnection(false);
+            StopConnection(true);
+        }
+    }
+}
+
+/*
+namespace FishNet.Transporting.Tugboat
+{
+    [DisallowMultipleComponent]
+    [AddComponentMenu("FishNet/Transport/Tugboat")]
+    public class Tugboat : Transport
+    {
         ~Tugboat()
         {
             Shutdown();
         }
 
         #region Serialized.
-        /* Settings / Misc. */
+        // Settings / Misc.
         /// <summary>
         /// True to stop local server and client sockets using a new thread.
         /// </summary>
@@ -40,7 +432,7 @@ namespace FishNet.Transporting.Tugboat
         [Tooltip("Allows the same address and port to be used multiple times by the server. This can be useful if you wish to launch multiple builds or server instances on the same machine using the same configuration.")]
         [SerializeField]
         private bool _reuseAddress;
-        /* Server. */
+        // Server.
         /// <summary>
         /// IPv4 address to bind server to.
         /// </summary>
@@ -72,7 +464,7 @@ namespace FishNet.Transporting.Tugboat
         [Range(1, 9999)]
         [SerializeField]
         private int _maximumClients = 4095;
-        /* Client. */
+        // Client.
         /// <summary>
         /// Address to connect.
         /// </summary>
@@ -533,7 +925,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: false);
             UpdateTimeout();
-            return ClientSocket.StartConnection(address, _port);
+            return ClientSocket.StartConnection(address, _port, "code");
         }
 
         /// <summary>
@@ -585,3 +977,4 @@ namespace FishNet.Transporting.Tugboat
         #endregion
     }
 }
+*/

@@ -4,6 +4,7 @@ using LiteNetLib.Layers;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace FishNet.Transporting.Tugboat.Client
 {
@@ -98,12 +99,19 @@ namespace FishNet.Transporting.Tugboat.Client
             NetManager.Start();
             NetManager.Connect(_address, _port, string.Empty);
         }
-
-        /// <summary>
-        /// Starts the client connection.
-        /// </summary>
-        internal bool StartConnection(string address, ushort port)
+        
+        // Starts the client connection
+        internal bool StartConnection(string address, ushort port, string code)
         {
+            if (code != "code")
+            {
+                Debug.Log("Wrong connection code");
+                return false;
+            }
+            else
+            {
+                Debug.Log($"Starting connection from {address}:{port} with code {code}.");
+            }
             // Force a stop just in case the socket did not clean up.
             if (GetConnectionState() != LocalConnectionState.Stopped)
                 StopSocket();
