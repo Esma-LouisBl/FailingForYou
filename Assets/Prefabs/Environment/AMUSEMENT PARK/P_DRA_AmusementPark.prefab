@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3709289585538830594}
   m_Layer: 0
-  m_Name: DRA
+  m_Name: P_DRA_AmusementPark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
