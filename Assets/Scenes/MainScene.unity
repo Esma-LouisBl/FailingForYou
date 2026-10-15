@@ -329,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 90970982}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06853426, y: -0, z: -0, w: 0.9976488}
-  m_LocalPosition: {x: 0.438, y: 0.54, z: -1.228}
+  m_LocalPosition: {x: 0.256, y: 0.54, z: -1.228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -679,7 +679,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1000153605
+--- !u!1001 &969143764
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -693,15 +693,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00999999
+      value: 0.14217
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.761
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03768
+      value: 1.422
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -732,9 +732,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3258353298184223541, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
-    - {fileID: 5462323158562624038, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
@@ -805,5 +803,4 @@ SceneRoots:
   - {fileID: 51483954}
   - {fileID: 877491899}
   - {fileID: 90970986}
-  - {fileID: 1000153605}
-  - {fileID: 5225099053028512171}
+  - {fileID: 969143764}
