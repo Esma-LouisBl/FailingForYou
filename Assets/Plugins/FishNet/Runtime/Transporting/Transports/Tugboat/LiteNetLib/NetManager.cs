@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using FishNet.Transporting;
 using LiteNetLib.Layers;
 using LiteNetLib.Utils;
 
@@ -92,6 +93,8 @@ namespace LiteNetLib
     /// </summary>
     public partial class NetManager : IEnumerable<NetPeer>
     {
+        public string generatedCode = string.Empty;
+        
         public struct NetPeerEnumerator : IEnumerator<NetPeer>
         {
             private readonly NetPeer _initialPeer;

@@ -90,7 +90,7 @@ namespace FishNet.Transporting.Tugboat.Client
             listener.PeerDisconnectedEvent += Listener_PeerDisconnectedEvent;
 
             NetManager = new(listener, _packetLayer, false);
-            NetManager.DontRoute = ((Tugboat)Transport).DontRoute;
+            NetManager.DontRoute = ((MyTransport)Transport).DontRoute;
             NetManager.MtuOverride = _mtu;// + NetConstants.FragmentedHeaderTotalSize;
 
             UpdateTimeout(_timeout);
@@ -101,17 +101,8 @@ namespace FishNet.Transporting.Tugboat.Client
         }
         
         // Starts the client connection
-        internal bool StartConnection(string address, ushort port, string code)
+        internal bool StartConnection(string address, ushort port)
         {
-            if (code != "code")
-            {
-                Debug.Log("Wrong connection code");
-                return false;
-            }
-            else
-            {
-                Debug.Log($"Starting connection from {address}:{port} with code {code}.");
-            }
             // Force a stop just in case the socket did not clean up.
             if (GetConnectionState() != LocalConnectionState.Stopped)
                 StopSocket();
@@ -128,7 +119,7 @@ namespace FishNet.Transporting.Tugboat.Client
             
             StartSocket();
             //Task.Run(StartSocket);
-
+            
             return true;
         }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FishNet.Transporting.Tugboat.Editing
 {
-    [CustomEditor(typeof(Tugboat), true)]
+    [CustomEditor(typeof(MyTransport), true)]
     [CanEditMultipleObjects]
     public class TugboatEditor : Editor
     {
@@ -32,13 +32,14 @@ namespace FishNet.Transporting.Tugboat.Editing
             _clientAddress = serializedObject.FindProperty(nameof(_clientAddress));
         }
 
+        /*
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            Tugboat tb = (Tugboat)target;
+            MyTransport tb = (MyTransport)target;
 
             GUI.enabled = false;
-            EditorGUILayout.ObjectField("Script:", MonoScript.FromMonoBehaviour(tb), typeof(Tugboat), false);
+            EditorGUILayout.ObjectField("Script:", MonoScript.FromMonoBehaviour(tb), typeof(MyTransport), false);
             GUI.enabled = true;
 
             EditorGUILayout.LabelField("Settings", EditorStyles.boldLabel);
@@ -71,6 +72,7 @@ namespace FishNet.Transporting.Tugboat.Editing
 
             serializedObject.ApplyModifiedProperties();
         }
+        */
     }
 }
 

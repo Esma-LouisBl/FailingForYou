@@ -10,8 +10,9 @@ namespace FishNet.Transporting.Tugboat
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("FishNet/Transport/Tugboat")]
-    public class Tugboat : Transport
+    public class MyTransport : Transport
     {
+        #region Variables
         public Server.ServerSocket ServerSocket = new();
         public Client.ClientSocket ClientSocket = new();
         [SerializeField]
@@ -39,6 +40,7 @@ namespace FishNet.Transporting.Tugboat
     
         // Current timeout for the server
         private int _serverTimeout = MAX_TIMEOUT_SECONDS;
+        #endregion
         
         #region Verif
         
@@ -73,11 +75,12 @@ namespace FishNet.Transporting.Tugboat
         // Called when a connection state changes for a remote client.
         public override event Action<RemoteConnectionStateArgs> OnRemoteConnectionState;
         
-        ~Tugboat()
+        ~MyTransport()
         {
             Shutdown();
         }
 
+        #region Functions
         public override void Initialize(NetworkManager networkManager, int transportIndex)
         {
             base.Initialize(networkManager, transportIndex);
@@ -161,7 +164,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: false);
             UpdateTimeout();
-            return ClientSocket.StartConnection(address, _port, "code");
+            return ClientSocket.StartConnection(address, _port);
         }
     
         // Updates clients timeout values
@@ -394,6 +397,7 @@ namespace FishNet.Transporting.Tugboat
             StopConnection(false);
             StopConnection(true);
         }
+        #endregion
     }
 }
 
@@ -925,7 +929,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: false);
             UpdateTimeout();
-            return ClientSocket.StartConnection(address, _port, "code");
+            return ClientSocket.StartConnection(address, _port);
         }
 
         /// <summary>
