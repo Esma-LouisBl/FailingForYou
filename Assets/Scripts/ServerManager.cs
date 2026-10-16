@@ -18,12 +18,22 @@ public class ServerManager : MonoBehaviour
     public void CreateServer()
     {
         _networkManager.ServerManager.StartConnection();
-        _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+        if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 14)
+        {
+            _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
+        }
+        else
+        {
+            _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+        }
     }
 
     public void CreateClient()
     {
-        _networkManager.ClientManager.StartConnection(_WrittenAdress.text);
+        if (_WrittenAdress.text != "")
+        {
+            _networkManager.ClientManager.StartConnection(_WrittenAdress.text);
+        }
     }
 }
 

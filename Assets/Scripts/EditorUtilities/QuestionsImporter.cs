@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEditor;
-
+/*
 public class QuestionsImporter
 {
     //Editor Menu
@@ -75,3 +75,4 @@ public class QuestionsImporter
         AssetDatabase.SaveAssets();
     }
 }
+*/

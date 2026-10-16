@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServerManager
   _networkManager: {fileID: 642328024}
-  _IPV6Text: {fileID: 153626171}
+  _IPText: {fileID: 153626171}
   _WrittenAdress: {fileID: 1250632390}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
