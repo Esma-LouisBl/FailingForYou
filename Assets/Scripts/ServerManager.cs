@@ -10,17 +10,15 @@ public class ServerManager : MonoBehaviour
     [SerializeField]
     private NetworkManager _networkManager;
 
-    [SerializeField] private TextMeshProUGUI _IPV6Text;
+    [SerializeField] private TextMeshProUGUI _IPText;
     [SerializeField] private TMP_InputField _WrittenAdress;
     
-    IPAddress ipv6 = null;
+    IPAddress ipv4 = null;
     
     public void CreateServer()
     {
         _networkManager.ServerManager.StartConnection();
-        _IPV6Text.text = Dns.GetHostAddresses(Dns.GetHostName())[0].ToString();
-        //System.Net.IPAddress.TryParse(_IPV6Text.text, out ipv6);
-        //_IPV6Text.text = ipv6.ToString();
+        _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
     }
 
     public void CreateClient()

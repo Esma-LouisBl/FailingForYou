@@ -93,8 +93,6 @@ namespace LiteNetLib
     /// </summary>
     public partial class NetManager : IEnumerable<NetPeer>
     {
-        public string generatedCode = string.Empty;
-        
         public struct NetPeerEnumerator : IEnumerator<NetPeer>
         {
             private readonly NetPeer _initialPeer;

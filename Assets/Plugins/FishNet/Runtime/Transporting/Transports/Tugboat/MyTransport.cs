@@ -15,8 +15,13 @@ namespace FishNet.Transporting.Tugboat
         #region Variables
         public Server.ServerSocket ServerSocket = new();
         public Client.ClientSocket ClientSocket = new();
+        
         [SerializeField]
         private string _ipv6BindAddress;
+        
+        /// IPv4 address to bind server to.
+        [SerializeField]
+        private string _ipv4BindAddress;
         
         // Maximum number of players which may be connected at once
         [Range(1, 5)]
@@ -147,7 +152,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: true);
             UpdateTimeout();
-            return ServerSocket.StartConnection(_port, _maximumClients, _ipv6BindAddress); //ipv4 address to remove
+            return ServerSocket.StartConnection(_port, _maximumClients, _ipv4BindAddress, _ipv6BindAddress); //ipv4 address to remove
         }
     
         // Stops server
@@ -352,13 +357,19 @@ namespace FishNet.Transporting.Tugboat
         // Sets which address the server will bind to.
         public override void SetServerBindAddress(string address, IPAddressType addressType)
         {
-            _ipv6BindAddress = address;
+            if (addressType == IPAddressType.IPv4)
+                _ipv4BindAddress = address;
+            else
+                _ipv6BindAddress = address;
         }
         
         // Gets which address the server will bind to.
         public override string GetServerBindAddress(IPAddressType addressType)
         {
-            return _ipv6BindAddress;
+            if (addressType == IPAddressType.IPv4)
+                return _ipv4BindAddress;
+            else
+                return _ipv6BindAddress;
         }
         
         // Sets which port to use.

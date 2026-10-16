@@ -242,7 +242,7 @@ namespace FishNet.Transporting.Tugboat.Server
         /// <summary>
         /// Starts the server.
         /// </summary>
-        internal bool StartConnection(ushort port, int maximumClients, string ipv6BindAddress) //string ipv4BindAddress removed
+        internal bool StartConnection(ushort port, int maximumClients, string ipv4BindAddress, string ipv6BindAddress) //string ipv4BindAddress removed
         {
             //Force a stop just in case the socket did not clean up.
             if (base.GetConnectionState() != LocalConnectionState.Stopped)
