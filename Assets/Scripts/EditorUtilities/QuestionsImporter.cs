@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 using UnityEditor;
-
+//----------------PUT ALL THE SCRIPT IN COMMENT IN ORDER TO BUILD THE PROJECT-----------------------
 public class QuestionsImporter
 {
     //Editor Menu
