@@ -18,7 +18,7 @@ public class ServerManager : MonoBehaviour
     public void CreateServer()
     {
         _networkManager.ServerManager.StartConnection();
-        if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 14)
+        if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 16) //Ipv4 addresses contain 15 characters including "." and numbers
         {
             _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
         }
@@ -34,6 +34,7 @@ public class ServerManager : MonoBehaviour
         {
             _networkManager.ClientManager.StartConnection(_WrittenAdress.text);
         }
+        //On connnection, call GameManagerNetwork to update its PlayerData and get a new Id
     }
 }
 
