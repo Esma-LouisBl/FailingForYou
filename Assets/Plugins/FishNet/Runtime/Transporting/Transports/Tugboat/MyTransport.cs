@@ -10,12 +10,18 @@ namespace FishNet.Transporting.Tugboat
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("FishNet/Transport/Tugboat")]
-    public class Tugboat : Transport
+    public class MyTransport : Transport
     {
+        #region Variables
         public Server.ServerSocket ServerSocket = new();
         public Client.ClientSocket ClientSocket = new();
+        
         [SerializeField]
         private string _ipv6BindAddress;
+        
+        /// IPv4 address to bind server to.
+        [SerializeField]
+        private string _ipv4BindAddress;
         
         // Maximum number of players which may be connected at once
         [Range(1, 5)]
@@ -39,6 +45,7 @@ namespace FishNet.Transporting.Tugboat
     
         // Current timeout for the server
         private int _serverTimeout = MAX_TIMEOUT_SECONDS;
+        #endregion
         
         #region Verif
         
@@ -73,11 +80,12 @@ namespace FishNet.Transporting.Tugboat
         // Called when a connection state changes for a remote client.
         public override event Action<RemoteConnectionStateArgs> OnRemoteConnectionState;
         
-        ~Tugboat()
+        ~MyTransport()
         {
             Shutdown();
         }
 
+        #region Functions
         public override void Initialize(NetworkManager networkManager, int transportIndex)
         {
             base.Initialize(networkManager, transportIndex);
@@ -144,7 +152,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: true);
             UpdateTimeout();
-            return ServerSocket.StartConnection(_port, _maximumClients, _ipv6BindAddress); //ipv4 address to remove
+            return ServerSocket.StartConnection(_port, _maximumClients, _ipv4BindAddress, _ipv6BindAddress); //ipv4 address to remove
         }
     
         // Stops server
@@ -161,7 +169,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: false);
             UpdateTimeout();
-            return ClientSocket.StartConnection(address, _port, "code");
+            return ClientSocket.StartConnection(address, _port);
         }
     
         // Updates clients timeout values
@@ -349,13 +357,19 @@ namespace FishNet.Transporting.Tugboat
         // Sets which address the server will bind to.
         public override void SetServerBindAddress(string address, IPAddressType addressType)
         {
-            _ipv6BindAddress = address;
+            if (addressType == IPAddressType.IPv4)
+                _ipv4BindAddress = address;
+            else
+                _ipv6BindAddress = address;
         }
         
         // Gets which address the server will bind to.
         public override string GetServerBindAddress(IPAddressType addressType)
         {
-            return _ipv6BindAddress;
+            if (addressType == IPAddressType.IPv4)
+                return _ipv4BindAddress;
+            else
+                return _ipv6BindAddress;
         }
         
         // Sets which port to use.
@@ -394,6 +408,7 @@ namespace FishNet.Transporting.Tugboat
             StopConnection(false);
             StopConnection(true);
         }
+        #endregion
     }
 }
 
@@ -925,7 +940,7 @@ namespace FishNet.Transporting.Tugboat
         {
             InitializeSocket(asServer: false);
             UpdateTimeout();
-            return ClientSocket.StartConnection(address, _port, "code");
+            return ClientSocket.StartConnection(address, _port);
         }
 
         /// <summary>

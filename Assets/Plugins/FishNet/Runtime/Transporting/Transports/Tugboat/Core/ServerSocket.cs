@@ -126,8 +126,8 @@ namespace FishNet.Transporting.Tugboat.Server
             listener.PeerDisconnectedEvent += Listener_PeerDisconnectedEvent;
 
             NetManager = new(listener, _packetLayer, false);
-            NetManager.DontRoute = ((Tugboat)Transport).DontRoute;
-            NetManager.ReuseAddress = ((Tugboat)Transport).ReuseAddress;
+            NetManager.DontRoute = ((MyTransport)Transport).DontRoute;
+            NetManager.ReuseAddress = ((MyTransport)Transport).ReuseAddress;
             NetManager.MtuOverride = _mtu;// + NetConstants.FragmentedHeaderTotalSize;
             
             UpdateTimeout(_timeout);
@@ -242,7 +242,7 @@ namespace FishNet.Transporting.Tugboat.Server
         /// <summary>
         /// Starts the server.
         /// </summary>
-        internal bool StartConnection(ushort port, int maximumClients, string ipv6BindAddress) //string ipv4BindAddress removed
+        internal bool StartConnection(ushort port, int maximumClients, string ipv4BindAddress, string ipv6BindAddress) //string ipv4BindAddress removed
         {
             //Force a stop just in case the socket did not clean up.
             if (base.GetConnectionState() != LocalConnectionState.Stopped)
@@ -258,10 +258,10 @@ namespace FishNet.Transporting.Tugboat.Server
             //_ipv4BindAddress = ipv4BindAddress; //removed
             _ipv6BindAddress = ipv6BindAddress;
             ResetQueues();
-
+            
             StartSocket();
             //Task.Run(StartSocket);
-
+            
             return true;
         }
 
