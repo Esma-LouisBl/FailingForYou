@@ -4,37 +4,166 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Net;
+using ZXing;
+using ZXing.QrCode;
 
 public class ServerManager : MonoBehaviour
 {
+    //NetworkManager reference
     [SerializeField]
     private NetworkManager _networkManager;
 
-    [SerializeField] private TextMeshProUGUI _IPText;
-    [SerializeField] private TMP_InputField _WrittenAdress;
+    //UI
+    [SerializeField]
+    private TextMeshProUGUI _codeTextUI;
+    [SerializeField]
+    private TMP_InputField _writtenAdress;
+    [SerializeField]
+    private RawImage _cameraZone, _qrCodeImage;
+    [SerializeField]
+    private AspectRatioFitter _aspectRatioFitter;
+    [SerializeField]
+    private TextMeshProUGUI _textOut;
+    [SerializeField]
+    private RectTransform _scanZone;
     
-    IPAddress ipv4 = null;
+    //Private
+    private bool _isCamAvailable;
+    private WebCamTexture _cameraTexture;
+    private Texture2D _storeEncodedTexture;
     
+    void Start()
+    {
+        _storeEncodedTexture = new Texture2D(256, 256);
+        SetUpCamera();
+    }
+    
+    void Update()
+    {
+        UpdateCameraRender();
+        Scan();
+    }
+    
+    //Start the server connection and show up its IP adress at the screen with a string and a QR code
     public void CreateServer()
     {
         _networkManager.ServerManager.StartConnection();
         if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 16) //Ipv4 addresses contain 15 characters including "." and numbers
         {
-            _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
+            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
+            EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[3].ToString());
         }
         else
         {
-            _IPText.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+            EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[1].ToString());
         }
     }
 
+    //Try to connect as a client
     public void CreateClient()
     {
-        if (_WrittenAdress.text != "")
+        if (_writtenAdress.text != "")
         {
-            _networkManager.ClientManager.StartConnection(_WrittenAdress.text);
+            _networkManager.ClientManager.StartConnection(_writtenAdress.text);
         }
-        //On connnection, call GameManagerNetwork to update its PlayerData and get a new Id
+        //////////On connection, call GameManagerNetwork to update its PlayerData and get a new Id
+    }
+    
+    //SetUpCamera for the QR code Scan
+    private void SetUpCamera()
+    {
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        if (devices.Length == 0)
+        {
+            _isCamAvailable = false;
+            return;
+        }
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if (devices[i].isFrontFacing == false)
+            {
+                _cameraTexture = new WebCamTexture(devices[i].name, (int)_scanZone.rect.width, (int)_scanZone.rect.height);
+            }
+            /*
+            else
+            {
+                return;
+            }
+            */
+        }
+        
+        _cameraTexture.Play();
+        _cameraZone.texture = _cameraTexture;
+        _isCamAvailable = true;
+    }
+    
+    //Encode a text to create a QR code
+    private Color32[] Encode(string textForEncoding, int width, int height)
+    {
+        BarcodeWriter writer = new BarcodeWriter
+        {
+            Format = BarcodeFormat.QR_CODE,
+            Options = new QrCodeEncodingOptions
+            {
+                Height = height,
+                Width = width,
+            }
+        };
+        return writer.Write(textForEncoding);
+    }
+    
+    //Change the image texture into a QR code
+    public void EncodeTextToQRCode(string textWritten)
+    {
+        Color32[] _convertPixelToTexture = Encode(textWritten, _storeEncodedTexture.width, _storeEncodedTexture.height);
+        _storeEncodedTexture.SetPixels32(_convertPixelToTexture);
+        _storeEncodedTexture.Apply();
+        
+        _qrCodeImage.texture = _storeEncodedTexture;
+    }
+    
+    //Update the camera view
+    private void UpdateCameraRender()
+    {
+        if (!_isCamAvailable)
+        {
+            return;
+        }
+        float ratio = (float)_cameraTexture.width / (float)_cameraTexture.height;
+        _aspectRatioFitter.aspectRatio = ratio;
+        
+        int orientation = _cameraTexture.videoRotationAngle;
+        _cameraZone.rectTransform.localEulerAngles = new Vector3(0, 0, -1*_cameraTexture.videoRotationAngle); //z was orientation
+    }
+    
+    //Use the camera of the phone to try to catch a QR code and connect if an IP is found
+    private void Scan()
+    {
+        try
+        {
+            IBarcodeReader barcodeReader = new BarcodeReader();
+            Result result = barcodeReader.Decode(_cameraTexture.GetPixels32(), _cameraTexture.width, _cameraTexture.height);
+            if (result != null)
+            {
+                _textOut.text = result.Text;
+                if (result.Text != "")
+                {
+                    _writtenAdress.text = result.Text;
+                    CreateClient();
+                }
+            }
+            else
+            {
+                _textOut.text = "Failed to read QR code";
+            }
+        }
+        catch
+        {
+            
+        }
     }
 }
 

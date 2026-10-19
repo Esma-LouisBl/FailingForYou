@@ -151,6 +151,7 @@ PlayerSettings:
   bundleVersion: 0.1.0
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+  - {fileID: 11400000, guid: 53ba89e9d8694fb49a26383cee78f683, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -534,6 +535,9 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
     m_DynamicBatching: 0
+  - m_BuildTarget: Android
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -835,6 +839,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
+    Android: FISHNET;FISHNET_V4
     Standalone: FISHNET;FISHNET_V4
   additionalCompilerArguments: {}
   platformArchitecture: {}
