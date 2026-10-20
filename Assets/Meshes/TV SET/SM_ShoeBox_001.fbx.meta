@@ -3,10 +3,20 @@ guid: 0bea891ce0c2c1e488b4d9a311ef9157
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flute_XS
+    second: {fileID: 2100000, guid: 150f7f4bebda819479416fd55966a137, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_ShoeBox_001
+    second: {fileID: 2100000, guid: 0920f94af6dfda243ae2fc95f570bf1e, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
+    materialName: 1
     materialSearch: 1
     materialLocation: 1
   animations:
