@@ -5,7 +5,7 @@ public class MiniGameManager : MonoBehaviour
 {
     public List<MiniGameData> miniGamesDrawn = new List<MiniGameData>();
     [SerializeField]
-    private List<MiniGameData> _allMiniGames = new List<MiniGameData>();
+    public List<MiniGameData> allMiniGames = new List<MiniGameData>();
     //could be interesting to complete this list automatically
 
     public int amountOfMiniGames;
@@ -14,9 +14,9 @@ public class MiniGameManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfMiniGames; i++)
         {
-            int r = Random.Range(0, _allMiniGames.Count);
-            miniGamesDrawn.Add(_allMiniGames[r]);
-            _allMiniGames.RemoveAt(r);
+            int r = Random.Range(0, allMiniGames.Count);
+            miniGamesDrawn.Add(allMiniGames[r]);
+            allMiniGames.RemoveAt(r);
         }
     }
 }

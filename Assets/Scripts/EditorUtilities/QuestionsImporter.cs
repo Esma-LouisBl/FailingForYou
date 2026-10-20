@@ -6,12 +6,18 @@
 // {
 //     //Editor Menu
 //     private static string _csvPath = "/Scripts/EditorUtilities/QuestionsCSV.csv"; //Location of the CSV file
+//
+//     private MiniGameManager miniGameManager;
+//     
 //     [MenuItem("Questions/Import Questions")]
 //
-//     
 //     //Function
 //     public static void ImportQuestions()
 //     {
+//         //Clear the list of all mini games to avoid duplication
+//         MiniGameManager miniGameManager = MiniGameManager.FindAnyObjectByType<MiniGameManager>();
+//         miniGameManager.allMiniGames.Clear();
+//         
 //         string[] allLines = File.ReadAllLines(Application.dataPath + _csvPath);
 //
 //         foreach (string line in allLines)
@@ -70,6 +76,16 @@
 //             }
 //             
 //             AssetDatabase.CreateAsset(miniGameData, $"Assets/Data/Questions/{miniGameData.type}/{miniGameData.place}/{miniGameData.genre}/{miniGameData.key}.asset");
+//             
+//             if (miniGameManager != null)
+//             {
+//                 miniGameManager.allMiniGames.Add(miniGameData);
+//                 Debug.Log(miniGameData.question);
+//             }
+//             else
+//             {
+//                 Debug.Log("MiniGameManager not found");
+//             }
 //         }
 //         
 //         AssetDatabase.SaveAssets();

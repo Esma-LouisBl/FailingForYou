@@ -2510,7 +2510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: _allMiniGames.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: miniGamesDrawn.Array.size
@@ -2519,27 +2519,35 @@ PrefabInstance:
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: bff368d264df85447b478d6616f52c8f, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 9db95e93ba993134ba556444b3a34958, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 224e3d1d4bb66ea4989ff04377976b1b, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 0cfd6fa2a2befd746ad06515d2687fd8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: 8aa3e804f2731f24583d886255855e0f, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
       propertyPath: '_allMiniGames.Array.data[5]'
       value: 
-      objectReference: {fileID: 11400000, guid: 554a1c40064503a4893689dec3d65d32, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
+      propertyPath: '_allMiniGames.Array.data[6]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7341304453590692352, guid: 89494f7e776d1004abfa18717af84561, type: 3}
+      propertyPath: '_allMiniGames.Array.data[7]'
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
