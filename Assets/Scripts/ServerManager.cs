@@ -3,7 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Net;
+using NUnit.Framework.Constraints;
 using ZXing;
 using ZXing.QrCode;
 
@@ -23,30 +26,61 @@ public class ServerManager : MonoBehaviour
     [SerializeField]
     private AspectRatioFitter _aspectRatioFitter;
     [SerializeField]
-    private TextMeshProUGUI _textOut;
-    [SerializeField]
     private RectTransform _scanZone;
+    [SerializeField]
+    private GameObject _mobileCanvas, _desktopCanvas, _serverCanvas;
     
     //Private
-    private bool _isCamAvailable;
+    private bool _isCamAvailable, _canTryScanning = true;
     private WebCamTexture _cameraTexture;
     private Texture2D _storeEncodedTexture;
     
     void Start()
     {
+        //Ensures the right canvas is enable, and others are not
+        _mobileCanvas.SetActive(false);
+        _desktopCanvas.SetActive(false);
+        _serverCanvas.SetActive(true);
+        
         _storeEncodedTexture = new Texture2D(256, 256);
-        SetUpCamera();
+        
+        //Check the device and reacts accordingly
+        if (SystemInfo.deviceType == DeviceType.Handheld) //Handheld or Desktop in our case
+        {
+            //_serverCanvas.SetActive(false);
+            //_mobileCanvas.SetActive(true);
+            SetUpCamera();
+            CreateServer();
+        }
+        else if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            //_serverCanvas.SetActive(false);
+            //_desktopCanvas.SetActive(true);
+            //CreateServer();
+            Debug.Log("Server should start");
+        }
+        else
+        {
+            Debug.LogError("Unsupported Device Type");
+        }
     }
     
     void Update()
     {
-        UpdateCameraRender();
-        Scan();
+        if (SystemInfo.deviceType == DeviceType.Handheld) //Handheld or Desktop in our case
+        {
+            UpdateCameraRender();
+            Scan();
+        }
     }
     
-    //Start the server connection and show up its IP adress at the screen with a string and a QR code
+    //Start the server connection and show up its IP address at the screen with a string and a QR code
     public void CreateServer()
     {
+        ///////temporary
+        _serverCanvas.SetActive(false);
+        _desktopCanvas.SetActive(true);
+        
         _networkManager.ServerManager.StartConnection();
         if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 16) //Ipv4 addresses contain 15 characters including "." and numbers
         {
@@ -63,6 +97,10 @@ public class ServerManager : MonoBehaviour
     //Try to connect as a client
     public void CreateClient()
     {
+        ///////temporary
+        _serverCanvas.SetActive(false);
+        _mobileCanvas.SetActive(true);
+        
         if (_writtenAdress.text != "")
         {
             _networkManager.ClientManager.StartConnection(_writtenAdress.text);
@@ -142,28 +180,35 @@ public class ServerManager : MonoBehaviour
     //Use the camera of the phone to try to catch a QR code and connect if an IP is found
     private void Scan()
     {
+        if (!_canTryScanning)
+        {
+            return;
+        }
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
             Result result = barcodeReader.Decode(_cameraTexture.GetPixels32(), _cameraTexture.width, _cameraTexture.height);
             if (result != null)
             {
-                _textOut.text = result.Text;
                 if (result.Text != "")
                 {
+                    _canTryScanning = false;
+                    ConnectionDelay();
                     _writtenAdress.text = result.Text;
                     CreateClient();
                 }
-            }
-            else
-            {
-                _textOut.text = "Failed to read QR code";
             }
         }
         catch
         {
             
         }
+    }
+
+    private new IEnumerator ConnectionDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _canTryScanning = true;
     }
 }
 
