@@ -50,7 +50,7 @@ public class ServerManager : MonoBehaviour
             //_serverCanvas.SetActive(false);
             //_mobileCanvas.SetActive(true);
             SetUpCamera();
-            CreateServer();
+            CreateClient();
         }
         else if (SystemInfo.deviceType == DeviceType.Desktop)
         {
