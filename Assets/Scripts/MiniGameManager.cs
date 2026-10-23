@@ -3,12 +3,23 @@ using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
+    #region Variables
+
     public List<MiniGameData> miniGamesDrawn = new List<MiniGameData>();
     [SerializeField]
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
-    //could be interesting to complete this list automatically
+    
+    public int amountOfMiniGames = 3;
 
-    public int amountOfMiniGames;
+    #endregion
+    
+    #region ScriptReferences
+
+    [SerializeField]
+    private UIManager _uiManager;
+
+    #endregion
+
     //Add to miniGamesDrawn [numberOfMiniGames -> depends if short or long game] from _allMiniGames
     public void ChooseMiniGames(int numberOfMiniGames)
     {
@@ -16,7 +27,18 @@ public class MiniGameManager : MonoBehaviour
         {
             int r = Random.Range(0, allMiniGames.Count);
             miniGamesDrawn.Add(allMiniGames[r]);
-            allMiniGames.RemoveAt(r);
+            allMiniGames.RemoveAt(r); //we don't want two times the same question in the game
         }
+    }
+
+    public void StartMiniGame()
+    {
+        SetMiniGame(miniGamesDrawn[0]);
+        miniGamesDrawn.RemoveAt(0);
+    }
+    
+    public void SetMiniGame(MiniGameData miniGame)
+    {
+        _uiManager.UpdateMiniGameUI(miniGame);
     }
 }

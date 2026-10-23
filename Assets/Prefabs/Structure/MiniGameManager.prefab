@@ -45,4 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniGameManager
   miniGamesDrawn: []
-  amountOfMiniGames: 0
+  allMiniGames:
+  - {fileID: 11400000, guid: bff368d264df85447b478d6616f52c8f, type: 2}
+  - {fileID: 11400000, guid: 9db95e93ba993134ba556444b3a34958, type: 2}
+  - {fileID: 11400000, guid: 0cfd6fa2a2befd746ad06515d2687fd8, type: 2}
+  - {fileID: 11400000, guid: 8aa3e804f2731f24583d886255855e0f, type: 2}
+  - {fileID: 11400000, guid: 224e3d1d4bb66ea4989ff04377976b1b, type: 2}
+  amountOfMiniGames: 3
+  _uiManager: {fileID: 0}
