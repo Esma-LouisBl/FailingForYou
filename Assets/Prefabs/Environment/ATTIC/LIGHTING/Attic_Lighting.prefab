@@ -211,7 +211,9 @@ PrefabInstance:
       value: Morning
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6158782037348193835, guid: 91de5d20f6de6294cbdb5893cc0aa030, type: 3}
+    - {fileID: 8146401492191469773, guid: 91de5d20f6de6294cbdb5893cc0aa030, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91de5d20f6de6294cbdb5893cc0aa030, type: 3}
