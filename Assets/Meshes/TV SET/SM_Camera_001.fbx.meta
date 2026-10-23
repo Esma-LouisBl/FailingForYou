@@ -3,7 +3,22 @@ guid: 0f8e5f4bdcab4b145876daf7108dc86e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Camera_001
+    second: {fileID: 2100000, guid: 3ddf7f193c4d49b449eddc9e6c681c2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flute_M
+    second: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flute_XS
+    second: {fileID: 2100000, guid: 150f7f4bebda819479416fd55966a137, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
