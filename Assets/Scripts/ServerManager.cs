@@ -94,13 +94,16 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    //Try to connect as a client
-    public void CreateClient()
+    public void SetClientUI()
     {
         ///////temporary
         _serverCanvas.SetActive(false);
         _mobileCanvas.SetActive(true);
-        
+    }
+    
+    //Try to connect as a client
+    public void CreateClient()
+    {
         if (_writtenAdress.text != "")
         {
             _networkManager.ClientManager.StartConnection(_writtenAdress.text);
