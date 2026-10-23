@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     #region UI
     
-    [SerializeField] private GameObject _hostUI, _clientUI;
+    [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI;
@@ -34,12 +34,12 @@ public class UIManager : MonoBehaviour
     public void ShowHostUI()
     {
         _hostUI.SetActive(true);
-        _clientUI.SetActive(false);
+        _clientMainUI.SetActive(false);
     }
 
-    public void ShowClientUI()
+    public void ShowClientMainUI()
     {
-        _clientUI.SetActive(true);
+        _clientMainUI.SetActive(true);
         _hostUI.SetActive(false);
     }
 
@@ -50,7 +50,8 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
-        ShowClientUI();
+        HideConnectionUI();
+        ShowClientMainUI();
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
