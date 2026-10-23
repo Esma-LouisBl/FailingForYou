@@ -57,7 +57,7 @@ public class ServerManager : MonoBehaviour
             //_serverCanvas.SetActive(false);
             //_desktopCanvas.SetActive(true);
             //CreateServer();
-            Debug.Log("Server should start");
+            // Debug.Log("Server should start");
         }
         else
         {
@@ -94,6 +94,7 @@ public class ServerManager : MonoBehaviour
         }
     }
 
+    //Set Mobile UI
     public void SetClientUI()
     {
         ///////temporary

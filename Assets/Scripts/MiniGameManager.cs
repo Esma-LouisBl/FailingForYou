@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using FishNet.Object;
 using UnityEngine;
 
-public class MiniGameManager : MonoBehaviour
+public class MiniGameManager : NetworkBehaviour
 {
     #region Variables
 
@@ -39,6 +40,15 @@ public class MiniGameManager : MonoBehaviour
     
     public void SetMiniGame(MiniGameData miniGame)
     {
-        _uiManager.UpdateMiniGameUI(miniGame);
+        _uiManager.ShowHostUI();
+        _uiManager.HideConnectionUI();
+        _uiManager.UpdateMiniGameUIHost(miniGame);
+        LaunchMiniGameToClient(miniGame);
+    }
+    
+    [ObserversRpc]
+    public void LaunchMiniGameToClient(MiniGameData miniGame)
+    {
+        _uiManager.UpdateMiniGameUIClient(miniGame);
     }
 }

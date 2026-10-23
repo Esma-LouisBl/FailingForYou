@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     #region UI
     
     [SerializeField] private GameObject _hostUI, _clientUI;
+    [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI;
         
@@ -13,10 +14,23 @@ public class UIManager : MonoBehaviour
 
     #region OtherSerializeFields
 
+    [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
 
     #endregion
 
+    public void ShowConnectionUI()
+    {
+        _hostConnectionUI.SetActive(true);
+        _clientConnectionUI.SetActive(true);
+    }
+
+    public void HideConnectionUI()
+    {
+        _hostConnectionUI.SetActive(false);
+        _clientConnectionUI.SetActive(false);
+    }
+    
     public void ShowHostUI()
     {
         _hostUI.SetActive(true);
@@ -28,9 +42,15 @@ public class UIManager : MonoBehaviour
         _clientUI.SetActive(true);
         _hostUI.SetActive(false);
     }
-    
-    public void UpdateMiniGameUI(MiniGameData miniGame)
+
+    public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
+        _hostQuestionUI.SetActive(true);
+        _hostQuestionTMP.text = miniGame.question;
+    }
+    public void UpdateMiniGameUIClient(MiniGameData miniGame)
+    {
+        ShowClientUI();
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();

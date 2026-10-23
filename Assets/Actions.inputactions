@@ -27,17 +27,6 @@
                     "action": "ShowDebugWindow",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f9e58e3d-d778-4daf-9b51-18bdda0057d2",
-                    "path": "<Keyboard>/numpad1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard/Mouse",
-                    "action": "ShowDebugWindow",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
