@@ -234,6 +234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BASE_LIGHTING_MOR
       objectReference: {fileID: 0}
+    - target: {fileID: 1639455266767420316, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4471685450081314970, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02651
@@ -274,6 +278,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6589450602806106043, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
+      propertyPath: m_Color.b
+      value: 0.79559743
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589450602806106043, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589450602806106043, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589450602806106043, guid: 7b3bdcdbe4f511743b9e0ecaa7202f31, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -295,6 +315,26 @@ PrefabInstance:
     - target: {fileID: 957871280434186611, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
       propertyPath: m_Name
       value: DRA_LIGHTING_MOR
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172081587779898925, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169856759915815282, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.68867916
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169856759915815282, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8865496
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169856759915815282, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169856759915815282, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8503615360577143994, guid: ceb95da2ab24ab94bb16a466562f83c9, type: 3}
       propertyPath: m_LocalPosition.x

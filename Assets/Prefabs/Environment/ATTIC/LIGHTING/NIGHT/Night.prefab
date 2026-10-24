@@ -173,6 +173,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BASE_LIGHTING_NGT
       objectReference: {fileID: 0}
+    - target: {fileID: 6433757047217410024, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473295135736240429, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473295135736240429, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8906509
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473295135736240429, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473295135736240429, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8267156294473647589, guid: 091d24b439f06c641ab4cb885634d842, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08145
