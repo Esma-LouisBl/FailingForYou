@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientFooterUI, _clientConfirmationFooter;
         
     #endregion
 
@@ -41,6 +41,15 @@ public class UIManager : MonoBehaviour
     {
         _clientMainUI.SetActive(true);
         _hostUI.SetActive(false);
+    }
+
+    public void ShowClientConfirmationFooter()
+    {
+        _clientConfirmationFooter.SetActive(true);
+    }
+    public void HideClientConfirmationFooter()
+    {
+        _clientConfirmationFooter.SetActive(false);
     }
 
     public void UpdateMiniGameUIHost(MiniGameData miniGame)

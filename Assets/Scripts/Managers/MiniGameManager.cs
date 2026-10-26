@@ -32,13 +32,14 @@ public class MiniGameManager : NetworkBehaviour
         }
     }
 
+    //Call this function when you want to start the next mini game of miniGamesDrawn
     public void StartMiniGame()
     {
         SetMiniGame(miniGamesDrawn[0]);
         miniGamesDrawn.RemoveAt(0);
     }
     
-    public void SetMiniGame(MiniGameData miniGame)
+    private void SetMiniGame(MiniGameData miniGame)
     {
         _uiManager.ShowHostUI();
         _uiManager.HideConnectionUI();

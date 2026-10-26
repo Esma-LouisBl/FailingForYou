@@ -1,16 +1,19 @@
+using FishNet.Object;
 using UnityEngine;
 
-public class PlayerNetwork : MonoBehaviour
+public class PlayerNetwork : NetworkBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    #region ScriptReferences
 
-    // Update is called once per frame
-    void Update()
+    public GameManagerNetwork gameManagerNetwork;
+    public PlayerData playerData;
+
+    #endregion
+
+    //Called when the player click on Send button
+    [ServerRpc]
+    public void SendPlayerTextAnswer(string answer)
     {
-        
+        gameManagerNetwork.ReceivePlayerTextAnswer(answer);
     }
 }
