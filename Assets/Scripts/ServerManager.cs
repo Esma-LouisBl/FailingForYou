@@ -29,6 +29,8 @@ public class ServerManager : MonoBehaviour
     private RectTransform _scanZone;
     [SerializeField]
     private GameObject _mobileCanvas, _desktopCanvas, _serverCanvas;
+    [SerializeField]
+    private GameObject _connectButton;
     
     //Private
     private bool _isCamAvailable, _canTryScanning = true;
@@ -72,6 +74,8 @@ public class ServerManager : MonoBehaviour
             UpdateCameraRender();
             Scan();
         }
+
+        _connectButton.SetActive(!string.IsNullOrEmpty(_writtenAdress.text)); //update the connect button according to text written in the input zone / see if the input field script could be overide to leave the update part 
     }
     
     //Start the server connection and show up its IP address at the screen with a string and a QR code
