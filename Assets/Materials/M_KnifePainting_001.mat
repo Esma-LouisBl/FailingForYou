@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_KnifePainting_001 1
+  m_Name: M_KnifePainting_001
   m_Shader: {fileID: -6465566751694194690, guid: 0e46743f779e77741aa9739a2706490d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

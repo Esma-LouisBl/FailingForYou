@@ -691,6 +691,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene
       objectReference: {fileID: 0}
+    - target: {fileID: 4446505637312127993, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+    - target: {fileID: 4832527334707453418, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+    - target: {fileID: 6006599988468360837, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.685
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006599988468360837, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006599988468360837, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9345829
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006599988468360837, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.35574543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006599988468360837, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -41.678
+      objectReference: {fileID: 0}
     - target: {fileID: 7249905779013863759, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -698,7 +726,7 @@ PrefabInstance:
     - target: {fileID: 7249905779013863759, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
     - target: {fileID: 7249905779013863759, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
