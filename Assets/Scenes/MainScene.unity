@@ -1025,6 +1025,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 255740207664931942, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 255740207664931942, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_RestoreOriginalTextOnEscape
       value: 0
       objectReference: {fileID: 0}
@@ -1061,8 +1065,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7979066629549102741}
     - target: {fileID: 2711981794624526140, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_RestoreOriginalTextOnEscape
+      propertyPath: m_HideMobileInput
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711981794624526140, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_RestoreOriginalTextOnEscape
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2711981794624526140, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.size
@@ -1230,15 +1238,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9055388863068657634, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_Color.b
-      value: 0.44313726
+      value: 0.84861964
       objectReference: {fileID: 0}
     - target: {fileID: 9055388863068657634, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_Color.g
-      value: 0.8784314
+      value: 0.5641367
       objectReference: {fileID: 0}
     - target: {fileID: 9055388863068657634, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_Color.r
-      value: 0.5487332
+      value: 0.87169814
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
