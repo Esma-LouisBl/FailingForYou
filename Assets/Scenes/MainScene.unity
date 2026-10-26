@@ -467,6 +467,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &427934081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 998926914874204994, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
+  m_PrefabInstance: {fileID: 1420879460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &550467769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -906,6 +911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ServerConnectionCanvas (Dev)
       objectReference: {fileID: 0}
+    - target: {fileID: 998926914874204994, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5984180110873724487, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -964,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7831785613224378066, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7592.4683
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7831785613224378066, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_LocalRotation.w
@@ -984,11 +993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7831785613224378066, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 488.60434
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7831785613224378066, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7831785613224378066, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1097,25 +1106,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Client UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5112261741584988384, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3755199177506799776, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112261741584988384, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112261741584988384, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5507204613157633954, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 7270380434829954705, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
-      propertyPath: m_AspectRatio
-      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 7416409971976290392, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_Pivot.x
@@ -1207,11 +1200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741081209919777960, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8741081209919777960, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8741081209919777960, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1219,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741081209919777960, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 840
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1788,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: 2817275359823204770, guid: c25574c789fc32448ab7ed5b326ccdc4, type: 3}
       propertyPath: _serverCanvas
       value: 
-      objectReference: {fileID: 1531536895}
+      objectReference: {fileID: 427934081}
     - target: {fileID: 2817275359823204770, guid: c25574c789fc32448ab7ed5b326ccdc4, type: 3}
       propertyPath: _WrittenAdress
       value: 
