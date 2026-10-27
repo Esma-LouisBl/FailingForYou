@@ -1,0 +1,35 @@
+:root {
+}
+
+#color-add-button,
+#color-remove-button,
+#color-rainbow-button{
+    transition-property: background-color;
+    transition-duration: 0.12s;
+}
+
+#color-add-button {
+    background-color: #587058;
+}
+
+#color-remove-button {
+    background-color: #7B5858;
+}
+
+#color-add-button:hover {
+    background-color: #698669;
+}
+
+#color-remove-button:hover {
+    background-color: #936969;
+}
+
+#color-rainbow-button {
+    -unity-background-image-tint-color: rgb(212, 212, 212);
+    transition-property: -unity-background-image-tint-color;
+    transition-duration: 0.12s;
+}
+
+#color-rainbow-button:hover {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
