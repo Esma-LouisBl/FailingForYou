@@ -88,12 +88,12 @@ public class ServerManager : MonoBehaviour
         _networkManager.ServerManager.StartConnection();
         if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 16) //Ipv4 addresses contain 15 characters including "." and numbers
         {
-            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
+            _codeTextUI.text = "Code : " + Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
             EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[3].ToString());
         }
         else
         {
-            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+            _codeTextUI.text = "Code : " + Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
             EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[1].ToString());
         }
     }
