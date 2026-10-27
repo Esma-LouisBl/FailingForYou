@@ -372,12 +372,12 @@ MonoBehaviour:
   _spectatorInterpolation: 3
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 9
+  <PrefabId>k__BackingField: 11
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 13032520347504108824
   SceneId: 0
   SerializedTransformProperties:
-    Position: {x: -4.80351, y: 4, z: 5.430528}
+    Position: {x: -4.80351, y: 12, z: 5.430528}
     Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 1, y: 0.5, z: 1}
     IsValid: 1
@@ -399,7 +399,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584212275557132306
+  _initializedTimestamp: -8584085172855073581
 --- !u!54 &1517669882
 Rigidbody:
   m_ObjectHideFlags: 0
