@@ -18,6 +18,7 @@ public class ServerManager : MonoBehaviour
     private NetworkManager _networkManager;
 
     [SerializeField] private GameObject _miniGameManager;
+    [SerializeField] private GameObject _gameManagerNetwork;
 
     //UI
     [SerializeField]
@@ -85,6 +86,7 @@ public class ServerManager : MonoBehaviour
     public void CreateServer()
     {
         _miniGameManager.SetActive(true); //MGmanager is set on false by default
+        _gameManagerNetwork.SetActive(true); //same
         
         ///////temporary
         _serverCanvas.SetActive(false);
