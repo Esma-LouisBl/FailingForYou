@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using FishNet;
 using NUnit.Framework.Constraints;
 using ZXing;
 using ZXing.QrCode;
@@ -15,6 +16,8 @@ public class ServerManager : MonoBehaviour
     //NetworkManager reference
     [SerializeField]
     private NetworkManager _networkManager;
+
+    [SerializeField] private GameObject _miniGameManager;
 
     //UI
     [SerializeField]
@@ -81,6 +84,8 @@ public class ServerManager : MonoBehaviour
     //Start the server connection and show up its IP address at the screen with a string and a QR code
     public void CreateServer()
     {
+        _miniGameManager.SetActive(true); //MGmanager is set on false by default
+        
         ///////temporary
         _serverCanvas.SetActive(false);
         _desktopCanvas.SetActive(true);
