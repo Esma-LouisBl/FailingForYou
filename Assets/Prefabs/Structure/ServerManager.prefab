@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5015849436624199762}
   - component: {fileID: 2817275359823204770}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ServerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743518899510852933}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -960, y: -540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,5 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServerManager
   _networkManager: {fileID: 0}
-  _IPText: {fileID: 0}
-  _WrittenAdress: {fileID: 0}
+  _miniGameManager: {fileID: 0}
+  _gameManagerNetwork: {fileID: 0}
+  _codeTextUI: {fileID: 0}
+  _writtenAdress: {fileID: 0}
+  _cameraZone: {fileID: 0}
+  _qrCodeImage: {fileID: 0}
+  _aspectRatioFitter: {fileID: 0}
+  _scanZone: {fileID: 0}
+  _mobileCanvas: {fileID: 0}
+  _desktopCanvas: {fileID: 0}
+  _serverCanvas: {fileID: 0}
+  _connectButton: {fileID: 0}

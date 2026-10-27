@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public PlayerData myplayerData;
+    public PlayerData myPlayerData;
 
     public void InitAsPlayer()
     {

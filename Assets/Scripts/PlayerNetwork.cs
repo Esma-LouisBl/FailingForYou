@@ -7,6 +7,7 @@ public class PlayerNetwork : NetworkBehaviour
     #region ScriptReferences
 
     public GameManagerNetwork gameManagerNetwork;
+    public DataManager dataManager;
 
     #endregion
 

@@ -49,6 +49,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1453182838068905430}
   _networkObjectCache: {fileID: 0}
   miniGameManager: {fileID: 0}
+  players: []
+  _playerTextAnswer: {fileID: 0}
 --- !u!114 &1453182838068905430
 MonoBehaviour:
   m_ObjectHideFlags: 0
