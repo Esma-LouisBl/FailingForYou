@@ -1174,6 +1174,10 @@ PrefabInstance:
       value: GameManagerNetwork, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1483628731282903356, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483628731282903356, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
