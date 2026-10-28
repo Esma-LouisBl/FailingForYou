@@ -14,6 +14,8 @@ public class MiniGameManager : NetworkBehaviour
     public int amountOfMiniGames = 3;
     
     public Dictionary<PlayerNetwork, string> textAnswers = new Dictionary<PlayerNetwork, string>();
+    
+    // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
     #endregion
     
@@ -58,11 +60,25 @@ public class MiniGameManager : NetworkBehaviour
     public void CollectTextAnswers(string answer, PlayerNetwork player)
     {
         textAnswers.Add(player, answer);
-        Debug.Log("pitié en 1");
     }
 
     public void StartVotePhase()
     {
-        Debug.Log("vote phase");
+        StartVotePhaseToClient();
+    }
+
+    [ObserversRpc]
+    public void StartVotePhaseToClient()
+    {
+        _uiManager.ShowClientVotingArea();
+    }
+
+    public void FinishVotePhase()
+    {
+        // PlayerNetwork winner = numberOfVotesByPlayer[0];
+        // foreach (var i in numberOfVotesByPlayer)
+        // {
+        //     
+        // }
     }
 }

@@ -32,7 +32,8 @@ public class GameManagerNetwork : NetworkBehaviour
     public void ReceivePlayerTextAnswer(string answer, PlayerNetwork player)
     {
         miniGameManager.CollectTextAnswers(answer, player);
-        Debug.Log("en 2 sah");
+        
+        //If all answers are collected :
         if (miniGameManager.textAnswers.Count == players.Count)
         {
             miniGameManager.StartVotePhase();

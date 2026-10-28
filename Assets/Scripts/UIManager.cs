@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
+    [SerializeField] private GameObject _clientVotingArea;
         
     #endregion
 
@@ -67,6 +68,14 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
+        _clientQuestionUI.SetActive(true);
+    }
+
+    public void ShowClientVotingArea()
+    {
+        _clientWaitingScreen.SetActive(false);
+        _clientVotingArea.SetActive(true);
+        _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
 }
