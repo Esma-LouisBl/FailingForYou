@@ -8,6 +8,7 @@ public class GameManagerNetwork : NetworkBehaviour
     #region ScriptReferences
 
     public MiniGameManager miniGameManager;
+    public CharacterManager characterManager;
 
     #endregion
 
