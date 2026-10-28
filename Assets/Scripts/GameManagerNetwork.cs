@@ -29,8 +29,13 @@ public class GameManagerNetwork : NetworkBehaviour
         myLocalPlayer.SendPlayerTextAnswer(answer);
     }
     
-    public void ReceivePlayerTextAnswer(string answer)
+    public void ReceivePlayerTextAnswer(string answer, PlayerNetwork player)
     {
-        Debug.Log(answer);
+        miniGameManager.CollectTextAnswers(answer, player);
+        Debug.Log("en 2 sah");
+        if (miniGameManager.textAnswers.Count == players.Count)
+        {
+            miniGameManager.StartVotePhase();
+        }
     }
 }

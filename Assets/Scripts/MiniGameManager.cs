@@ -12,6 +12,8 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
     
     public int amountOfMiniGames = 3;
+    
+    public Dictionary<PlayerNetwork, string> textAnswers = new Dictionary<PlayerNetwork, string>();
 
     #endregion
     
@@ -51,5 +53,16 @@ public class MiniGameManager : NetworkBehaviour
     public void LaunchMiniGameToClient(MiniGameData miniGame)
     {
         _uiManager.UpdateMiniGameUIClient(miniGame);
+    }
+
+    public void CollectTextAnswers(string answer, PlayerNetwork player)
+    {
+        textAnswers.Add(player, answer);
+        Debug.Log("pitié en 1");
+    }
+
+    public void StartVotePhase()
+    {
+        Debug.Log("vote phase");
     }
 }
