@@ -14,22 +14,29 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #region Variables
 
-    public List<PlayerData> players;
+    public List<PlayerNetwork> players;
+    
+    public PlayerNetwork myLocalPlayer;
 
     [SerializeField]    //Required for function ConfirmTextAnswer
     private TextMeshProUGUI _playerTextAnswer;
 
     #endregion
 
+    // Used by a LOCAL GameManagerNetwork
     public void ConfirmTextAnswer()
     {
         string answer = _playerTextAnswer.text;
-        PlayerNetwork player = FindFirstObjectByType<PlayerNetwork>();
-        player.SendPlayerTextAnswer(answer);
+        myLocalPlayer.SendPlayerTextAnswer(answer);
     }
     
-    public void ReceivePlayerTextAnswer(string answer)
+    public void ReceivePlayerTextAnswer(string answer, PlayerNetwork player)
     {
-        Debug.Log(answer);
+        miniGameManager.CollectTextAnswers(answer, player);
+        Debug.Log("en 2 sah");
+        if (miniGameManager.textAnswers.Count == players.Count)
+        {
+            miniGameManager.StartVotePhase();
+        }
     }
 }
