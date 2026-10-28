@@ -213,22 +213,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Camera_001
       objectReference: {fileID: 0}
-    - target: {fileID: 8317568096613480016, guid: 6f92ed3cb5b61f64484ff8f3717eac16, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317568096613480016, guid: 6f92ed3cb5b61f64484ff8f3717eac16, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 3ddf7f193c4d49b449eddc9e6c681c2f, type: 2}
-    - target: {fileID: 8317568096613480016, guid: 6f92ed3cb5b61f64484ff8f3717eac16, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
-    - target: {fileID: 8317568096613480016, guid: 6f92ed3cb5b61f64484ff8f3717eac16, type: 3}
-      propertyPath: 'm_Materials.Array.data[2]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
