@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213275124648169714}
   - component: {fileID: 3413490601697782771}
-  - component: {fileID: -6739054330506595960}
+  - component: {fileID: 5203524054390449171}
   - component: {fileID: 5361612659594128897}
   - component: {fileID: -2746176172499535199}
   m_Layer: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 5361612659594128897}
   _networkObjectCache: {fileID: 0}
   gameManagerNetwork: {fileID: 0}
-  playerData: {fileID: -6739054330506595960}
---- !u!114 &-6739054330506595960
+  playerData: {fileID: 5203524054390449171}
+--- !u!114 &5203524054390449171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,11 +61,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6082421679153752926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfdb34d72af7f3b40a87105472df5890, type: 3}
+  m_Script: {fileID: 11500000, guid: 14d84bd3a5d666e49a3aa2e9ff9e646a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: 
   playerNumber: 0
+  characterName: 
 --- !u!114 &5361612659594128897
 MonoBehaviour:
   m_ObjectHideFlags: 0

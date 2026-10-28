@@ -9,16 +9,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter;
-    [SerializeField] private List<GameObject> _players = new List<GameObject>();
-    [SerializeField] private List<TextMeshProUGUI> _playerNames = new List<TextMeshProUGUI>();
-    [SerializeField] private GameObject _playerCharacter1, _playerCharacter2, _playerCharacter3, _playerCharacter4;
-    [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
+    [SerializeField] private GameObject _clientVotingArea;
         
     #endregion
 
     #region OtherSerializeFields
 
+    [SerializeField] private List<GameObject> _players = new List<GameObject>();
+    [SerializeField] private List<TextMeshProUGUI> _playerNames = new List<TextMeshProUGUI>();
+    [SerializeField] private GameObject _playerCharacter1, _playerCharacter2, _playerCharacter3, _playerCharacter4;
+    [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
+    
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
@@ -108,6 +110,14 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
+        _clientQuestionUI.SetActive(true);
+    }
+    
+    public void ShowClientVotingArea()
+    {
+        _clientWaitingScreen.SetActive(false);
+        _clientVotingArea.SetActive(true);
+        _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
 }
