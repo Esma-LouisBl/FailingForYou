@@ -58,13 +58,13 @@ public class UIManager : MonoBehaviour
             if (_gameManagerNetwork.players[i] != null)
             {
                 _players[i].SetActive(false);
-                if (_gameManagerNetwork.players[i].playerName != "")
+                if (_gameManagerNetwork.players[i].playerData.playerName != "")
                 {
-                    _playerNames[i].text = _gameManagerNetwork.players[i].playerName;
+                    _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
                 }
-                if (_gameManagerNetwork.players[i].characterName != "")
+                if (_gameManagerNetwork.players[i].playerData.characterName != "")
                 {
-                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].characterName, i);
+                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.characterName, i);
                 }
             }
         }

@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].characterName]].PlayIdle();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlayIdle();
         }
     }
     
@@ -30,7 +30,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].characterName]].PlaySurprised();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlaySurprised();
         }
     }
     
@@ -38,7 +38,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].characterName]].PlayHappy();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlayHappy();
         }
     }
 }
