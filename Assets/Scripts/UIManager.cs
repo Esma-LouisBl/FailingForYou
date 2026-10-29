@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI;
+    [SerializeField] private GameObject _CrushCreationUI;
         
     #endregion
 
@@ -30,8 +31,17 @@ public class UIManager : MonoBehaviour
         _hostConnectionUI.SetActive(false);
         _clientConnectionUI.SetActive(false);
     }
-    
-    public void ShowHostUI()
+    public void ShowCrushCreationUI()
+	{
+		_CrushCreationUI.SetActive(true);
+        
+	}
+
+	public void HideCrushCreationUI()
+	{
+		_CrushCreationUI.SetActive(false);
+	}
+	public void ShowHostUI()
     {
         _hostUI.SetActive(true);
         _clientMainUI.SetActive(false);
