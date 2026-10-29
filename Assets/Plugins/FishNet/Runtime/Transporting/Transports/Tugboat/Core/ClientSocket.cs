@@ -4,6 +4,7 @@ using LiteNetLib.Layers;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace FishNet.Transporting.Tugboat.Client
 {
@@ -89,7 +90,7 @@ namespace FishNet.Transporting.Tugboat.Client
             listener.PeerDisconnectedEvent += Listener_PeerDisconnectedEvent;
 
             NetManager = new(listener, _packetLayer, false);
-            NetManager.DontRoute = ((Tugboat)Transport).DontRoute;
+            NetManager.DontRoute = ((MyTransport)Transport).DontRoute;
             NetManager.MtuOverride = _mtu;// + NetConstants.FragmentedHeaderTotalSize;
 
             UpdateTimeout(_timeout);
@@ -98,10 +99,8 @@ namespace FishNet.Transporting.Tugboat.Client
             NetManager.Start();
             NetManager.Connect(_address, _port, string.Empty);
         }
-
-        /// <summary>
-        /// Starts the client connection.
-        /// </summary>
+        
+        // Starts the client connection
         internal bool StartConnection(string address, ushort port)
         {
             // Force a stop just in case the socket did not clean up.
@@ -120,7 +119,7 @@ namespace FishNet.Transporting.Tugboat.Client
             
             StartSocket();
             //Task.Run(StartSocket);
-
+            
             return true;
         }
 
