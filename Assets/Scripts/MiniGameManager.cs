@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
     
     public int amountOfMiniGames = 3;
+    
+    public Dictionary<PlayerNetwork, string> textAnswers = new Dictionary<PlayerNetwork, string>();
+    
+    // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
     #endregion
     
@@ -50,5 +55,30 @@ public class MiniGameManager : NetworkBehaviour
     public void LaunchMiniGameToClient(MiniGameData miniGame)
     {
         _uiManager.UpdateMiniGameUIClient(miniGame);
+    }
+
+    public void CollectTextAnswers(string answer, PlayerNetwork player)
+    {
+        textAnswers.Add(player, answer);
+    }
+
+    public void StartVotePhase()
+    {
+        StartVotePhaseToClient();
+    }
+
+    [ObserversRpc]
+    public void StartVotePhaseToClient()
+    {
+        _uiManager.ShowClientVotingArea();
+    }
+
+    public void FinishVotePhase()
+    {
+        // PlayerNetwork winner = numberOfVotesByPlayer[0];
+        // foreach (var i in numberOfVotesByPlayer)
+        // {
+        //     
+        // }
     }
 }

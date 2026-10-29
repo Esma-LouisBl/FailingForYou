@@ -1,22 +1,43 @@
+using System.Collections.Generic;
+using FishNet.Object;
+using TMPro;
 using UnityEngine;
 
-public class GameManagerNetwork : MonoBehaviour
+public class GameManagerNetwork : NetworkBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    #region ScriptReferences
 
+    public MiniGameManager miniGameManager;
+    public CharacterManager characterManager;
+
+    #endregion
+
+    #region Variables
+
+    public List<PlayerNetwork> players;
+    
+    public PlayerNetwork myLocalPlayer;
+
+    [SerializeField]    //Required for function ConfirmTextAnswer
+    private TextMeshProUGUI _playerTextAnswer;
+
+    #endregion
+
+    // Used by a LOCAL GameManagerNetwork
+    public void ConfirmTextAnswer()
+    {
+        string answer = _playerTextAnswer.text;
+        myLocalPlayer.SendPlayerTextAnswer(answer);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void ReceivePlayerTextAnswer(string answer, PlayerNetwork player)
     {
-
-    }
-
-
-    public void PlayerSendCrush()
-    {
-
+        miniGameManager.CollectTextAnswers(answer, player);
+        
+        //If all answers are collected :
+        if (miniGameManager.textAnswers.Count == players.Count)
+        {
+            miniGameManager.StartVotePhase();
+        }
     }
 }

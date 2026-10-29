@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,17 +9,37 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI;
-    [SerializeField] private GameObject _CrushCreationUI;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
+    [SerializeField] private GameObject _clientVotingArea;
         
     #endregion
 
     #region OtherSerializeFields
 
+    [SerializeField] private List<GameObject> _players = new List<GameObject>();
+    [SerializeField] private List<TextMeshProUGUI> _playerNames = new List<TextMeshProUGUI>();
+    [SerializeField] private GameObject _playerCharacter1, _playerCharacter2, _playerCharacter3, _playerCharacter4;
+    [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
+    
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
+    [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
 
     #endregion
+
+    private void Start()
+    {
+        // setting lists of players and their names
+        _players.Add(_playerCharacter1);
+        _players.Add(_playerCharacter2);
+        _players.Add(_playerCharacter3);
+        _players.Add(_playerCharacter4);
+        
+        _playerNames.Add(_player1Name);
+        _playerNames.Add(_player2Name);
+        _playerNames.Add(_player3Name);
+        _playerNames.Add(_player4Name);
+    }
 
     public void ShowConnectionUI()
     {
@@ -31,17 +52,29 @@ public class UIManager : MonoBehaviour
         _hostConnectionUI.SetActive(false);
         _clientConnectionUI.SetActive(false);
     }
-    public void ShowCrushCreationUI()
-	{
-		_CrushCreationUI.SetActive(true);
-        
-	}
+    
+    public void UpdateServerConnectionUI()
+    {
+        for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
+        {
+            if (_gameManagerNetwork.players[i] != null)
+            {
+                _players[i].SetActive(false);
+                if (_gameManagerNetwork.players[i].playerData.playerName != "")
+                {
+                    _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
+                }
+                if (_gameManagerNetwork.players[i].playerData.characterName != "")
+                {
+                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.characterName, i);
+                }
+            }
+        }
 
-	public void HideCrushCreationUI()
-	{
-		_CrushCreationUI.SetActive(false);
-	}
-	public void ShowHostUI()
+        
+    }
+    
+    public void ShowHostUI()
     {
         _hostUI.SetActive(true);
         _clientMainUI.SetActive(false);
@@ -51,6 +84,8 @@ public class UIManager : MonoBehaviour
     {
         _clientMainUI.SetActive(true);
         _hostUI.SetActive(false);
+        
+        _clientConnectionUI.SetActive(false);
     }
 
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
@@ -75,6 +110,14 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
+        _clientQuestionUI.SetActive(true);
+    }
+    
+    public void ShowClientVotingArea()
+    {
+        _clientWaitingScreen.SetActive(false);
+        _clientVotingArea.SetActive(true);
+        _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using FishNet;
 using NUnit.Framework.Constraints;
 using ZXing;
 using ZXing.QrCode;
@@ -15,6 +16,9 @@ public class ServerManager : MonoBehaviour
     //NetworkManager reference
     [SerializeField]
     private NetworkManager _networkManager;
+
+    [SerializeField] private GameObject _miniGameManager;
+    [SerializeField] private GameObject _gameManagerNetwork;
 
     //UI
     [SerializeField]
@@ -29,6 +33,8 @@ public class ServerManager : MonoBehaviour
     private RectTransform _scanZone;
     [SerializeField]
     private GameObject _mobileCanvas, _desktopCanvas, _serverCanvas;
+    [SerializeField]
+    private GameObject _connectButton;
     
     //Private
     private bool _isCamAvailable, _canTryScanning = true;
@@ -72,11 +78,16 @@ public class ServerManager : MonoBehaviour
             UpdateCameraRender();
             Scan();
         }
+
+        _connectButton.SetActive(!string.IsNullOrEmpty(_writtenAdress.text)); //update the connect button according to text written in the input zone / see if the input field script could be overide to leave the update part 
     }
     
     //Start the server connection and show up its IP address at the screen with a string and a QR code
     public void CreateServer()
     {
+        _miniGameManager.SetActive(true); //MGmanager is set on false by default
+        _gameManagerNetwork.SetActive(true); //same
+        
         ///////temporary
         _serverCanvas.SetActive(false);
         _desktopCanvas.SetActive(true);
@@ -84,12 +95,12 @@ public class ServerManager : MonoBehaviour
         _networkManager.ServerManager.StartConnection();
         if (Dns.GetHostAddresses(Dns.GetHostName())[1].ToString().Length >= 16) //Ipv4 addresses contain 15 characters including "." and numbers
         {
-            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
+            _codeTextUI.text = "Code : " + Dns.GetHostAddresses(Dns.GetHostName())[3].ToString(); //0 for Ipv6
             EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[3].ToString());
         }
         else
         {
-            _codeTextUI.text = Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
+            _codeTextUI.text = "Code : " + Dns.GetHostAddresses(Dns.GetHostName())[1].ToString(); //0 for Ipv6
             EncodeTextToQRCode(Dns.GetHostAddresses(Dns.GetHostName())[1].ToString());
         }
     }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1213275124648169714}
   - component: {fileID: 3413490601697782771}
+  - component: {fileID: 5203524054390449171}
   - component: {fileID: 5361612659594128897}
   - component: {fileID: -2746176172499535199}
-  - component: {fileID: 4181938044467658283}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -47,6 +47,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b98f3c62c81db4b912e334a16d5e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNetwork
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 5361612659594128897}
+  _networkObjectCache: {fileID: 0}
+  gameManagerNetwork: {fileID: 0}
+  playerData: {fileID: 5203524054390449171}
+--- !u!114 &5203524054390449171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082421679153752926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d84bd3a5d666e49a3aa2e9ff9e646a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerData
+  playerName: 
+  playerNumber: 0
+  characterName: 
 --- !u!114 &5361612659594128897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +97,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 5
+  <PrefabId>k__BackingField: 6
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 6890078578294594689
   SceneId: 0
@@ -93,7 +113,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 4181938044467658283}
+  - {fileID: 0}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -104,7 +124,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584088576460447242
+  _initializedTimestamp: -8584085023406923807
 --- !u!114 &-2746176172499535199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,18 +140,3 @@ MonoBehaviour:
   _overrideType: 3
   _updateHostVisibility: 1
   _observerConditions: []
---- !u!114 &4181938044467658283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6082421679153752926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a6a39c46bf52104ba8efe3100bce3f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Object.EmptyNetworkBehaviour
-  _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 0}
-  _networkObjectCache: {fileID: 5361612659594128897}
