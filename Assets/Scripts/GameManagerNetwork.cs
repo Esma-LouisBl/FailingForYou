@@ -15,14 +15,26 @@ public class GameManagerNetwork : NetworkBehaviour
     #region Variables
 
     public List<PlayerNetwork> players;
-    
     public PlayerNetwork myLocalPlayer;
-
+    
+    public Enums.GamePhase gamePhase;
+    
     [SerializeField]    //Required for function ConfirmTextAnswer
     private TextMeshProUGUI _playerTextAnswer;
 
     #endregion
 
+    public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
+    {
+        gamePhase = phase;
+        UpdateGamePhaseLocally(gamePhase);
+    }
+
+    [ObserversRpc]
+    public void UpdateGamePhaseLocally(Enums.GamePhase phase)
+    {
+        gamePhase = phase;
+    }
     // Used by a LOCAL GameManagerNetwork
     public void ConfirmTextAnswer()
     {

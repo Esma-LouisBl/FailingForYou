@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 
@@ -13,6 +12,8 @@ public class MiniGameManager : NetworkBehaviour
     
     public int amountOfMiniGames = 3;
     
+    // public Enums.GamePhase serverGamePhase;
+    
     public Dictionary<PlayerNetwork, string> textAnswers = new Dictionary<PlayerNetwork, string>();
     
     // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
@@ -23,9 +24,16 @@ public class MiniGameManager : NetworkBehaviour
 
     [SerializeField]
     private UIManager _uiManager;
+    [SerializeField]
+    private GameManagerNetwork _gameManagerNetwork;
 
     #endregion
 
+    public void SendGamePhaseToGameManagerNetwork(Enums.GamePhase phase)
+    {
+        _gameManagerNetwork.UpdateGamePhaseOnServer(phase);
+    }
+    
     //Add to miniGamesDrawn [numberOfMiniGames -> depends if short or long game] from _allMiniGames
     public void ChooseMiniGames(int numberOfMiniGames)
     {
@@ -48,6 +56,9 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.ShowHostUI();
         _uiManager.HideConnectionUI();
         _uiManager.UpdateMiniGameUIHost(miniGame);
+
+        SendGamePhaseToGameManagerNetwork(Enums.GamePhase.answeringQuestion);
+        
         LaunchMiniGameToClient(miniGame);
     }
     
@@ -64,6 +75,8 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartVotePhase()
     {
+        SendGamePhaseToGameManagerNetwork(Enums.GamePhase.voting);
+        
         StartVotePhaseToClient();
     }
 
