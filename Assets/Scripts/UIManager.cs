@@ -27,6 +27,12 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    #region Enums
+
+    public Enums.SelectedUI selectedUI;
+    
+    #endregion
+    
     private void Start()
     {
         // setting lists of players and their names
