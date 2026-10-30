@@ -27,4 +27,13 @@ public class Enums : MonoBehaviour
         historic,
         dramatic
     }
+    
+    public enum SelectedUI
+    {
+        connectionUIWelcome,
+        connectionUIMenu,
+        connectionUIOptions,
+        connectionUICredits,
+        connectionUIConnecting
+    }
 }
