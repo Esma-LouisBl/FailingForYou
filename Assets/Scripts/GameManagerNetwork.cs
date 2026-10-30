@@ -22,6 +22,8 @@ public class GameManagerNetwork : NetworkBehaviour
     [SerializeField]    //Required for function ConfirmTextAnswer
     private TextMeshProUGUI _playerTextAnswer;
 
+    private int _voteAnswerNumber;
+
     #endregion
 
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
@@ -35,19 +37,49 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         gamePhase = phase;
     }
+
+
+    #region SendButton
+
     // Used by a LOCAL GameManagerNetwork
+    // When player click on the Send Button
+    // The function that is trigger changes according to the current game phase
+    public void SendButton()
+    {
+        switch (gamePhase)
+        {
+            case Enums.GamePhase.answeringQuestion:
+                ConfirmTextAnswer();
+                break;
+            case Enums.GamePhase.voting:
+                break;
+        }
+    }
+    
     public void ConfirmTextAnswer()
     {
         string answer = _playerTextAnswer.text;
         myLocalPlayer.SendPlayerTextAnswer(answer);
     }
-    
-    public void ReceivePlayerTextAnswer(string answer, PlayerNetwork player)
+
+    public void ConfirmVote()
     {
-        miniGameManager.CollectTextAnswers(answer, player);
+        
+    }
+
+    public void SetVote(int answerNumber)
+    {
+        _voteAnswerNumber = answerNumber;
+    }
+    #endregion
+    
+    
+    public void ReceivePlayerTextAnswer(string answer, int playerNumber)
+    {
+        miniGameManager.CollectTextAnswers(answer, playerNumber);
         
         //If all answers are collected :
-        if (miniGameManager.textAnswers.Count == players.Count)
+        if (miniGameManager.collectedAnswers == players.Count)
         {
             miniGameManager.StartVotePhase();
         }

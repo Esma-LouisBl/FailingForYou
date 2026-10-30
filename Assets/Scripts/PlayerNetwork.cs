@@ -45,6 +45,6 @@ public class PlayerNetwork : NetworkBehaviour
     [ServerRpc]
     public void SendPlayerTextAnswer(string answer)
     {
-        gameManagerNetwork.ReceivePlayerTextAnswer(answer, this);
+        gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerData.playerNumber);
     }
 }
