@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
     [SerializeField] private GameObject _clientVotingArea;
         
+        
     #endregion
 
     #region OtherSerializeFields
