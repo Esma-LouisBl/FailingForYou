@@ -28,10 +28,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
 
     [SerializeField] private InputActionReference _return;
-    
-    #endregion
-    
-    public Enums.SelectedUI selectedUI;
 
     #region Enums
 
