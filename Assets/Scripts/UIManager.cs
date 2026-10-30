@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
+    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
     [SerializeField] private GameObject _clientVotingArea;
+        
         
     #endregion
 
@@ -23,13 +26,14 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
-
-    [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3;
-    
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
 
+    [SerializeField] private InputActionReference _return;
+    
     #endregion
-
+    
+    public Enums.SelectedUI selectedUI;
+    
     private void Start()
     {
         // setting lists of players and their names
@@ -44,6 +48,72 @@ public class UIManager : MonoBehaviour
         _playerNames.Add(_player4Name);
     }
 
+    #region returnSystem
+    
+    private void OnEnable()
+    {
+        _return.action.started += Return;
+    }
+
+    private void Return(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Return");
+        switch (selectedUI)
+        {
+            case Enums.SelectedUI.connectionUIConnecting :
+                //not inplemented
+                break;
+            case Enums.SelectedUI.connectionUICredits :
+                HideConnectionUICredits();
+                ShowConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.connectionUIMenu :
+                HideConnectionUIMenu();
+                ShowConnectionUIWelcome();
+                break;
+            case Enums.SelectedUI.connectionUIOptions :
+                HideConnectionUIOptions();
+                ShowConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.connectionUIWelcome :
+                break;
+        }
+    }
+
+    private void OnDisable()
+    {
+        _return.action.started -= Return;
+    }
+
+    private void HideConnectionUICredits()
+    {
+        _hostConnectionUICredits.SetActive(false);
+    }
+
+    private void HideConnectionUIMenu()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+    }
+
+    private void HideConnectionUIOptions()
+    {
+        _hostConnectionUIOptions.SetActive(false);
+    }
+    
+    private void ShowConnectionUIMenu()
+    {
+        selectedUI = Enums.SelectedUI.connectionUIMenu;
+        _hostConnectionUIMenu.SetActive(true);
+    }
+    
+    private void ShowConnectionUIWelcome()
+    {
+        selectedUI = Enums.SelectedUI.connectionUIWelcome;
+        _hostConnectionUIWelcome.SetActive(true);
+    }
+    
+    #endregion
+    
     public void ShowConnectionUI()
     {
         _hostConnectionUI.SetActive(true);
@@ -98,7 +168,6 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
-        _clientVotingArea.SetActive(false);
         HideConnectionUI();
         ShowClientMainUI();
         //assign the common parts
@@ -117,25 +186,8 @@ public class UIManager : MonoBehaviour
         _clientQuestionUI.SetActive(true);
     }
     
-    public void ShowClientVotingArea(string answer1, string answer2, string answer3)
+    public void ShowClientVotingArea()
     {
-        //Part to randomize the order of answers
-        List<string> answers = new List<string>();
-        answers.Add(answer1);
-        answers.Add(answer2);
-        answers.Add(answer3);
-        
-        int r = Random.Range(0, answers.Count);
-        _answer1.text = answers[r];
-        answers.Remove(answers[r]);
-        r = Random.Range(0, answers.Count);
-        _answer2.text = answers[r];
-        answers.Remove(answers[r]);
-        _answer3.text = answers[0];
-        // _answer2.text = answer2;
-        // _answer3.text = answer3;
-        
-        //What to show on screen
         _clientWaitingScreen.SetActive(false);
         _clientVotingArea.SetActive(true);
         _clientQuestionTextualUI.SetActive(false);
