@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
-    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
     [SerializeField] private GameObject _clientVotingArea;
@@ -30,16 +28,8 @@ public class UIManager : MonoBehaviour
     
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
 
-    [SerializeField] private InputActionReference _return;
-    
     #endregion
 
-    #region Enums
-
-    public Enums.SelectedUI selectedUI;
-    
-    #endregion
-    
     private void Start()
     {
         // setting lists of players and their names
@@ -54,72 +44,6 @@ public class UIManager : MonoBehaviour
         _playerNames.Add(_player4Name);
     }
 
-    #region returnSystem
-    
-    private void OnEnable()
-    {
-        _return.action.started += Return;
-    }
-
-    private void Return(InputAction.CallbackContext obj)
-    {
-        Debug.Log("Return");
-        switch (selectedUI)
-        {
-            case Enums.SelectedUI.connectionUIConnecting :
-                //not inplemented
-                break;
-            case Enums.SelectedUI.connectionUICredits :
-                HideConnectionUICredits();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIMenu :
-                HideConnectionUIMenu();
-                ShowConnectionUIWelcome();
-                break;
-            case Enums.SelectedUI.connectionUIOptions :
-                HideConnectionUIOptions();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIWelcome :
-                break;
-        }
-    }
-
-    private void OnDisable()
-    {
-        _return.action.started -= Return;
-    }
-
-    private void HideConnectionUICredits()
-    {
-        _hostConnectionUICredits.SetActive(false);
-    }
-
-    private void HideConnectionUIMenu()
-    {
-        _hostConnectionUIMenu.SetActive(false);
-    }
-
-    private void HideConnectionUIOptions()
-    {
-        _hostConnectionUIOptions.SetActive(false);
-    }
-    
-    private void ShowConnectionUIMenu()
-    {
-        selectedUI = Enums.SelectedUI.connectionUIMenu;
-        _hostConnectionUIMenu.SetActive(true);
-    }
-    
-    private void ShowConnectionUIWelcome()
-    {
-        selectedUI = Enums.SelectedUI.connectionUIWelcome;
-        _hostConnectionUIWelcome.SetActive(true);
-    }
-    
-    #endregion
-    
     public void ShowConnectionUI()
     {
         _hostConnectionUI.SetActive(true);
