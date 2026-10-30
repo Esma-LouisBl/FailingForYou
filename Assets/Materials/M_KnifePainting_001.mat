@@ -37,12 +37,36 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _SampleTexture2D_170325b596744fa69fe92cbbae4ce3fd_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_37cb3bf8364a44ccacd0e6ed59168c3e_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 9aa2423084daffa4597846b52e78b72c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3ecdf2eca3e74f9ca9b0db8147e88ce7_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_889228a0d3614eb88f733901bfe3f78f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b84ea66fe359458aa217c4dc6927e733_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b89893bbdfba48549db0275f55801e88_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_e04d6dad10604d308282d0e14b9438ac_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 49609d0c1d6932e488ab4e198b51861f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_e12463b9601e4046b401b3369b0dafb5_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d81a8f78363f55d4ba552834b905f133, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_ff01a21cd040418b99dec8601d18635f_Texture_1_Texture2D:
@@ -63,6 +87,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _IndexUV: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
