@@ -32,7 +32,6 @@ public class UIManager : MonoBehaviour
     #endregion
     
     public Enums.SelectedUI selectedUI;
-
     
     private void Start()
     {
