@@ -33,4 +33,13 @@ public class Enums : MonoBehaviour
         answeringQuestion,
         voting
     }
+    
+    public enum SelectedUI
+    {
+        connectionUIWelcome,
+        connectionUIMenu,
+        connectionUIOptions,
+        connectionUICredits,
+        connectionUIConnecting
+    }
 }

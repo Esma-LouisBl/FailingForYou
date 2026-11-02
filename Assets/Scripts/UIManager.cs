@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
+    
+    [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3;
 
     [SerializeField] private InputActionReference _return;
     
@@ -183,11 +185,27 @@ public class UIManager : MonoBehaviour
                 break;
         }
         
+        _clientVotingArea.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
     
-    public void ShowClientVotingArea()
+    public void ShowClientVotingArea(string answer1, string answer2, string answer3)
     {
+        //Part to randomize the order of answers
+        List<string> answers = new List<string>();
+        answers.Add(answer1);
+        answers.Add(answer2);
+        answers.Add(answer3);
+        
+        int r = Random.Range(0, answers.Count);
+        _answer1.text = answers[r];
+        answers.Remove(answers[r]);
+        r = Random.Range(0, answers.Count);
+        _answer2.text = answers[r];
+        answers.Remove(answers[r]);
+        _answer3.text = answers[0];
+        
+        //What to show on screen
         _clientWaitingScreen.SetActive(false);
         _clientVotingArea.SetActive(true);
         _clientQuestionTextualUI.SetActive(false);
