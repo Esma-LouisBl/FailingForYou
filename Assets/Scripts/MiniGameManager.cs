@@ -160,6 +160,8 @@ public class MiniGameManager : NetworkBehaviour
         }
 
         Debug.Log(_gameManagerNetwork.players[winnerPlayerNumber].playerData.playerName + " won the game!");
+        
+        FinishVotePhase();
     }
 
     public void FinishVotePhase()

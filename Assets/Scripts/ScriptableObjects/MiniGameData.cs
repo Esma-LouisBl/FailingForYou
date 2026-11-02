@@ -9,4 +9,6 @@ public class MiniGameData : ScriptableObject
     public Enums.MiniGameType type;
     public Enums.MiniGamePlace place;
     public Enums.MiniGameGenre genre;
+
+    public float answer; //only for tie questions
 }
