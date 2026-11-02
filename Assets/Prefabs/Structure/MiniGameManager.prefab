@@ -54,6 +54,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bff368d264df85447b478d6616f52c8f, type: 2}
   - {fileID: 11400000, guid: 9db95e93ba993134ba556444b3a34958, type: 2}
   - {fileID: 11400000, guid: 0cfd6fa2a2befd746ad06515d2687fd8, type: 2}
+  tieQuestions:
   - {fileID: 11400000, guid: 4deb0a12e8af9e548a1b4513cc670057, type: 2}
   amountOfMiniGames: 3
   textAnswers:

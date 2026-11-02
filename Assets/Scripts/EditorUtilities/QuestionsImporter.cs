@@ -17,6 +17,7 @@
 //         //Clear the list of all mini games to avoid duplication
 //         MiniGameManager miniGameManager = MiniGameManager.FindAnyObjectByType<MiniGameManager>();
 //         miniGameManager.allMiniGames.Clear();
+//         miniGameManager.tieQuestions.Clear();
 //         
 //         string[] allLines = File.ReadAllLines(Application.dataPath + _csvPath);
 //
@@ -88,8 +89,14 @@
 //             
 //             if (miniGameManager != null)
 //             {
-//                 miniGameManager.allMiniGames.Add(miniGameData);
-//                 Debug.Log(miniGameData.question);
+//                 if (miniGameData.answer > 0)
+//                 {
+//                     miniGameManager.tieQuestions.Add(miniGameData);
+//                 }
+//                 else
+//                 {
+//                     miniGameManager.allMiniGames.Add(miniGameData);
+//                 }
 //             }
 //             else
 //             {
@@ -98,5 +105,6 @@
 //         }
 //         
 //         AssetDatabase.SaveAssets();
+//         Debug.Log("Questions imported");
 //     }
 // }

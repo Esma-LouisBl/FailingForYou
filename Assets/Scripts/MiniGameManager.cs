@@ -13,6 +13,8 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> miniGamesDrawn = new List<MiniGameData>();
     [SerializeField]
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
+    [SerializeField]
+    public List<MiniGameData> tieQuestions = new List<MiniGameData>();
     
     public int amountOfMiniGames = 3;
     
