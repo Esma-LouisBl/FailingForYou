@@ -27,4 +27,19 @@ public class Enums : MonoBehaviour
         historic,
         dramatic
     }
+
+    public enum GamePhase
+    {
+        answeringQuestion,
+        voting
+    }
+    
+    public enum SelectedUI
+    {
+        connectionUIWelcome,
+        connectionUIMenu,
+        connectionUIOptions,
+        connectionUICredits,
+        connectionUIConnecting
+    }
 }

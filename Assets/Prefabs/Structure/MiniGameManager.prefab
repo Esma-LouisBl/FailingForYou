@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1961606418147136565}
   - component: {fileID: 7341304453590692352}
   - component: {fileID: 6893154601742159226}
+  - component: {fileID: 1690207244831805854}
   m_Layer: 0
   m_Name: MiniGameManager
   m_TagString: Untagged
@@ -56,7 +57,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8aa3e804f2731f24583d886255855e0f, type: 2}
   - {fileID: 11400000, guid: 224e3d1d4bb66ea4989ff04377976b1b, type: 2}
   amountOfMiniGames: 3
+  textAnswers:
+    NetworkManager: {fileID: 0}
+    NetworkBehaviour: {fileID: 0}
+    Collection: []
+  collectedAnswers: 0
   _uiManager: {fileID: 0}
+  _gameManagerNetwork: {fileID: 0}
 --- !u!114 &6893154601742159226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +94,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 0
+  <PrefabId>k__BackingField: 1
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 3597467896557303364
   SceneId: 0
@@ -114,4 +121,19 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584085092735964836
+  _initializedTimestamp: -8584082557039025825
+--- !u!114 &1690207244831805854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916383051711755134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Observing.NetworkObserver
+  _overrideType: 3
+  _updateHostVisibility: 1
+  _observerConditions: []
