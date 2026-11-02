@@ -3,13 +3,15 @@ using System.Runtime.InteropServices;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CrushCreationManager : MonoBehaviour
 {
 
 	public GameObject crushCreationUI;
 	public List<Image> indexCrushCreation = new List<Image>();
-	public GameManagerNetwork gameManagerNetwork;
+	//public GameManagerNetwork gameManagerNetwork;
+	public TextMeshProUGUI partText;
 	public Image hairImage;
 	public Image accessoriesImage;
 	public Image faceImage;
@@ -31,7 +33,7 @@ public class CrushCreationManager : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		crushCreationUI.SetActive(false);
+		//crushCreationUI.SetActive(false);
 		//HairSprite = GetComponent<Image>();
 		//hairImage.sprite = hairSprites[index];
 		indexCrushCreation[index].color = new Color32(91,85,175, 255);
@@ -53,6 +55,17 @@ public class CrushCreationManager : MonoBehaviour
 	{
 		
 	}
+
+	public void OpenCrushCreation()
+	{
+		crushCreationUI.SetActive(true);
+		Debug.Log("Open Crush Creation");
+	}
+
+	public void CloseCrushCreation()
+	{
+		crushCreationUI.SetActive(false);
+	}
 	public void chosePartCrush()
 	{
 		hairImage.enabled = false;
@@ -66,6 +79,7 @@ public class CrushCreationManager : MonoBehaviour
 		{
 			case "Hair":
 				hairImage.enabled = true;
+				IndicationDressCrush(part);
 				//hairImage.sprite = hairSprites[index];
 				crushImage = hairImage;
 				crushSprites = hairSprites;
@@ -73,6 +87,7 @@ public class CrushCreationManager : MonoBehaviour
 				break;
 			case "Accessories":
 				accessoriesImage.enabled = true;
+				IndicationDressCrush(part);
 				//accessoriesSprite.sprite = accessoriesSprites[index];
 				crushImage = accessoriesImage;
 				crushSprites = accessoriesSprites;
@@ -80,6 +95,7 @@ public class CrushCreationManager : MonoBehaviour
 				break;
 			case "Faces":
 				faceImage.enabled = true;
+				IndicationDressCrush(part);
 				//faceImage.sprite = facesSprites[index];
 				crushImage = faceImage;
 				crushSprites = facesSprites;
@@ -87,6 +103,7 @@ public class CrushCreationManager : MonoBehaviour
 				break;
 			case "Clothes":
 				clothesImage.enabled = true;
+				IndicationDressCrush(part);
 				//clothesImage.sprite = clothesSprites[index];
 				crushImage = clothesImage;
 				crushSprites = clothesSprites;
@@ -101,6 +118,26 @@ public class CrushCreationManager : MonoBehaviour
 		crushParts.Remove(partToRemove);
 
 
+	}
+
+	public void IndicationDressCrush(string part)
+	{
+		if (part == "Hair")
+		{
+			partText.text = "Tu dois choisir les <b>cheveux</b>\n de la poupée";
+		}
+		else if (part == "Accessories")
+		{
+			partText.text = "Tu dois choisir <b>l'accessoire</b>\n de la poupée";
+		}
+		else if (part == "Faces")
+		{
+			partText.text = "Tu dois choisir la <b>tête</b>\n de la poupée";
+		}
+		else if (part == "Clothes")
+		{
+			partText.text = "Tu dois choisir la <b>tenue</b>\n de la poupée";
+		}
 	}
 
 	public void RightListSprite()

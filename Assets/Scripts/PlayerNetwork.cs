@@ -56,7 +56,6 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerData.playerNumber);
     }
-
     private new IEnumerator StartWithDelay()
     {
         yield return new WaitForSeconds(0.1f);
@@ -67,7 +66,7 @@ public class PlayerNetwork : NetworkBehaviour
             RegisterPlayerOnServer(_instanceId);
         }
     }
-    
+
     [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
@@ -79,5 +78,11 @@ public class PlayerNetwork : NetworkBehaviour
     public void AssignMyPlayerNumber(int myPlayerNumber)
     {
         playerData.playerNumber = myPlayerNumber;
+    }
+
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
 }

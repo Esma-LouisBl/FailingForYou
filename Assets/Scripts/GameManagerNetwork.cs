@@ -21,7 +21,9 @@ public class GameManagerNetwork : NetworkBehaviour
     
     [SerializeField]    //Required for function ConfirmTextAnswer
     private TextMeshProUGUI _playerTextAnswer;
-
+    
+    [SerializeField]    //Required for function ConfirmVote
+    private TextMeshProUGUI _answer1, _answer2, _answer3;
     private int _voteAnswerNumber;
     
     private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
@@ -54,6 +56,7 @@ public class GameManagerNetwork : NetworkBehaviour
                 ConfirmTextAnswer();
                 break;
             case Enums.GamePhase.voting:
+                ConfirmVote();
                 break;
         }
     }
@@ -66,10 +69,23 @@ public class GameManagerNetwork : NetworkBehaviour
 
     public void ConfirmVote()
     {
-        
+        string votedAnswer = "";
+        switch (_voteAnswerNumber)
+        {
+            case 1:
+                votedAnswer = _answer1.text;
+                break;
+            case 2:
+                votedAnswer = _answer2.text;
+                break;
+            case 3:
+                votedAnswer = _answer3.text;
+                break;
+        }
+        myLocalPlayer.SendPlayerTextVote(votedAnswer);
     }
 
-    public void SetVote(int answerNumber)
+    public void SetVote(int answerNumber)   //called by the three answer buttons
     {
         _voteAnswerNumber = answerNumber;
     }
@@ -99,5 +115,16 @@ public class GameManagerNetwork : NetworkBehaviour
         }
         
         playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
+    }
+
+    public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
+    {
+        miniGameManager.CollectTextVotes(votedAnswer, playerNumber);
+        
+        //If all votes are collected :
+        if (miniGameManager.collectedVotes == players.Count)
+        {
+            miniGameManager.MiniGameWinnerElection();
+        }
     }
 }
