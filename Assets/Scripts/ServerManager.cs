@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using FishNet;
+using FishNet.Connection;
 using NUnit.Framework.Constraints;
 using ZXing;
 using ZXing.QrCode;
@@ -17,6 +18,7 @@ public class ServerManager : MonoBehaviour
     [SerializeField]
     private NetworkManager _networkManager;
 
+    //OtherManager references
     [SerializeField] private GameObject _miniGameManager;
     [SerializeField] private GameObject _gameManagerNetwork;
 
