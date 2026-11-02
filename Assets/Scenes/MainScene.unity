@@ -2643,6 +2643,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: _answer1
+      value: 
+      objectReference: {fileID: 1621020230}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: _answer2
+      value: 
+      objectReference: {fileID: 1621020229}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: _answer3
+      value: 
+      objectReference: {fileID: 1621020228}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
       propertyPath: miniGameManager
       value: 
       objectReference: {fileID: 1374646875}
