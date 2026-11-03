@@ -32,11 +32,6 @@ public class PlayerNetwork : NetworkBehaviour
         GetGameManagerNetworkLocally();
     }
 
-    public override void OnStartServer()
-    {
-        gameManagerNetwork.players.Add(this);
-    }
-
     #endregion
 
     // The function below is useful to let the mobiles use the GameManagerNetwork
