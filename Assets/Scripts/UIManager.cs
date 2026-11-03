@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,11 +27,13 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
-    [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
+    [SerializeField] private GameManagerNetwork _gameManagerNetwork;
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3;
 
     [SerializeField] private InputActionReference _return;
+
+    [SerializeField] private Button _deselectionButton;
     
     #endregion
     
@@ -139,9 +142,9 @@ public class UIManager : MonoBehaviour
                 {
                     _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
                 }
-                if (_gameManagerNetwork.players[i].playerData.characterName != "")
+                if (_gameManagerNetwork.players[i].playerData.character != Enums.CharacterName.None)
                 {
-                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.characterName, i);
+                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.character, i);
                 }
             }
         }
@@ -211,4 +214,38 @@ public class UIManager : MonoBehaviour
         _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
+
+    #region CharacterSelection
+
+    public void OnSelectCharacter(string characterName)
+    {
+        switch (characterName)
+        {
+            case "Boubou" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Boubou, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Bog" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Bog, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kouc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kouc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pacc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pacc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pito" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kamé" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+        }
+    }
+
+    public void ResetButtonCharacterSelection() //Deselect every buttons by selecting another
+    {
+        _deselectionButton.Select();
+    }
+    
+    #endregion
 }

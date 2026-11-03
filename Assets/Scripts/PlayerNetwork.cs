@@ -70,7 +70,6 @@ public class PlayerNetwork : NetworkBehaviour
     [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
-        Debug.Log("Registering player");
         gameManagerNetwork.AddPlayer(this, instanceToSend);
     }
 
@@ -85,4 +84,15 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
+    
+    #region CharacterSelection
+
+    [ServerRpc]
+    public void TrySelectCharacter(Enums.CharacterName characterName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.CheckIfCharacterIsSelected(characterName, sentPlayerNumber);
+        Debug.Log("Selected character: " + characterName + sentPlayerNumber);
+    }
+    
+    #endregion
 }

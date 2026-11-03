@@ -42,4 +42,15 @@ public class Enums : MonoBehaviour
         connectionUICredits,
         connectionUIConnecting
     }
+
+    public enum CharacterName
+    {
+        Boubou,
+        Bog,
+        Kouc,
+        Pacc,
+        Pito,
+        Kame,
+        None
+    }
 }

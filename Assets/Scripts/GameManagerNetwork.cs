@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FishNet.Object;
 using TMPro;
@@ -9,6 +10,7 @@ public class GameManagerNetwork : NetworkBehaviour
 
     public MiniGameManager miniGameManager;
     public CharacterManager characterManager;
+    public UIManager uiManager;
 
     #endregion
 
@@ -27,6 +29,8 @@ public class GameManagerNetwork : NetworkBehaviour
     private int _voteAnswerNumber;
     
     private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
+    
+    private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
     #endregion
 
@@ -108,11 +112,13 @@ public class GameManagerNetwork : NetworkBehaviour
         players.Add(playerToAdd);
         _instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
         
+        /*
         //Debug
         foreach (KeyValuePair<int, int> entry in _instanceIdRepertory)
         {
             Debug.Log(entry.Key + " : " + entry.Value);
         }
+        */
         
         playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
     }
@@ -127,4 +133,39 @@ public class GameManagerNetwork : NetworkBehaviour
             miniGameManager.MiniGameWinnerElection();
         }
     }
+
+    #region CharacterSelection
+    
+    public void CheckIfCharacterIsSelected(Enums.CharacterName characterName, int playerNumber) //Check  if character called is already selected by a player
+    {
+        if (!_selectedCharacters.Contains(characterName))
+        {
+            _selectedCharacters.Add(characterName);
+            ReturnSelectedCharacter(characterName, playerNumber);
+        }
+        else
+        {
+            ReturnSelectedCharacter(Enums.CharacterName.None, playerNumber);
+        }
+    }
+
+    [ObserversRpc]
+    private void ReturnSelectedCharacter(Enums.CharacterName selectedCharacter, int playerNumber) //return to player and update its data if character is already selected
+    {
+        if (myLocalPlayer.playerData.playerNumber == playerNumber)
+        {
+            if (selectedCharacter == Enums.CharacterName.None)
+            {
+                Debug.Log(selectedCharacter + " is already selected by another player");
+                uiManager.ResetButtonCharacterSelection();
+            }
+            else
+            {
+                myLocalPlayer.playerData.character = selectedCharacter;
+                Debug.Log(selectedCharacter + " is selected");
+            }
+        }
+    }
+
+    #endregion
 }
