@@ -25,6 +25,8 @@ public class GameManagerNetwork : NetworkBehaviour
     [SerializeField]    //Required for function ConfirmVote
     private TextMeshProUGUI _answer1, _answer2, _answer3;
     private int _voteAnswerNumber;
+    
+    private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
 
     #endregion
 
@@ -39,7 +41,7 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         gamePhase = phase;
     }
-
+    
 
     #region SendButton
 
@@ -99,6 +101,20 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             miniGameManager.StartVotePhase();
         }
+    }
+
+    public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
+    {
+        players.Add(playerToAdd);
+        _instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
+        
+        //Debug
+        foreach (KeyValuePair<int, int> entry in _instanceIdRepertory)
+        {
+            Debug.Log(entry.Key + " : " + entry.Value);
+        }
+        
+        playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
     }
 
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)

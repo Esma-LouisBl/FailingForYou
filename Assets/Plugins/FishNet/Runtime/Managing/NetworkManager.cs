@@ -139,7 +139,7 @@ namespace FishNet.Managing
         /// An empty connection reference. Used when a connection cannot be found to prevent object creation.
         /// </summary>
         [APIExclude]
-        public static NetworkConnection EmptyConnection { get; private set; } = new();
+        public static NetworkConnection EmptyConnection { get; private set; } = new(); //{ get; private set; }
         #endregion
 
         #region Internal.

@@ -1,6 +1,10 @@
 using System;
+using System.Collections;
+using FishNet.Connection;
+using FishNet.Managing;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerNetwork : NetworkBehaviour
 {
@@ -11,6 +15,8 @@ public class PlayerNetwork : NetworkBehaviour
 
     #endregion
 
+    private int _instanceId;
+
     #region Initilization
     
     private void Awake()
@@ -20,6 +26,9 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Start()
     {
+
+        StartCoroutine(StartWithDelay());
+
         GetGameManagerNetworkLocally();
     }
 
@@ -46,6 +55,29 @@ public class PlayerNetwork : NetworkBehaviour
     public void SendPlayerTextAnswer(string answer)
     {
         gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerData.playerNumber);
+    }
+    private new IEnumerator StartWithDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (IsOwner)
+        {
+            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
+            Debug.Log("My instance id : " + _instanceId);
+            RegisterPlayerOnServer(_instanceId);
+        }
+    }
+
+    [ServerRpc]
+    public void RegisterPlayerOnServer(int instanceToSend)
+    {
+        Debug.Log("Registering player");
+        gameManagerNetwork.AddPlayer(this, instanceToSend);
+    }
+
+    [ObserversRpc]
+    public void AssignMyPlayerNumber(int myPlayerNumber)
+    {
+        playerData.playerNumber = myPlayerNumber;
     }
 
     [ServerRpc]
