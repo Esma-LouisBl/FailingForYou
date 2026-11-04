@@ -32,8 +32,8 @@ public class GameManagerNetwork : NetworkBehaviour
     private Dictionary<int, string> _playerNames = new Dictionary<int, string>();
     private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
-    private bool _canSelectCharacter = true;
-    private bool _canSelectName = true;
+    private bool _canSelectCharacter = true; //false when player selected its character (local)
+    private bool _canSelectName = true; //false when player selected its name (local)
     
     #endregion
 

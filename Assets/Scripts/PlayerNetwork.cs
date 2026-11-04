@@ -26,7 +26,6 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Start()
     {
-
         StartCoroutine(StartWithDelay());
 
         GetGameManagerNetworkLocally();
