@@ -108,6 +108,9 @@ public class LightManager : MonoBehaviour
         atticDirectionalLight.color = atticMorningRomantic;
         keyDirectionalLight.color = keyMorningRomantic;
 
+        atticDirectionalLight.intensity = atticMorningRomanticIntensity;
+        keyDirectionalLight.intensity = keyMorningRomanticIntensity;
+
         atticDirectionalLight.transform.eulerAngles = directionDirectionalMorning;
     }
     public void AfternoonRomSet()
@@ -116,7 +119,7 @@ public class LightManager : MonoBehaviour
     }
     public void NightRomSet()
     {
-
+        atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
     }
     public void MorningHorSet()
     {
@@ -128,7 +131,7 @@ public class LightManager : MonoBehaviour
     }
     public void NightHorSet()
     {
-
+        atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
     }
     public void MorningDraSet()
     {
@@ -140,7 +143,7 @@ public class LightManager : MonoBehaviour
     }
     public void NightDraSet()
     {
-
+        atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
     }
     public void MorningFanSet()
     {
@@ -152,7 +155,7 @@ public class LightManager : MonoBehaviour
     }
     public void NightFanSet()
     {
-
+        atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
     }
     public void MorningHisSet()
     {
@@ -164,6 +167,6 @@ public class LightManager : MonoBehaviour
     }
     public void NihgtHisSet()
     {
-
+        atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
     }
 }
