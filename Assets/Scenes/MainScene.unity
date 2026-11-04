@@ -827,6 +827,10 @@ PrefabInstance:
       propertyPath: _hostTextAnswersRevelationUI
       value: 
       objectReference: {fileID: 909328065}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _clientAnswerInCaseThereAreFourPlayers
+      value: 
+      objectReference: {fileID: 1464592901}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1694,6 +1698,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4423402556204671375, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
   m_PrefabInstance: {fileID: 7458007684566258095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1464592901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7910188984062636039, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+  m_PrefabInstance: {fileID: 1615421982}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1475411240 stripped
 GameObject:

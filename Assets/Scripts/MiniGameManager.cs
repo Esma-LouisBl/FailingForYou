@@ -153,16 +153,16 @@ public class MiniGameManager : NetworkBehaviour
         switch (_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)
         {
             case 1:
-                _uiManager.ShowClientVotingArea(answer4, answer2, answer3);
+                _uiManager.ShowClientVotingArea(answer2, answer3, answer4);
                 break;
             case 2:
-                _uiManager.ShowClientVotingArea(answer4, answer1, answer3);
+                _uiManager.ShowClientVotingArea(answer1, answer3, answer4);
                 break;
             case 3:
-                _uiManager.ShowClientVotingArea(answer4, answer1, answer2);
+                _uiManager.ShowClientVotingArea(answer1, answer2, answer4);
                 break;
             case 4:
-                _uiManager.ShowClientVotingArea(answer2, answer1, answer3);
+                _uiManager.ShowClientVotingArea(answer1, answer2, answer3);
                 break;
         }
     }

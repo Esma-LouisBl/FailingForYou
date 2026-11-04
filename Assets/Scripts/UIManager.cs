@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
 
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
-    [SerializeField] private GameObject _clientVotingArea;
+    [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
         
          
     #endregion
@@ -206,11 +206,30 @@ public class UIManager : MonoBehaviour
         _answerOnHost2.SetActive(false);
         _answerOnHost3.SetActive(false);
         _answerOnHost4.SetActive(false);
-
-        _answer1Host.text = ans1;
-        _answer2Host.text = ans2;
-        _answer3Host.text = ans3;
-        _answer4Host.text = ans4;
+        
+        //Part to randomize the order of answers
+        List<string> answers = new List<string>();
+        answers.Add(ans1);
+        answers.Add(ans2);
+        answers.Add(ans3);
+        if (fourPlayers)
+        {
+            answers.Add(ans4);
+        }
+        
+        int r = Random.Range(0, answers.Count);
+        _answer1Host.text = answers[r];
+        answers.Remove(answers[r]);
+        r = Random.Range(0, answers.Count);
+        _answer2Host.text = answers[r];
+        answers.Remove(answers[r]);
+        r = Random.Range(0, answers.Count);
+        _answer3Host.text = answers[r];
+        answers.Remove(answers[r]);
+        if (fourPlayers)
+        {
+            _answer4Host.text = answers[0];
+        }
         
         _hostTextAnswersRevelationUI.SetActive(true);
         StartCoroutine(LetAnswersAppear(fourPlayers));
@@ -234,7 +253,8 @@ public class UIManager : MonoBehaviour
         List<string> answers = new List<string>();
         answers.Add(answer1);
         answers.Add(answer2);
-        answers.Add(answer3);
+        if (answer3 != "")  //check if there is a third answer => 4 players
+        {answers.Add(answer3);}
         
         int r = Random.Range(0, answers.Count);
         _answer1.text = answers[r];
@@ -242,7 +262,12 @@ public class UIManager : MonoBehaviour
         r = Random.Range(0, answers.Count);
         _answer2.text = answers[r];
         answers.Remove(answers[r]);
-        _answer3.text = answers[0];
+        if (answer3 != "")
+        {_answer3.text = answers[0];}
+        else
+        {
+            _clientAnswerInCaseThereAreFourPlayers.SetActive(false);
+        }
         
         //What to show on screen
         _clientWaitingScreen.SetActive(false);
