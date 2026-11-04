@@ -39,7 +39,7 @@ MonoBehaviour:
       x: -387
       y: 278
       width: 477
-      height: 2243
+      height: 2397
     contents:
     - model: {fileID: 8926484042661615034}
       id: 0
@@ -2672,7 +2672,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615080}
   - {fileID: 8926484042661615106}
   - {fileID: 8926484042661615197}
-  m_UIPosition: {x: -362, y: 783}
+  m_UIPosition: {x: -362, y: 665}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
