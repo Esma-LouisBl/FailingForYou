@@ -29,9 +29,12 @@ public class GameManagerNetwork : NetworkBehaviour
     private int _voteAnswerNumber;
     
     private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
-    
+    private Dictionary<int, string> _playerNames = new Dictionary<int, string>();
     private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
+    private bool _canSelectCharacter = true;
+    private bool _canSelectName = true;
+    
     #endregion
 
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
@@ -152,18 +155,26 @@ public class GameManagerNetwork : NetworkBehaviour
     [ObserversRpc]
     private void ReturnSelectedCharacter(Enums.CharacterName selectedCharacter, int playerNumber) //return to player and update its data if character is already selected
     {
-        if (myLocalPlayer.playerData.playerNumber == playerNumber)
+        if (myLocalPlayer.playerData.playerNumber == playerNumber && _canSelectCharacter)
         {
             if (selectedCharacter == Enums.CharacterName.None)
             {
-                Debug.Log(selectedCharacter + " is already selected by another player");
                 uiManager.ResetButtonCharacterSelection();
             }
             else
             {
+                _canSelectCharacter = false;
                 myLocalPlayer.playerData.character = selectedCharacter;
-                Debug.Log(selectedCharacter + " is selected");
             }
+        }
+    }
+
+    public void RegisterNameOnServer(string playerName, int sentPlayerNumber)
+    {
+        if (_canSelectName)
+        {
+            _canSelectName = false;
+            _playerNames.Add(sentPlayerNumber, playerName);
         }
     }
 

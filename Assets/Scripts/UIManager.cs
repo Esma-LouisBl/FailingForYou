@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection;
     [SerializeField] private GameObject _clientVotingArea;
         
         
@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference _return;
 
     [SerializeField] private Button _deselectionButton;
+    [SerializeField] private TMP_InputField _nameEntered;
     
     #endregion
     
@@ -118,6 +119,18 @@ public class UIManager : MonoBehaviour
     }
     
     #endregion
+
+    public void SwitchOnCharacterSelectionUI()
+    {
+        _clientConnectionUICode.SetActive(false);
+        _clientConnectionUICharacterSelection.SetActive(true);
+    }
+    
+    public void SwitchOnNameSelectionUI()
+    {
+        _clientConnectionUICharacterSelection.SetActive(false);
+        _clientConnectionUINameSelection.SetActive(true);
+    }
     
     public void ShowConnectionUI()
     {
@@ -245,6 +258,11 @@ public class UIManager : MonoBehaviour
     public void ResetButtonCharacterSelection() //Deselect every buttons by selecting another
     {
         _deselectionButton.Select();
+    }
+
+    public void SelectName()
+    {
+        
     }
     
     #endregion

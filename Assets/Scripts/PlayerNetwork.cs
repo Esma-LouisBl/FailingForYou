@@ -48,6 +48,7 @@ public class PlayerNetwork : NetworkBehaviour
         {
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
+            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI();
         }
     }
 
@@ -91,7 +92,12 @@ public class PlayerNetwork : NetworkBehaviour
     public void TrySelectCharacter(Enums.CharacterName characterName, int sentPlayerNumber)
     {
         gameManagerNetwork.CheckIfCharacterIsSelected(characterName, sentPlayerNumber);
-        Debug.Log("Selected character: " + characterName + sentPlayerNumber);
+    }
+
+    [ServerRpc]
+    public void RegisterName(string playerName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
     }
     
     #endregion

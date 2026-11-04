@@ -299,6 +299,18 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: NaN
       objectReference: {fileID: 0}
+    - target: {fileID: 7451869477358675402, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451869477358675402, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451869477358675402, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8131495646536604189, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
