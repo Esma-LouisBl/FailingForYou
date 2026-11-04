@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using FishNet.CodeGenerating;
 using FishNet.Object;
@@ -108,12 +109,42 @@ public class MiniGameManager : NetworkBehaviour
         textAnswers[playerNumber] = answer;
     }
 
+
+    #region Vote
+
     public void StartVotePhase()
     {
         collectedVotes = 0; //variable reset
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.voting);
-        // CAUTION : When Julien will initialize playerNumber, change from 1 to 4 instead of 0 to 3 !!!!!!!!!!!
-        StartVotePhaseToClient(textAnswers[0], textAnswers[1], textAnswers[2], textAnswers[3]);
+        StartVotePhaseHost();
+        // StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
+        StartCoroutine(WaitBeforeVoteOnClient());
+    }
+
+    private IEnumerator WaitBeforeVoteOnClient()
+    {
+        if (_gameManagerNetwork.players.Count < 4)
+        {
+            yield return new WaitForSeconds(7f);
+            StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
+        }
+        else
+        {
+            yield return new WaitForSeconds(9f);
+            StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
+        }
+    }
+    
+    public void StartVotePhaseHost()
+    {
+        if (_gameManagerNetwork.players.Count < 4)
+        {
+            _uiManager.ShowHostVotingPhase(false, textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
+        }
+        else
+        {
+            _uiManager.ShowHostVotingPhase(true, textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
+        }
     }
 
     [ObserversRpc]
@@ -121,16 +152,16 @@ public class MiniGameManager : NetworkBehaviour
     {
         switch (_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)
         {
-            case 0:     //PUT 1 HERE WHEN JULIEN WILL HAVE FINALLY DONE HIS JOB
+            case 1:
                 _uiManager.ShowClientVotingArea(answer4, answer2, answer3);
                 break;
-            case 1:
+            case 2:
                 _uiManager.ShowClientVotingArea(answer4, answer1, answer3);
                 break;
-            case 2:
+            case 3:
                 _uiManager.ShowClientVotingArea(answer4, answer1, answer2);
                 break;
-            case 3:
+            case 4:
                 _uiManager.ShowClientVotingArea(answer2, answer1, answer3);
                 break;
         }
@@ -179,4 +210,7 @@ public class MiniGameManager : NetworkBehaviour
             _votes[i] = 0;
         }
     }
+
+    #endregion
+    
 }

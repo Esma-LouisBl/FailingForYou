@@ -47,9 +47,9 @@ public class PlayerNetwork : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void SendPlayerTextAnswer(string answer)
+    public void SendPlayerTextAnswer(string answer, int playerNumber)
     {
-        gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerData.playerNumber);
+        gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerNumber);
     }
     private new IEnumerator StartWithDelay()
     {

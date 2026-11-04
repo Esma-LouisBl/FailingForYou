@@ -30,6 +30,20 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #endregion
 
+    public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
+    {
+        players.Add(playerToAdd);
+        _instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
+        
+        //Debug
+        // foreach (KeyValuePair<int, int> entry in _instanceIdRepertory)
+        // {
+        //     Debug.Log(entry.Key + " : " + entry.Value);
+        // }
+        
+        playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
+    }
+    
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
     {
         gamePhase = phase;
@@ -64,7 +78,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public void ConfirmTextAnswer()
     {
         string answer = _playerTextAnswer.text;
-        myLocalPlayer.SendPlayerTextAnswer(answer);
+        myLocalPlayer.SendPlayerTextAnswer(answer, myLocalPlayer.playerData.playerNumber);
     }
 
     public void ConfirmVote()
@@ -101,20 +115,6 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             miniGameManager.StartVotePhase();
         }
-    }
-
-    public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
-    {
-        players.Add(playerToAdd);
-        _instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
-        
-        //Debug
-        foreach (KeyValuePair<int, int> entry in _instanceIdRepertory)
-        {
-            Debug.Log(entry.Key + " : " + entry.Value);
-        }
-        
-        playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
     }
 
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)

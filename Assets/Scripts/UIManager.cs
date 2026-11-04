@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
+
+    [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
     [SerializeField] private GameObject _clientVotingArea;
         
          
@@ -28,7 +31,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
     [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
     
-    [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3;
+    [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
+    [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
 
     [SerializeField] private InputActionReference _return;
     
@@ -48,6 +52,9 @@ public class UIManager : MonoBehaviour
         _playerNames.Add(_player2Name);
         _playerNames.Add(_player3Name);
         _playerNames.Add(_player4Name);
+        
+        // Hide some UI we don't want to see
+        _hostTextAnswersRevelationUI.SetActive(false);
     }
 
     #region returnSystem
@@ -63,7 +70,7 @@ public class UIManager : MonoBehaviour
         switch (selectedUI)
         {
             case Enums.SelectedUI.connectionUIConnecting :
-                //not inplemented
+                //not implemented
                 break;
             case Enums.SelectedUI.connectionUICredits :
                 HideConnectionUICredits();
@@ -191,7 +198,36 @@ public class UIManager : MonoBehaviour
         _clientVotingArea.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
-    
+
+    public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
+    {//va falloir randomizer tout ça apres bg
+        _hostMainUI.SetActive(false);
+        _answerOnHost1.SetActive(false);
+        _answerOnHost2.SetActive(false);
+        _answerOnHost3.SetActive(false);
+        _answerOnHost4.SetActive(false);
+
+        _answer1Host.text = ans1;
+        _answer2Host.text = ans2;
+        _answer3Host.text = ans3;
+        _answer4Host.text = ans4;
+        
+        _hostTextAnswersRevelationUI.SetActive(true);
+        StartCoroutine(LetAnswersAppear(fourPlayers));
+    }
+
+    private IEnumerator LetAnswersAppear(bool fourPlayers)
+    {
+        yield return new WaitForSeconds(1f);
+        _answerOnHost1.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _answerOnHost2.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _answerOnHost3.SetActive(true);
+        if (!fourPlayers) yield break;
+        yield return new WaitForSeconds(2f);
+        _answerOnHost4.SetActive(true);
+    }
     public void ShowClientVotingArea(string answer1, string answer2, string answer3)
     {
         //Part to randomize the order of answers
