@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,11 +29,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
     
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP, _hostQuestionTypeTMP, _hostQuestionGenreTMP;
-    [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
-    [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
+    [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP, _hookSentence;
+    [SerializeField] private GameManagerNetwork _gameManagerNetwork;
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
     [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
+    
+    //All the tokens that represent a vote for an answer on host screen
+    [SerializeField] private List<GameObject> _answer1VoteTokens = new List<GameObject>();
+    [SerializeField] private List<GameObject> _answer2VoteTokens = new List<GameObject>();
+    [SerializeField] private List<GameObject> _answer3VoteTokens = new List<GameObject>();
+    [SerializeField] private List<GameObject> _answer4VoteTokens = new List<GameObject>();
+
 
     [SerializeField] private InputActionReference _return;
     
@@ -186,6 +194,7 @@ public class UIManager : MonoBehaviour
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
         _clientQuestionTMP.text = miniGame.question;
+        _hookSentence.text = "À vos plumes !";
         
         //assign parts depending on the mini game type
         switch (miniGame.type)  //TEXTUAL
@@ -200,7 +209,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
-    {//va falloir randomizer tout ça apres bg
+    {
         _hostMainUI.SetActive(false);
         _answerOnHost1.SetActive(false);
         _answerOnHost2.SetActive(false);
@@ -274,5 +283,59 @@ public class UIManager : MonoBehaviour
         _clientVotingArea.SetActive(true);
         _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
+    }
+
+    public void ShowHostMainUIWhilePlayersAreVoting()
+    {
+        _hookSentence.text = "Votez pour la meilleure réponse !";
+        _hostMainUI.SetActive(true);
+        _hostTextAnswersRevelationUI.SetActive(false);
+    }
+
+    public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+    {
+        _hostTextAnswersRevelationUI.SetActive(true);
+        _hostMainUI.SetActive(false);
+        
+        StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
+    }
+
+    private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+    {
+        if (answer1Votes > 0)
+        {
+            for (int i = 0; i < answer1Votes; i++)
+            {
+                _answer1VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        if (answer2Votes > 0)
+        {
+            for (int i = 0; i < answer2Votes; i++)
+            {
+                _answer2VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        if (answer3Votes > 0)
+        {
+            for (int i = 0; i < answer3Votes; i++)
+            {
+                _answer3VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        if (answer4Votes > 0)
+        {
+            for (int i = 0; i < answer4Votes; i++)
+            {
+                _answer4VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
     }
 }

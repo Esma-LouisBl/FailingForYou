@@ -24,6 +24,7 @@ public class MiniGameManager : NetworkBehaviour
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
     public SyncList<string> textAnswers = new();
+    [SerializeField]
     private List<int> _votes = new List<int>(); 
 
     public int collectedAnswers, collectedVotes;
@@ -125,14 +126,16 @@ public class MiniGameManager : NetworkBehaviour
     {
         if (_gameManagerNetwork.players.Count < 4)
         {
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(8f);
             StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
         }
         else
         {
-            yield return new WaitForSeconds(9f);
+            yield return new WaitForSeconds(10f);
             StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
         }
+
+        _uiManager.ShowHostMainUIWhilePlayersAreVoting();
     }
     
     public void StartVotePhaseHost()
@@ -183,7 +186,7 @@ public class MiniGameManager : NetworkBehaviour
     {
         int winnerPlayerNumber = 1;
         int maxVotes = 0;
-        for (int i = 0; i < _votes.Count; i++)
+        for (int i = 1; i < _votes.Count; i++)
         {
             if (_votes[i] > maxVotes)
             {
@@ -192,8 +195,9 @@ public class MiniGameManager : NetworkBehaviour
             }
         }
 
-        Debug.Log(_gameManagerNetwork.players[winnerPlayerNumber].playerData.playerName + " won the game!");
-        
+        Debug.Log(winnerPlayerNumber);
+        // Debug.Log(_gameManagerNetwork.players[winnerPlayerNumber].playerData.playerName + " won the game!");
+        _uiManager.ShowMiniGameWinner(_votes[1], _votes[2], _votes[3], _votes[4]);
         FinishVotePhase();
     }
 

@@ -197,7 +197,11 @@ PrefabInstance:
       value: TextAnswersRevelation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6846185083905805461, guid: b3daa586bb645cd41a7bad650c034898, type: 3}
+    - {fileID: 1665942122344783090, guid: b3daa586bb645cd41a7bad650c034898, type: 3}
+    - {fileID: 1704340870894123235, guid: b3daa586bb645cd41a7bad650c034898, type: 3}
+    - {fileID: 3627492566627528173, guid: b3daa586bb645cd41a7bad650c034898, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3daa586bb645cd41a7bad650c034898, type: 3}
@@ -414,11 +418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_SizeDelta.y
