@@ -8,14 +8,14 @@ public class UIManager : MonoBehaviour
 {
     #region UI
     
-    [SerializeField] private GameObject _hostUI, _clientMainUI;
+    [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection;
     [SerializeField] private GameObject _clientVotingArea;
         
-        
+         
     #endregion
 
     #region OtherSerializeFields
@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _playerCharacter1, _playerCharacter2, _playerCharacter3, _playerCharacter4;
     [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
     
-    [SerializeField] private TextMeshProUGUI _hostQuestionTMP;
+    [SerializeField] private TextMeshProUGUI _hostQuestionTMP, _hostQuestionTypeTMP, _hostQuestionGenreTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP;
     [SerializeField] private GameManagerNetwork _gameManagerNetwork;
     
@@ -181,8 +181,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
-        _hostQuestionUI.SetActive(true);
         _hostQuestionTMP.text = miniGame.question;
+        _hostQuestionTypeTMP.text = miniGame.type.ToString();
+        _hostQuestionGenreTMP.text = miniGame.genre.ToString();
+        _hostMainUI.SetActive(true);
+        _hostQuestionUI.SetActive(true);
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
