@@ -58,7 +58,6 @@ public class PlayerNetwork : NetworkBehaviour
         if (IsOwner)
         {
             _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
-            Debug.Log("My instance id : " + _instanceId);
             RegisterPlayerOnServer(_instanceId);
         }
     }

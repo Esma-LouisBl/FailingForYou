@@ -165,6 +165,7 @@ public class GameManagerNetwork : NetworkBehaviour
             {
                 _canSelectCharacter = false;
                 myLocalPlayer.playerData.character = selectedCharacter;
+                uiManager.SwitchOnNameSelectionUI();
             }
         }
     }

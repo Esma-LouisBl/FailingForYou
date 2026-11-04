@@ -265,7 +265,8 @@ public class UIManager : MonoBehaviour
 
     public void SelectName()
     {
-        
+        _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+        _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
     }
     
     #endregion
