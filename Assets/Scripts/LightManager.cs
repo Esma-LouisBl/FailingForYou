@@ -7,6 +7,8 @@ public class LightManager : MonoBehaviour
     public Light atticDirectionalLight;
     public Light keyDirectionalLight;
     public Material materialShader;
+    public Light spotReveal;
+    public Light spotTV;
  
 
     [Header("Morning")]
@@ -16,6 +18,9 @@ public class LightManager : MonoBehaviour
 
     public float atticMorningIntensity;
     public float keyMorningIntensity;
+    public float spotMorningIntensity;
+
+    public Color spotColorMorning;
  
 
 
@@ -26,6 +31,7 @@ public class LightManager : MonoBehaviour
 
     public float atticAfternoonIntensity;
     public float keyAfternoonIntensity;
+    public float spotAfternoonIntensity;
  
 
     [Header("Night")]
@@ -82,6 +88,8 @@ public class LightManager : MonoBehaviour
         keyDirectionalLight.intensity = keyMorningIntensity;
 
         atticDirectionalLight.transform.eulerAngles = directionDirectionalMorning;
+
+        materialShader.SetColor("_ColorSpot", spotColorMorning);
     }
     public void AfternoonSet()
     {

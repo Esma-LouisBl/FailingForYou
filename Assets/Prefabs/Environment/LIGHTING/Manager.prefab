@@ -46,22 +46,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LightManager
   atticDirectionalLight: {fileID: 0}
   keyDirectionalLight: {fileID: 0}
-  materialShader: {fileID: 0}
+  materialShader: {fileID: 2100000, guid: b42a07d4f59cca740bddacf6892a8020, type: 2}
+  spotReveal: {fileID: 0}
+  spotTV: {fileID: 0}
   directionDirectionalMorning: {x: 150, y: -30, z: 0}
   atticMorningColorLight: {r: 0.9528302, g: 0.6516999, b: 0.6516999, a: 0}
   keyMorningColorLight: {r: 0.29532543, g: 0.2783019, b: 1, a: 0}
   atticMorningIntensity: 1
   keyMorningIntensity: 1
+  spotMorningIntensity: 0
+  spotColorMorning: {r: 0, g: 0, b: 0, a: 0}
   directionDirectionalAfternoon: {x: 150, y: 0, z: 0}
   atticAfternoonColorLight: {r: 1, g: 0.8266049, b: 0.23113209, a: 0}
   keyAfternoonColorLight: {r: 1, g: 0.3726415, b: 0.3726415, a: 0}
   atticAfternoonIntensity: 1
   keyAfternoonIntensity: 0.5
+  spotAfternoonIntensity: 0
   directionDirectionalNight: {x: 150, y: 30, z: 0}
   atticNightColorLight: {r: 1, g: 0.3254717, b: 0.4788815, a: 0}
   keyNightColorLight: {r: 0.4219918, g: 0.8207547, b: 0.61789477, a: 0}
   atticNightIntensity: 1.2
-  keyNightIntensity: 0.3
+  keyNightIntensity: 0.5
   atticMorningRomantic: {r: 1, g: 0.8770348, b: 0.3726415, a: 0}
   keyMorningRomantic: {r: 1, g: 0.27058828, b: 0.7030508, a: 0}
   atticMorningRomanticIntensity: 1

@@ -37,11 +37,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _SampleTexture2D_401529675aad49fa8ab7a11b2cfa1c7f_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 39190f2e489f29b40b26086948c773b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b76ae6569ac8c2643999991127dbf79c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_f2d240aa89de46269f853221740b915c_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 39190f2e489f29b40b26086948c773b2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b76ae6569ac8c2643999991127dbf79c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -58,12 +58,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0
-    - _Edge: 3
-    - _Speed: 0
+    - _Alpha: 1
+    - _Edge: 1
+    - _Speed: 0.1
+    - _power: 0
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _ColorSpot: {r: 0.9777551, g: 1, b: 0.25943398, a: 1}
+    - _ColorSpot: {r: 1, g: 0.89698094, b: 0.2028302, a: 1}
+    - _Power: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

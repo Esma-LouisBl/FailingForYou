@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmbianceManager
   ambiance: {fileID: 0}
-  changeTps: 2
+  changeTps: 1.5
