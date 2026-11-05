@@ -47,6 +47,8 @@ public class UIManager : MonoBehaviour
     #endregion
     
     public Enums.SelectedUI selectedUI;
+
+    private List<int> _randomOrderOfAnswersOnScreen;
     
     private void Start()
     {
@@ -217,7 +219,8 @@ public class UIManager : MonoBehaviour
         _answerOnHost4.SetActive(false);
         
         //Part to randomize the order of answers
-        List<string> answers = new List<string>();
+        List<string> answers = new List<string>(); //List of the answers ordered by player
+        answers.Add("");
         answers.Add(ans1);
         answers.Add(ans2);
         answers.Add(ans3);
@@ -225,20 +228,42 @@ public class UIManager : MonoBehaviour
         {
             answers.Add(ans4);
         }
-        
-        int r = Random.Range(0, answers.Count);
-        _answer1Host.text = answers[r];
-        answers.Remove(answers[r]);
-        r = Random.Range(0, answers.Count);
-        _answer2Host.text = answers[r];
-        answers.Remove(answers[r]);
-        r = Random.Range(0, answers.Count);
-        _answer3Host.text = answers[r];
-        answers.Remove(answers[r]);
+        else
+        {
+            answers.Add("");
+        }
+
+        for (int i = 0; i < 4; i++)
+        {
+            _randomOrderOfAnswersOnScreen.Add(0);   //List to see at which player belongs the answers in the order they are displayed on host screen
+        }
+
+        List<int> answerToAssign = new List<int>(); //Temporary list that repertories the answers which hasn't yet been assigned randomly
+        answerToAssign.Add(1);
+        answerToAssign.Add(2);
+        answerToAssign.Add(3);
         if (fourPlayers)
         {
-            _answer4Host.text = answers[0];
+            answerToAssign.Add(4);
         }
+        for (int i = 1; i < _randomOrderOfAnswersOnScreen.Count; i++)
+        {
+            int r = Random.Range(0, answerToAssign.Count);
+            _randomOrderOfAnswersOnScreen[i] = answerToAssign[r];
+            answerToAssign.RemoveAt(r);
+        }
+
+        _answer1Host.text = answers[_randomOrderOfAnswersOnScreen[1]];
+        _answer2Host.text = answers[_randomOrderOfAnswersOnScreen[2]];
+        _answer3Host.text = answers[_randomOrderOfAnswersOnScreen[3]];
+        if (fourPlayers)
+        {
+            _answer4Host.text = answers[_randomOrderOfAnswersOnScreen[4]];
+        }
+
+        Debug.Log(_randomOrderOfAnswersOnScreen[1] + " a la réponse en haut à gauche");
+        Debug.Log(_randomOrderOfAnswersOnScreen[2] + " a la réponse en haut à droite");
+        Debug.Log(_randomOrderOfAnswersOnScreen[3] + " a la réponse en bas à gauche");
         
         _hostTextAnswersRevelationUI.SetActive(true);
         StartCoroutine(LetAnswersAppear(fourPlayers));
@@ -302,40 +327,51 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
     {
-        if (answer1Votes > 0)
+        List<int> votes = new List<int>();
+        votes.Add(0);
+        votes.Add(answer1Votes);
+        votes.Add(answer2Votes);
+        votes.Add(answer3Votes);
+        votes.Add(answer4Votes);
+
+        if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
         {
-            for (int i = 0; i < answer1Votes; i++)
+            Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
             {
                 _answer1VoteTokens[i].SetActive(true);
                 yield return new WaitForSeconds(1f);
             }
         }
-
-        if (answer2Votes > 0)
+        if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
         {
-            for (int i = 0; i < answer2Votes; i++)
+            Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
             {
                 _answer2VoteTokens[i].SetActive(true);
                 yield return new WaitForSeconds(1f);
             }
         }
-
-        if (answer3Votes > 0)
+        if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
         {
-            for (int i = 0; i < answer3Votes; i++)
+            Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
             {
                 _answer3VoteTokens[i].SetActive(true);
                 yield return new WaitForSeconds(1f);
             }
         }
-
-        if (answer4Votes > 0)
+        if (_randomOrderOfAnswersOnScreen.Count>4)
         {
-            for (int i = 0; i < answer4Votes; i++)
+            if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
             {
-                _answer4VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
+                Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
+                for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
+                {
+                    _answer4VoteTokens[i].SetActive(true);
+                    yield return new WaitForSeconds(1f);
+                }
+            }   
         }
     }
 }

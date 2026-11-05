@@ -187,7 +187,6 @@ public class MiniGameManager : NetworkBehaviour
         //     }
         // }
         votes[answerVoted]++;
-        Debug.Log("nombre de votes pour"+answerVoted+" : "+ votes[answerVoted]);
     }
 
     public void MiniGameWinnerElection()
@@ -218,7 +217,6 @@ public class MiniGameManager : NetworkBehaviour
             }
         }
 
-        Debug.Log(winnerPlayerNumber);
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         FinishVotePhase();
     }
