@@ -25,7 +25,8 @@ public class MiniGameManager : NetworkBehaviour
     [AllowMutableSyncType]
     public SyncList<string> textAnswers = new();
     [SerializeField]
-    private List<int> _votes = new List<int>(); 
+    // private List<int> _votes = new List<int>(); 
+    public Dictionary<string, int> votes = new Dictionary<string, int>();
 
     public int collectedAnswers, collectedVotes;
     
@@ -50,11 +51,11 @@ public class MiniGameManager : NetworkBehaviour
             textAnswers.Add("");
         }
 
-        _votes.Capacity = 5;
-        for (int i = 0; i < 5; i++)
-        {
-            _votes.Add(0);
-        }
+        // _votes.Capacity = 5;
+        // for (int i = 0; i < 5; i++)
+        // {
+        //     _votes.Add(0);
+        // }
     }
 
     public void SendGamePhaseToGameManagerNetwork(Enums.GamePhase phase)
@@ -116,10 +117,15 @@ public class MiniGameManager : NetworkBehaviour
     public void StartVotePhase()
     {
         collectedVotes = 0; //variable reset
+        votes.Clear();
+        for (int i = 1; i < textAnswers.Count; i++)
+        {
+            votes.Add(textAnswers[i], 0);
+        }
+        
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.voting);
         StartVotePhaseHost();
-        // StartVotePhaseToClient(textAnswers[1], textAnswers[2], textAnswers[3], textAnswers[4]);
-        StartCoroutine(WaitBeforeVoteOnClient());
+        StartCoroutine(WaitBeforeVoteOnClient()); 
     }
 
     private IEnumerator WaitBeforeVoteOnClient()
@@ -173,31 +179,47 @@ public class MiniGameManager : NetworkBehaviour
     public void CollectTextVotes(string answerVoted, int playerNumber)
     {
         collectedVotes++;
-        for (int i = 0; i < textAnswers.Count; i++)
-        {
-            if (textAnswers[i] == answerVoted)
-            {
-                _votes[i]++;
-            }
-        }
+        // for (int i = 0; i < textAnswers.Count; i++)
+        // {
+        //     if (textAnswers[i] == answerVoted)
+        //     {
+        //         _votes[i]++;
+        //     }
+        // }
+        votes[answerVoted]++;
+        Debug.Log("nombre de votes pour"+answerVoted+" : "+ votes[answerVoted]);
     }
 
     public void MiniGameWinnerElection()
     {
         int winnerPlayerNumber = 1;
         int maxVotes = 0;
-        for (int i = 1; i < _votes.Count; i++)
+        List<int> votesOrdered = new List<int>();
+        for (int i = 0; i < 5; i++) //list initialization
         {
-            if (_votes[i] > maxVotes)
+            votesOrdered.Add(0);
+        }
+
+        //this for loop order all the votes like textAnswers (so 1 is for player1 etc.)
+        for (int i = 0; i < textAnswers.Count; i++)
+        {
+            if (votes.ContainsKey(textAnswers[i]))
             {
-                maxVotes = _votes[i];
+                votesOrdered[i] = votes[textAnswers[i]];
+            }
+        }
+
+        for (int i = 0; i < votesOrdered.Count; i++)
+        {
+            if (votesOrdered[i] > maxVotes)
+            {
+                maxVotes = votesOrdered[i];
                 winnerPlayerNumber = i;
             }
         }
 
         Debug.Log(winnerPlayerNumber);
-        // Debug.Log(_gameManagerNetwork.players[winnerPlayerNumber].playerData.playerName + " won the game!");
-        _uiManager.ShowMiniGameWinner(_votes[1], _votes[2], _votes[3], _votes[4]);
+        _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         FinishVotePhase();
     }
 
@@ -209,10 +231,11 @@ public class MiniGameManager : NetworkBehaviour
             textAnswers[i] = "";
         }
 
-        for (int i = 0; i < 5; i++)
-        {
-            _votes[i] = 0;
-        }
+        // for (int i = 0; i < 5; i++)
+        // {
+        //     _votes[i] = 0;
+        // }
+        votes.Clear();
     }
 
     #endregion
