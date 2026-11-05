@@ -40,6 +40,9 @@ public class UIManager : MonoBehaviour
     
     public Enums.SelectedUI selectedUI;
     
+    private string _selectedCharacterName;
+    private bool _canSelectName = true; //false when player selected its name (local)
+    
     private void Start()
     {
         // setting lists of players and their names
@@ -233,9 +236,14 @@ public class UIManager : MonoBehaviour
 
     #region CharacterSelection
 
-    public void OnSelectCharacter(string characterName)
+    public void SetSelectedCharacter(string characterName)
     {
-        switch (characterName)
+        _selectedCharacterName =  characterName;
+    }
+
+    public void OnSelectCharacter()
+    {
+        switch (_selectedCharacterName)
         {
             case "Boubou" :
                 _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Boubou, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
@@ -265,8 +273,12 @@ public class UIManager : MonoBehaviour
 
     public void SelectName()
     {
-        _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-        _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
+        if (_nameEntered.text != "" && _canSelectName)
+        {
+            _canSelectName = false;
+            _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+            _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
+        }
     }
     
     #endregion

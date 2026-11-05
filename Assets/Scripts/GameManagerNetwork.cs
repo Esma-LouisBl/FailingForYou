@@ -33,7 +33,6 @@ public class GameManagerNetwork : NetworkBehaviour
     private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
-    private bool _canSelectName = true; //false when player selected its name (local)
     
     #endregion
 
@@ -172,11 +171,7 @@ public class GameManagerNetwork : NetworkBehaviour
 
     public void RegisterNameOnServer(string playerName, int sentPlayerNumber)
     {
-        if (_canSelectName)
-        {
-            _canSelectName = false;
-            _playerNames.Add(sentPlayerNumber, playerName);
-        }
+        _playerNames.Add(sentPlayerNumber, playerName);
     }
 
     #endregion
