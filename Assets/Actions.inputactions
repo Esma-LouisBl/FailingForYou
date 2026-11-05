@@ -3,47 +3,7 @@
     "name": "Actions",
     "maps": [
         {
-            "name": "Debug",
-            "id": "e8ab9dcb-f373-440f-a79b-7d7aa0785e4c",
-            "actions": [],
-            "bindings": []
-        },
-        {
-            "name": "Host",
-            "id": "c4366bd8-08cb-4aa8-a58e-3416a87b14f2",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "0d84318d-4148-4ac9-bf5a-fedd2ff14953",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0e4351e9-f347-486e-a7b5-9ebea6fe9b8c",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Players",
-            "id": "bda0602a-62c4-4724-8bba-f2af6f16786a",
-            "actions": [],
-            "bindings": []
-        },
-        {
-            "name": "UI",
+            "name": "MainActionMap",
             "id": "c4c4b63b-e475-4188-8026-3e8e34d73fd5",
             "actions": [
                 {
@@ -68,6 +28,24 @@
                     "name": "TouchScreen",
                     "type": "Button",
                     "id": "4633e271-3090-473a-b048-2b080f2b5d9f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShowDebugWindow",
+                    "type": "Button",
+                    "id": "68b8a62a-03a6-49c0-9ed5-ea5668575e7c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DebugButton",
+                    "type": "Button",
+                    "id": "0212ffac-8a4a-4008-8749-ba5711f00cc1",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -105,6 +83,28 @@
                     "processors": "",
                     "groups": ";Keyboard/Mouse",
                     "action": "TouchScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0986e343-ccf7-433a-be8d-32a4b5a59904",
+                    "path": "<Keyboard>/numpadMultiply",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "ShowDebugWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8847eddb-c26f-4c04-9cbc-1469effb3b48",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "DebugButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5346678565192824011}
   - component: {fileID: 7409393059945295673}
-  - component: {fileID: 7320127001023541445}
+  - component: {fileID: 8634820792901938244}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -90,7 +90,7 @@ MonoBehaviour:
   _deselectionButton: {fileID: 0}
   _nameEntered: {fileID: 0}
   selectedUI: 0
---- !u!114 &7320127001023541445
+--- !u!114 &8634820792901938244
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,6 +117,6 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard/Mouse
-  m_DefaultActionMap: UI
+  m_DefaultActionMap: c4c4b63b-e475-4188-8026-3e8e34d73fd5
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
