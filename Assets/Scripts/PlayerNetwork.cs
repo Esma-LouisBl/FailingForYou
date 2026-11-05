@@ -26,7 +26,6 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Start()
     {
-
         StartCoroutine(StartWithDelay());
 
         GetGameManagerNetworkLocally();
@@ -43,6 +42,8 @@ public class PlayerNetwork : NetworkBehaviour
         {
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
+            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI();
+            gameManagerNetwork.uiManager.selectedUI = Enums.SelectedUI.clientConnectionUICode;
         }
     }
 
@@ -57,7 +58,6 @@ public class PlayerNetwork : NetworkBehaviour
         if (IsOwner)
         {
             _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
-            Debug.Log("My instance id : " + _instanceId);
             RegisterPlayerOnServer(_instanceId);
         }
     }
@@ -65,7 +65,6 @@ public class PlayerNetwork : NetworkBehaviour
     [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
-        Debug.Log("Registering player");
         gameManagerNetwork.AddPlayer(this, instanceToSend);
     }
 
@@ -80,4 +79,20 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
+    
+    #region CharacterSelection
+
+    [ServerRpc]
+    public void TrySelectCharacter(Enums.CharacterName characterName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.CheckIfCharacterIsSelected(characterName, sentPlayerNumber);
+    }
+
+    [ServerRpc]
+    public void RegisterName(string playerName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
+    }
+    
+    #endregion
 }

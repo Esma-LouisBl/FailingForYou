@@ -89,6 +89,7 @@ public class ServerManager : MonoBehaviour
     {
         _miniGameManager.SetActive(true); //MGmanager is set on false by default
         _gameManagerNetwork.SetActive(true); //same
+        _gameManagerNetwork.GetComponent<GameManagerNetwork>().uiManager.selectedUI = Enums.SelectedUI.hostConnectionUIWelcome;
         
         ///////temporary
         _serverCanvas.SetActive(false);
@@ -118,6 +119,7 @@ public class ServerManager : MonoBehaviour
     //Try to connect as a client
     public void CreateClient()
     {
+        _gameManagerNetwork.GetComponent<GameManagerNetwork>().uiManager.selectedUI = Enums.SelectedUI.clientConnectionUIWelcome;
         if (_writtenAdress.text != "")
         {
             _networkManager.ClientManager.StartConnection(_writtenAdress.text);

@@ -7,13 +7,13 @@ public class CharacterManager : MonoBehaviour
 
     #region Dictionaries
 
-    private Dictionary<string, int> _characterNames = new Dictionary<string, int>();
+    private Dictionary<Enums.CharacterName, int> _characterNames = new Dictionary<Enums.CharacterName, int>();
     private Dictionary<int, Sprite> _characterSprites = new Dictionary<int, Sprite>();
     private Dictionary<int, CharacterBehaviour> _characterBehaviours = new Dictionary<int, CharacterBehaviour>();
 
     #endregion
 
-    public void UpdatePlayerSprite(string characterName, int playerIndex) //Update PlayerSprites on Desktop according to their character
+    public void UpdatePlayerSprite(Enums.CharacterName characterName, int playerIndex) //Update PlayerSprites on Desktop according to their character
     {
         _gameManagerNetwork.players[playerIndex].GetComponent<SpriteRenderer>().sprite = _characterSprites[_characterNames[characterName]];
     }
@@ -22,7 +22,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlayIdle();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.character]].PlayIdle();
         }
     }
     
@@ -30,7 +30,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlaySurprised();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.character]].PlaySurprised();
         }
     }
     
@@ -38,7 +38,7 @@ public class CharacterManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
-            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.characterName]].PlayHappy();
+            _characterBehaviours[_characterNames[_gameManagerNetwork.players[i].playerData.character]].PlayHappy();
         }
     }
 }

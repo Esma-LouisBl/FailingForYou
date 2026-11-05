@@ -3,13 +3,40 @@
     "name": "Actions",
     "maps": [
         {
-            "name": "Debug",
-            "id": "e8ab9dcb-f373-440f-a79b-7d7aa0785e4c",
+            "name": "MainActionMap",
+            "id": "c4c4b63b-e475-4188-8026-3e8e34d73fd5",
             "actions": [
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "fb1e5edf-8c96-497e-9770-156e22e9cc21",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "ce4e68ac-2025-495a-9abb-c783e16ab313",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TouchScreen",
+                    "type": "Button",
+                    "id": "4633e271-3090-473a-b048-2b080f2b5d9f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "ShowDebugWindow",
                     "type": "Button",
-                    "id": "c80f5191-f093-4792-a87f-b5c59ac3fae4",
+                    "id": "68b8a62a-03a6-49c0-9ed5-ea5668575e7c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,102 +45,7 @@
                 {
                     "name": "DebugButton",
                     "type": "Button",
-                    "id": "091ab813-1e8c-446a-9867-5266e6ee0e29",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "c77fc602-b018-474b-9790-020b830bb49e",
-                    "path": "<Keyboard>/numpadMultiply",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard/Mouse",
-                    "action": "ShowDebugWindow",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "24f871cc-ddc8-432d-a706-16f5c265b7e6",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard/Mouse",
-                    "action": "DebugButton",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Host",
-            "id": "c4366bd8-08cb-4aa8-a58e-3416a87b14f2",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "0d84318d-4148-4ac9-bf5a-fedd2ff14953",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0e4351e9-f347-486e-a7b5-9ebea6fe9b8c",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Players",
-            "id": "bda0602a-62c4-4724-8bba-f2af6f16786a",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "1cfd7412-b158-4009-92a7-e36abf9ae9e8",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "301014a7-da5e-4707-acf4-d3d167e4b2ab",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "UI",
-            "id": "c4c4b63b-e475-4188-8026-3e8e34d73fd5",
-            "actions": [
-                {
-                    "name": "Return",
-                    "type": "Button",
-                    "id": "fb1e5edf-8c96-497e-9770-156e22e9cc21",
+                    "id": "0212ffac-8a4a-4008-8749-ba5711f00cc1",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -129,6 +61,50 @@
                     "processors": "",
                     "groups": ";Keyboard/Mouse",
                     "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5a1c52c-9f0f-4b16-82c6-960ea47faa82",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ad1cb4c-b1e2-43ad-ac99-37cb2fe639c7",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "TouchScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0986e343-ccf7-433a-be8d-32a4b5a59904",
+                    "path": "<Keyboard>/numpadMultiply",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "ShowDebugWindow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8847eddb-c26f-4c04-9cbc-1469effb3b48",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard/Mouse",
+                    "action": "DebugButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

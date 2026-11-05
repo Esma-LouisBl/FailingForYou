@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,12 +14,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
-
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
-        
-         
+
+
     #endregion
 
     #region OtherSerializeFields
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP, _hostQuestionTypeTMP, _hostQuestionGenreTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP, _hookSentence;
-    [SerializeField] private GameManagerNetwork _gameManagerNetwork;
+    [SerializeField]  private GameManagerNetwork _gameManagerNetwork;
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
     [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
@@ -43,13 +43,20 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private InputActionReference _return;
+    [SerializeField] private InputActionReference _space;
+    [SerializeField] private InputActionReference _touchScreen;
+
+    [SerializeField] private Button _deselectionButton;
+    [SerializeField] private TMP_InputField _nameEntered;
     
     #endregion
     
     public Enums.SelectedUI selectedUI;
+    private string _selectedCharacterName;
+    private bool _canSelectName = true; //false when player selected its name (local)
 
     private List<int> _randomOrderOfAnswersOnScreen;
-    
+
     private void Start()
     {
         // setting lists of players and their names
@@ -67,71 +74,125 @@ public class UIManager : MonoBehaviour
         _hostTextAnswersRevelationUI.SetActive(false);
     }
 
-    #region returnSystem
+    #region inputSystem
     
     private void OnEnable()
     {
         _return.action.started += Return;
+        _space.action.started += Space;
+        _touchScreen.action.started += TouchScreen;
     }
-
-    private void Return(InputAction.CallbackContext obj)
+    
+    private void OnDisable()
     {
-        Debug.Log("Return");
+        _return.action.started -= Return;
+        _space.action.started -= Space;
+        _touchScreen.action.started -= TouchScreen;
+    }
+    
+    private void Space(InputAction.CallbackContext obj)
+    {
         switch (selectedUI)
         {
-            case Enums.SelectedUI.connectionUIConnecting :
-                //not implemented
+            case Enums.SelectedUI.hostConnectionUIWelcome :
+                HideHostConnectionUIWelcome();
+                ShowHostConnectionUIMenu();
                 break;
-            case Enums.SelectedUI.connectionUICredits :
-                HideConnectionUICredits();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIMenu :
-                HideConnectionUIMenu();
-                ShowConnectionUIWelcome();
-                break;
-            case Enums.SelectedUI.connectionUIOptions :
-                HideConnectionUIOptions();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIWelcome :
+            case Enums.SelectedUI.clientConnectionUIWelcome :
+                SwitchOnCodeUI();
                 break;
         }
     }
 
-    private void OnDisable()
+    private void TouchScreen(InputAction.CallbackContext obj)
     {
-        _return.action.started -= Return;
+        switch (selectedUI)
+        {
+            case Enums.SelectedUI.clientConnectionUIWelcome :
+                SwitchOnCodeUI();
+                break;
+        }
     }
 
-    private void HideConnectionUICredits()
+    private void Return(InputAction.CallbackContext obj)
+    {
+        switch (selectedUI)
+        {
+            case Enums.SelectedUI.hostConnectionUIConnecting :
+                //not implemented
+                break;
+            case Enums.SelectedUI.hostConnectionUICredits :
+                HideHostConnectionUICredits();
+                ShowHostConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.hostConnectionUIMenu :
+                HideHostConnectionUIMenu();
+                ShowHostConnectionUIWelcome();
+                break;
+            case Enums.SelectedUI.hostConnectionUIOptions :
+                HideHostConnectionUIOptions();
+                ShowHostConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.hostConnectionUIWelcome :
+                break;
+        }
+    }
+
+    #region returnSystem
+
+    private void HideHostConnectionUICredits()
     {
         _hostConnectionUICredits.SetActive(false);
     }
+    
+    private void HideHostConnectionUIWelcome()
+    {
+        _hostConnectionUIWelcome.SetActive(false);
+    }
 
-    private void HideConnectionUIMenu()
+    private void HideHostConnectionUIMenu()
     {
         _hostConnectionUIMenu.SetActive(false);
     }
 
-    private void HideConnectionUIOptions()
+    private void HideHostConnectionUIOptions()
     {
         _hostConnectionUIOptions.SetActive(false);
     }
     
-    private void ShowConnectionUIMenu()
+    private void ShowHostConnectionUIMenu()
     {
-        selectedUI = Enums.SelectedUI.connectionUIMenu;
+        selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
         _hostConnectionUIMenu.SetActive(true);
     }
     
-    private void ShowConnectionUIWelcome()
+    private void ShowHostConnectionUIWelcome()
     {
-        selectedUI = Enums.SelectedUI.connectionUIWelcome;
+        selectedUI = Enums.SelectedUI.hostConnectionUIWelcome;
         _hostConnectionUIWelcome.SetActive(true);
     }
+
+    #endregion
     
     #endregion
+
+    public void SwitchOnCharacterSelectionUI()
+    {
+        _clientConnectionUICode.SetActive(false);
+        _clientConnectionUICharacterSelection.SetActive(true);
+    }
+
+    private void SwitchOnCodeUI()
+    {
+        _clientConnectionWelcome.SetActive(false);
+        _clientConnectionUICode.SetActive(true);
+    }
+    
+    public void SwitchOnNameSelectionUI()
+    {
+        _clientConnectionUICharacterSelection.SetActive(false);
+        _clientConnectionUINameSelection.SetActive(true);
+    }
     
     public void ShowConnectionUI()
     {
@@ -156,9 +217,9 @@ public class UIManager : MonoBehaviour
                 {
                     _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
                 }
-                if (_gameManagerNetwork.players[i].playerData.characterName != "")
+                if (_gameManagerNetwork.players[i].playerData.character != Enums.CharacterName.None)
                 {
-                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.characterName, i);
+                    _gameManagerNetwork.characterManager.UpdatePlayerSprite(_gameManagerNetwork.players[i].playerData.character, i);
                 }
             }
         }
@@ -310,6 +371,55 @@ public class UIManager : MonoBehaviour
         _clientQuestionUI.SetActive(true);
     }
 
+    #region CharacterSelection
+
+    public void SetSelectedCharacter(string characterName)
+    {
+        _selectedCharacterName =  characterName;
+    }
+
+    public void OnSelectCharacter()
+    {
+        switch (_selectedCharacterName)
+        {
+            case "Boubou" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Boubou, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Bog" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Bog, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kouc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kouc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pacc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pacc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pito" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kamé" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+        }
+    }
+
+    public void ResetButtonCharacterSelection() //Deselect every buttons by selecting another
+    {
+        _deselectionButton.Select();
+    }
+
+    public void SelectName()
+    {
+        if (_nameEntered.text != "" && _canSelectName)
+        {
+            _canSelectName = false;
+            _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+            _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
+        }
+    }
+    
+    #endregion
+    
     public void ShowHostMainUIWhilePlayersAreVoting()
     {
         _hookSentence.text = "Votez pour la meilleure réponse !";
@@ -317,61 +427,61 @@ public class UIManager : MonoBehaviour
         _hostTextAnswersRevelationUI.SetActive(false);
     }
 
-    public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-    {
-        _hostTextAnswersRevelationUI.SetActive(true);
-        _hostMainUI.SetActive(false);
-        
-        StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
-    }
+public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+{
+    _hostTextAnswersRevelationUI.SetActive(true);
+    _hostMainUI.SetActive(false);
 
-    private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-    {
-        List<int> votes = new List<int>();
-        votes.Add(0);
-        votes.Add(answer1Votes);
-        votes.Add(answer2Votes);
-        votes.Add(answer3Votes);
-        votes.Add(answer4Votes);
+    StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
+}
 
-        if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
+private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+{
+    List<int> votes = new List<int>();
+    votes.Add(0);
+    votes.Add(answer1Votes);
+    votes.Add(answer2Votes);
+    votes.Add(answer3Votes);
+    votes.Add(answer4Votes);
+
+    if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
+    {
+        Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
+        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
         {
-            Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
-            {
-                _answer1VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
-        {
-            Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
-            {
-                _answer2VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
-        {
-            Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
-            {
-                _answer3VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (_randomOrderOfAnswersOnScreen.Count>4)
-        {
-            if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
-            {
-                Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
-                for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
-                {
-                    _answer4VoteTokens[i].SetActive(true);
-                    yield return new WaitForSeconds(1f);
-                }
-            }   
+            _answer1VoteTokens[i].SetActive(true);
+            yield return new WaitForSeconds(1f);
         }
     }
+    if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
+    {
+        Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
+        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
+        {
+            _answer2VoteTokens[i].SetActive(true);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
+    {
+        Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
+        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
+        {
+            _answer3VoteTokens[i].SetActive(true);
+            yield return new WaitForSeconds(1f);
+                    }
+    }
+    if (_randomOrderOfAnswersOnScreen.Count > 4)
+    {
+        if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
+        {
+            Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
+{
+                _answer4VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+    }
+}
 }
