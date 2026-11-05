@@ -43,6 +43,7 @@ public class PlayerNetwork : NetworkBehaviour
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
             gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI();
+            gameManagerNetwork.uiManager.selectedUI = Enums.SelectedUI.clientConnectionUICode;
         }
     }
 

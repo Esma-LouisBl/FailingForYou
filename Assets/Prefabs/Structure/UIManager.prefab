@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5346678565192824011}
   - component: {fileID: 7409393059945295673}
-  - component: {fileID: 289504838234807585}
+  - component: {fileID: 7320127001023541445}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   _hostUI: {fileID: 0}
   _clientMainUI: {fileID: 0}
+  _hostMainUI: {fileID: 0}
   _hostConnectionUI: {fileID: 0}
   _clientConnectionUI: {fileID: 0}
   _hostConnectionUIWelcome: {fileID: 0}
@@ -58,6 +59,10 @@ MonoBehaviour:
   _clientQuestionTextualUI: {fileID: 0}
   _clientConfirmationFooter: {fileID: 0}
   _clientWaitingScreen: {fileID: 0}
+  _clientConnectionUICode: {fileID: 0}
+  _clientConnectionUICharacterSelection: {fileID: 0}
+  _clientConnectionUINameSelection: {fileID: 0}
+  _clientConnectionWelcome: {fileID: 0}
   _clientVotingArea: {fileID: 0}
   _players: []
   _playerNames: []
@@ -70,6 +75,8 @@ MonoBehaviour:
   _player3Name: {fileID: 0}
   _player4Name: {fileID: 0}
   _hostQuestionTMP: {fileID: 0}
+  _hostQuestionTypeTMP: {fileID: 0}
+  _hostQuestionGenreTMP: {fileID: 0}
   _clientQuestionTMP: {fileID: 0}
   _clientQuestionTypeTMP: {fileID: 0}
   _clientQuestionGenreTMP: {fileID: 0}
@@ -78,8 +85,12 @@ MonoBehaviour:
   _answer2: {fileID: 0}
   _answer3: {fileID: 0}
   _return: {fileID: 3582032698785578260, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+  _space: {fileID: 6059057376064902435, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+  _touchScreen: {fileID: -2891421456843425003, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+  _deselectionButton: {fileID: 0}
+  _nameEntered: {fileID: 0}
   selectedUI: 0
---- !u!114 &289504838234807585
+--- !u!114 &7320127001023541445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

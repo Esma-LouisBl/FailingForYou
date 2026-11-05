@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
     [SerializeField] private GameObject _hostQuestionUI;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea;
         
          
@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3;
 
     [SerializeField] private InputActionReference _return;
+    [SerializeField] private InputActionReference _space;
+    [SerializeField] private InputActionReference _touchScreen;
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
@@ -57,69 +59,105 @@ public class UIManager : MonoBehaviour
         _playerNames.Add(_player4Name);
     }
 
-    #region returnSystem
+    #region inputSystem
     
     private void OnEnable()
     {
         _return.action.started += Return;
+        _space.action.started += Space;
+        _touchScreen.action.started += TouchScreen;
     }
-
-    private void Return(InputAction.CallbackContext obj)
+    
+    private void OnDisable()
     {
-        Debug.Log("Return");
+        _return.action.started -= Return;
+        _space.action.started -= Space;
+        _touchScreen.action.started -= TouchScreen;
+    }
+    
+    private void Space(InputAction.CallbackContext obj)
+    {
         switch (selectedUI)
         {
-            case Enums.SelectedUI.connectionUIConnecting :
-                //not inplemented
+            case Enums.SelectedUI.hostConnectionUIWelcome :
+                HideHostConnectionUIWelcome();
+                ShowHostConnectionUIMenu();
                 break;
-            case Enums.SelectedUI.connectionUICredits :
-                HideConnectionUICredits();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIMenu :
-                HideConnectionUIMenu();
-                ShowConnectionUIWelcome();
-                break;
-            case Enums.SelectedUI.connectionUIOptions :
-                HideConnectionUIOptions();
-                ShowConnectionUIMenu();
-                break;
-            case Enums.SelectedUI.connectionUIWelcome :
+            case Enums.SelectedUI.clientConnectionUIWelcome :
+                SwitchOnCodeUI();
                 break;
         }
     }
 
-    private void OnDisable()
+    private void TouchScreen(InputAction.CallbackContext obj)
     {
-        _return.action.started -= Return;
+        switch (selectedUI)
+        {
+            case Enums.SelectedUI.clientConnectionUIWelcome :
+                SwitchOnCodeUI();
+                break;
+        }
     }
 
-    private void HideConnectionUICredits()
+    private void Return(InputAction.CallbackContext obj)
+    {
+        switch (selectedUI)
+        {
+            case Enums.SelectedUI.hostConnectionUIConnecting :
+                //not inplemented
+                break;
+            case Enums.SelectedUI.hostConnectionUICredits :
+                HideHostConnectionUICredits();
+                ShowHostConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.hostConnectionUIMenu :
+                HideHostConnectionUIMenu();
+                ShowHostConnectionUIWelcome();
+                break;
+            case Enums.SelectedUI.hostConnectionUIOptions :
+                HideHostConnectionUIOptions();
+                ShowHostConnectionUIMenu();
+                break;
+            case Enums.SelectedUI.hostConnectionUIWelcome :
+                break;
+        }
+    }
+
+    #region returnSystem
+
+    private void HideHostConnectionUICredits()
     {
         _hostConnectionUICredits.SetActive(false);
     }
+    
+    private void HideHostConnectionUIWelcome()
+    {
+        _hostConnectionUIWelcome.SetActive(false);
+    }
 
-    private void HideConnectionUIMenu()
+    private void HideHostConnectionUIMenu()
     {
         _hostConnectionUIMenu.SetActive(false);
     }
 
-    private void HideConnectionUIOptions()
+    private void HideHostConnectionUIOptions()
     {
         _hostConnectionUIOptions.SetActive(false);
     }
     
-    private void ShowConnectionUIMenu()
+    private void ShowHostConnectionUIMenu()
     {
-        selectedUI = Enums.SelectedUI.connectionUIMenu;
+        selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
         _hostConnectionUIMenu.SetActive(true);
     }
     
-    private void ShowConnectionUIWelcome()
+    private void ShowHostConnectionUIWelcome()
     {
-        selectedUI = Enums.SelectedUI.connectionUIWelcome;
+        selectedUI = Enums.SelectedUI.hostConnectionUIWelcome;
         _hostConnectionUIWelcome.SetActive(true);
     }
+
+    #endregion
     
     #endregion
 
@@ -127,6 +165,12 @@ public class UIManager : MonoBehaviour
     {
         _clientConnectionUICode.SetActive(false);
         _clientConnectionUICharacterSelection.SetActive(true);
+    }
+
+    private void SwitchOnCodeUI()
+    {
+        _clientConnectionWelcome.SetActive(false);
+        _clientConnectionUICode.SetActive(true);
     }
     
     public void SwitchOnNameSelectionUI()
