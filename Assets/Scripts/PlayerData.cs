@@ -4,5 +4,5 @@ public class PlayerData : MonoBehaviour
 {
     public string playerName;
     public int playerNumber;
-    public string characterName;
+    public Enums.CharacterName character =  Enums.CharacterName.None;
 }

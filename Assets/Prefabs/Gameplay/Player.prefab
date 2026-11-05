@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: 
   playerNumber: 0
-  characterName: 
+  character: 6
 --- !u!114 &5361612659594128897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584077305641279899
+  _initializedTimestamp: -8584077995339746485
 --- !u!114 &-2746176172499535199
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> miniGamesDrawn = new List<MiniGameData>();
     [SerializeField]
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
+    [SerializeField]
+    public List<MiniGameData> tieQuestions = new List<MiniGameData>();
     
     public int amountOfMiniGames = 3;
     
@@ -21,8 +23,9 @@ public class MiniGameManager : NetworkBehaviour
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
     public SyncList<string> textAnswers = new();
+    private List<int> _votes = new List<int>(); 
 
-    public int collectedAnswers;
+    public int collectedAnswers, collectedVotes;
     
     // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
@@ -43,6 +46,12 @@ public class MiniGameManager : NetworkBehaviour
         for (int i = 0; i < 5; i++)
         {
             textAnswers.Add("");
+        }
+
+        _votes.Capacity = 5;
+        for (int i = 0; i < 5; i++)
+        {
+            _votes.Add(0);
         }
     }
 
@@ -101,6 +110,7 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartVotePhase()
     {
+        collectedVotes = 0; //variable reset
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.voting);
         // CAUTION : When Julien will initialize playerNumber, change from 1 to 4 instead of 0 to 3 !!!!!!!!!!!
         StartVotePhaseToClient(textAnswers[0], textAnswers[1], textAnswers[2], textAnswers[3]);
@@ -126,12 +136,47 @@ public class MiniGameManager : NetworkBehaviour
         }
     }
 
+    public void CollectTextVotes(string answerVoted, int playerNumber)
+    {
+        collectedVotes++;
+        for (int i = 0; i < textAnswers.Count; i++)
+        {
+            if (textAnswers[i] == answerVoted)
+            {
+                _votes[i]++;
+            }
+        }
+    }
+
+    public void MiniGameWinnerElection()
+    {
+        int winnerPlayerNumber = 1;
+        int maxVotes = 0;
+        for (int i = 0; i < _votes.Count; i++)
+        {
+            if (_votes[i] > maxVotes)
+            {
+                maxVotes = _votes[i];
+                winnerPlayerNumber = i;
+            }
+        }
+
+        Debug.Log(_gameManagerNetwork.players[winnerPlayerNumber].playerData.playerName + " won the game!");
+        
+        FinishVotePhase();
+    }
+
     public void FinishVotePhase()
     {
-        // PlayerNetwork winner = numberOfVotesByPlayer[0];
-        // foreach (var i in numberOfVotesByPlayer)
-        // {
-        //     
-        // }
+        //var reset
+        for (int i = 0; i < 5; i++)
+        {
+            textAnswers[i] = "";
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            _votes[i] = 0;
+        }
     }
 }

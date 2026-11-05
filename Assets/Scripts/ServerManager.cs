@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using FishNet;
+using FishNet.Connection;
 using NUnit.Framework.Constraints;
 using ZXing;
 using ZXing.QrCode;
@@ -17,6 +18,7 @@ public class ServerManager : MonoBehaviour
     [SerializeField]
     private NetworkManager _networkManager;
 
+    //OtherManager references
     [SerializeField] private GameObject _miniGameManager;
     [SerializeField] private GameObject _gameManagerNetwork;
 
@@ -87,6 +89,7 @@ public class ServerManager : MonoBehaviour
     {
         _miniGameManager.SetActive(true); //MGmanager is set on false by default
         _gameManagerNetwork.SetActive(true); //same
+        _gameManagerNetwork.GetComponent<GameManagerNetwork>().uiManager.selectedUI = Enums.SelectedUI.hostConnectionUIWelcome;
         
         ///////temporary
         _serverCanvas.SetActive(false);
@@ -116,6 +119,7 @@ public class ServerManager : MonoBehaviour
     //Try to connect as a client
     public void CreateClient()
     {
+        _gameManagerNetwork.GetComponent<GameManagerNetwork>().uiManager.selectedUI = Enums.SelectedUI.clientConnectionUIWelcome;
         if (_writtenAdress.text != "")
         {
             _networkManager.ClientManager.StartConnection(_writtenAdress.text);

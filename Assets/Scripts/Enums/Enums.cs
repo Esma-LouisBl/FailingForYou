@@ -36,10 +36,23 @@ public class Enums : MonoBehaviour
     
     public enum SelectedUI
     {
-        connectionUIWelcome,
-        connectionUIMenu,
-        connectionUIOptions,
-        connectionUICredits,
-        connectionUIConnecting
+        clientConnectionUIWelcome,
+        clientConnectionUICode,
+        hostConnectionUIWelcome,
+        hostConnectionUIMenu,
+        hostConnectionUIOptions,
+        hostConnectionUICredits,
+        hostConnectionUIConnecting
+    }
+
+    public enum CharacterName
+    {
+        Boubou,
+        Bog,
+        Kouc,
+        Pacc,
+        Pito,
+        Kame,
+        None
     }
 }
