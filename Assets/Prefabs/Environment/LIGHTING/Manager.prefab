@@ -54,23 +54,28 @@ MonoBehaviour:
   keyMorningColorLight: {r: 0.29532543, g: 0.2783019, b: 1, a: 0}
   atticMorningIntensity: 1
   keyMorningIntensity: 1
-  spotMorningIntensity: 0
-  spotColorMorning: {r: 0, g: 0, b: 0, a: 0}
+  spotMorningIntensity: 0.5
+  spotColorMorning: {r: 1, g: 0.8425158, b: 0.12893075, a: 0}
   directionDirectionalAfternoon: {x: 150, y: 0, z: 0}
   atticAfternoonColorLight: {r: 1, g: 0.8266049, b: 0.23113209, a: 0}
   keyAfternoonColorLight: {r: 1, g: 0.3726415, b: 0.3726415, a: 0}
   atticAfternoonIntensity: 1
   keyAfternoonIntensity: 0.5
-  spotAfternoonIntensity: 0
+  spotAfternoonIntensity: 1
+  spotColorAfternoon: {r: 0.51067984, g: 0.9496855, b: 0.5537181, a: 0}
   directionDirectionalNight: {x: 150, y: 30, z: 0}
   atticNightColorLight: {r: 1, g: 0.3254717, b: 0.4788815, a: 0}
   keyNightColorLight: {r: 0.4219918, g: 0.8207547, b: 0.61789477, a: 0}
   atticNightIntensity: 1.2
   keyNightIntensity: 0.5
+  spotNightIntensity: 0.3
+  spotColorNight: {r: 0.97462326, g: 1, b: 0.49371064, a: 0}
   atticMorningRomantic: {r: 1, g: 0.8770348, b: 0.3726415, a: 0}
   keyMorningRomantic: {r: 1, g: 0.27058828, b: 0.7030508, a: 0}
   atticMorningRomanticIntensity: 1
   keyMorningRomanticIntensity: 0.5
+  spotRomMorningIntensity: 0.8
+  spotRomMorningColor: {r: 1, g: 0.07861614, b: 0.16802914, a: 0}
   atticAfternoonRomantic: {r: 0, g: 0, b: 0, a: 0}
   atticNightRomantic: {r: 0, g: 0, b: 0, a: 0}
   atticMorningHorrific: {r: 0, g: 0, b: 0, a: 0}

@@ -18,8 +18,8 @@ public class LightManager : MonoBehaviour
 
     public float atticMorningIntensity;
     public float keyMorningIntensity;
-    public float spotMorningIntensity;
 
+    public float spotMorningIntensity;
     public Color spotColorMorning;
  
 
@@ -31,7 +31,9 @@ public class LightManager : MonoBehaviour
 
     public float atticAfternoonIntensity;
     public float keyAfternoonIntensity;
+
     public float spotAfternoonIntensity;
+    public Color spotColorAfternoon;
  
 
     [Header("Night")]
@@ -42,6 +44,9 @@ public class LightManager : MonoBehaviour
     public float atticNightIntensity;
     public float keyNightIntensity;
 
+    public float spotNightIntensity;
+    public Color spotColorNight;
+
 
     [Header("Romantic")]
     [Header("Romantic Morning")]
@@ -50,6 +55,9 @@ public class LightManager : MonoBehaviour
 
     public float atticMorningRomanticIntensity;
     public float keyMorningRomanticIntensity;
+
+    public float spotRomMorningIntensity;
+    public Color spotRomMorningColor;
 
     [Header("Romantic Afternoon")]
     public Color atticAfternoonRomantic;
@@ -90,6 +98,7 @@ public class LightManager : MonoBehaviour
         atticDirectionalLight.transform.eulerAngles = directionDirectionalMorning;
 
         materialShader.SetColor("_ColorSpot", spotColorMorning);
+        materialShader.SetFloat("_Alpha", spotMorningIntensity);
     }
     public void AfternoonSet()
     {
@@ -100,6 +109,9 @@ public class LightManager : MonoBehaviour
         keyDirectionalLight.intensity = keyAfternoonIntensity;
 
         atticDirectionalLight.transform.eulerAngles = directionDirectionalAfternoon;
+
+        materialShader.SetColor("_ColorSpot", spotColorAfternoon);
+        materialShader.SetFloat("_Alpha", spotAfternoonIntensity);
     }
     public void NightSet()
     {
@@ -110,6 +122,9 @@ public class LightManager : MonoBehaviour
         keyDirectionalLight.intensity = keyNightIntensity;
 
         atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
+
+        materialShader.SetColor("_ColorSpot", spotColorNight);
+        materialShader.SetFloat("_Alpha", spotNightIntensity);
     }
     public void MorningRomSet()
     {
@@ -120,6 +135,9 @@ public class LightManager : MonoBehaviour
         keyDirectionalLight.intensity = keyMorningRomanticIntensity;
 
         atticDirectionalLight.transform.eulerAngles = directionDirectionalMorning;
+
+        materialShader.SetColor("_ColorSpot", spotRomMorningColor);
+        materialShader.SetFloat("_Alpha", spotRomMorningIntensity);
     }
     public void AfternoonRomSet()
     {

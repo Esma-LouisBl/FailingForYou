@@ -24,6 +24,7 @@ public class AmbianceManager : MonoBehaviour
             ambiance.NightSet();
             yield return new WaitForSeconds(changeTps);
             ambiance.MorningRomSet();
+            yield return new WaitForSeconds(changeTps);
         }
         
     }
