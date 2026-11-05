@@ -4,11 +4,20 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FishNet.Object;
+using System.Threading;
 
-public class CrushCreationManager : MonoBehaviour
+public class CrushCreationManager : NetworkBehaviour
 {
-
+	//private NetworkBehaviour _networkBehaviour;
 	public GameObject crushCreationUI;
+	public GameObject crushCreationPC;
+	public GameObject Intropresenter;
+	public GameObject CodeBackgroundImage;
+	public TextMeshProUGUI CodeTextBackground;
+	public GameObject ChoseCrushPart;
+	public GameObject Player1;
+	public GameObject BullePlayer1;
 	public List<Image> indexCrushCreation = new List<Image>();
 	//public GameManagerNetwork gameManagerNetwork;
 	public TextMeshProUGUI partText;
@@ -36,7 +45,7 @@ public class CrushCreationManager : MonoBehaviour
 		//crushCreationUI.SetActive(false);
 		//HairSprite = GetComponent<Image>();
 		//hairImage.sprite = hairSprites[index];
-		indexCrushCreation[index].color = new Color32(91,85,175, 255);
+		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
 		//crushImage = hairImage;
 		//crushSprites = hairSprites;
 		//hairImage.enabled = true;
@@ -45,6 +54,8 @@ public class CrushCreationManager : MonoBehaviour
 		crushParts.Add("Accessories");
 		crushParts.Add("Faces");
 		crushParts.Add("Clothes");
+		//Player1.SetActive(true);
+		//Player1.GetComponentInChildren<GameObject>().SetActive(true);
 
 
 
@@ -53,7 +64,8 @@ public class CrushCreationManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
+
+
 	}
 
 	public void OpenCrushCreation()
@@ -65,6 +77,29 @@ public class CrushCreationManager : MonoBehaviour
 	public void CloseCrushCreation()
 	{
 		crushCreationUI.SetActive(false);
+	}
+	public void OpenCrushCreationPC()
+	{
+		crushCreationPC.SetActive(true);
+		CodeBackgroundImage.SetActive(true);
+
+
+		CodeBackgroundImage.SetActive(true);
+		CodeTextBackground.text = "Avant de commencer...";
+		Invoke("ChangeCrushScreen", 5f);
+	}
+
+	public void CloseCrushCreationPC()
+	{
+		crushCreationPC.SetActive(false);
+		CodeBackgroundImage.SetActive(false);
+	}
+
+	public void ChangeCrushScreen()
+	{
+		Intropresenter.SetActive(false);
+		ChoseCrushPart.SetActive(true);
+		CodeTextBackground.text = "Créer ensemble la poupée !";
 	}
 	public void chosePartCrush()
 	{
@@ -118,6 +153,12 @@ public class CrushCreationManager : MonoBehaviour
 		crushParts.Remove(partToRemove);
 
 
+	}
+	//[ServerRpc(RequireOwnership = false)]
+	[ServerRpc]
+	public void HideBullePlayer1()
+	{
+		BullePlayer1.SetActive(false);
 	}
 
 	public void IndicationDressCrush(string part)
@@ -182,24 +223,29 @@ public class CrushCreationManager : MonoBehaviour
 
 		if (partEnvoie == "Hair")
 		{
+			HideBullePlayer1();
 			int valeurSprite = index + 1;
 			Debug.Log("Numero: " + valeurSprite);
 		}
 		else if (partEnvoie == "Accessories")
 		{
+			HideBullePlayer1();
 			int valeurSprite = index + 7;
 			Debug.Log("Numero: " + valeurSprite);
 		}
 		else if (partEnvoie == "Faces")
 		{
+			HideBullePlayer1();
 			int valeurSprite = index + 13;
 			Debug.Log("Numero: " + valeurSprite);
 		}
 		else if (partEnvoie == "Clothes")
 		{
+			HideBullePlayer1();
 			int valeurSprite = index + 19;
 			Debug.Log("Numero: " + valeurSprite);
 		}
+
 
 		//gameManagerNetwork.PlayerSendCrush();
 	}
