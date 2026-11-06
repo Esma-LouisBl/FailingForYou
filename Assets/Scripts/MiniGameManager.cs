@@ -205,7 +205,6 @@ public class MiniGameManager : NetworkBehaviour
             if (votes.ContainsKey(textAnswers[i]))
             {
                 votesOrdered[i] = votes[textAnswers[i]];
-                Debug.Log(votesOrdered[i]);
             }
         }
 
@@ -221,7 +220,7 @@ public class MiniGameManager : NetworkBehaviour
         Debug.Log($"Le gagnant est le joueur numéro {winnerPlayerNumber}");
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
-        // FinishVotePhase();
+        FinishVotePhase();
     }
 
     public void FinishVotePhase()

@@ -321,10 +321,6 @@ public class UIManager : MonoBehaviour
         {
             _answer4Host.text = answers[_randomOrderOfAnswersOnScreen[4]];
         }
-
-        Debug.Log(_randomOrderOfAnswersOnScreen[1] + " a la réponse en haut à gauche");
-        Debug.Log(_randomOrderOfAnswersOnScreen[2] + " a la réponse en haut à droite");
-        Debug.Log(_randomOrderOfAnswersOnScreen[3] + " a la réponse en bas à gauche");
         
         _hostTextAnswersRevelationUI.SetActive(true);
         StartCoroutine(LetAnswersAppear(fourPlayers));
@@ -437,22 +433,15 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
     {
-        Debug.Log("on entre dans la coroutine de tokens");
         List<int> votes = new List<int>();
         votes.Add(0);
         votes.Add(answer1Votes);
         votes.Add(answer2Votes);
         votes.Add(answer3Votes);
         votes.Add(answer4Votes);
-
-        Debug.Log("passe");
-        foreach (var VARIABLE in _randomOrderOfAnswersOnScreen)
-        {
-            Debug.Log(VARIABLE);
-        }
+        
         if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
         {
-            Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
             for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
             {
                 _answer1VoteTokens[i].SetActive(true);
@@ -461,7 +450,6 @@ public class UIManager : MonoBehaviour
         }
         if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
         {
-            Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
             for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
             {
                 _answer2VoteTokens[i].SetActive(true);
@@ -470,7 +458,6 @@ public class UIManager : MonoBehaviour
         }
         if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
         {
-            Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
             for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
             {
                 _answer3VoteTokens[i].SetActive(true);
@@ -481,7 +468,6 @@ public class UIManager : MonoBehaviour
         {
             if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
             {
-                Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
                 for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
                 {
                     _answer4VoteTokens[i].SetActive(true);
