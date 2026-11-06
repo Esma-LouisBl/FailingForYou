@@ -736,6 +736,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1621020228}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _asterisk
+      value: 
+      objectReference: {fileID: 7336435246433365556, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _hostMainUI
       value: 
       objectReference: {fileID: 1351799293}
@@ -957,7 +961,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634820792901938244, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: m_DefaultActionMap
-      value: c4c4b63b-e475-4188-8026-3e8e34d73fd5
+      value: MainActionMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634820792901938244, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard/Mouse
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2933,6 +2941,10 @@ PrefabInstance:
       propertyPath: _scanZone
       value: 
       objectReference: {fileID: 4486401112332531759}
+    - target: {fileID: 2817275359823204770, guid: c25574c789fc32448ab7ed5b326ccdc4, type: 3}
+      propertyPath: _uiManager
+      value: 
+      objectReference: {fileID: 929195913}
     - target: {fileID: 2817275359823204770, guid: c25574c789fc32448ab7ed5b326ccdc4, type: 3}
       propertyPath: _cameraZone
       value: 

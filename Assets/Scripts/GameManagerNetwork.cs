@@ -36,10 +36,15 @@ public class GameManagerNetwork : NetworkBehaviour
     
     #endregion
 
+    
+    private int incrementalValue = 0;
+    
+    
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
     {
         players.Add(playerToAdd);
-        _instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
+        incrementalValue++;
+        //_instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
         
         //Debug
         // foreach (KeyValuePair<int, int> entry in _instanceIdRepertory)
@@ -47,7 +52,7 @@ public class GameManagerNetwork : NetworkBehaviour
         //     Debug.Log(entry.Key + " : " + entry.Value);
         // }
         
-        playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
+        playerToAdd.AssignMyPlayerNumber(incrementalValue);//_instanceIdRepertory[instanceIdReceived]
     }
     
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)

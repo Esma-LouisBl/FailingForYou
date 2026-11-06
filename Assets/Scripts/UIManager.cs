@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference _return;
     [SerializeField] private InputActionReference _space;
     [SerializeField] private InputActionReference _touchScreen;
+    [SerializeField] private InputActionReference _asterisk;
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
@@ -81,6 +82,7 @@ public class UIManager : MonoBehaviour
         _return.action.started += Return;
         _space.action.started += Space;
         _touchScreen.action.started += TouchScreen;
+        _asterisk.action.started += Asterisk;
     }
     
     private void OnDisable()
@@ -88,6 +90,7 @@ public class UIManager : MonoBehaviour
         _return.action.started -= Return;
         _space.action.started -= Space;
         _touchScreen.action.started -= TouchScreen;
+        _asterisk.action.started -= Asterisk;
     }
     
     private void Space(InputAction.CallbackContext obj)
@@ -136,6 +139,11 @@ public class UIManager : MonoBehaviour
             case Enums.SelectedUI.hostConnectionUIWelcome :
                 break;
         }
+    }
+
+    private void Asterisk(InputAction.CallbackContext obj)
+    {
+        FindFirstObjectByType<DebugManager>().ShowHideDebugUI();
     }
 
     #region returnSystem
