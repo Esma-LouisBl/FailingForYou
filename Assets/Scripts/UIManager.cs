@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     private string _selectedCharacterName;
     private bool _canSelectName = true; //false when player selected its name (local)
 
-    private List<int> _randomOrderOfAnswersOnScreen;
+    private List<int> _randomOrderOfAnswersOnScreen = new List<int>();
 
     private void Start()
     {
@@ -437,6 +437,7 @@ public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Vo
 
 private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
 {
+    Debug.Log("on entre dans la coroutine de tokens");
     List<int> votes = new List<int>();
     votes.Add(0);
     votes.Add(answer1Votes);
