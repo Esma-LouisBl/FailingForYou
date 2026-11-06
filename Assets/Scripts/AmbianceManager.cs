@@ -1,6 +1,7 @@
 using FishNet.Serializing.Helping;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AmbianceManager : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class AmbianceManager : MonoBehaviour
             ambiance.NightSet();
             yield return new WaitForSeconds(changeTps);
             ambiance.MorningRomSet();
+            yield return new WaitForSeconds(changeTps);
+            ambiance.AfternoonRomSet();
+            yield return new WaitForSeconds(changeTps);
+            ambiance.NightRomSet();
+            yield return new WaitForSeconds(changeTps);
+            ambiance.MorningHorSet();
             yield return new WaitForSeconds(changeTps);
         }
         
