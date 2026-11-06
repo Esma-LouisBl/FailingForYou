@@ -427,62 +427,67 @@ public class UIManager : MonoBehaviour
         _hostTextAnswersRevelationUI.SetActive(false);
     }
 
-public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-{
-    _hostTextAnswersRevelationUI.SetActive(true);
-    _hostMainUI.SetActive(false);
-
-    StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
-}
-
-private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-{
-    Debug.Log("on entre dans la coroutine de tokens");
-    List<int> votes = new List<int>();
-    votes.Add(0);
-    votes.Add(answer1Votes);
-    votes.Add(answer2Votes);
-    votes.Add(answer3Votes);
-    votes.Add(answer4Votes);
-
-    if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
+    public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
     {
-        Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
-        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
+        _hostTextAnswersRevelationUI.SetActive(true);
+        _hostMainUI.SetActive(false);
+    
+        StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
+    }
+
+    private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+    {
+        Debug.Log("on entre dans la coroutine de tokens");
+        List<int> votes = new List<int>();
+        votes.Add(0);
+        votes.Add(answer1Votes);
+        votes.Add(answer2Votes);
+        votes.Add(answer3Votes);
+        votes.Add(answer4Votes);
+
+        Debug.Log("passe");
+        foreach (var VARIABLE in _randomOrderOfAnswersOnScreen)
         {
-            _answer1VoteTokens[i].SetActive(true);
-            yield return new WaitForSeconds(1f);
+            Debug.Log(VARIABLE);
         }
-    }
-    if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
-    {
-        Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
-        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
+        if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
         {
-            _answer2VoteTokens[i].SetActive(true);
-            yield return new WaitForSeconds(1f);
-        }
-    }
-    if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
-    {
-        Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
-        for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
-        {
-            _answer3VoteTokens[i].SetActive(true);
-            yield return new WaitForSeconds(1f);
-                    }
-    }
-    if (_randomOrderOfAnswersOnScreen.Count > 4)
-    {
-        if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
-        {
-            Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
-{
-                _answer4VoteTokens[i].SetActive(true);
+            Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
+            {
+                _answer1VoteTokens[i].SetActive(true);
                 yield return new WaitForSeconds(1f);
             }
         }
-    }
-}
+        if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
+        {
+            Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
+            {
+                _answer2VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
+        {
+            Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
+            {
+                _answer3VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        if (_randomOrderOfAnswersOnScreen.Count > 4)
+        {
+            if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
+            {
+                Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
+                for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
+                {
+                    _answer4VoteTokens[i].SetActive(true);
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+        }
+    } 
 }
