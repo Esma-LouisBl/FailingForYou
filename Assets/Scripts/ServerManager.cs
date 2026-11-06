@@ -224,7 +224,7 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    private new IEnumerator ConnectionDelay()
+    private new IEnumerator ConnectionDelay() //Set a delay to avoid second scan of QR code
     {
         yield return new WaitForSeconds(0.5f);
         _canTryScanning = true;
