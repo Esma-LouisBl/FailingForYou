@@ -33,8 +33,8 @@ Transform:
   - {fileID: 5518977281006286644}
   - {fileID: 6528046963044240036}
   - {fileID: 6009278614568043295}
-  - {fileID: 5193842354743805151}
   - {fileID: 5251447996941893892}
+  - {fileID: 5193842354743805151}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3043988685027542234
@@ -151,6 +151,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Ark_001
       objectReference: {fileID: 0}
+    - target: {fileID: 7571782468160092610, guid: 6ba446cc070437e4fbe1cde7b074ffe7, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571782468160092610, guid: 6ba446cc070437e4fbe1cde7b074ffe7, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 150f7f4bebda819479416fd55966a137, type: 2}
     - target: {fileID: 8745793479208698541, guid: 6ba446cc070437e4fbe1cde7b074ffe7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
