@@ -176,12 +176,33 @@ public class LightManager : MonoBehaviour
     [Header("Historic Morning")]
     public Color atticMorningHistoric;
     public Color keyMorningHistoric;
+
+    public float atticMorningHistoricIntensity;
+    public float keyMorningHistoricIntensity;
+
+    public float spotHisMorningIntensity;
+    public Color spotHisMorningColor;
+
     [Header("Historic Afternoon")]
     public Color atticAfternoonHistoric;
     public Color keyAfternoonHistoric;
+
+    public float atticAfternoonHistoricIntensity;
+    public float keyAfternoonHistoricIntensity;
+
+    public float spotHisAfternoonIntensity;
+    public Color spotHisAfternoonColor;   
+
     [Header("Historic Night")]
     public Color atticNightHistoric;
     public Color keyNightHistoric;
+
+    public float atticNightHistoricIntensity;
+    public float keyNightHistoricIntensity;
+
+    public float spotHisNightIntensity;
+    public Color spotHisNightColor;
+
     public void MorningSet()
     {
         atticDirectionalLight.color = atticMorningColorLight;
@@ -355,15 +376,33 @@ public class LightManager : MonoBehaviour
     public void AfternoonFanSet()
     {
         atticDirectionalLight.color = atticAfternoonFantastic;
+        keyDirectionalLight.color = keyAfternoonFantastic;
+
+        atticDirectionalLight.intensity = atticAfternoonFantasticIntensity;
+        keyDirectionalLight.intensity = keyAfternoonFantasticIntensity;
 
         atticDirectionalLight.transform.eulerAngles = directionDirectionalAfternoon;
+
+        materialShader.SetColor("_ColorSpot", spotFanAfternoonColor);
+        materialShader.SetFloat("_Alpha", spotFanAfternoonIntensity);
     }
     public void NightFanSet()
     {
+        atticDirectionalLight.color = atticNightFantastic;
+        keyDirectionalLight.color = keyNightFantastic;
+
+        atticDirectionalLight.intensity = atticNightFantasticIntensity;
+        keyDirectionalLight.intensity = keyNightFantasticIntensity;
+
         atticDirectionalLight.transform.eulerAngles = directionDirectionalNight;
+
+        materialShader.SetColor("_ColorSpot", spotFanNightColor);
+        materialShader.SetFloat("_Alpha", spotFanNightIntensity);
     }
     public void MorningHisSet()
     {
+
+
         atticDirectionalLight.transform.eulerAngles = directionDirectionalMorning;
     }
     public void AfternoonHisSet()
