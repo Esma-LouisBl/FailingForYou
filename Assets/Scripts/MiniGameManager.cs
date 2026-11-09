@@ -191,15 +191,20 @@ public class MiniGameManager : NetworkBehaviour
 
     public void MiniGameWinnerElection()
     {
-        int winnerPlayerNumber = 1;
-        int maxVotes = 0;
+        Dictionary<int, int> ranking = new Dictionary<int, int>();  //acts like a podium : the first int is the PLAYER, the second int is the RANK associated
+        ranking.Clear();
+        int votesToCheck = 3; //maximum of votes to check while ranking the players
+        int occupiedPlaces = 0; //just to know where are we when ranking the players
+        bool occupiedPlacesHasChanged = false;
+        
         List<int> votesOrdered = new List<int>();
-        for (int i = 0; i < 5; i++) //list initialization
+        votesOrdered.Clear();
+        for (int i = 0; i < 5; i++) //lists initialization
         {
             votesOrdered.Add(0);
         }
 
-        //this for loop order all the votes like textAnswers (so 1 is for player1 etc.)
+        //this for loop orders all the votes like textAnswers (so 1 is for player1 etc.)
         for (int i = 0; i < textAnswers.Count; i++)
         {
             if (votes.ContainsKey(textAnswers[i]))
@@ -208,16 +213,27 @@ public class MiniGameManager : NetworkBehaviour
             }
         }
 
-        for (int i = 0; i < votesOrdered.Count; i++)
+        while (ranking.Count < _gameManagerNetwork.players.Count)
         {
-            if (votesOrdered[i] > maxVotes)
+            for (int i = 1; i < votesOrdered.Count; i++)
             {
-                maxVotes = votesOrdered[i];
-                winnerPlayerNumber = i;
+                if (votesOrdered[i] == votesToCheck)
+                {
+                    ranking.Add(i, occupiedPlaces+1);
+                    occupiedPlacesHasChanged = true;
+                }
             }
+
+            if (occupiedPlacesHasChanged)
+            {
+                occupiedPlaces++;
+            }
+            votesToCheck--;
         }
 
-        Debug.Log($"Le gagnant est le joueur numéro {winnerPlayerNumber}");
+        Debug.Log($"Le joueur 1 est en position {ranking[1]}");
+        Debug.Log($"Le joueur 2 est en position {ranking[2]}");
+        Debug.Log($"Le joueur 3 est en position {ranking[3]}");
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         FinishVotePhase();
