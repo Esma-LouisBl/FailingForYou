@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
-    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
+    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits, _hostConnectionUIConnecting;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
@@ -189,6 +190,20 @@ public class UIManager : MonoBehaviour
         _clientConnectionUICode.SetActive(false);
         _clientConnectionUICharacterSelection.SetActive(true);
     }
+    
+    public void SwitchOnHostConnectingUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIConnecting.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIConnecting;
+    }
+    
+    public void SwitchOnHostOptionsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIOptions.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIOptions;
+    }
 
     private void SwitchOnCodeUI()
     {
@@ -212,6 +227,11 @@ public class UIManager : MonoBehaviour
     {
         _hostConnectionUI.SetActive(false);
         _clientConnectionUI.SetActive(false);
+    }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
     }
     
     public void UpdateServerConnectionUI() //Update every player profile according to its playerdata
