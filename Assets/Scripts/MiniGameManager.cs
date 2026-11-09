@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FishNet.CodeGenerating;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -16,6 +17,7 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
     [SerializeField]
     public List<MiniGameData> tieQuestions = new List<MiniGameData>();
+    public MiniGameData currentTieQuestion;
     
     public int amountOfMiniGames = 3;
     
@@ -24,7 +26,6 @@ public class MiniGameManager : NetworkBehaviour
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
     public SyncList<string> textAnswers = new();
-    [SerializeField]
     // private List<int> _votes = new List<int>(); 
     public Dictionary<string, int> votes = new Dictionary<string, int>();
 
@@ -179,13 +180,6 @@ public class MiniGameManager : NetworkBehaviour
     public void CollectTextVotes(string answerVoted, int playerNumber)
     {
         collectedVotes++;
-        // for (int i = 0; i < textAnswers.Count; i++)
-        // {
-        //     if (textAnswers[i] == answerVoted)
-        //     {
-        //         _votes[i]++;
-        //     }
-        // }
         votes[answerVoted]++;
     }
 
@@ -236,7 +230,43 @@ public class MiniGameManager : NetworkBehaviour
         Debug.Log($"Le joueur 3 est en position {ranking[3]}");
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
-        FinishVotePhase();
+        
+        //if tie : start tie
+        List<PlayerData> playersInTie = new List<PlayerData>();
+        //add here the players currently in tie
+        playersInTie.Add(_gameManagerNetwork.players[0].playerData); //added p1 and p2 just to debug
+        playersInTie.Add(_gameManagerNetwork.players[1].playerData);
+        StartCoroutine(WaitBeforeTie(playersInTie));
+        // FinishVotePhase();
+    }
+
+    private IEnumerator WaitBeforeTie(List<PlayerData> playersInTie)
+    {
+        yield return new WaitForSeconds(5f);
+        Tie(playersInTie);
+    }
+    public void Tie(List<PlayerData> playersInTie)
+    {
+        currentTieQuestion = tieQuestions[Random.Range(0, tieQuestions.Count)];
+        _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
+        List<int> clientsConcerned = new List<int>();
+        foreach (var playerData in playersInTie)
+        {
+            clientsConcerned.Add(playerData.playerNumber);
+        }
+
+        StartTieOnClient(clientsConcerned);
+    }
+
+    [ObserversRpc]
+    public void StartTieOnClient(List<int> playerNumbersConcerned)
+    {
+        Debug.Log("bon au moins la fonction est appelée");
+        if (playerNumbersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber))
+        {
+            Debug.Log("je suis dans l'égalité mais dans l'illégalité");
+            _uiManager.ShowTieOnClient();
+        }
     }
 
     public void FinishVotePhase()

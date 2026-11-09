@@ -18,6 +18,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
 
+    [Header("Tie")]
+    [SerializeField] private GameObject _tieHostUI;
+    [Tooltip("Use this to deform the band")]
+    [SerializeField] private RectTransform _bandTransform;
+    [SerializeField] private TextMeshProUGUI _tieAppearText;
+    [SerializeField] private TextMeshProUGUI _tieQuestionText;
+    [SerializeField] private List<GameObject> _playersInTieGO;
+    [SerializeField] private List<TextMeshProUGUI> _playersNames;
+    [SerializeField] private List<Image> _playersImages;
+    [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
+    [SerializeField] private GameObject _answerContainer;
+    [SerializeField] private TextMeshProUGUI _answer, _winnerName;
+    [Space(20)]
+
 
     #endregion
 
@@ -249,6 +263,8 @@ public class UIManager : MonoBehaviour
         _clientConnectionUI.SetActive(false);
     }
 
+    #region MiniGame
+
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
         _hostQuestionTMP.text = miniGame.question;
@@ -374,56 +390,6 @@ public class UIManager : MonoBehaviour
         _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
-
-    #region CharacterSelection
-
-    public void SetSelectedCharacter(string characterName) //Set a selected character when click on Button
-    {
-        _selectedCharacterName = characterName;
-    }
-
-    public void OnSelectCharacter() //When confirmed
-    {
-        switch (_selectedCharacterName)
-        {
-            case "Boubou" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Boubou, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-            case "Bog" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Bog, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-            case "Kouc" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kouc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-            case "Pacc" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pacc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-            case "Pito" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-            case "Kamé" :
-                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-                break;
-        }
-    }
-
-    public void ResetButtonCharacterSelection() //Deselect every buttons by selecting another
-    {
-        _deselectionButton.Select();
-    }
-
-    public void SelectName()
-    {
-        if (_nameEntered.text != "" && _canSelectName)
-        {
-            _canSelectName = false;
-            _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-            _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
-        }
-    }
-    
-    #endregion
-    
     public void ShowHostMainUIWhilePlayersAreVoting()
     {
         _hookSentence.text = "Votez pour la meilleure réponse !";
@@ -483,5 +449,89 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-    } 
+    }
+
+    public void ShowTieOnHost(List<PlayerData> playersInTie, string question)
+    {
+        _tieHostUI.SetActive(true);
+        StartCoroutine(TieStartAnimation(playersInTie, question));
+    }
+
+    private IEnumerator TieStartAnimation(List<PlayerData> playersInTie, string question)
+    {
+        _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
+        for (int i = 0; i < 160; i++)
+        {
+            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+1);
+            yield return new WaitForSeconds(0.01f);
+        }
+        _tieAppearText.gameObject.SetActive(false);
+
+        for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
+        {
+            _playersInTieGO[i].gameObject.SetActive(true);
+            _playersNames[i].text = playersInTie[i].playerName;
+        }
+
+        _tieQuestionText.text = question;
+    }
+
+    public void ShowTieOnClient()
+    {
+        
+    }
+
+    #endregion
+    
+
+    #region CharacterSelection
+
+    public void SetSelectedCharacter(string characterName) //Set a selected character when click on Button
+    {
+        _selectedCharacterName = characterName;
+    }
+
+    public void OnSelectCharacter() //When confirmed
+    {
+        switch (_selectedCharacterName)
+        {
+            case "Boubou" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Boubou, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Bog" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Bog, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kouc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kouc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pacc" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pacc, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Pito" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+            case "Kamé" :
+                _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+                break;
+        }
+    }
+
+    public void ResetButtonCharacterSelection() //Deselect every buttons by selecting another
+    {
+        _deselectionButton.Select();
+    }
+
+    public void SelectName()
+    {
+        if (_nameEntered.text != "" && _canSelectName)
+        {
+            _canSelectName = false;
+            _gameManagerNetwork.myLocalPlayer.RegisterName(_nameEntered.text, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+            _gameManagerNetwork.myLocalPlayer.playerData.playerName = _nameEntered.text;
+        }
+    }
+    
+    #endregion
+    
+    
 }
