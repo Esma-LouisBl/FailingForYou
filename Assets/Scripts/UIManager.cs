@@ -205,6 +205,13 @@ public class UIManager : MonoBehaviour
         selectedUI = Enums.SelectedUI.hostConnectionUIOptions;
     }
 
+    public void SwitchOnCreditsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUICredits.SetActive(true);
+        selectedUI =  Enums.SelectedUI.hostConnectionUICredits;
+    }
+
     private void SwitchOnCodeUI()
     {
         _clientConnectionWelcome.SetActive(false);

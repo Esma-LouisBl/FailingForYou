@@ -592,6 +592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConnectionUI (Desktop)
       objectReference: {fileID: 0}
+    - target: {fileID: 4550186865224298303, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5037084691665972173, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_text
       value: "Fran\xE7ais"
