@@ -3,8 +3,8 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
     //Contains Data for characters, other scripts have to override it for each character
-    public string characterName;
-    public Sprite characterImage;
+    public Enums.CharacterName characterName = Enums.CharacterName.None;
+    public Sprite characterSprite;
 
     public virtual void PlayIdle()
     {

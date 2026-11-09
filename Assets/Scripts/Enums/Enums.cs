@@ -27,4 +27,32 @@ public class Enums : MonoBehaviour
         historic,
         dramatic
     }
+
+    public enum GamePhase
+    {
+        answeringQuestion,
+        voting
+    }
+    
+    public enum SelectedUI
+    {
+        clientConnectionUIWelcome,
+        clientConnectionUICode,
+        hostConnectionUIWelcome,
+        hostConnectionUIMenu,
+        hostConnectionUIOptions,
+        hostConnectionUICredits,
+        hostConnectionUIConnecting
+    }
+
+    public enum CharacterName
+    {
+        Boubou,
+        Bog,
+        Kouc,
+        Pacc,
+        Pito,
+        Kame,
+        None
+    }
 }

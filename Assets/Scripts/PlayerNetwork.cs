@@ -1,6 +1,10 @@
 using System;
+using System.Collections;
+using FishNet.Connection;
+using FishNet.Managing;
 using FishNet.Object;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerNetwork : NetworkBehaviour
 {
@@ -11,6 +15,8 @@ public class PlayerNetwork : NetworkBehaviour
 
     #endregion
 
+    private int _instanceId;
+
     #region Initilization
     
     private void Awake()
@@ -20,12 +26,19 @@ public class PlayerNetwork : NetworkBehaviour
 
     private void Start()
     {
+        StartCoroutine(StartWithDelay());
+
         GetGameManagerNetworkLocally();
     }
-
-    public override void OnStartServer()
+    
+    private new IEnumerator StartWithDelay() //Start after a delay to avoid trying to get an uncreated asset
     {
-        gameManagerNetwork.players.Add(this);
+        yield return new WaitForSeconds(0.1f);
+        if (IsOwner)
+        {
+            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
+            RegisterPlayerOnServer(_instanceId);
+        }
     }
 
     #endregion
@@ -39,12 +52,48 @@ public class PlayerNetwork : NetworkBehaviour
         {
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
+            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI(); //Update UI
+            gameManagerNetwork.uiManager.selectedUI = Enums.SelectedUI.clientConnectionUICode;
         }
     }
 
     [ServerRpc]
-    public void SendPlayerTextAnswer(string answer)
+    public void SendPlayerTextAnswer(string answer, int playerNumber)
     {
-        gameManagerNetwork.ReceivePlayerTextAnswer(answer, this);
+        gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerNumber);
     }
+
+    [ServerRpc]
+    public void RegisterPlayerOnServer(int instanceToSend)
+    {
+        gameManagerNetwork.AddPlayer(this, instanceToSend);
+    }
+
+    [ObserversRpc]
+    public void AssignMyPlayerNumber(int myPlayerNumber)
+    {
+        playerData.playerNumber = myPlayerNumber;
+    }
+
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
+    }
+    
+    #region CharacterSelection
+
+    [ServerRpc]
+    public void TrySelectCharacter(Enums.CharacterName characterName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.CheckIfCharacterIsSelected(characterName, sentPlayerNumber);
+    }
+
+    [ServerRpc]
+    public void RegisterName(string playerName, int sentPlayerNumber)
+    {
+        gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
+    }
+    
+    #endregion
 }

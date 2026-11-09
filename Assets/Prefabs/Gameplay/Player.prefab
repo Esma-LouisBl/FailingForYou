@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b98f3c62c81db4b912e334a16d5e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNetwork
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 5361612659594128897}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 5361612659594128897}
   gameManagerNetwork: {fileID: 0}
   playerData: {fileID: 5203524054390449171}
 --- !u!114 &5203524054390449171
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   playerName: 
   playerNumber: 0
-  characterName: 
+  character: 6
 --- !u!114 &5361612659594128897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
   NetworkBehaviours:
-  - {fileID: 0}
+  - {fileID: 3413490601697782771}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedTimestamp: -8584085023406923807
+  _initializedTimestamp: -8584077995339746485
 --- !u!114 &-2746176172499535199
 MonoBehaviour:
   m_ObjectHideFlags: 0
