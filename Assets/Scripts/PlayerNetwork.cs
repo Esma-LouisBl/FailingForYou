@@ -30,6 +30,16 @@ public class PlayerNetwork : NetworkBehaviour
 
         GetGameManagerNetworkLocally();
     }
+    
+    private new IEnumerator StartWithDelay() //Start after a delay to avoid trying to get an uncreated asset
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (IsOwner)
+        {
+            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
+            RegisterPlayerOnServer(_instanceId);
+        }
+    }
 
     #endregion
 
@@ -42,7 +52,7 @@ public class PlayerNetwork : NetworkBehaviour
         {
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
-            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI();
+            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI(); //Update UI
             gameManagerNetwork.uiManager.selectedUI = Enums.SelectedUI.clientConnectionUICode;
         }
     }
@@ -51,15 +61,6 @@ public class PlayerNetwork : NetworkBehaviour
     public void SendPlayerTextAnswer(string answer, int playerNumber)
     {
         gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerNumber);
-    }
-    private new IEnumerator StartWithDelay()
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (IsOwner)
-        {
-            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
-            RegisterPlayerOnServer(_instanceId);
-        }
     }
 
     [ServerRpc]

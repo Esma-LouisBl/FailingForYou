@@ -214,13 +214,13 @@ public class UIManager : MonoBehaviour
         _clientConnectionUI.SetActive(false);
     }
     
-    public void UpdateServerConnectionUI()
+    public void UpdateServerConnectionUI() //Update every player profile according to its playerdata
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
             if (_gameManagerNetwork.players[i] != null)
             {
-                _players[i].SetActive(false);
+                _players[i].SetActive(false); // ?
                 if (_gameManagerNetwork.players[i].playerData.playerName != "")
                 {
                     _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
@@ -377,12 +377,12 @@ public class UIManager : MonoBehaviour
 
     #region CharacterSelection
 
-    public void SetSelectedCharacter(string characterName)
+    public void SetSelectedCharacter(string characterName) //Set a selected character when click on Button
     {
-        _selectedCharacterName =  characterName;
+        _selectedCharacterName = characterName;
     }
 
-    public void OnSelectCharacter()
+    public void OnSelectCharacter() //When confirmed
     {
         switch (_selectedCharacterName)
         {
