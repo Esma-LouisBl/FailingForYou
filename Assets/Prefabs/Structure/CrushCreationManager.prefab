@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7840685074625773059}
   - component: {fileID: 2104520951060285866}
-  - component: {fileID: 3285527873357491804}
+  - component: {fileID: 966332754624306779}
   m_Layer: 0
   m_Name: CrushCreationManager
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrushCreationManager
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 3285527873357491804}
+  _addedNetworkObject: {fileID: 966332754624306779}
   _networkObjectCache: {fileID: 0}
   crushCreationUI: {fileID: 0}
   crushCreationPC: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 607875652ad208248b6c20e494d3945e, type: 3}
   - {fileID: 21300000, guid: 0fb56e5a05844c54eb31259652016a13, type: 3}
   index: 0
---- !u!114 &3285527873357491804
+--- !u!114 &966332754624306779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

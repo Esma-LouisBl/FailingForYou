@@ -79,10 +79,16 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
-    
-    #region CharacterSelection
-
     [ServerRpc]
+    public void SendPlayerToCrushCreation()
+	{
+		gameManagerNetwork.ReceivePlayerToCrushCreation(playerData.playerNumber);
+        
+	}
+
+	#region CharacterSelection
+
+	[ServerRpc]
     public void TrySelectCharacter(Enums.CharacterName characterName, int sentPlayerNumber)
     {
         gameManagerNetwork.CheckIfCharacterIsSelected(characterName, sentPlayerNumber);

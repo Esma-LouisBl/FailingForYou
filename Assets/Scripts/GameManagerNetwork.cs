@@ -10,7 +10,8 @@ public class GameManagerNetwork : NetworkBehaviour
 
     public MiniGameManager miniGameManager;
     public CharacterManager characterManager;
-    public UIManager uiManager;
+    public CrushCreationManager crushCreationManager;
+	public UIManager uiManager;
 
     #endregion
 
@@ -109,6 +110,8 @@ public class GameManagerNetwork : NetworkBehaviour
         }
     }
 
+  
+
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
     {
         players.Add(playerToAdd);
@@ -125,7 +128,13 @@ public class GameManagerNetwork : NetworkBehaviour
         playerToAdd.AssignMyPlayerNumber(_instanceIdRepertory[instanceIdReceived]);
     }
 
-    public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
+    public void ReceivePlayerToCrushCreation(int playerNumber)
+	{
+		crushCreationManager.ChosePartCrush(playerNumber);
+	}
+
+   
+	public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
     {
         miniGameManager.CollectTextVotes(votedAnswer, playerNumber);
         

@@ -9,15 +9,17 @@ using System.Threading;
 
 public class CrushCreationManager : NetworkBehaviour
 {
-	//private NetworkBehaviour _networkBehaviour;
+	[SerializeField]
+	private GameManagerNetwork _gameManagerNetwork;
+	private PlayerNetwork _playerNetwork;
 	public GameObject crushCreationUI;
 	public GameObject crushCreationPC;
 	public GameObject Intropresenter;
 	public GameObject CodeBackgroundImage;
 	public TextMeshProUGUI CodeTextBackground;
 	public GameObject ChoseCrushPart;
-	public GameObject Player1;
-	public GameObject BullePlayer1;
+	//public GameObject Player1;
+	public List<GameObject> BullePlayers = new List<GameObject>();
 	public List<Image> indexCrushCreation = new List<Image>();
 	//public GameManagerNetwork gameManagerNetwork;
 	public TextMeshProUGUI partText;
@@ -32,7 +34,10 @@ public class CrushCreationManager : NetworkBehaviour
 	public List<Sprite> facesSprites = new List<Sprite>();
 	public List<Sprite> clothesSprites = new List<Sprite>();
 	public List<List<Sprite>> CrushImages = new List<List<Sprite>>();
+	[SerializeField]
 	private List<string> crushParts = new List<string>();
+	
+	public List<string> indexParts = new List<string>();
 
 	private string partEnvoie;
 
@@ -50,28 +55,39 @@ public class CrushCreationManager : NetworkBehaviour
 		//crushSprites = hairSprites;
 		//hairImage.enabled = true;
 		//crushImage.enabled = true;
-		crushParts.Add("Hair");
-		crushParts.Add("Accessories");
-		crushParts.Add("Faces");
-		crushParts.Add("Clothes");
-		//Player1.SetActive(true);
-		//Player1.GetComponentInChildren<GameObject>().SetActive(true);
-
+		CrushList();
 
 
 	}
-
 	// Update is called once per frame
 	void Update()
 	{
 
-
 	}
+
+
+	public void CrushList()
+	{
+		for (int i = 0; i < 4; i++){
+
+		int randomIndex = Random.Range(0, indexParts.Count);
+
+
+		crushParts[i] = indexParts[randomIndex];
+		string part = indexParts[randomIndex];
+		indexParts.RemoveAt(randomIndex);
+		
+		}
+		
+	}
+
+
+
 
 	public void OpenCrushCreation()
 	{
 		crushCreationUI.SetActive(true);
-		Debug.Log("Open Crush Creation");
+		//Debug.Log("Open Crush Creation");
 	}
 
 	public void CloseCrushCreation()
@@ -101,15 +117,15 @@ public class CrushCreationManager : NetworkBehaviour
 		ChoseCrushPart.SetActive(true);
 		CodeTextBackground.text = "Créer ensemble la poupée !";
 	}
-	public void chosePartCrush()
+	[ObserversRpc]
+	public void ChosePartCrush(int playerNumber)
 	{
 		hairImage.enabled = false;
 		accessoriesImage.enabled = false;
 		clothesImage.enabled = false;
 		faceImage.enabled = false;
-
-		int randomIndex = Random.Range(0, crushParts.Count);
-		string part = crushParts[randomIndex];
+		Debug.Log(playerNumber);
+		string part = crushParts[playerNumber];
 		switch (part)
 		{
 			case "Hair":
@@ -119,6 +135,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushImage = hairImage;
 				crushSprites = hairSprites;
 				partEnvoie = part;
+				Debug.Log("Part: " + part);
 				break;
 			case "Accessories":
 				accessoriesImage.enabled = true;
@@ -127,6 +144,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushImage = accessoriesImage;
 				crushSprites = accessoriesSprites;
 				partEnvoie = part;
+				Debug.Log("Part: " + part);
 				break;
 			case "Faces":
 				faceImage.enabled = true;
@@ -135,6 +153,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushImage = faceImage;
 				crushSprites = facesSprites;
 				partEnvoie = part;
+				Debug.Log("Part: " + part);
 				break;
 			case "Clothes":
 				clothesImage.enabled = true;
@@ -143,6 +162,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushImage = clothesImage;
 				crushSprites = clothesSprites;
 				partEnvoie = part;
+				Debug.Log("Part: " + part);
 				break;
 		}
 		RemoveCrushPart(part);
@@ -154,11 +174,14 @@ public class CrushCreationManager : NetworkBehaviour
 
 
 	}
-	//[ServerRpc(RequireOwnership = false)]
-	[ServerRpc]
+	
+	[ServerRpc(RequireOwnership = false)]
 	public void HideBullePlayer1()
 	{
-		BullePlayer1.SetActive(false);
+		int playerNumber = _playerNetwork.playerData.playerNumber;
+		Debug.Log("Player Number: " + playerNumber);
+		BullePlayers[playerNumber].SetActive(false);
+		//BullePlayer1.SetActive(false);
 	}
 
 	public void IndicationDressCrush(string part)
@@ -195,6 +218,7 @@ public class CrushCreationManager : NetworkBehaviour
 		}
 
 		Debug.Log("Index: " + index);
+	
 
 		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
 		crushImage.sprite = crushSprites[index];
@@ -212,6 +236,7 @@ public class CrushCreationManager : NetworkBehaviour
 			index--;
 		}
 		Debug.Log("Index: " + index);
+		
 
 		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
 		crushImage.sprite = crushSprites[index];
