@@ -27,7 +27,8 @@ public class Enums : MonoBehaviour
         romantic,
         horrific,
         historic,
-        dramatic
+        dramatic,
+        none
     }
 
     public enum GamePhase

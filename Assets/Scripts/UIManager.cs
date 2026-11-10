@@ -50,6 +50,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
+
+    [SerializeField] private GameObject _background;
     
     #endregion
     
@@ -162,6 +164,7 @@ public class UIManager : MonoBehaviour
     private void HideHostConnectionUIMenu()
     {
         _hostConnectionUIMenu.SetActive(false);
+        _background.SetActive(true);
     }
 
     private void HideHostConnectionUIOptions()
@@ -173,6 +176,7 @@ public class UIManager : MonoBehaviour
     {
         selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
         _hostConnectionUIMenu.SetActive(true);
+        _background.SetActive(false);
     }
     
     private void ShowHostConnectionUIWelcome()
@@ -193,6 +197,10 @@ public class UIManager : MonoBehaviour
     
     public void SwitchOnHostConnectingUI()
     {
+        _gameManagerNetwork.sceneManager.UpdateScene(Enums.MiniGamePlace.tv, Enums.MiniGameGenre.none, Enums.MiniGameType.none);
+        _gameManagerNetwork.sceneManager.ShowConnectingAssets();
+        _gameManagerNetwork.sceneManager.SwitchOnCamera(2);
+        
         _hostConnectionUIMenu.SetActive(false);
         _hostConnectionUIConnecting.SetActive(true);
         selectedUI = Enums.SelectedUI.hostConnectionUIConnecting;

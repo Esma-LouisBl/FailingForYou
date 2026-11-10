@@ -11,6 +11,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public MiniGameManager miniGameManager;
     public CharacterManager characterManager;
     public UIManager uiManager;
+    public SceneManager sceneManager;
 
     #endregion
 

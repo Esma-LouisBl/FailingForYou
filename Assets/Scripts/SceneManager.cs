@@ -11,6 +11,9 @@ public class SceneManager : MonoBehaviour
     
     [Header("MiniGames")] [SerializeField] private GameObject _drawingAssets;
     [SerializeField] private GameObject _textualAssets, _soundAssets, _photographicAssets;
+
+    [SerializeField] private GameObject _camera;
+    [SerializeField] private Transform _cameraSlot1, _cameraSlot2;
     
     private List<GameObject> _scenes = new List<GameObject>();
 
@@ -19,6 +22,7 @@ public class SceneManager : MonoBehaviour
         _scenes.Add(_beachScene);
         _scenes.Add(_campingScene);
         _scenes.Add(_parkScene);
+        SwitchOnCamera(1);
         HideAll();
     }
 
@@ -31,6 +35,8 @@ public class SceneManager : MonoBehaviour
         }
         _tvScene.SetActive(false);
         _dressingScene.SetActive(false);
+        _crushCreationAssets.SetActive(false);
+        _connectingAssets.SetActive(false);
         _textualAssets.gameObject.SetActive(false);
         _soundAssets.gameObject.SetActive(false);
         _photographicAssets.gameObject.SetActive(false);
@@ -108,8 +114,12 @@ public class SceneManager : MonoBehaviour
         switch (camera)
         {
             case 1:
+                _camera.GetComponent<Transform>().position = _cameraSlot1.position;
+                _camera.GetComponent<Transform>().rotation = _cameraSlot1.rotation;
                 break;
             case 2:
+                _camera.GetComponent<Transform>().position = _cameraSlot2.position;
+                _camera.GetComponent<Transform>().rotation = _cameraSlot2.rotation;
                 break;
         }
     }
