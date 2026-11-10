@@ -9,6 +9,7 @@ using System.Net;
 using FishNet;
 using FishNet.Connection;
 using NUnit.Framework.Constraints;
+using UnityEngine.InputSystem;
 using ZXing;
 using ZXing.QrCode;
 
@@ -21,6 +22,7 @@ public class ServerManager : MonoBehaviour
     //OtherManager references
     [SerializeField] private GameObject _miniGameManager;
     [SerializeField] private GameObject _gameManagerNetwork;
+    [SerializeField] private UIManager _uiManager;
 
     //UI
     [SerializeField]
@@ -57,6 +59,8 @@ public class ServerManager : MonoBehaviour
         {
             //_serverCanvas.SetActive(false);
             //_mobileCanvas.SetActive(true);
+            
+            _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
             SetUpCamera();
             CreateClient();
         }
@@ -119,6 +123,9 @@ public class ServerManager : MonoBehaviour
     //Try to connect as a client
     public void CreateClient()
     {
+        // Put the line below not in comment if you want to test in SIMULATOR
+        // _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
+        
         _gameManagerNetwork.GetComponent<GameManagerNetwork>().uiManager.selectedUI = Enums.SelectedUI.clientConnectionUIWelcome;
         if (_writtenAdress.text != "")
         {
@@ -224,7 +231,7 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    private new IEnumerator ConnectionDelay()
+    private new IEnumerator ConnectionDelay() //Set a delay to avoid second scan of QR code
     {
         yield return new WaitForSeconds(0.5f);
         _canTryScanning = true;
