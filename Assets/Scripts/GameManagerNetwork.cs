@@ -21,8 +21,8 @@ public class GameManagerNetwork : NetworkBehaviour
     
     public Enums.GamePhase gamePhase;
     
-    [SerializeField]    //Required for function ConfirmTextAnswer
-    private TextMeshProUGUI _playerTextAnswer;
+    [SerializeField]    //Required for function ConfirmTextAnswer & ConfirmTieAnswer
+    private TextMeshProUGUI _playerTextAnswer, _playerTieAnswer;
     
     [SerializeField]    //Required for function ConfirmVote
     private TextMeshProUGUI _answer1, _answer2, _answer3;
@@ -83,6 +83,9 @@ public class GameManagerNetwork : NetworkBehaviour
             case Enums.GamePhase.voting:
                 ConfirmVote();
                 break;
+            case Enums.GamePhase.tie:
+                ConfirmTieAnswer();
+                break;
         }
     }
     
@@ -90,6 +93,11 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         string answer = _playerTextAnswer.text;
         myLocalPlayer.SendPlayerTextAnswer(answer, myLocalPlayer.playerData.playerNumber);
+    }
+
+    public void ConfirmTieAnswer()
+    {
+        float answer = float.Parse(_playerTieAnswer.text);
     }
 
     public void ConfirmVote()
@@ -126,6 +134,12 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             miniGameManager.StartVotePhase();
         }
+    }
+
+    public void ReceivePlayerTieAnswer(float answer, int playerNumber)
+    {
+        //check if the answer has already been entered by someone else
+        miniGameManager.CollectTieAnswer(answer, playerNumber);
     }
 
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)

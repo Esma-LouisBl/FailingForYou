@@ -32,6 +32,7 @@ public class MiniGameManager : NetworkBehaviour
     public int collectedAnswers, collectedVotes;
     
     List<int> playersInTie = new List<int>();
+    List<float> collectedTieAnswers = new List<float>();
     
     // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
@@ -262,21 +263,33 @@ public class MiniGameManager : NetworkBehaviour
     }
     public void Tie()
     {
+        collectedAnswers = 0;
+        collectedTieAnswers.Clear(); //reset variable
+        for (int i = 0; i < 5; i++) //list init
+        {
+            collectedTieAnswers.Add(0);
+        }
+        SendGamePhaseToGameManagerNetwork(Enums.GamePhase.tie);
         currentTieQuestion = tieQuestions[Random.Range(0, tieQuestions.Count)];
         _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
 
-        StartTieOnClient(playersInTie);
+        StartTieOnClient(playersInTie, currentTieQuestion.question);
     }
 
     [ObserversRpc]
-    public void StartTieOnClient(List<int> playersConcerned)
+    public void StartTieOnClient(List<int> playersConcerned, string question)
     {
-        Debug.Log("le moment de vérité");
-        if (playersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber))
+        if (playersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)) //to launch only on concerned players
         {
-            Debug.Log("je suis dans l'égalité mais dans l'illégalité");
-            _uiManager.ShowTieOnClient();
+            _uiManager.ShowTieOnClient(question);
         }
+    }
+
+    public void CollectTieAnswer(float answer, int playerNumber)
+    {
+        collectedAnswers++;
+        collectedTieAnswers[playerNumber] = answer;
+        Debug.Log(collectedTieAnswers[playerNumber]);
     }
 
     public void FinishVotePhase()

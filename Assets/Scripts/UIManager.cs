@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
 
-    [Header("Tie")]
+    [Header("Tie (host)")]
     [SerializeField] private GameObject _tieHostUI;
     [Tooltip("Use this to deform the band")]
     [SerializeField] private RectTransform _bandTransform;
@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
     [SerializeField] private TextMeshProUGUI _answer, _winnerName;
+    
+    [Header("Tie (client)")]
+    [SerializeField] private GameObject _tieClientUI;
+    [SerializeField] private TextMeshProUGUI _tieQuestionClient;
     [Space(20)]
 
 
@@ -318,9 +322,14 @@ public class UIManager : MonoBehaviour
             answers.Add("");
         }
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             _randomOrderOfAnswersOnScreen.Add(0);   //List to see at which player belongs the answers in the order they are displayed on host screen
+        }
+
+        if (fourPlayers)
+        {
+            _randomOrderOfAnswersOnScreen.Add(0);
         }
 
         List<int> answerToAssign = new List<int>(); //Temporary list that repertories the answers which hasn't yet been assigned randomly
@@ -476,9 +485,11 @@ public class UIManager : MonoBehaviour
         _tieQuestionText.text = question;
     }
 
-    public void ShowTieOnClient()
+    public void ShowTieOnClient(string tieQuestion)
     {
-        
+        _tieClientUI.SetActive(true);
+        _clientWaitingScreen.SetActive(false);
+        _tieQuestionClient.text = tieQuestion;
     }
 
     #endregion

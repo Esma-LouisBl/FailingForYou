@@ -64,6 +64,12 @@ public class PlayerNetwork : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void SendPlayerTieAnswer(float answer, int playerNumber)
+    {
+        gameManagerNetwork.ReceivePlayerTieAnswer(answer, playerNumber);
+    }
+
+    [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
         gameManagerNetwork.AddPlayer(this, instanceToSend);
