@@ -318,7 +318,7 @@ public class UIManager : MonoBehaviour
             answers.Add("");
         }
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             _randomOrderOfAnswersOnScreen.Add(0);   //List to see at which player belongs the answers in the order they are displayed on host screen
         }
@@ -451,26 +451,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ShowTieOnHost(List<PlayerData> playersInTie, string question)
+    public void ShowTieOnHost(List<int> playersInTie, string question)
     {
         _tieHostUI.SetActive(true);
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
 
-    private IEnumerator TieStartAnimation(List<PlayerData> playersInTie, string question)
+    private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
     {
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
-        for (int i = 0; i < 160; i++)
+        for (int i = 0; i < 1600; i++)
         {
-            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+1);
-            yield return new WaitForSeconds(0.01f);
+            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+0.1f);
+            yield return new WaitForSeconds(0.001f);
         }
         _tieAppearText.gameObject.SetActive(false);
 
         for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
         {
             _playersInTieGO[i].gameObject.SetActive(true);
-            _playersNames[i].text = playersInTie[i].playerName;
+            // _playersNames[i].text = playersInTie[i].playerName;
         }
 
         _tieQuestionText.text = question;

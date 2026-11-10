@@ -31,6 +31,8 @@ public class MiniGameManager : NetworkBehaviour
 
     public int collectedAnswers, collectedVotes;
     
+    List<int> playersInTie = new List<int>();
+    
     // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
     #endregion
@@ -225,44 +227,52 @@ public class MiniGameManager : NetworkBehaviour
             votesToCheck--;
         }
 
-        Debug.Log($"Le joueur 1 est en position {ranking[1]}");
-        Debug.Log($"Le joueur 2 est en position {ranking[2]}");
-        Debug.Log($"Le joueur 3 est en position {ranking[3]}");
+        //check if there are ties
+        for (int i = 1; i < 4; i++)     //we check for all the 4 possible ranks
+        {
+            playersInTie.Clear();
+            foreach (var values in ranking)
+            {
+                if (values.Value == i)  //if someone is in that rank, we add em to playersInTie
+                {
+                    playersInTie.Add(values.Key);
+                }
+            }
+
+            if (playersInTie.Count >= 1) //if there are multiple people on the same rank, there is a tie OR there is a person
+            {                            //who is alone but superior to the others, so the inferior ties aren't important
+                break;
+            }
+        }
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         
         //if tie : start tie
-        List<PlayerData> playersInTie = new List<PlayerData>();
-        //add here the players currently in tie
-        playersInTie.Add(_gameManagerNetwork.players[0].playerData); //added p1 and p2 just to debug
-        playersInTie.Add(_gameManagerNetwork.players[1].playerData);
-        StartCoroutine(WaitBeforeTie(playersInTie));
+        if (playersInTie.Count > 1)
+        {
+            StartCoroutine(WaitBeforeTie());
+        }
         // FinishVotePhase();
     }
 
-    private IEnumerator WaitBeforeTie(List<PlayerData> playersInTie)
+    private IEnumerator WaitBeforeTie()
     {
         yield return new WaitForSeconds(5f);
-        Tie(playersInTie);
+        Tie();
     }
-    public void Tie(List<PlayerData> playersInTie)
+    public void Tie()
     {
         currentTieQuestion = tieQuestions[Random.Range(0, tieQuestions.Count)];
         _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
-        List<int> clientsConcerned = new List<int>();
-        foreach (var playerData in playersInTie)
-        {
-            clientsConcerned.Add(playerData.playerNumber);
-        }
 
-        StartTieOnClient(clientsConcerned);
+        StartTieOnClient(playersInTie);
     }
 
     [ObserversRpc]
-    public void StartTieOnClient(List<int> playerNumbersConcerned)
+    public void StartTieOnClient(List<int> playersConcerned)
     {
-        Debug.Log("bon au moins la fonction est appelée");
-        if (playerNumbersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber))
+        Debug.Log("le moment de vérité");
+        if (playersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber))
         {
             Debug.Log("je suis dans l'égalité mais dans l'illégalité");
             _uiManager.ShowTieOnClient();
