@@ -80,10 +80,10 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
-    [ServerRpc]
+    [ObserversRpc]
     public void SendPlayerToCrushCreation()
 	{
-		gameManagerNetwork.ReceivePlayerToCrushCreation(playerData.playerNumber);
+        gameManagerNetwork.ReceivePlayerNumber(playerData.playerNumber);
         
 	}
 

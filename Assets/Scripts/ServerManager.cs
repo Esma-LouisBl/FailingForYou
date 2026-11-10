@@ -23,9 +23,10 @@ public class ServerManager : MonoBehaviour
     [SerializeField] private GameObject _miniGameManager;
     [SerializeField] private GameObject _gameManagerNetwork;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private CrushCreationManager _crushCreationManager;
 
-    //UI
-    [SerializeField]
+	//UI
+	[SerializeField]
     private TextMeshProUGUI _codeTextUI;
     [SerializeField]
     private TMP_InputField _writtenAdress;

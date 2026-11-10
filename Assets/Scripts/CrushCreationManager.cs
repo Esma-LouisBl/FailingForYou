@@ -51,11 +51,8 @@ public class CrushCreationManager : NetworkBehaviour
 		//HairSprite = GetComponent<Image>();
 		//hairImage.sprite = hairSprites[index];
 		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
-		//crushImage = hairImage;
-		//crushSprites = hairSprites;
-		//hairImage.enabled = true;
-		//crushImage.enabled = true;
-		CrushList();
+		
+		
 
 
 	}
@@ -79,15 +76,22 @@ public class CrushCreationManager : NetworkBehaviour
 		
 		}
 		
+
+		OpenCrushCreation();
 	}
 
 
 
 
+	[ObserversRpc]
 	public void OpenCrushCreation()
 	{
 		crushCreationUI.SetActive(true);
-		//Debug.Log("Open Crush Creation");
+		hairImage.enabled = false;
+		accessoriesImage.enabled = false;
+		clothesImage.enabled = false;
+		faceImage.enabled = false;
+		_gameManagerNetwork.GetPlayerNumber();
 	}
 
 	public void CloseCrushCreation()
@@ -120,10 +124,7 @@ public class CrushCreationManager : NetworkBehaviour
 	[ObserversRpc]
 	public void ChosePartCrush(int playerNumber)
 	{
-		hairImage.enabled = false;
-		accessoriesImage.enabled = false;
-		clothesImage.enabled = false;
-		faceImage.enabled = false;
+		Debug.Log("coucou");
 		Debug.Log(playerNumber);
 		string part = crushParts[playerNumber];
 		switch (part)
@@ -166,6 +167,8 @@ public class CrushCreationManager : NetworkBehaviour
 				break;
 		}
 		RemoveCrushPart(part);
+
+		
 	}
 
 	public void RemoveCrushPart(string partToRemove)
