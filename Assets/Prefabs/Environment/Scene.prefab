@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AMUSEMENT PARK
       objectReference: {fileID: 0}
+    - target: {fileID: 3421601157704653729, guid: a27a9e8c0a6dccd429464268721d60f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -218,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 3343734594582671742, guid: 5998f602b69c646469b100ecad48631f, type: 3}
       propertyPath: m_Name
       value: TV SET
+      objectReference: {fileID: 0}
+    - target: {fileID: 3343734594582671742, guid: 5998f602b69c646469b100ecad48631f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -307,6 +315,10 @@ PrefabInstance:
     - target: {fileID: 4665689923712135114, guid: 266e2a09e579a6d4989a787ffa714ee1, type: 3}
       propertyPath: m_Name
       value: BEACH
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665689923712135114, guid: 266e2a09e579a6d4989a787ffa714ee1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7605652779460963319, guid: 266e2a09e579a6d4989a787ffa714ee1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -508,6 +520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAMPING
       objectReference: {fileID: 0}
+    - target: {fileID: 7467756025961619971, guid: 9a3739fc6c87ebb4b885ae79ded49cb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -575,6 +591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: START MENU
       objectReference: {fileID: 0}
+    - target: {fileID: 8285466813746614436, guid: 0e53dafc0a2cca643aaccbdae2bd1a4e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -641,6 +661,10 @@ PrefabInstance:
     - target: {fileID: 3816305954596631689, guid: e18ff875e3b60094ca90d8977f73defd, type: 3}
       propertyPath: m_Name
       value: ATTIC
+      objectReference: {fileID: 0}
+    - target: {fileID: 3816305954596631689, guid: e18ff875e3b60094ca90d8977f73defd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8013016492087810161, guid: e18ff875e3b60094ca90d8977f73defd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -743,6 +767,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MINI GAMES
       objectReference: {fileID: 0}
+    - target: {fileID: 833677369366061015, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450897633157719385, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537767952584301137, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250699323085961767, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3146080286528842092, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17434
@@ -781,6 +821,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3146080286528842092, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093459787909404816, guid: 9b59723e96835544da0fd7a5f33bbecd, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
