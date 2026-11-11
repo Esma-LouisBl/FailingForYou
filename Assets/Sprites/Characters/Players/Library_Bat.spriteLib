@@ -278,26 +278,31 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 0}
     - m_Name: Microphone
       m_Hash: 642934924
-      m_Sprite: {fileID: 0}
+      m_Sprite: {fileID: 675241581489633609, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
+      m_SpriteOverride: {fileID: 675241581489633609, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
     - m_Name: Feather
       m_Hash: 46431624
-      m_Sprite: {fileID: 0}
+      m_Sprite: {fileID: 3090932554649449159, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
+      m_SpriteOverride: {fileID: 3090932554649449159, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
     - m_Name: Brush
       m_Hash: 812056007
-      m_Sprite: {fileID: 0}
+      m_Sprite: {fileID: 2018593320370027636, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
-    - m_Name: Polaroid
-      m_Hash: 717426906
-      m_Sprite: {fileID: 0}
+      m_SpriteOverride: {fileID: 2018593320370027636, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    - m_Name: Polaroid_Back
+      m_Hash: 889003274
+      m_Sprite: {fileID: 266853558102824139, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
+      m_SpriteOverride: {fileID: 266853558102824139, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    - m_Name: Polaroid_Front
+      m_Hash: 650779963
+      m_Sprite: {fileID: -7435754631166808399, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7435754631166808399, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 5
+    m_EntryOverrideCount: 6
   - m_Name: SlotItem_L
     m_Hash: 816410475
     m_CategoryList: []
@@ -307,18 +312,23 @@ MonoBehaviour:
       m_Sprite: {fileID: 0}
       m_FromMain: 0
       m_SpriteOverride: {fileID: 0}
-    - m_Name: Canvas
-      m_Hash: 573794606
-      m_Sprite: {fileID: 0}
-      m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
     - m_Name: Card
       m_Hash: 908474349
-      m_Sprite: {fileID: 0}
+      m_Sprite: {fileID: 949992393714542133, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 0}
+      m_SpriteOverride: {fileID: 949992393714542133, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    - m_Name: Canvas_Front
+      m_Hash: 618925653
+      m_Sprite: {fileID: 2429693654592374996, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2429693654592374996, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    - m_Name: Canvas_Back
+      m_Hash: 303739484
+      m_Sprite: {fileID: -2583437907918403987, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2583437907918403987, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 4
   - m_Name: Eyebrow_L
     m_Hash: 771846977
     m_CategoryList: []
@@ -427,6 +437,17 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -8162255452575286581, guid: 3db170e326c0aaf46abefa1fb281ea80, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 2
+  - m_Name: Nose
+    m_Hash: 550421485
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Base
+      m_Hash: 545673567
+      m_Sprite: {fileID: 4250932020570538291, guid: 3db170e326c0aaf46abefa1fb281ea80, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 4250932020570538291, guid: 3db170e326c0aaf46abefa1fb281ea80, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639299077224413326
+  m_ModificationHash: 639300132216117683
   m_Version: 1
