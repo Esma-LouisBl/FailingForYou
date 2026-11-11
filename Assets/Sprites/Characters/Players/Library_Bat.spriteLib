@@ -427,9 +427,9 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Nothing
       m_Hash: 764720971
-      m_Sprite: {fileID: 1091149064, guid: 63dd75a7457e92d4a84f3df37436c820, type: 3}
+      m_Sprite: {fileID: 0}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 1091149064, guid: 63dd75a7457e92d4a84f3df37436c820, type: 3}
+      m_SpriteOverride: {fileID: 0}
     - m_Name: Base
       m_Hash: 545673567
       m_Sprite: {fileID: -8162255452575286581, guid: 3db170e326c0aaf46abefa1fb281ea80, type: 3}
@@ -448,6 +448,27 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 4250932020570538291, guid: 3db170e326c0aaf46abefa1fb281ea80, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 1
+  - m_Name: Slot_separate
+    m_Hash: 763409191
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Nothing
+      m_Hash: 764720971
+      m_Sprite: {fileID: 0}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 0}
+    - m_Name: Feather
+      m_Hash: 46431624
+      m_Sprite: {fileID: 3090932554649449159, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 3090932554649449159, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    - m_Name: Postcard
+      m_Hash: 994995724
+      m_Sprite: {fileID: 949992393714542133, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 949992393714542133, guid: 12853511afc77ec4abc02665f8ba9f95, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 639300132216117683
+  m_ModificationHash: 639300348739175325
   m_Version: 1
