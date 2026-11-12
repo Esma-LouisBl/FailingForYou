@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
     [SerializeField] private TextMeshProUGUI _tieQuestionClient;
+    [SerializeField] private GameObject _errorAnswerAlreadyBeenEntered;
     [Space(20)]
 
 
@@ -490,6 +491,20 @@ public class UIManager : MonoBehaviour
         _tieClientUI.SetActive(true);
         _clientWaitingScreen.SetActive(false);
         _tieQuestionClient.text = tieQuestion;
+    }
+
+    public void ShowTieOnClientAfterBadAnswer()
+    {
+        _tieClientUI.SetActive(true);
+        _clientWaitingScreen.SetActive(false);
+        StartCoroutine(BadAnswerAnimation());
+    }
+
+    private IEnumerator BadAnswerAnimation()
+    {
+        _errorAnswerAlreadyBeenEntered.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        _errorAnswerAlreadyBeenEntered.SetActive(false);
     }
 
     #endregion

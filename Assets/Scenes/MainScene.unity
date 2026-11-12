@@ -1043,6 +1043,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7125555430828116587}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _errorAnswerAlreadyBeenEntered
+      value: 
+      objectReference: {fileID: 1303270278}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: '_answer1VoteTokens.Array.data[0]'
       value: 
       objectReference: {fileID: 1122254614}
@@ -1750,6 +1754,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5102292158285902499, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
   m_PrefabInstance: {fileID: 7125555430828116582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1303270278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4691952422474383757, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+  m_PrefabInstance: {fileID: 1615421982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1342469716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2110,10 @@ PrefabInstance:
       value: Client UI
       objectReference: {fileID: 0}
     - target: {fileID: 3755199177506799776, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691952422474383757, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

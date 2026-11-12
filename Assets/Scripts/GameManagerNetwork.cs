@@ -161,7 +161,7 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         if (myLocalPlayer.playerData.playerNumber == playerNumber)
         {
-            Debug.Log("ERREUR : RÉPONSE DÉJÀ REÇUE");
+            uiManager.ShowTieOnClientAfterBadAnswer();
         }
     }
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
