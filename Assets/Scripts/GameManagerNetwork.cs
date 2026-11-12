@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using FishNet.Object;
 using TMPro;
 using UnityEngine;
@@ -97,7 +98,13 @@ public class GameManagerNetwork : NetworkBehaviour
 
     public void ConfirmTieAnswer()
     {
-        float answer = float.Parse(_playerTieAnswer.text);
+        //need to do some shenanigans in order to convert into float without bugs
+        string s = _playerTieAnswer.text;
+        s = Regex.Replace(_playerTieAnswer.text, @"[^0-9.,-]", "");
+        s.Replace(",", ".");
+        float answer = float.Parse(s);
+        
+        myLocalPlayer.SendPlayerTieAnswer(answer, myLocalPlayer.playerData.playerNumber);
     }
 
     public void ConfirmVote()
@@ -139,9 +146,24 @@ public class GameManagerNetwork : NetworkBehaviour
     public void ReceivePlayerTieAnswer(float answer, int playerNumber)
     {
         //check if the answer has already been entered by someone else
-        miniGameManager.CollectTieAnswer(answer, playerNumber);
+        if (miniGameManager.collectedTieAnswers.Contains(answer))
+        {
+            CannotReceiveAnswer(playerNumber);
+        }
+        else
+        {
+            miniGameManager.CollectTieAnswer(answer, playerNumber);
+        }
     }
 
+    [ObserversRpc]
+    private void CannotReceiveAnswer(int playerNumber)
+    {
+        if (myLocalPlayer.playerData.playerNumber == playerNumber)
+        {
+            Debug.Log("ERREUR : RÉPONSE DÉJÀ REÇUE");
+        }
+    }
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
     {
         miniGameManager.CollectTextVotes(votedAnswer, playerNumber);

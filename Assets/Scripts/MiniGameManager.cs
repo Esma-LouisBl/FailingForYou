@@ -32,7 +32,7 @@ public class MiniGameManager : NetworkBehaviour
     public int collectedAnswers, collectedVotes;
     
     List<int> playersInTie = new List<int>();
-    List<float> collectedTieAnswers = new List<float>();
+    public List<float> collectedTieAnswers = new List<float>();
     
     // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
 
@@ -289,7 +289,30 @@ public class MiniGameManager : NetworkBehaviour
     {
         collectedAnswers++;
         collectedTieAnswers[playerNumber] = answer;
-        Debug.Log(collectedTieAnswers[playerNumber]);
+
+        if (collectedAnswers == playersInTie.Count)
+        {
+            TieWinnerElection();
+        }
+    }
+
+    public void TieWinnerElection()
+    {
+        int winner = 0;
+        float closerAnswer = collectedTieAnswers[playersInTie[0]];
+        Debug.Log("la plus proche initialement est : " + closerAnswer);
+        for (int i = 1; i < collectedTieAnswers.Count; i++)
+        {
+            if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < closerAnswer)
+            {
+                winner = i;
+                closerAnswer = collectedTieAnswers[i];
+            }
+        }
+
+        Debug.Log("le gagnant est le joueur " + winner);
+        Debug.Log("écart : "+closerAnswer);
+        //vérifie comment sont rangées les collectedTieAnswers, tu te retrouves avec un vilain 0
     }
 
     public void FinishVotePhase()
