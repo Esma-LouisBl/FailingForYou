@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3825417147955929044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7840685074625773059}
+  - component: {fileID: 2104520951060285866}
+  m_Layer: 0
+  m_Name: CrushCreationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &7840685074625773059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825417147955929044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 803.3801, y: 0, z: 16742.777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2104520951060285866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3825417147955929044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745d29a3bde031c47ac0e14e2c80a2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrushCreationManager
+  crushCreationUI: {fileID: 0}
+  indexCrushCreation:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  partText: {fileID: 0}
+  hairImage: {fileID: 0}
+  accessoriesImage: {fileID: 0}
+  faceImage: {fileID: 0}
+  clothesImage: {fileID: 0}
+  crushImage: {fileID: 0}
+  crushSprites: []
+  hairSprites:
+  - {fileID: 21300000, guid: 3e0b73e33532a4b4082cd721ce229650, type: 3}
+  - {fileID: 21300000, guid: 81210a014abc3ea419dddb76d7364dba, type: 3}
+  - {fileID: 21300000, guid: 16b06f46e8719cd4a8a95973fb7d1fd4, type: 3}
+  accessoriesSprites:
+  - {fileID: 21300000, guid: 8536687d61ab26840862209345cbb48e, type: 3}
+  - {fileID: 21300000, guid: 268ae574ef1a34744af299b006afdf21, type: 3}
+  - {fileID: 21300000, guid: d29f99b5cd324434a94439a30bb9b62c, type: 3}
+  facesSprites:
+  - {fileID: 21300000, guid: 7b115a088a2c2a34e85e14f9cff31a0b, type: 3}
+  - {fileID: 21300000, guid: 1f997f8d8bb73d9478d68366911f8434, type: 3}
+  - {fileID: 21300000, guid: 50f00971a2c99a746a3340944368a23d, type: 3}
+  clothesSprites:
+  - {fileID: 21300000, guid: 478fb725b7c1de84e8c2d905139611fd, type: 3}
+  - {fileID: 21300000, guid: 607875652ad208248b6c20e494d3945e, type: 3}
+  - {fileID: 21300000, guid: 0fb56e5a05844c54eb31259652016a13, type: 3}
+  index: 0
