@@ -44,9 +44,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1100374974596901959}
     m_Modifications:
-    - target: {fileID: 3218206640473282798, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.058
+    - target: {fileID: 1280254138122425116, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
+      propertyPath: m_Name
+      value: Player3Slot
       objectReference: {fileID: 0}
     - target: {fileID: 3908568502424359260, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -92,11 +92,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYERS
       objectReference: {fileID: 0}
+    - target: {fileID: 5351453104699973209, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
+      propertyPath: m_Name
+      value: Player4Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5687280026685965084, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
+      propertyPath: m_Name
+      value: Player2Slot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2137203675371680275, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
-    - {fileID: 376949992815087498, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
-    - {fileID: 7431434445242594161, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54df80e6fb0d4041864bc0e3e1df11a, type: 3}
@@ -218,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 8274942388042156608, guid: 03ee7c3e9c2096b42ae58ece1f73fdab, type: 3}
       propertyPath: m_Name
       value: PUPPET
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274942388042156608, guid: 03ee7c3e9c2096b42ae58ece1f73fdab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,6 +11,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public MiniGameManager miniGameManager;
     public CharacterManager characterManager;
     public UIManager uiManager;
+    public SceneManager sceneManager;
 
     #endregion
 
@@ -33,6 +34,9 @@ public class GameManagerNetwork : NetworkBehaviour
     private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
+    
+    [SerializeField]
+    private TextMeshPro _player1NameText, _player2NameText, _player3NameText,  _player4NameText;
     
     #endregion
 
@@ -141,7 +145,7 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #region CharacterSelection
     
-    public void CheckIfCharacterIsSelected(Enums.CharacterName characterName, int playerNumber) //Check  if character called is already selected by a player
+    public void CheckIfCharacterIsSelected(Enums.CharacterName characterName, int playerNumber) //Check if character called is already selected by a player
     {
         if (!_selectedCharacters.Contains(characterName))
         {
@@ -175,6 +179,21 @@ public class GameManagerNetwork : NetworkBehaviour
     public void RegisterNameOnServer(string playerName, int sentPlayerNumber)
     {
         _playerNames.Add(sentPlayerNumber, playerName);
+        switch (sentPlayerNumber)
+        {
+            case 1:
+                _player1NameText.text = playerName;
+                break;
+            case 2:
+                _player2NameText.text = playerName;
+                break;
+            case 3:
+                _player3NameText.text = playerName;
+                break;
+            case 4:
+                _player4NameText.text = playerName;
+                break;
+        }
     }
 
     #endregion

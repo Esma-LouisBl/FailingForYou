@@ -9,14 +9,16 @@ public class Enums : MonoBehaviour
         drawing,
         sound,
         clothing,
-        accessories
+        accessories,
+        none
     }
 
     public enum MiniGamePlace
     {
         camping,
         park,
-        beach
+        beach,
+        tv
     }
 
     public enum MiniGameGenre
@@ -25,7 +27,8 @@ public class Enums : MonoBehaviour
         romantic,
         horrific,
         historic,
-        dramatic
+        dramatic,
+        none
     }
 
     public enum GamePhase
