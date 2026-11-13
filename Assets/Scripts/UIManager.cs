@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
+    [Space(20)]
+    [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
@@ -270,6 +272,10 @@ public class UIManager : MonoBehaviour
 
     #region MiniGame
 
+    public void UpdateTimer(int time)
+    {
+        _timerText.text = time.ToString();
+    }
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
         _hostQuestionTMP.text = miniGame.question;
@@ -524,7 +530,14 @@ public class UIManager : MonoBehaviour
     
 
     #endregion
-    
+
+    public void ShowWaitingScreenAndShutDownEverythingElse()
+    {
+        _clientWaitingScreen.SetActive(true);
+        _clientQuestionUI.SetActive(false);
+        _clientVotingArea.SetActive(false);
+        _tieClientUI.SetActive(false);
+    }
 
     #region CharacterSelection
 

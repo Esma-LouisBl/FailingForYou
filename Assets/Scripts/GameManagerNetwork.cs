@@ -71,6 +71,16 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #region SendButton
 
+    public void ResetVariablesOnStartMiniGame()
+    {
+        _playerTextAnswer.text = "";
+        _playerTieAnswer.text = "";
+        _answer1.text = "";
+        _answer2.text = "";
+        _answer3.text = "";
+        _voteAnswerNumber = 1;
+    }
+    
     // Used by a LOCAL GameManagerNetwork
     // When player click on the Send Button
     // The function that is trigger changes according to the current game phase
@@ -88,6 +98,7 @@ public class GameManagerNetwork : NetworkBehaviour
                 ConfirmTieAnswer();
                 break;
         }
+        miniGameManager.WaitingScreenOnClient();
     }
     
     public void ConfirmTextAnswer()

@@ -20,8 +20,8 @@ public class MiniGameManager : NetworkBehaviour
     public MiniGameData currentTieQuestion;
     
     public int amountOfMiniGames = 3;
-    
-    // public Enums.GamePhase serverGamePhase;
+
+    public int time = 40;
     
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
@@ -52,12 +52,6 @@ public class MiniGameManager : NetworkBehaviour
         {
             textAnswers.Add("");
         }
-
-        // _votes.Capacity = 5;
-        // for (int i = 0; i < 5; i++)
-        // {
-        //     _votes.Add(0);
-        // }
     }
 
     public void SendGamePhaseToGameManagerNetwork(Enums.GamePhase phase)
@@ -96,14 +90,36 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.HideConnectionUI();
         _uiManager.UpdateMiniGameUIHost(miniGame);
 
+        time = 40;
+        StartCoroutine(Timer());
+
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.answeringQuestion);
         
         LaunchMiniGameToClient(miniGame);
+    }
+
+    private IEnumerator Timer()
+    {
+        while (time > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            time--;
+            _uiManager.UpdateTimer(time);
+        }
+
+        ForceClientsToSend();
+    }
+
+    [ObserversRpc]
+    public void ForceClientsToSend()
+    {
+        _gameManagerNetwork.SendButton();
     }
     
     [ObserversRpc]
     public void LaunchMiniGameToClient(MiniGameData miniGame)
     {
+        _gameManagerNetwork.ResetVariablesOnStartMiniGame();
         _uiManager.UpdateMiniGameUIClient(miniGame);
     }
 
@@ -118,6 +134,9 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartVotePhase()
     {
+        StopCoroutine(Timer());
+        time = 40;
+        _uiManager.UpdateTimer(time);
         collectedVotes = 0; //variable reset
         votes.Clear();
         for (int i = 1; i < textAnswers.Count; i++)
@@ -182,10 +201,19 @@ public class MiniGameManager : NetworkBehaviour
     {
         collectedVotes++;
         votes[answerVoted]++;
+        
+        if (collectedVotes == 1)
+        {
+            StartCoroutine(Timer());
+        }
     }
 
     public void MiniGameWinnerElection()
     {
+        StopCoroutine(Timer());
+        time = 40;
+        _uiManager.UpdateTimer(time);
+        
         Dictionary<int, int> ranking = new Dictionary<int, int>();  //acts like a podium : the first int is the PLAYER, the second int is the RANK associated
         ranking.Clear();
         int votesToCheck = 3; //maximum of votes to check while ranking the players
@@ -275,6 +303,8 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
 
         StartTieOnClient(playersInTie, currentTieQuestion.question);
+
+        StartCoroutine(Timer());
     }
 
     [ObserversRpc]
@@ -294,6 +324,8 @@ public class MiniGameManager : NetworkBehaviour
         if (collectedAnswers == playersInTie.Count)
         {
             TieWinnerElection();
+            time = 40;
+            StopCoroutine(Timer());
         }
     }
 
@@ -325,5 +357,10 @@ public class MiniGameManager : NetworkBehaviour
     }
 
     #endregion
+
+    public void WaitingScreenOnClient()
+    {
+        _uiManager.ShowWaitingScreenAndShutDownEverythingElse();
+    }
     
 }
