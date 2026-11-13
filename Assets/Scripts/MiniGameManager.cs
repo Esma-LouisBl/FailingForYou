@@ -31,10 +31,8 @@ public class MiniGameManager : NetworkBehaviour
 
     public int collectedAnswers, collectedVotes;
     
-    List<int> playersInTie = new List<int>();
-    public List<float> collectedTieAnswers = new List<float>();
-    
-    // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
+    public List<int> playersInTie = new List<int>();
+    public List<float> collectedTieAnswers = new List<float>(); //list of answers ordered like players
 
     #endregion
     
@@ -248,12 +246,15 @@ public class MiniGameManager : NetworkBehaviour
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         
-        //if tie : start tie
+        
         if (playersInTie.Count > 1)
         {
             StartCoroutine(WaitBeforeTie());
         }
-        // FinishVotePhase();
+        else
+        {
+            FinishMiniGame();
+        }
     }
 
     private IEnumerator WaitBeforeTie()
@@ -298,36 +299,29 @@ public class MiniGameManager : NetworkBehaviour
 
     public void TieWinnerElection()
     {
-        int winner = 0;
+        int winner = playersInTie[0];
         float closerAnswer = collectedTieAnswers[playersInTie[0]];
-        Debug.Log("la plus proche initialement est : " + closerAnswer);
         for (int i = 1; i < collectedTieAnswers.Count; i++)
         {
-            if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < closerAnswer)
+            if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < Math.Abs(currentTieQuestion.answer - closerAnswer) && playersInTie[i] > 0)
             {
                 winner = i;
                 closerAnswer = collectedTieAnswers[i];
             }
         }
-
-        Debug.Log("le gagnant est le joueur " + winner);
-        Debug.Log("écart : "+closerAnswer);
-        //vérifie comment sont rangées les collectedTieAnswers, tu te retrouves avec un vilain 0
+        
+        _uiManager.ShowTieWinner(winner);
+        Invoke("FinishMiniGame", 4f);
     }
 
-    public void FinishVotePhase()
+    public void FinishMiniGame()
     {
         //var reset
         for (int i = 0; i < 5; i++)
         {
             textAnswers[i] = "";
         }
-
-        // for (int i = 0; i < 5; i++)
-        // {
-        //     _votes[i] = 0;
-        // }
-        votes.Clear();
+        votes.Clear(); 
     }
 
     #endregion

@@ -282,6 +282,7 @@ public class UIManager : MonoBehaviour
     {
         HideConnectionUI();
         ShowClientMainUI();
+        _clientWaitingScreen.SetActive(false);
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
@@ -461,6 +462,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #region Tie
+
     public void ShowTieOnHost(List<int> playersInTie, string question)
     {
         _tieHostUI.SetActive(true);
@@ -473,7 +476,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < 1600; i++)
         {
             _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+0.1f);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.0005f);
         }
         _tieAppearText.gameObject.SetActive(false);
 
@@ -493,6 +496,16 @@ public class UIManager : MonoBehaviour
         _tieQuestionClient.text = tieQuestion;
     }
 
+    public void ShowTieWinner(int winnerNumber)
+    {
+        for (int i = 0; i < _gameManagerNetwork.miniGameManager.playersInTie.Count; i++)
+        {
+            _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+        }
+
+        _winnerName.gameObject.SetActive(true);
+        _winnerName.text = $"Le gagnant est le joueur {winnerNumber} !";
+    }
     public void ShowTieOnClientAfterBadAnswer()
     {
         _tieClientUI.SetActive(true);
@@ -503,9 +516,12 @@ public class UIManager : MonoBehaviour
     private IEnumerator BadAnswerAnimation()
     {
         _errorAnswerAlreadyBeenEntered.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         _errorAnswerAlreadyBeenEntered.SetActive(false);
     }
+
+    #endregion
+    
 
     #endregion
     
