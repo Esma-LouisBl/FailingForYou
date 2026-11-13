@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502088669202796334}
   - component: {fileID: 8649764395041437144}
+  - component: {fileID: 7245065371340757027}
   m_Layer: 0
   m_Name: AMUSEMENT PARK
   m_TagString: Untagged
@@ -62,6 +63,28 @@ MonoBehaviour:
   - {fileID: 1728588752786072357}
   - {fileID: 1083184019167000556}
   - {fileID: 4224434437010111489}
+--- !u!95 &7245065371340757027
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3421601157704653729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: df5230aaee0a99f419e571a6d1a66b9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &327167293805336136
 PrefabInstance:
   m_ObjectHideFlags: 0
