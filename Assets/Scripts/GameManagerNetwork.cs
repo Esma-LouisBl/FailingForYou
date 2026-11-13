@@ -35,8 +35,16 @@ public class GameManagerNetwork : NetworkBehaviour
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
     
+    #region CharacterSelection
+    
     [SerializeField]
     private TextMeshPro _player1NameText, _player2NameText, _player3NameText,  _player4NameText;
+    [SerializeField]
+    private List<Transform> _playerTransforms = new List<Transform>();
+    [SerializeField]
+    private GameObject _batPrefab, _bunnyPrefab, _chickenPrefab, _catPrefab, _chameleonPrefab, _axolotlPrefab;
+    
+    #endregion
     
     #endregion
 
@@ -150,6 +158,9 @@ public class GameManagerNetwork : NetworkBehaviour
         if (!_selectedCharacters.Contains(characterName))
         {
             _selectedCharacters.Add(characterName);
+            //Show the player on Screen
+            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform);
+            _playerTransforms[0].gameObject.SetActive(true);
             ReturnSelectedCharacter(characterName, playerNumber);
         }
         else
