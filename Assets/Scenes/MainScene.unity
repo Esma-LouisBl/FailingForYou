@@ -1596,6 +1596,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
+--- !u!4 &1296223420 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2952354399575051929, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+  m_PrefabInstance: {fileID: 1296223415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1296223421 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2747612778731422921, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+  m_PrefabInstance: {fileID: 1296223415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1296223422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1485471287594293213, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+  m_PrefabInstance: {fileID: 1296223415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1296223423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4880055567554268037, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+  m_PrefabInstance: {fileID: 1296223415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1342469716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,6 +3211,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 929195913}
     - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: _batPrefab
+      value: 
+      objectReference: {fileID: 2573394142344180623, guid: b0e1654bec3eac344b09cea44a347496, type: 3}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
       propertyPath: _player1Name
       value: 
       objectReference: {fileID: 1296223419}
@@ -3234,6 +3258,26 @@ PrefabInstance:
       propertyPath: _playerTextAnswer
       value: 
       objectReference: {fileID: 964564291}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: _playerTransforms.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: '_playerTransforms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1296223423}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: '_playerTransforms.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1296223422}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: '_playerTransforms.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1296223421}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: '_playerTransforms.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1296223420}
     - target: {fileID: 4423402556204671375, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
       propertyPath: m_Name
       value: GameManagerNetwork
