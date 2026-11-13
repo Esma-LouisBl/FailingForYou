@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366596741744797656}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.9256153, w: 0.37846574}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9256153, w: 0.3784657}
   m_LocalPosition: {x: 0.021435974, y: 0.04169875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1647,7 +1647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5967878826685275980}
   m_Layer: 0
-  m_Name: bone_1
+  m_Name: bone_mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3157,7 +3157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5273041759390105704}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.5272189, w: 0.8497295}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5272189, w: 0.8497295}
   m_LocalPosition: {x: -0.019498495, y: -0.05625228, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3220,7 +3220,7 @@ Transform:
   m_GameObject: {fileID: 5386852722656465069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.6853852, w: 0.7281807}
-  m_LocalPosition: {x: 0.00022330729, y: -0.009335938, z: 0}
+  m_LocalPosition: {x: 0.0002233073, y: -0.009335938, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4302,7 +4302,7 @@ Transform:
   m_GameObject: {fileID: 8003186119572769872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.66756034, w: 0.7445558}
-  m_LocalPosition: {x: -0.005639754, y: 0.052119315, z: 0}
+  m_LocalPosition: {x: -0.005639754, y: 0.05211931, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
