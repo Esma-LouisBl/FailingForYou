@@ -68,6 +68,12 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTieAnswer(answer, playerNumber);
     }
+    
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
+    }
 
     [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
@@ -81,11 +87,6 @@ public class PlayerNetwork : NetworkBehaviour
         playerData.playerNumber = myPlayerNumber;
     }
 
-    [ServerRpc]
-    public void SendPlayerTextVote(string votedAnswer)
-    {
-        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
-    }
     
     #region CharacterSelection
 
