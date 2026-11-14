@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3343734594582671742, guid: 5998f602b69c646469b100ecad48631f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -383,6 +383,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7549996876298016315}
     m_Modifications:
+    - target: {fileID: 226071669738273070, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 226071669738273070, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.155
+      objectReference: {fileID: 0}
     - target: {fileID: 1100374974596901959, guid: c71174c502c457f479ea730420669b52, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.33145
@@ -423,9 +431,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6054858899161589110, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054858899161589110, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.155
+      objectReference: {fileID: 0}
     - target: {fileID: 6306959994673567065, guid: c71174c502c457f479ea730420669b52, type: 3}
       propertyPath: m_Name
       value: DRESSING ROOM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402546771360380514, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402546771360380514, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521720552390769714, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7521720552390769714, guid: c71174c502c457f479ea730420669b52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.155
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
