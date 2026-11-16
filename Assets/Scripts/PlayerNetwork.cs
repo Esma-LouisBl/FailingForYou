@@ -103,4 +103,14 @@ public class PlayerNetwork : NetworkBehaviour
     }
     
     #endregion
+    
+    #region Sabotages
+
+    [ServerRpc]
+    public void SendSabotageToPlayer(int targetNumber)
+    {
+        gameManagerNetwork.ReceiveSabotage(targetNumber);
+    }
+    
+    #endregion
 }

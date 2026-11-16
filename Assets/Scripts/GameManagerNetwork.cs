@@ -13,6 +13,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public CharacterManager characterManager;
     public UIManager uiManager;
     public SceneManager sceneManager;
+    public SabotageManager sabotageManager;
 
     #endregion
 
@@ -36,6 +37,8 @@ public class GameManagerNetwork : NetworkBehaviour
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
     
+    private List<int> _sabotagedPlayers = new List<int>();
+    
     #region CharacterSelection
     
     [SerializeField]
@@ -51,7 +54,19 @@ public class GameManagerNetwork : NetworkBehaviour
 
     
     private int incrementalValue = 0;
-    
+
+    public void PlayGame()
+    {
+        miniGameManager.StartMiniGame();
+        if (_sabotagedPlayers.Count != 0)
+        {
+            foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
+            {
+                TransmitSabotage(playerTargeted);
+            }
+            _sabotagedPlayers.Clear(); //clear the list after sabotages have been sent
+        }
+    }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
     {
@@ -252,6 +267,24 @@ public class GameManagerNetwork : NetworkBehaviour
                 _player4NameText.text = playerName;
                 break;
         }
+    }
+
+    #endregion
+
+    #region Sabotages
+    
+    public void ReceiveSabotage(int targetNumber)
+    {
+        if (!_sabotagedPlayers.Contains(targetNumber))
+        {
+            _sabotagedPlayers.Add(targetNumber);
+        }
+    }
+
+    [ObserversRpc]
+    public void TransmitSabotage(int targetNumber)
+    {
+        sabotageManager.SelectSabotageToApply(targetNumber);
     }
 
     #endregion
