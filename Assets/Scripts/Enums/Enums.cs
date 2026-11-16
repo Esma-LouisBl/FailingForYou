@@ -34,7 +34,8 @@ public class Enums : MonoBehaviour
     public enum GamePhase
     {
         answeringQuestion,
-        voting
+        voting,
+        tie
     }
     
     public enum SelectedUI
@@ -57,5 +58,14 @@ public class Enums : MonoBehaviour
         Pito,
         Kame,
         None
+    }
+
+    public enum SabotageType
+    {
+        general,
+        textual,
+        drawing,
+        sound,
+        photographic
     }
 }

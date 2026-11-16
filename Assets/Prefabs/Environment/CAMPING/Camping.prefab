@@ -96,6 +96,8 @@ MonoBehaviour:
   - {fileID: 418403020376646677}
   - {fileID: 2046123559538573202}
   - {fileID: 7187071405409203585}
+  _KnifePaintingMaterial: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+  _StickersMaterial: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
 --- !u!95 &1329896089014375867
 Animator:
   serializedVersion: 7
@@ -579,13 +581,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Tent_001
       objectReference: {fileID: 0}
+    - target: {fileID: 4746578135904495475, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746578135904495475, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+    - target: {fileID: 4746578135904495475, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bb5107ff6648d249836059782ae482b, type: 2}
+    - target: {fileID: 4746578135904495475, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
+    - target: {fileID: 4746578135904495475, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: 'm_Materials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
     - target: {fileID: 6501094049690848905, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.637
       objectReference: {fileID: 0}
     - target: {fileID: 6501094049690848905, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.007999998
+      value: 0.0212
       objectReference: {fileID: 0}
     - target: {fileID: 6501094049690848905, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -618,6 +640,10 @@ PrefabInstance:
     - target: {fileID: 6501094049690848905, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548172125551101606, guid: 40f1c35af861d9f4caaf27c1b66cefae, type: 3}
+      propertyPath: m_Name
+      value: SM_Tent_001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

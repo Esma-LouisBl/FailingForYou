@@ -64,6 +64,18 @@ public class PlayerNetwork : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void SendPlayerTieAnswer(float answer, int playerNumber)
+    {
+        gameManagerNetwork.ReceivePlayerTieAnswer(answer, playerNumber);
+    }
+    
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
+    }
+
+    [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
         gameManagerNetwork.AddPlayer(this, instanceToSend);
@@ -75,11 +87,6 @@ public class PlayerNetwork : NetworkBehaviour
         playerData.playerNumber = myPlayerNumber;
     }
 
-    [ServerRpc]
-    public void SendPlayerTextVote(string votedAnswer)
-    {
-        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
-    }
     
     #region CharacterSelection
 
@@ -93,6 +100,16 @@ public class PlayerNetwork : NetworkBehaviour
     public void RegisterName(string playerName, int sentPlayerNumber)
     {
         gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
+    }
+    
+    #endregion
+    
+    #region Sabotages
+
+    [ServerRpc]
+    public void SendSabotageToPlayer(int targetNumber)
+    {
+        gameManagerNetwork.ReceiveSabotage(targetNumber);
     }
     
     #endregion
