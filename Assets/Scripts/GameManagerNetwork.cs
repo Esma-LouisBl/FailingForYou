@@ -133,11 +133,7 @@ public class GameManagerNetwork : NetworkBehaviour
     
     
     
-    public void ReceivePlayerToCrushCreation(int playerNumber)
-	{
-		crushCreationManager.ChosePartCrush(playerNumber);
-	}
-
+    
    
 	public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
     {
@@ -188,15 +184,27 @@ public class GameManagerNetwork : NetworkBehaviour
         _playerNames.Add(sentPlayerNumber, playerName);
     }
 
-    public void GetPlayerNumber()
+    
+    public void GetPlayerNumber(int playerN)
 	{
-		myLocalPlayer.SendPlayerToCrushCreation();
-	}
+		Debug.Log("GetPlayerNumber");
+        if(myLocalPlayer != null)
+        {
+            int playerNumber = myLocalPlayer.playerData.playerNumber;
 
-	public void ReceivePlayerNumber(int playerNumber)
-    {
-        crushCreationManager.ChosePartCrush(playerNumber);
+            Debug.Log("Received Player Number: " + playerNumber);
+            ReceivePlayerNumber(playerNumber);
+        }
+        
     }
+    [ServerRpc(RequireOwnership = false)]
+    public void ReceivePlayerNumber(int playerNumber)
+    {
+        Debug.Log("ReceivePlayerNumber");
+        
+        crushCreationManager.ChosePartCrush(playerNumber);
+        
+	}
 
 	#endregion
 	}

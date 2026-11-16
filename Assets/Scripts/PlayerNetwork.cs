@@ -80,12 +80,7 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
-    [ObserversRpc]
-    public void SendPlayerToCrushCreation()
-	{
-        gameManagerNetwork.ReceivePlayerNumber(playerData.playerNumber);
-        
-	}
+    
 
 	#region CharacterSelection
 
@@ -100,6 +95,18 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
     }
-    
+    public void ReceiveCrushManager(int playerNumber)
+    {
+        Debug.Log("ReceiveCrushManager");
+        SendPlayerNumber(playerNumber);
+    }
+
+
+    //[ObserversRpc]
+    public void SendPlayerNumber(int playerNumber)
+    {
+        Debug.Log("SendPlayerNumber");
+        gameManagerNetwork.GetPlayerNumber(playerNumber);
+    }
     #endregion
 }

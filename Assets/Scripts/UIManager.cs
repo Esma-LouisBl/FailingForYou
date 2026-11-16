@@ -11,14 +11,15 @@ public class UIManager : MonoBehaviour
 {
     #region UI
     
-    [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
+    [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI, _crushCreationUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
     [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits, _hostConnectionUIConnecting;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
-
+    [SerializeField] private GameObject _clothImage, _hairImage, _accessoriesImage, _faceImage, _crushImage;
+    [SerializeField] private List<Sprite> _crushSprites = new List<Sprite>();
 
     #endregion
 
@@ -474,7 +475,7 @@ public class UIManager : MonoBehaviour
         votes.Add(answer2Votes);
         votes.Add(answer3Votes);
         votes.Add(answer4Votes);
-        
+
         if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
         {
             for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
@@ -510,5 +511,58 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-    } 
+    }
+    public void Hair(string part, int Numplayer, int indexCrushPart)
+    {
+        if (indexCrushPart == Numplayer - 1)
+        {
+            _hairImage.SetActive(true);
+            _crushImage = _hairImage;
+            _crushSprites = _gameManagerNetwork.crushCreationManager.hairSprites;
+        }
+    }
+
+        public void Accesories(string part, int Numplayer, int indexCrushPart)
+    {
+        if (indexCrushPart == Numplayer - 1)
+        {
+           _accessoriesImage.SetActive(true);
+            //IndicationDressCrush(part);
+            
+            _crushImage = _accessoriesImage;
+            _crushSprites = _gameManagerNetwork.crushCreationManager.accessoriesSprites;
+            
+            
+        }
+    }
+
+    public void Faces(string part, int Numplayer, int indexCrushPart)
+    {
+        if (indexCrushPart == Numplayer - 1)
+        {
+            _faceImage.SetActive(true);
+            //IndicationDressCrush(part);
+
+            _crushImage = _faceImage;
+            _crushSprites = _gameManagerNetwork.crushCreationManager.facesSprites;
+        }
+    }
+
+    public void Clothes(string part, int Numplayer, int indexCrushPart)
+    {
+        if (indexCrushPart == Numplayer - 1)
+        {
+            _clothImage.SetActive(true);
+            //IndicationDressCrush(part);
+            
+            _crushImage = _clothImage;
+            _crushSprites = _gameManagerNetwork.crushCreationManager.clothesSprites;
+            
+        }
+
+    }
 }
+
+    
+
+

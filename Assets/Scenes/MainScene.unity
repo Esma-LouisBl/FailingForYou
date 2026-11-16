@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18206127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 745767677488279709, guid: 83d78b9f2f74eef4790da825d5ff4b5e, type: 3}
+  m_PrefabInstance: {fileID: 1080179632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &24631309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3667869878531506855, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
@@ -134,7 +139,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
   m_PrefabInstance: {fileID: 218106492}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450591670}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 745d29a3bde031c47ac0e14e2c80a2f5, type: 3}
@@ -230,6 +235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &104271166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5655032974052501853, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108932700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4318673332043311886, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
@@ -324,6 +334,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: BullePlayers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
       propertyPath: 'indexParts.Array.data[0]'
       value: Hair
       objectReference: {fileID: 0}
@@ -339,6 +353,22 @@ PrefabInstance:
       propertyPath: 'indexParts.Array.data[3]'
       value: Clothes
       objectReference: {fileID: 0}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: 'BullePlayers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1582201508}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: 'BullePlayers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 18206127}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: 'BullePlayers.Array.data[2]'
+      value: 
+      objectReference: {fileID: 222204161}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: 'BullePlayers.Array.data[3]'
+      value: 
+      objectReference: {fileID: 704051313}
     - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
       propertyPath: 'indexCrushCreation.Array.data[0]'
       value: 
@@ -412,6 +442,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+--- !u!1 &222204161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5886428018524337339, guid: 83d78b9f2f74eef4790da825d5ff4b5e, type: 3}
+  m_PrefabInstance: {fileID: 1080179632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &264468038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8381271293287072997, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
@@ -422,7 +457,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 109873220915474370, guid: 245783ee634d5c845943190ee833f530, type: 3}
   m_PrefabInstance: {fileID: 724900085}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 464057240}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -712,6 +747,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 998926914874204994, guid: 6c9e566a73247e54c8b4eac0eebf4808, type: 3}
   m_PrefabInstance: {fileID: 1420879460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &464057240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5597105132309115294, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &477698831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8999916692587032110, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
@@ -797,6 +837,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1621020228}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _faceImage
+      value: 
+      objectReference: {fileID: 464057240}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _hairImage
+      value: 
+      objectReference: {fileID: 625493234}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _clothImage
+      value: 
+      objectReference: {fileID: 104271166}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _clothimage
+      value: 
+      objectReference: {fileID: 104271166}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _hostMainUI
       value: 
       objectReference: {fileID: 1351799293}
@@ -849,9 +905,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7125555430828116583}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _crushCreationUI
+      value: 
+      objectReference: {fileID: 1685223792}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _hostQuestionTMP
       value: 
       objectReference: {fileID: 1717926504}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _accessoriesImage
+      value: 
+      objectReference: {fileID: 1442033213}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _clientQuestionUI
       value: 
@@ -888,6 +952,10 @@ PrefabInstance:
       propertyPath: _hostQuestionTypeTMP
       value: 
       objectReference: {fileID: 1674864729}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _crushCreationManager
+      value: 
+      objectReference: {fileID: 1685223792}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _hostConnectionUIMenu
       value: 
@@ -1015,6 +1083,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1634633909611803018, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
   m_PrefabInstance: {fileID: 7125555430828116582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &625493234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5092576846493223881, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &642328021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
@@ -1066,6 +1139,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6671646689833948566, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
   m_PrefabInstance: {fileID: 1615421982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &704051313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8138169256389201658, guid: 83d78b9f2f74eef4790da825d5ff4b5e, type: 3}
+  m_PrefabInstance: {fileID: 1080179632}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &707461603 stripped
 GameObject:
@@ -1189,6 +1267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreateCrushUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5699219366960964433, guid: 245783ee634d5c845943190ee833f530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6853991811935501920, guid: 245783ee634d5c845943190ee833f530, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1307,7 +1389,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1155268506283401350, guid: 245783ee634d5c845943190ee833f530, type: 3}
   m_PrefabInstance: {fileID: 724900085}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 104271166}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -1652,7 +1734,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7189795962895228672, guid: 245783ee634d5c845943190ee833f530, type: 3}
   m_PrefabInstance: {fileID: 724900085}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1442033213}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2006,10 +2088,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4423402556204671375, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
   m_PrefabInstance: {fileID: 7458007684566258095}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1450591670 stripped
+--- !u!1 &1442033213 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3825417147955929044, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
-  m_PrefabInstance: {fileID: 218106492}
+  m_CorrespondingSourceObject: {fileID: 2422576746010102476, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498759697 stripped
 GameObject:
@@ -2041,6 +2123,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1678031923592649954, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
   m_PrefabInstance: {fileID: 7125555430828116582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1582201508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 610126213706300241, guid: 83d78b9f2f74eef4790da825d5ff4b5e, type: 3}
+  m_PrefabInstance: {fileID: 1080179632}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1583374714 stripped
 GameObject:
@@ -2591,7 +2678,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 505386532158397940, guid: 245783ee634d5c845943190ee833f530, type: 3}
   m_PrefabInstance: {fileID: 724900085}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 625493234}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -2682,7 +2769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2690,7 +2777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2699,7 +2786,7 @@ PrefabInstance:
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1450591670}
+      objectReference: {fileID: 45833640}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2714,7 +2801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: OpenCrushCreationPC
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2722,7 +2809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: CrushCreationManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -2730,7 +2817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3022948092973198398, guid: d15cc75eb3831bf44b67edea46c7f34c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3347,6 +3434,10 @@ PrefabInstance:
       propertyPath: _playerTextAnswer
       value: 
       objectReference: {fileID: 964564291}
+    - target: {fileID: 4068950115548127242, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
+      propertyPath: crushCreationManager
+      value: 
+      objectReference: {fileID: 45833640}
     - target: {fileID: 4423402556204671375, guid: bfebdaba465508e419020f721c77e3fc, type: 3}
       propertyPath: m_Name
       value: GameManagerNetwork

@@ -1,17 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
+using FishNet.Object;
 using NUnit.Framework;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using FishNet.Object;
-using System.Threading;
 
 public class CrushCreationManager : NetworkBehaviour
 {
 	[SerializeField]
 	private GameManagerNetwork _gameManagerNetwork;
-	private PlayerNetwork _playerNetwork;
+	[SerializeField]
+	private UIManager _uiManager;
+    private PlayerNetwork _playerNetwork;
 	public GameObject crushCreationUI;
 	public GameObject crushCreationPC;
 	public GameObject Intropresenter;
@@ -36,11 +40,12 @@ public class CrushCreationManager : NetworkBehaviour
 	public List<List<Sprite>> CrushImages = new List<List<Sprite>>();
 	[SerializeField]
 	private List<string> crushParts = new List<string>();
-	
+
 	public List<string> indexParts = new List<string>();
 
 	private string partEnvoie;
 
+	public int Numplayer;
 
 	public int index = 0;
 
@@ -51,8 +56,8 @@ public class CrushCreationManager : NetworkBehaviour
 		//HairSprite = GetComponent<Image>();
 		//hairImage.sprite = hairSprites[index];
 		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
-		
-		
+
+
 
 
 	}
@@ -65,17 +70,17 @@ public class CrushCreationManager : NetworkBehaviour
 
 	public void CrushList()
 	{
-		for (int i = 0; i < 4; i++){
+		for (int i = 0; i < 4; i++) {
 
-		int randomIndex = Random.Range(0, indexParts.Count);
+			int randomIndex = Random.Range(0, indexParts.Count);
 
 
-		crushParts[i] = indexParts[randomIndex];
-		string part = indexParts[randomIndex];
-		indexParts.RemoveAt(randomIndex);
-		
+			crushParts[i] = indexParts[randomIndex];
+			string part = indexParts[randomIndex];
+			indexParts.RemoveAt(randomIndex);
+
 		}
-		
+
 
 		OpenCrushCreation();
 	}
@@ -91,13 +96,21 @@ public class CrushCreationManager : NetworkBehaviour
 		accessoriesImage.enabled = false;
 		clothesImage.enabled = false;
 		faceImage.enabled = false;
-		_gameManagerNetwork.GetPlayerNumber();
+
+		GetPlayerNetwork(Numplayer);
 	}
 
+	public void GetPlayerNetwork(int playerNumber)
+	{
+		Debug.Log("Coucou");
+		_gameManagerNetwork.myLocalPlayer.ReceiveCrushManager(playerNumber);
+	}
+	[ObserversRpc]
 	public void CloseCrushCreation()
 	{
 		crushCreationUI.SetActive(false);
 	}
+	[ServerRpc]
 	public void OpenCrushCreationPC()
 	{
 		crushCreationPC.SetActive(true);
@@ -108,7 +121,7 @@ public class CrushCreationManager : NetworkBehaviour
 		CodeTextBackground.text = "Avant de commencer...";
 		Invoke("ChangeCrushScreen", 5f);
 	}
-
+	[ServerRpc]
 	public void CloseCrushCreationPC()
 	{
 		crushCreationPC.SetActive(false);
@@ -121,14 +134,55 @@ public class CrushCreationManager : NetworkBehaviour
 		ChoseCrushPart.SetActive(true);
 		CodeTextBackground.text = "Créer ensemble la poupée !";
 	}
-	[ObserversRpc]
+
+	//[ObserversRpc]
 	public void ChosePartCrush(int playerNumber)
 	{
-		Debug.Log("coucou");
-		Debug.Log(playerNumber);
-		string part = crushParts[playerNumber];
+		//Debug.Log("coucou V3");
+		//Debug.Log("Player Number: " + playerNumber);
+		Numplayer = playerNumber;
+		//Debug.Log("NumPlayer: " + Numplayer);
+		string part = crushParts[playerNumber - 1];
+		//Debug.Log("Part: " + part);
+		DressCrush(part, Numplayer, crushParts);
+	}
+
+	[ObserversRpc]
+	public void DressCrush(string part, int Numplayer, List<string> crushPartsList)
+	{
+        crushParts = crushPartsList;
+        //Debug.Log("Index of Hair: " + crushPartsList.IndexOf("Hair"));
+		Debug.Log("Numplayer: " + Numplayer);
+
+        if (crushParts.IndexOf("Hair") == Numplayer - 1)
+		{
+			int indexCrushPart = crushParts.IndexOf("Hair");
+            Hair(part, Numplayer, indexCrushPart);
+        }
+        else if (crushParts.IndexOf("Accessories") == Numplayer - 1)
+		{
+			int indexCrushPart = crushParts.IndexOf("Accessories");
+            Accesories(part, Numplayer, indexCrushPart);
+        }
+		else if (crushParts.IndexOf("Faces") == Numplayer - 1)
+		{
+			int indexCrushPart = crushParts.IndexOf("Faces");
+            Faces(part, Numplayer, indexCrushPart);
+        }
+		else if (crushParts.IndexOf("Clothes") == Numplayer - 1)
+		{
+			int indexCrushPart = crushParts.IndexOf("Clothes");
+			Clothes(part, Numplayer, indexCrushPart);
+        }
+        else
+        {
+            Debug.Log("Part not found for player number: " + Numplayer);
+        }
+
+        /*
 		switch (part)
 		{
+
 			case "Hair":
 				hairImage.enabled = true;
 				IndicationDressCrush(part);
@@ -137,6 +191,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushSprites = hairSprites;
 				partEnvoie = part;
 				Debug.Log("Part: " + part);
+				RemoveCrushPart(part);
 				break;
 			case "Accessories":
 				accessoriesImage.enabled = true;
@@ -146,6 +201,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushSprites = accessoriesSprites;
 				partEnvoie = part;
 				Debug.Log("Part: " + part);
+				RemoveCrushPart(part);
 				break;
 			case "Faces":
 				faceImage.enabled = true;
@@ -155,6 +211,7 @@ public class CrushCreationManager : NetworkBehaviour
 				crushSprites = facesSprites;
 				partEnvoie = part;
 				Debug.Log("Part: " + part);
+				RemoveCrushPart(part);
 				break;
 			case "Clothes":
 				clothesImage.enabled = true;
@@ -164,14 +221,97 @@ public class CrushCreationManager : NetworkBehaviour
 				crushSprites = clothesSprites;
 				partEnvoie = part;
 				Debug.Log("Part: " + part);
+				RemoveCrushPart(part);
 				break;
+
 		}
-		RemoveCrushPart(part);
+		*/
 
-		
-	}
 
-	public void RemoveCrushPart(string partToRemove)
+    }
+	
+	public void Hair(string part, int Numplayer, int indexCrushPart){
+		if(indexCrushPart == Numplayer - 1){
+			hairImage.enabled = true;
+			IndicationDressCrush(part);
+			//hairImage.sprite = hairSprites[index];
+			crushImage = hairImage;
+			crushSprites = hairSprites;
+			partEnvoie = part;
+			Debug.Log("Part: " + part);
+			RemoveCrushPart(part); 
+		}
+        else
+        {
+            Debug.Log("IndexCrushPart does not match :" + (Numplayer - 1));
+        }
+
+
+
+    }
+
+    public void Accesories(string part, int Numplayer, int indexCrushPart)
+	{
+		if (indexCrushPart == Numplayer - 1)
+		{
+			accessoriesImage.enabled = true;
+			IndicationDressCrush(part);
+			//accessoriesSprite.sprite = accessoriesSprites[index];
+			crushImage = accessoriesImage;
+			crushSprites = accessoriesSprites;
+			partEnvoie = part;
+			Debug.Log("Part: " + part);
+			RemoveCrushPart(part);
+		}else
+        {
+            Debug.Log("IndexCrushPart does not match :" + (Numplayer - 1));
+        }
+
+    }
+	
+	public void Faces(string part, int Numplayer, int indexCrushPart)
+	{
+		if (indexCrushPart == Numplayer - 1)
+		{
+			faceImage.enabled = true;
+			IndicationDressCrush(part);
+			//faceImage.sprite = facesSprites[index];
+			crushImage = faceImage;
+			crushSprites = facesSprites;
+			partEnvoie = part;
+			Debug.Log("Part: " + part);
+			RemoveCrushPart(part);
+		}
+        else
+        {
+            Debug.Log("IndexCrushPart does not match :" + (Numplayer - 1));
+        }
+
+    }
+
+    public void Clothes(string part, int Numplayer, int indexCrushPart)
+	{
+		if (indexCrushPart == Numplayer - 1)
+		{
+			clothesImage.enabled = true;
+			IndicationDressCrush(part);
+			//clothesImage.sprite = clothesSprites[index];
+			crushImage = clothesImage;
+			crushSprites = clothesSprites;
+			partEnvoie = part;
+			Debug.Log("Part: " + part);
+			RemoveCrushPart(part);
+		}
+        else
+        {
+            Debug.Log("IndexCrushPart does not match :" + (Numplayer - 1));
+        }
+
+
+    }
+
+
+    public void RemoveCrushPart(string partToRemove)
 	{
 		crushParts.Remove(partToRemove);
 
@@ -179,11 +319,10 @@ public class CrushCreationManager : NetworkBehaviour
 	}
 	
 	[ServerRpc(RequireOwnership = false)]
-	public void HideBullePlayer1()
+    public void HideBullePlayer1()
 	{
-		int playerNumber = _playerNetwork.playerData.playerNumber;
-		Debug.Log("Player Number: " + playerNumber);
-		BullePlayers[playerNumber].SetActive(false);
+        Debug.Log("NumPlayer V2: " + Numplayer);
+        BullePlayers[Numplayer - 1].SetActive(false);
 		//BullePlayer1.SetActive(false);
 	}
 
