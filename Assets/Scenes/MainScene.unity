@@ -1491,6 +1491,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene
       objectReference: {fileID: 0}
+    - target: {fileID: 2034079984090236941, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: _StickersMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
+    - target: {fileID: 2034079984090236941, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: _KnifePaintingMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
