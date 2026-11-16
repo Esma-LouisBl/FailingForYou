@@ -290,6 +290,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1855842112}
     - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
+      propertyPath: _uiManager
+      value: 
+      objectReference: {fileID: 929195913}
+    - target: {fileID: 2104520951060285866, guid: 0a62e403c283b9e4496de567836aadc7, type: 3}
       propertyPath: clothesImage
       value: 
       objectReference: {fileID: 837287830}
@@ -486,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1772,6 +1776,10 @@ PrefabInstance:
     - target: {fileID: 1774780518894797315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_Name
       value: Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778215415135819473, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7549996876298016315, guid: b6dfea7548d658d439627a54931ce1c0, type: 3}
       propertyPath: m_LocalPosition.x

@@ -95,17 +95,15 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
     }
-    public void ReceiveCrushManager(int playerNumber)
+    public void ReceiveCrushManager()
     {
-        Debug.Log("ReceiveCrushManager");
-        SendPlayerNumber(playerNumber);
+        SendPlayerNumber(playerData.playerNumber);
     }
 
 
     //[ObserversRpc]
     public void SendPlayerNumber(int playerNumber)
     {
-        Debug.Log("SendPlayerNumber");
         gameManagerNetwork.GetPlayerNumber(playerNumber);
     }
     #endregion

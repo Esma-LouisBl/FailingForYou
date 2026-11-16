@@ -187,12 +187,10 @@ public class GameManagerNetwork : NetworkBehaviour
     
     public void GetPlayerNumber(int playerN)
 	{
-		Debug.Log("GetPlayerNumber");
         if(myLocalPlayer != null)
         {
             int playerNumber = myLocalPlayer.playerData.playerNumber;
 
-            Debug.Log("Received Player Number: " + playerNumber);
             ReceivePlayerNumber(playerNumber);
         }
         
@@ -200,7 +198,6 @@ public class GameManagerNetwork : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void ReceivePlayerNumber(int playerNumber)
     {
-        Debug.Log("ReceivePlayerNumber");
         
         crushCreationManager.ChosePartCrush(playerNumber);
         

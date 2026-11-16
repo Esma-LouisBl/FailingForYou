@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using FishNet.Object;
+using JetBrains.Annotations;
 using NUnit.Framework;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
@@ -82,14 +83,14 @@ public class CrushCreationManager : NetworkBehaviour
 		}
 
 
-		OpenCrushCreation();
+		OpenCrushCreation(crushParts);
 	}
 
 
 
 
 	[ObserversRpc]
-	public void OpenCrushCreation()
+	public void OpenCrushCreation([NotNull] List<string> allPartsOnServer)
 	{
 		crushCreationUI.SetActive(true);
 		hairImage.enabled = false;
@@ -97,13 +98,23 @@ public class CrushCreationManager : NetworkBehaviour
 		clothesImage.enabled = false;
 		faceImage.enabled = false;
 
-		GetPlayerNetwork(Numplayer);
+		// GetPlayerNetwork();
+		Debug.Log("on teste ça, playernumber : " + _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+		partEnvoie = allPartsOnServer[_gameManagerNetwork.myLocalPlayer.playerData.playerNumber];
+		Debug.Log("ma partie c'est : "+partEnvoie);
+
+		switch (partEnvoie)
+		{
+			case "Face":
+				//afficher tout ce qui est relatif à Face
+				break;
+		}
 	}
 
-	public void GetPlayerNetwork(int playerNumber)
+	public void GetPlayerNetwork()
 	{
-		Debug.Log("Coucou");
-		_gameManagerNetwork.myLocalPlayer.ReceiveCrushManager(playerNumber);
+		// Debug.Log("Coucou");
+		_gameManagerNetwork.myLocalPlayer.ReceiveCrushManager();
 	}
 	[ObserversRpc]
 	public void CloseCrushCreation()
@@ -144,39 +155,39 @@ public class CrushCreationManager : NetworkBehaviour
 		//Debug.Log("NumPlayer: " + Numplayer);
 		string part = crushParts[playerNumber - 1];
 		//Debug.Log("Part: " + part);
-		DressCrush(part, Numplayer, crushParts);
+		DressCrush(part, playerNumber, crushParts);
 	}
 
 	[ObserversRpc]
-	public void DressCrush(string part, int Numplayer, List<string> crushPartsList)
+	public void DressCrush(string part, int number, List<string> crushPartsList)
 	{
         crushParts = crushPartsList;
         //Debug.Log("Index of Hair: " + crushPartsList.IndexOf("Hair"));
-		Debug.Log("Numplayer: " + Numplayer);
+		Debug.Log("Numplayer: " + number);
 
-        if (crushParts.IndexOf("Hair") == Numplayer - 1)
+        if (crushParts.IndexOf("Hair") == number - 1)
 		{
 			int indexCrushPart = crushParts.IndexOf("Hair");
-            Hair(part, Numplayer, indexCrushPart);
+            Hair(part, number, indexCrushPart);
         }
-        else if (crushParts.IndexOf("Accessories") == Numplayer - 1)
+        else if (crushParts.IndexOf("Accessories") == number - 1)
 		{
 			int indexCrushPart = crushParts.IndexOf("Accessories");
-            Accesories(part, Numplayer, indexCrushPart);
+            Accesories(part, number, indexCrushPart);
         }
 		else if (crushParts.IndexOf("Faces") == Numplayer - 1)
 		{
 			int indexCrushPart = crushParts.IndexOf("Faces");
-            Faces(part, Numplayer, indexCrushPart);
+            Faces(part, number, indexCrushPart);
         }
-		else if (crushParts.IndexOf("Clothes") == Numplayer - 1)
+		else if (crushParts.IndexOf("Clothes") == number - 1)
 		{
 			int indexCrushPart = crushParts.IndexOf("Clothes");
-			Clothes(part, Numplayer, indexCrushPart);
+			Clothes(part, number, indexCrushPart);
         }
         else
         {
-            Debug.Log("Part not found for player number: " + Numplayer);
+            Debug.Log("Part not found for player number: " + number);
         }
 
         /*
