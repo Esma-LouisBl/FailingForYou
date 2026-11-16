@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ANIM_Bat_Idle_001
+  m_Name: ANIM_Bat_Idle_002
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -26,6 +26,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-6514458872860193232
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ANIM_Bat_MG_Photo_001
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 21a2a958221f0d14ea803f2cd4d25290, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-6207625407280950975
 AnimatorState:
   serializedVersion: 6
@@ -33,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ANIM_Bat_Idle_001 0
+  m_Name: ANIM_Bat_Idle_001
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -62,35 +88,38 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -301014414600545710}
-    m_Position: {x: 200, y: 0, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -8021684456419264685}
-    m_Position: {x: 235, y: 65, z: 0}
+    m_Position: {x: 400, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6207625407280950975}
-    m_Position: {x: 270, y: 130, z: 0}
+    m_Position: {x: 180, y: 180, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5605604465267058442}
-    m_Position: {x: 305, y: 195, z: 0}
+    m_State: {fileID: 5630528256971008982}
+    m_Position: {x: 610, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4289450657417440755}
+    m_Position: {x: 645, y: 245, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -6514458872860193232}
+    m_Position: {x: 680, y: 310, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 880, y: 90, z: 0}
   m_EntryPosition: {x: 200, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ExitPosition: {x: 880, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -301014414600545710}
---- !u!1102 &-301014414600545710
+  m_DefaultState: {fileID: -6207625407280950975}
+--- !u!1102 &-4289450657417440755
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Testaniebat
+  m_Name: ANIM_Bat_MG_Writing_001
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -103,7 +132,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: af553946d1423ef44986de427ace23fc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5ee355cbae7edd0468c511fbc3b3abd0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -131,14 +160,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &5605604465267058442
+--- !u!1102 &5630528256971008982
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ANIM_Bat_TEST
+  m_Name: ANIM_Bat_MG_Audio_001
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -151,7 +180,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: acd00723d0d101a46ba949c9bbf78819, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6dc5f108f19a9234ea4dcb27843e21fe, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
