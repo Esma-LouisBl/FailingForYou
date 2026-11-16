@@ -12,6 +12,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public MiniGameManager miniGameManager;
     public CharacterManager characterManager;
     public UIManager uiManager;
+    public SceneManager sceneManager;
 
     #endregion
 
@@ -34,6 +35,17 @@ public class GameManagerNetwork : NetworkBehaviour
     private List<Enums.CharacterName> _selectedCharacters = new List<Enums.CharacterName>();
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
+    
+    #region CharacterSelection
+    
+    [SerializeField]
+    private TextMeshPro _player1NameText, _player2NameText, _player3NameText,  _player4NameText;
+    [SerializeField]
+    private List<Transform> _playerTransforms = new List<Transform>();
+    [SerializeField]
+    private GameObject _batPrefab, _bunnyPrefab, _chickenPrefab, _catPrefab, _chameleonPrefab, _axolotlPrefab;
+    
+    #endregion
     
     #endregion
 
@@ -188,11 +200,14 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #region CharacterSelection
     
-    public void CheckIfCharacterIsSelected(Enums.CharacterName characterName, int playerNumber) //Check  if character called is already selected by a player
+    public void CheckIfCharacterIsSelected(Enums.CharacterName characterName, int playerNumber) //Check if character called is already selected by a player
     {
         if (!_selectedCharacters.Contains(characterName))
         {
             _selectedCharacters.Add(characterName);
+            //Show the player on Screen
+            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform);
+            _playerTransforms[0].gameObject.SetActive(true);
             ReturnSelectedCharacter(characterName, playerNumber);
         }
         else
@@ -222,6 +237,21 @@ public class GameManagerNetwork : NetworkBehaviour
     public void RegisterNameOnServer(string playerName, int sentPlayerNumber)
     {
         _playerNames.Add(sentPlayerNumber, playerName);
+        switch (sentPlayerNumber)
+        {
+            case 1:
+                _player1NameText.text = playerName;
+                break;
+            case 2:
+                _player2NameText.text = playerName;
+                break;
+            case 3:
+                _player3NameText.text = playerName;
+                break;
+            case 4:
+                _player4NameText.text = playerName;
+                break;
+        }
     }
 
     #endregion

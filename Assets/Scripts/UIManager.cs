@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
-    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
+    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits, _hostConnectionUIConnecting;
     [Space(20)]
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _hostQuestionUI;
@@ -70,6 +71,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
+
+    [SerializeField] private GameObject _background;
     
     #endregion
     
@@ -182,6 +185,7 @@ public class UIManager : MonoBehaviour
     private void HideHostConnectionUIMenu()
     {
         _hostConnectionUIMenu.SetActive(false);
+        _background.SetActive(true);
     }
 
     private void HideHostConnectionUIOptions()
@@ -193,6 +197,7 @@ public class UIManager : MonoBehaviour
     {
         selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
         _hostConnectionUIMenu.SetActive(true);
+        _background.SetActive(false);
     }
     
     private void ShowHostConnectionUIWelcome()
@@ -209,6 +214,31 @@ public class UIManager : MonoBehaviour
     {
         _clientConnectionUICode.SetActive(false);
         _clientConnectionUICharacterSelection.SetActive(true);
+    }
+    
+    public void SwitchOnHostConnectingUI()
+    {
+        _gameManagerNetwork.sceneManager.UpdateScene(Enums.MiniGamePlace.tv, Enums.MiniGameGenre.none, Enums.MiniGameType.none);
+        _gameManagerNetwork.sceneManager.ShowConnectingAssets();
+        _gameManagerNetwork.sceneManager.SwitchOnCamera(2);
+        
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIConnecting.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIConnecting;
+    }
+    
+    public void SwitchOnHostOptionsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIOptions.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIOptions;
+    }
+
+    public void SwitchOnCreditsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUICredits.SetActive(true);
+        selectedUI =  Enums.SelectedUI.hostConnectionUICredits;
     }
 
     private void SwitchOnCodeUI()
@@ -233,6 +263,11 @@ public class UIManager : MonoBehaviour
     {
         _hostConnectionUI.SetActive(false);
         _clientConnectionUI.SetActive(false);
+    }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
     }
     
     public void UpdateServerConnectionUI() //Update every player profile according to its playerdata
