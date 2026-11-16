@@ -59,4 +59,13 @@ public class Enums : MonoBehaviour
         Kame,
         None
     }
+
+    public enum SabotageType
+    {
+        general,
+        textual,
+        drawing,
+        sound,
+        photographic
+    }
 }

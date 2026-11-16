@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 476a1634160c03f46823e029feeb6dcc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _KnifePaintingMaterial: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+  - _StickersMaterial: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

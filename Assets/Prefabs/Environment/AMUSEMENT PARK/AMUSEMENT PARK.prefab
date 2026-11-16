@@ -63,6 +63,8 @@ MonoBehaviour:
   - {fileID: 1728588752786072357}
   - {fileID: 1083184019167000556}
   - {fileID: 4224434437010111489}
+  _KnifePaintingMaterial: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+  _StickersMaterial: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
 --- !u!95 &7245065371340757027
 Animator:
   serializedVersion: 7
