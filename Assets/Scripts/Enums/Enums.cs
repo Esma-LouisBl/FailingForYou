@@ -34,7 +34,8 @@ public class Enums : MonoBehaviour
     public enum GamePhase
     {
         answeringQuestion,
-        voting
+        voting,
+        tie
     }
     
     public enum SelectedUI

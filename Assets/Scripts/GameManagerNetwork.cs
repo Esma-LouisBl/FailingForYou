@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using FishNet.Object;
 using TMPro;
 using UnityEngine;
@@ -22,8 +23,8 @@ public class GameManagerNetwork : NetworkBehaviour
     
     public Enums.GamePhase gamePhase;
     
-    [SerializeField]    //Required for function ConfirmTextAnswer
-    private TextMeshProUGUI _playerTextAnswer;
+    [SerializeField]    //Required for function ConfirmTextAnswer & ConfirmTieAnswer
+    private TextMeshProUGUI _playerTextAnswer, _playerTieAnswer;
     
     [SerializeField]    //Required for function ConfirmVote
     private TextMeshProUGUI _answer1, _answer2, _answer3;
@@ -82,6 +83,16 @@ public class GameManagerNetwork : NetworkBehaviour
 
     #region SendButton
 
+    public void ResetVariablesOnStartMiniGame()
+    {
+        _playerTextAnswer.text = "";
+        _playerTieAnswer.text = "";
+        _answer1.text = "";
+        _answer2.text = "";
+        _answer3.text = "";
+        _voteAnswerNumber = 1;
+    }
+    
     // Used by a LOCAL GameManagerNetwork
     // When player click on the Send Button
     // The function that is trigger changes according to the current game phase
@@ -95,13 +106,28 @@ public class GameManagerNetwork : NetworkBehaviour
             case Enums.GamePhase.voting:
                 ConfirmVote();
                 break;
+            case Enums.GamePhase.tie:
+                ConfirmTieAnswer();
+                break;
         }
+        miniGameManager.WaitingScreenOnClient();
     }
     
     public void ConfirmTextAnswer()
     {
         string answer = _playerTextAnswer.text;
         myLocalPlayer.SendPlayerTextAnswer(answer, myLocalPlayer.playerData.playerNumber);
+    }
+
+    public void ConfirmTieAnswer()
+    {
+        //need to do some shenanigans in order to convert into float without bugs
+        string s = _playerTieAnswer.text;
+        s = Regex.Replace(_playerTieAnswer.text, @"[^0-9.,-]", "");
+        s.Replace(",", ".");
+        float answer = float.Parse(s);
+        
+        myLocalPlayer.SendPlayerTieAnswer(answer, myLocalPlayer.playerData.playerNumber);
     }
 
     public void ConfirmVote()
@@ -140,6 +166,27 @@ public class GameManagerNetwork : NetworkBehaviour
         }
     }
 
+    public void ReceivePlayerTieAnswer(float answer, int playerNumber)
+    {
+        //check if the answer has already been entered by someone else
+        if (miniGameManager.collectedTieAnswers.Contains(answer))
+        {
+            CannotReceiveAnswer(playerNumber);
+        }
+        else
+        {
+            miniGameManager.CollectTieAnswer(answer, playerNumber);
+        }
+    }
+
+    [ObserversRpc]
+    private void CannotReceiveAnswer(int playerNumber)
+    {
+        if (myLocalPlayer.playerData.playerNumber == playerNumber)
+        {
+            uiManager.ShowTieOnClientAfterBadAnswer();
+        }
+    }
     public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
     {
         miniGameManager.CollectTextVotes(votedAnswer, playerNumber);
