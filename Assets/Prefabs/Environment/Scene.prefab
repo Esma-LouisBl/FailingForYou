@@ -59,8 +59,8 @@ MonoBehaviour:
   _beachScene: {fileID: 6753394661629456631}
   _campingScene: {fileID: 3757982604966107251}
   _parkScene: {fileID: 3310148906625493354}
-  _connectingAssets: {fileID: 0}
-  _crushCreationAssets: {fileID: 0}
+  _connectingAssets: {fileID: 8712208386895848813}
+  _crushCreationAssets: {fileID: 4785617184398036369}
   _drawingAssets: {fileID: 842929564930301647}
   _textualAssets: {fileID: 8052874319920227078}
   _soundAssets: {fileID: 7977052503447673870}
@@ -406,9 +406,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6306959994673567065, guid: c71174c502c457f479ea730420669b52, type: 3}
   m_PrefabInstance: {fileID: 4655132476240966315}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4785617184398036369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 212715006749769530, guid: c71174c502c457f479ea730420669b52, type: 3}
+  m_PrefabInstance: {fileID: 4655132476240966315}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5755331386419044076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1100374974596901959, guid: c71174c502c457f479ea730420669b52, type: 3}
+  m_PrefabInstance: {fileID: 4655132476240966315}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8712208386895848813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4070586714926684102, guid: c71174c502c457f479ea730420669b52, type: 3}
   m_PrefabInstance: {fileID: 4655132476240966315}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5083857531982799096
