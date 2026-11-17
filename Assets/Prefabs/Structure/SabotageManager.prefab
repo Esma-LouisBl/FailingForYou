@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6434293244635545318}
+  - component: {fileID: 5557896793161539248}
   - component: {fileID: 444299250873907434}
+  - component: {fileID: 3672900819732700711}
   m_Layer: 0
   m_Name: SabotageManager
   m_TagString: Untagged
@@ -32,6 +34,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5557896793161539248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808691904847530717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebdee0354278ddf41ae9b534a896a720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SabotageManager
+  _gameManagerNetwork: {fileID: 0}
+  _sabotages:
+  - {fileID: 444299250873907434}
+  - {fileID: 3672900819732700711}
 --- !u!114 &444299250873907434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,5 +62,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49a5db30e5cef148bf447cc31b8c70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoamingSprites
-  roamingSpritePrefab: {fileID: 5986494413934634643, guid: 9accb69a88bdab146a7d4f46bf9d7d74, type: 3}
+  sabotageType: 0
+  _roamingSpritePrefab: {fileID: 5986494413934634643, guid: 9accb69a88bdab146a7d4f46bf9d7d74, type: 3}
   _parentCanvas: {fileID: 0}
+--- !u!114 &3672900819732700711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808691904847530717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f3dd63d57988a45880ecfa7e9eaef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextColourShuffle
+  sabotageType: 0
