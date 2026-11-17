@@ -38,8 +38,6 @@ public class GameManagerNetwork : NetworkBehaviour
     private bool _canSelectCharacter = true; //false when player selected its character (local)
     
     private List<int> _sabotagedPlayers = new List<int>();
-
-    private int _rounds = 6;
     
     #region CharacterSelection
     
@@ -55,28 +53,25 @@ public class GameManagerNetwork : NetworkBehaviour
     #endregion
 
     
-    private int _incrementalValue = 0;
+    private int incrementalValue = 0;
 
     public void PlayGame()
     {
-        for (int i = 0; i <= _rounds; i++)
+        miniGameManager.StartMiniGame();
+        if (_sabotagedPlayers.Count != 0)
         {
-            miniGameManager.StartMiniGame();
-            if (_sabotagedPlayers.Count != 0)
+            foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
             {
-                foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
-                {
-                    TransmitSabotage(playerTargeted);
-                }
-                _sabotagedPlayers.Clear(); //clear the list after sabotages have been sent
+                TransmitSabotage(playerTargeted);
             }
+            _sabotagedPlayers.Clear(); //clear the list after sabotages have been sent
         }
     }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
     {
         players.Add(playerToAdd);
-        _incrementalValue++;
+        incrementalValue++;
         //_instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
         
         //Debug
@@ -85,7 +80,7 @@ public class GameManagerNetwork : NetworkBehaviour
         //     Debug.Log(entry.Key + " : " + entry.Value);
         // }
         
-        playerToAdd.AssignMyPlayerNumber(_incrementalValue);//_instanceIdRepertory[instanceIdReceived]
+        playerToAdd.AssignMyPlayerNumber(incrementalValue);//_instanceIdRepertory[instanceIdReceived]
     }
     
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
@@ -282,25 +277,7 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         if (!_sabotagedPlayers.Contains(targetNumber))
         {
-            ReturnIfSabotageWorked(true);
             _sabotagedPlayers.Add(targetNumber);
-        }
-        else
-        {
-            ReturnIfSabotageWorked(false);
-        }
-    }
-
-    [ObserversRpc]
-    private void ReturnIfSabotageWorked(bool sabotageWorked) //Get the information if sabotage worked
-    {
-        switch (sabotageWorked)
-        {
-            case true:
-                myLocalPlayer.playerData.playerSabotages -= 1;
-                break;
-            case false:
-                break;
         }
     }
 
