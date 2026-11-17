@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3105049083179998356}
   - component: {fileID: 4068950115548127242}
   - component: {fileID: 1453182838068905430}
+  - component: {fileID: 7855384571301357439}
   m_Layer: 0
   m_Name: GameManagerNetwork
   m_TagString: Untagged
@@ -49,7 +50,10 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 1453182838068905430}
   _networkObjectCache: {fileID: 0}
   miniGameManager: {fileID: 0}
+  characterManager: {fileID: 0}
   players: []
+  myLocalPlayer: {fileID: 0}
+  gamePhase: 0
   _playerTextAnswer: {fileID: 0}
 --- !u!114 &1453182838068905430
 MonoBehaviour:
@@ -108,3 +112,18 @@ MonoBehaviour:
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
   _initializedTimestamp: 0
+--- !u!114 &7855384571301357439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423402556204671375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Observing.NetworkObserver
+  _overrideType: 3
+  _updateHostVisibility: 1
+  _observerConditions: []
