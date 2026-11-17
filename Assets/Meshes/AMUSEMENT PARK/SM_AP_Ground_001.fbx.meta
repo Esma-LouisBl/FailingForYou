@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c75f8a8833e31e46ae6d47fd17deb6a
+guid: 3e7fd5033373c304eae71913d7490896
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: M_Flute_M
     second: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_GroundTvSet_001
-    second: {fileID: 2100000, guid: b02001e4fc6f7534aa1098a80ded7151, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
