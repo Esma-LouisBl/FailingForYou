@@ -52,7 +52,7 @@ public class ServerManager : MonoBehaviour
         _desktopCanvas.SetActive(false);
         _serverCanvas.SetActive(true);
         
-        _storeEncodedTexture = new Texture2D(256, 256);
+        _storeEncodedTexture = new Texture2D(1024, 1024);
         
         //Check the device and reacts accordingly
         if (SystemInfo.deviceType == DeviceType.Handheld) //Handheld or Desktop in our case
