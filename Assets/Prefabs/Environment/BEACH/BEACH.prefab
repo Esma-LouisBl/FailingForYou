@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526709804037073708, guid: ac5ef7e73e1c63841966b0a0270f9b6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.16
+      value: -0.124
       objectReference: {fileID: 0}
     - target: {fileID: 5526709804037073708, guid: ac5ef7e73e1c63841966b0a0270f9b6e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5526709804037073708, guid: ac5ef7e73e1c63841966b0a0270f9b6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.247
+      value: -0.199
       objectReference: {fileID: 0}
     - target: {fileID: 5526709804037073708, guid: ac5ef7e73e1c63841966b0a0270f9b6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -838,6 +838,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Shovel_001
       objectReference: {fileID: 0}
+    - target: {fileID: 8491552612836505955, guid: b2a12fc6797fdd142a16d0491e7f9284, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
