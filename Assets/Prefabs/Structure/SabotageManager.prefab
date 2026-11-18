@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5557896793161539248}
   - component: {fileID: 444299250873907434}
   - component: {fileID: 3672900819732700711}
+  - component: {fileID: 5289752217114546941}
   m_Layer: 0
   m_Name: SabotageManager
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   _sabotages:
   - {fileID: 444299250873907434}
   - {fileID: 3672900819732700711}
+  - {fileID: 5289752217114546941}
 --- !u!114 &444299250873907434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,3 +80,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextColourShuffle
   sabotageType: 0
+  _texts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5289752217114546941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808691904847530717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729613b4004a32c4c836454b79168e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextFontShuffle
+  sabotageType: 0
+  _fonts:
+  - {fileID: 11400000, guid: e9efd67074f8fac4fbc6dd6717c303cb, type: 2}
+  - {fileID: 11400000, guid: d46c61a5b26c44343ac5d5bd3fc96816, type: 2}
+  - {fileID: 11400000, guid: 7c1e98ab73e9d0d408cf48c26d4e973f, type: 2}
+  - {fileID: 11400000, guid: c62f028dfe9cc124d84ef077c2e6cf6c, type: 2}
+  - {fileID: 11400000, guid: b56b352238811eb4f9baaad158db00e5, type: 2}
+  - {fileID: 11400000, guid: bee2e53c2056e744aa04ac54146d5769, type: 2}
+  - {fileID: 11400000, guid: fe4c2e49fb956394cb18a15b2c525023, type: 2}
+  - {fileID: 11400000, guid: 2b4beada54de2a2428d9b741cc2a956f, type: 2}
+  - {fileID: 11400000, guid: e04215c49c64edf49bd252e0885469c6, type: 2}
+  _texts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
