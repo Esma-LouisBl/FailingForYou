@@ -50,28 +50,35 @@ public class GameManagerNetwork : NetworkBehaviour
     
     #endregion
     
+    private int _rounds = 6;
+    
     #endregion
 
     
-    private int incrementalValue = 0;
+    private int _incrementalValue = 0;
 
     public void PlayGame()
     {
-        miniGameManager.StartMiniGame();
-        if (_sabotagedPlayers.Count != 0)
+        for (int i = 0; i <= _rounds; i++)
+
         {
-            foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
+            miniGameManager.StartMiniGame();
+            if (_sabotagedPlayers.Count != 0)
             {
-                TransmitSabotage(playerTargeted);
+                foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
+                {
+                    TransmitSabotage(playerTargeted);
+                }
+                _sabotagedPlayers.Clear(); //Clear the list after sabotages have been sent
             }
-            _sabotagedPlayers.Clear(); //clear the list after sabotages have been sent
+
         }
     }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
     {
         players.Add(playerToAdd);
-        incrementalValue++;
+        _incrementalValue++;
         //_instanceIdRepertory.Add(instanceIdReceived, _instanceIdRepertory.Count+1);
         
         //Debug
@@ -80,7 +87,7 @@ public class GameManagerNetwork : NetworkBehaviour
         //     Debug.Log(entry.Key + " : " + entry.Value);
         // }
         
-        playerToAdd.AssignMyPlayerNumber(incrementalValue);//_instanceIdRepertory[instanceIdReceived]
+        playerToAdd.AssignMyPlayerNumber(_incrementalValue);//_instanceIdRepertory[instanceIdReceived]
     }
     
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
@@ -277,7 +284,12 @@ public class GameManagerNetwork : NetworkBehaviour
     {
         if (!_sabotagedPlayers.Contains(targetNumber))
         {
+            ReturnIfSabotageWorked(true);
             _sabotagedPlayers.Add(targetNumber);
+        }
+        else
+        {
+            ReturnIfSabotageWorked(false);
         }
     }
 
@@ -285,6 +297,19 @@ public class GameManagerNetwork : NetworkBehaviour
     public void TransmitSabotage(int targetNumber)
     {
         sabotageManager.SelectSabotageToApply(targetNumber);
+    }
+    
+    [ObserversRpc]
+    private void ReturnIfSabotageWorked(bool sabotageWorked) //Get the information if sabotage worked
+    {
+        switch (sabotageWorked)
+        {
+            case true:
+                myLocalPlayer.playerData.playerSabotages -= 1;
+                break;
+            case false:
+                break;
+        }
     }
 
     #endregion
