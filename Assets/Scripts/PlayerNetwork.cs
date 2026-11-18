@@ -106,8 +106,16 @@ public class PlayerNetwork : NetworkBehaviour
     
     #region Sabotages
 
+    public void TryToSendASabotage(int targetNumber) //Check if player can send a sabotage
+    {
+        if (playerData.playerSabotages > 0)
+        {
+            SendSabotageToPlayer(targetNumber);
+        }
+    }
+
     [ServerRpc]
-    public void SendSabotageToPlayer(int targetNumber)
+    public void SendSabotageToPlayer(int targetNumber) //Send a sabotage on server to apply next round
     {
         gameManagerNetwork.ReceiveSabotage(targetNumber);
     }
