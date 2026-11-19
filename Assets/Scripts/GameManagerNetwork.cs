@@ -224,7 +224,7 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             _selectedCharacters.Add(characterName);
             //Show the player on Screen
-            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform);
+            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform); //Temporary
             _playerTransforms[0].gameObject.SetActive(true);
             ReturnSelectedCharacter(characterName, playerNumber);
         }

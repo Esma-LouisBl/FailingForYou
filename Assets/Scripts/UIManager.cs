@@ -603,7 +603,7 @@ public class UIManager : MonoBehaviour
             case "Pito" :
                 _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
                 break;
-            case "Kamé" :
+            case "Kame" :
                 _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
                 break;
         }
