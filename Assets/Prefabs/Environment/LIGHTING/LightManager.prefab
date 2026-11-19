@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8698601450794775638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6410741805257278578}
+  - component: {fileID: 1474407074714063088}
+  m_Layer: 0
+  m_Name: LightManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6410741805257278578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698601450794775638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.84963, y: 0, z: 9.0441}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474407074714063088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698601450794775638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773acba4421b00c46bed504e97b49f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightManager
+  atticDirectionalLight: {fileID: 0}
+  keyDirectionalLight: {fileID: 0}
+  materialShader: {fileID: 2100000, guid: b42a07d4f59cca740bddacf6892a8020, type: 2}
+  spotReveal: {fileID: 0}
+  spotTV: {fileID: 0}
+  directionDirectionalMorning: {x: 150, y: -30, z: 0}
+  atticMorningColorLight: {r: 0.99371064, g: 0.74010384, b: 0.34686115, a: 0}
+  keyMorningColorLight: {r: 0.9433962, g: 0.81357944, b: 0.5250978, a: 0}
+  atticMorningIntensity: 0.8
+  keyMorningIntensity: 0.5
+  spotMorningIntensity: 0.8
+  spotColorMorning: {r: 1, g: 0.7479858, b: 0.12941176, a: 0}
+  directionDirectionalAfternoon: {x: 150, y: 0, z: 0}
+  atticAfternoonColorLight: {r: 1, g: 0.93154687, b: 0.07861614, a: 0}
+  keyAfternoonColorLight: {r: 1, g: 0.8391993, b: 0, a: 0}
+  atticAfternoonIntensity: 1
+  keyAfternoonIntensity: 0.5
+  spotAfternoonIntensity: 0.8
+  spotColorAfternoon: {r: 1, g: 0.98120195, b: 0.18553454, a: 0}
+  directionDirectionalNight: {x: 150, y: 30, z: 0}
+  atticNightColorLight: {r: 0.59522957, g: 0.8272116, b: 0.9056604, a: 0}
+  keyNightColorLight: {r: 0.38679236, g: 0.8513794, b: 1, a: 0}
+  atticNightIntensity: 1.2
+  keyNightIntensity: 0.5
+  spotNightIntensity: 0.7
+  spotColorNight: {r: 0.83333325, g: 0.9485994, b: 1, a: 0}
+  atticMorningRomantic: {r: 1, g: 0.8770348, b: 0.3726415, a: 0}
+  keyMorningRomantic: {r: 1, g: 0.27058828, b: 0.7030508, a: 0}
+  atticMorningRomanticIntensity: 1
+  keyMorningRomanticIntensity: 0.5
+  spotRomMorningIntensity: 0.8
+  spotRomMorningColor: {r: 1, g: 0.07861614, b: 0.16802914, a: 0}
+  atticAfternoonRomantic: {r: 1, g: 0.09119487, b: 0.8794744, a: 0}
+  keyAfternoonRomantic: {r: 1, g: 0, b: 0, a: 0}
+  atticAfternoonRomanticIntensity: 1
+  keyAfternoonRomanticIntensity: 0.8
+  spotRomAfternoonIntensity: 0
+  spotRomAfternoonColor: {r: 0, g: 0, b: 0, a: 0}
+  atticNightRomantic: {r: 0, g: 0, b: 0, a: 0}
+  keyNightRomantic: {r: 0, g: 0, b: 0, a: 0}
+  atticNightRomanticIntensity: 0
+  keyNightRomanticIntensity: 0
+  spotRomNightIntensity: 0
+  spotRomNightColor: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningHorrific: {r: 0, g: 0, b: 0, a: 0}
+  keyMorningHorrific: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningHorrificIntensity: 0
+  keyMorningHorrificIntensity: 0
+  spotHorMorningIntensity: 0
+  spotHorMorningColor: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonHorrific: {r: 0, g: 0, b: 0, a: 0}
+  keyAfternoonHorrific: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonHorrificIntensity: 0
+  keyAfternoonHorrificIntensity: 0
+  spotHorAfternoonIntensity: 0
+  spotHorAfternoonColor: {r: 0, g: 0, b: 0, a: 0}
+  atticNightHorrific: {r: 0, g: 0, b: 0, a: 0}
+  keyNightHorrific: {r: 0, g: 0, b: 0, a: 0}
+  atticNightHorrificIntensity: 0
+  keyNightHorrificIntensity: 0
+  spotHorNightIntensity: 0
+  spotHorNightColor: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningDramatic: {r: 0, g: 0, b: 0, a: 0}
+  keyMorningDramatic: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningDramaticIntensity: 0
+  keyMorningDramaticIntensity: 0
+  spotDraMorningIntensity: 0
+  spotDraMorningColor: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonDramatic: {r: 0, g: 0, b: 0, a: 0}
+  keyAfternoonDramatic: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonDramaticIntensity: 0
+  keyAfternoonDramaticIntensity: 0
+  spotDraAfternoonIntensity: 0
+  spotDraAfternoonColor: {r: 0, g: 0, b: 0, a: 0}
+  atticNightDramatic: {r: 0, g: 0, b: 0, a: 0}
+  keyNightDramatic: {r: 0, g: 0, b: 0, a: 0}
+  atticNightDramaticIntensity: 0
+  keyNightDramaticIntensity: 0
+  spotDraNightIntensity: 0
+  spotDraNightColor: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningFantastic: {r: 0, g: 0, b: 0, a: 0}
+  keyMorningFantastic: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningFantasticIntensity: 0
+  keyMorningFantasticintensity: 0
+  spotFanMorningIntensity: 0
+  spotFanMorningColor: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonFantastic: {r: 0, g: 0, b: 0, a: 0}
+  keyAfternoonFantastic: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonFantasticIntensity: 0
+  keyAfternoonFantasticIntensity: 0
+  spotFanAfternoonIntensity: 0
+  spotFanAfternoonColor: {r: 0, g: 0, b: 0, a: 0}
+  atticNightFantastic: {r: 0, g: 0, b: 0, a: 0}
+  keyNightFantastic: {r: 0, g: 0, b: 0, a: 0}
+  atticNightFantasticIntensity: 0
+  keyNightFantasticIntensity: 0
+  spotFanNightIntensity: 0
+  spotFanNightColor: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningHistoric: {r: 0, g: 0, b: 0, a: 0}
+  keyMorningHistoric: {r: 0, g: 0, b: 0, a: 0}
+  atticMorningHistoricIntensity: 0
+  keyMorningHistoricIntensity: 0
+  spotHisMorningIntensity: 0
+  spotHisMorningColor: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonHistoric: {r: 0, g: 0, b: 0, a: 0}
+  keyAfternoonHistoric: {r: 0, g: 0, b: 0, a: 0}
+  atticAfternoonHistoricIntensity: 0
+  keyAfternoonHistoricIntensity: 0
+  spotHisAfternoonIntensity: 0
+  spotHisAfternoonColor: {r: 0, g: 0, b: 0, a: 0}
+  atticNightHistoric: {r: 0, g: 0, b: 0, a: 0}
+  keyNightHistoric: {r: 0, g: 0, b: 0, a: 0}
+  atticNightHistoricIntensity: 0
+  keyNightHistoricIntensity: 0
+  spotHisNightIntensity: 0
+  spotHisNightColor: {r: 0, g: 0, b: 0, a: 0}

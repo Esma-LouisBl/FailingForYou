@@ -265,7 +265,7 @@ namespace FishNet.Managing.Transporting
         private void TryAddDefaultTransport()
         {
             if (Transport == null && !gameObject.TryGetComponent(out Transport))
-                Transport = gameObject.AddComponent<FishNet.Transporting.Tugboat.Tugboat>();
+                Transport = gameObject.AddComponent<FishNet.Transporting.Tugboat.MyTransport>();
         }
 
         /// <summary>

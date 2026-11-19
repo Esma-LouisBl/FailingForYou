@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: d0b7397d22a2a2f4796fcc70f033c689
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _addedNetworkObject: {instanceID: 0}
+  - _networkObjectCache: {instanceID: 0}
+  - miniGameManager: {instanceID: 0}
+  - characterManager: {instanceID: 0}
+  - uiManager: {instanceID: 0}
+  - sceneManager: {instanceID: 0}
+  - myLocalPlayer: {instanceID: 0}
+  - _playerTextAnswer: {instanceID: 0}
+  - _playerTieAnswer: {instanceID: 0}
+  - _answer1: {instanceID: 0}
+  - _answer2: {instanceID: 0}
+  - _answer3: {instanceID: 0}
+  - _player1NameText: {instanceID: 0}
+  - _player2NameText: {instanceID: 0}
+  - _player3NameText: {instanceID: 0}
+  - _player4NameText: {instanceID: 0}
+  - _batPrefab: {fileID: 2573394142344180623, guid: b0e1654bec3eac344b09cea44a347496, type: 3}
+  - _bunnyPrefab: {instanceID: 0}
+  - _chickenPrefab: {instanceID: 0}
+  - _catPrefab: {instanceID: 0}
+  - _chameleonPrefab: {instanceID: 0}
+  - _axolotlPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
