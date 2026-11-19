@@ -14,7 +14,7 @@ public class CrushCreationManager : NetworkBehaviour
 {
     #region variables
     [SerializeField] private GameManagerNetwork _gameManagerNetwork;
-	[SerializeField] private UIManager _uiManager;
+	//[SerializeField] private UIManager _uiManager;
 	
 	public GameObject choseCrushPart;
 	public List<GameObject> BullePlayers = new List<GameObject>();
@@ -34,7 +34,6 @@ public class CrushCreationManager : NetworkBehaviour
 	[SerializeField] private List<string> _crushParts = new List<string>();
 	public List<string> indexParts = new List<string>();
 	private string partEnvoie;
-    public int Numplayer;
     public int index = 0;
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,10 +43,6 @@ public class CrushCreationManager : NetworkBehaviour
 		//HairSprite = GetComponent<Image>();
 		//hairImage.sprite = hairSprites[index];
 		indexCrushCreation[index].color = new Color32(91, 85, 175, 255);
-
-
-
-
 	}
 	// Update is called once per frame
 	void Update()
@@ -56,7 +51,7 @@ public class CrushCreationManager : NetworkBehaviour
 	}
 	public void StartCrush()
 	{
-        _uiManager.OpenCrushCreationPC();
+        _gameManagerNetwork.uiManager.OpenCrushCreationPC();
 		Invoke("StartList", 5f);
     }
 
@@ -73,22 +68,20 @@ public class CrushCreationManager : NetworkBehaviour
 			_crushParts[i] = indexParts[randomIndex];
 			string part = indexParts[randomIndex];
 			indexParts.RemoveAt(randomIndex);
-
 		}
         initializationCrushCreation(_crushParts);
-		
     }
 
 	[ObserversRpc]
 	public void initializationCrushCreation([NotNull] List<string> allPartsOnServer)
 	{
-		_uiManager.OpenCrushCreation();
+		_gameManagerNetwork.uiManager.OpenCrushCreation();
 
 
         // GetPlayerNetwork();
-        Debug.Log("on teste ça, playernumber : " + _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
+        Debug.Log("try is, playernumber : " + _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
 		partEnvoie = allPartsOnServer[_gameManagerNetwork.myLocalPlayer.playerData.playerNumber];
-		Debug.Log("ma partie c'est : "+partEnvoie);
+		Debug.Log("my part is : "+partEnvoie);
 
 		switch (partEnvoie)
 		{
@@ -185,14 +178,14 @@ public class CrushCreationManager : NetworkBehaviour
 		{
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
 			int valeurSprite = index + 1;
-			//Debug.Log("Numero: " + valeurSprite);
+			//Debug.Log("Number: " + valeurSprite);
         }
 		else if (partEnvoie == "Accessories")
 		{
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
 			int valeurSprite = index + 7;
-			//Debug.Log("Numero: " + valeurSprite);
+			//Debug.Log("Number: " + valeurSprite);
             
         }
 		else if (partEnvoie == "Faces")
@@ -200,7 +193,7 @@ public class CrushCreationManager : NetworkBehaviour
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
 			int valeurSprite = index + 13;
-			//Debug.Log("Numero: " + valeurSprite);
+			//Debug.Log("Number: " + valeurSprite);
             
         }
 		else if (partEnvoie == "Clothes")
@@ -208,7 +201,7 @@ public class CrushCreationManager : NetworkBehaviour
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
 			int valeurSprite = index + 19;
-			//Debug.Log("Numero: " + valeurSprite);
+			//Debug.Log("Number: " + valeurSprite);
 			
         }
 
@@ -216,8 +209,6 @@ public class CrushCreationManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void EndReflectionPlayer(int playerNumber, string partPlayer, int index)
     {
-
-        //Debug.Log("coucou HideBullePlayer1");
         //Debug.Log("Player: " + playerNumber);
         BullePlayers[playerNumber].SetActive(false);
         //Debug.Log("NumPlayer V2: " + playerNumber);
@@ -227,22 +218,22 @@ public class CrushCreationManager : NetworkBehaviour
                 Debug.Log("Switch :" + partPlayer);
 				Debug.Log("Index : " + index);
 
-                _uiManager.SpriteCrush(hairSprites[index], partPlayer);
+                _gameManagerNetwork.uiManager.SpriteCrush(hairSprites[index], partPlayer);
                 break;
             case "Accessories":
                 Debug.Log("Switch :" + partPlayer);
                 Debug.Log("Index : " + index);
-                _uiManager.SpriteCrush(accessoriesSprites[index], partPlayer);
+                _gameManagerNetwork.uiManager.SpriteCrush(accessoriesSprites[index], partPlayer);
                 break;
             case "Faces":
                 Debug.Log("Switch :" + partPlayer);
                 Debug.Log("Index : " + index);
-                _uiManager.SpriteCrush(facesSprites[index], partPlayer);
+                _gameManagerNetwork.uiManager.SpriteCrush(facesSprites[index], partPlayer);
                 break;
             case "Clothes":
                 Debug.Log("Switch :" + partPlayer);
                 Debug.Log("Index : " + index);
-                _uiManager.SpriteCrush(clothesSprites[index], partPlayer);
+                _gameManagerNetwork.uiManager.SpriteCrush(clothesSprites[index], partPlayer);
                 break;
         }
 
