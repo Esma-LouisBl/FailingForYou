@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEditor;
@@ -20,6 +21,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
     [SerializeField] private GameObject _clothImage, _hairImage, _accessoriesImage, _faceImage, _crushImage;
     [SerializeField] private List<Sprite> _crushSprites = new List<Sprite>();
+    [SerializeField] private Image _hairDestockImage, _faceDestockImage, _accessoriesDestockImage, _clothesDestockImage;
+    [SerializeField] private GameObject _cabinePoupee;
+    public GameObject crushCreationUI, crushCreationPC, intropresenter, codeBackgroundImage;
+    public TextMeshProUGUI codeTextBackground;
+    public GameObject choseCrushPart;
+    public Image hairImage, accessoriesImage, faceImage, clothesImage;
+    
 
     #endregion
 
@@ -560,6 +568,81 @@ public class UIManager : MonoBehaviour
             
         }
 
+    }
+    public void SpriteCrush(Sprite crush, string part)
+    {
+        _cabinePoupee.SetActive(false);
+        switch (part)
+        {
+            case "Hair":
+                
+                _hairDestockImage.sprite = crush;
+                break;
+            case "Accessories":
+               
+                _accessoriesDestockImage.sprite = crush;
+                break;
+            case "Faces":
+               
+                _faceDestockImage.sprite = crush;
+                break;
+            case "Clothes":
+                
+                _clothesDestockImage.sprite = crush;
+                break;
+        }
+    }
+
+    public void CrushPC()
+    {
+        //_hairDestockImage.enabled = true;
+        //_accessoriesDestockImage.enabled = true;
+        //_faceDestockImage.enabled = true;
+        //_clothesDestockImage.enabled = true;
+       
+    }
+
+    
+    public void CloseCrushCreationPC()
+    {
+        crushCreationPC.SetActive(false);
+        codeBackgroundImage.SetActive(false);
+    }
+
+    public void ChangeCrushScreen()
+    {
+        intropresenter.SetActive(false);
+        choseCrushPart.SetActive(true);
+        codeTextBackground.text = "Créer ensemble la poupée !";
+    }
+    public void OpenCrushCreationPC()
+    {
+        crushCreationPC.SetActive(true);
+        codeBackgroundImage.SetActive(true);
+
+
+        codeBackgroundImage.SetActive(true);
+        codeTextBackground.text = "Avant de commencer...";
+        Invoke("ChangeCrushScreen", 5f);
+    }
+     
+
+    public void OpenCrushCreation()
+    {
+        crushCreationUI.SetActive(true);
+        hairImage.enabled = false;
+        accessoriesImage.enabled = false;
+        clothesImage.enabled = false;
+        faceImage.enabled = false;
+    }
+    public void CloseCrushCreation()
+    {
+        crushCreationUI.SetActive(false);
+    }
+
+    internal void SpriteCrush(object value, string partPlayer)
+    {
+        throw new System.NotImplementedException();
     }
 }
 

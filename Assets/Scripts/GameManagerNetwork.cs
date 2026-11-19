@@ -185,23 +185,7 @@ public class GameManagerNetwork : NetworkBehaviour
     }
 
     
-    public void GetPlayerNumber(int playerN)
-	{
-        if(myLocalPlayer != null)
-        {
-            int playerNumber = myLocalPlayer.playerData.playerNumber;
-
-            ReceivePlayerNumber(playerNumber);
-        }
-        
-    }
-    [ServerRpc(RequireOwnership = false)]
-    public void ReceivePlayerNumber(int playerNumber)
-    {
-        
-        crushCreationManager.ChosePartCrush(playerNumber);
-        
-	}
+    
 
 	#endregion
 	}
