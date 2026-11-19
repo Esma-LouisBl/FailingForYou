@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Image> _playersImages;
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
-    [SerializeField] private TextMeshProUGUI _answer, _winnerName;
+    [SerializeField] private TextMeshProUGUI _tieAnswer, _winnerName;
     
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
@@ -510,6 +510,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowTieOnHost(List<int> playersInTie, string question)
     {
+        _answerContainer.SetActive(false);
+        _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
@@ -549,6 +551,8 @@ public class UIManager : MonoBehaviour
 
         _winnerName.gameObject.SetActive(true);
         _winnerName.text = $"Le gagnant est le joueur {winnerNumber} !";
+        _tieAnswer.text = $"La réponse attendue était : {_gameManagerNetwork.miniGameManager.currentTieQuestion.answer}";
+        _answerContainer.SetActive(true);
     }
     public void ShowTieOnClientAfterBadAnswer()
     {

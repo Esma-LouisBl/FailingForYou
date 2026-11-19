@@ -65,7 +65,7 @@ Material:
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _ColorSpot: {r: 1, g: 0.98120195, b: 0.18553454, a: 0}
+    - _ColorSpot: {r: 1, g: 0.7479858, b: 0.12941176, a: 0}
     - _Power: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
