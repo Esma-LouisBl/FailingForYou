@@ -514,10 +514,10 @@ public class UIManager : MonoBehaviour
     private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
     {
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
-        for (int i = 0; i < 1600; i++)
+        for (int i = 0; i < 260; i++)
         {
-            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+0.1f);
-            yield return new WaitForSeconds(0.0005f);
+            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+1);
+            yield return new WaitForSeconds(0.01f);
         }
         _tieAppearText.gameObject.SetActive(false);
 

@@ -30,6 +30,8 @@ public class GameManagerNetwork : NetworkBehaviour
     [SerializeField]    //Required for function ConfirmVote
     private TextMeshProUGUI _answer1, _answer2, _answer3;
     private int _voteAnswerNumber;
+
+    public bool playerIsWaiting;
     
     private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
     private Dictionary<int, string> _playerNames = new Dictionary<int, string>();
@@ -113,6 +115,8 @@ public class GameManagerNetwork : NetworkBehaviour
         _answer2.text = "";
         _answer3.text = "";
         _voteAnswerNumber = 1;
+
+        playerIsWaiting = false;
     }
     
     // Used by a LOCAL GameManagerNetwork
@@ -133,6 +137,7 @@ public class GameManagerNetwork : NetworkBehaviour
                 break;
         }
         miniGameManager.WaitingScreenOnClient();
+        playerIsWaiting = true;
     }
     
     public void ConfirmTextAnswer()

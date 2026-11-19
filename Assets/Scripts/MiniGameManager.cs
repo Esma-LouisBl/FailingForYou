@@ -22,6 +22,7 @@ public class MiniGameManager : NetworkBehaviour
     public int amountOfMiniGames = 3;
 
     public int time = 40;
+    private bool _timerIsOn;
     
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
@@ -91,6 +92,7 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.UpdateMiniGameUIHost(miniGame);
 
         time = 40;
+        _timerIsOn = true;
         StartCoroutine(Timer());
 
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.answeringQuestion);
@@ -100,20 +102,43 @@ public class MiniGameManager : NetworkBehaviour
 
     private IEnumerator Timer()
     {
-        while (time > 0)
+        time = 40;
+        for (int i = 0; i < 40; i++)
         {
-            yield return new WaitForSeconds(1f);
-            time--;
-            _uiManager.UpdateTimer(time);
+            if (time == 0)
+            {
+                ForceClientsToSend();
+                _timerIsOn = false;
+            }
+            for (int j = 0; j < 10; j++)
+            {
+                if (_timerIsOn)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (_timerIsOn)
+            {
+                time--;
+                _uiManager.UpdateTimer(time);
+            }
         }
 
-        ForceClientsToSend();
+        yield return null;
     }
 
     [ObserversRpc]
     public void ForceClientsToSend()
     {
-        _gameManagerNetwork.SendButton();
+        if (!_gameManagerNetwork.playerIsWaiting)
+        {
+            _gameManagerNetwork.SendButton();
+        }
     }
     
     [ObserversRpc]
@@ -134,7 +159,7 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartVotePhase()
     {
-        StopCoroutine(Timer());
+        _timerIsOn = false;
         time = 40;
         _uiManager.UpdateTimer(time);
         collectedVotes = 0; //variable reset
@@ -180,6 +205,7 @@ public class MiniGameManager : NetworkBehaviour
     [ObserversRpc]
     public void StartVotePhaseToClient(string answer1, string answer2, string answer3, string answer4)
     {
+        _gameManagerNetwork.playerIsWaiting = false;
         switch (_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)
         {
             case 1:
@@ -204,13 +230,14 @@ public class MiniGameManager : NetworkBehaviour
         
         if (collectedVotes == 1)
         {
+            _timerIsOn = true;
             StartCoroutine(Timer());
         }
     }
 
     public void MiniGameWinnerElection()
     {
-        StopCoroutine(Timer());
+        _timerIsOn = false;
         time = 40;
         _uiManager.UpdateTimer(time);
         
@@ -275,6 +302,20 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
         
         
+        foreach (var player in ranking)     //attribute rewards
+        {
+            if (playersInTie.Count < 2)
+            {
+                SendPlayerReward(player.Key, player.Value);
+            }
+            else
+            {
+                if (!playersInTie.Contains(player.Key))
+                {
+                    SendPlayerReward(player.Key, player.Value);
+                }
+            }
+        }
         if (playersInTie.Count > 1)
         {
             StartCoroutine(WaitBeforeTie());
@@ -282,6 +323,31 @@ public class MiniGameManager : NetworkBehaviour
         else
         {
             FinishMiniGame();
+        }
+    }
+
+    [ObserversRpc]
+    private void SendPlayerReward(int playerNumber, int reward)
+    {
+        if (_gameManagerNetwork.myLocalPlayer.playerData.playerNumber == playerNumber)
+        {
+            switch (reward)
+            {
+                case 1:
+                    _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 3;
+                    //Add also a hint when they will be implemented--------------------------------
+                    break;
+                case 2:
+                    _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 3;
+                    break;
+                case 3:
+                    _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 2;
+                    break;
+                case 4:
+                    _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 1;
+                    _gameManagerNetwork.myLocalPlayer.playerData.playerSabotages++;
+                    break;
+            }
         }
     }
 
@@ -303,8 +369,6 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
 
         StartTieOnClient(playersInTie, currentTieQuestion.question);
-
-        StartCoroutine(Timer());
     }
 
     [ObserversRpc]
@@ -312,6 +376,7 @@ public class MiniGameManager : NetworkBehaviour
     {
         if (playersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)) //to launch only on concerned players
         {
+            _gameManagerNetwork.playerIsWaiting = false;
             _uiManager.ShowTieOnClient(question);
         }
     }
@@ -321,11 +386,17 @@ public class MiniGameManager : NetworkBehaviour
         collectedAnswers++;
         collectedTieAnswers[playerNumber] = answer;
 
+        if (collectedAnswers == 1)
+        {
+            _timerIsOn = true;
+            StartCoroutine(Timer());
+        }
+        
         if (collectedAnswers == playersInTie.Count)
         {
             TieWinnerElection();
+            _timerIsOn = false;
             time = 40;
-            StopCoroutine(Timer());
         }
     }
 
@@ -343,6 +414,13 @@ public class MiniGameManager : NetworkBehaviour
         }
         
         _uiManager.ShowTieWinner(winner);
+        
+        SendPlayerReward(winner, 1);    //send rewards to those who cannot receive it yet
+        playersInTie.Remove(winner);
+        foreach (var player in playersInTie)
+        {
+            SendPlayerReward(player, 2);
+        }
         Invoke("FinishMiniGame", 4f);
     }
 
