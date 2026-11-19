@@ -6,5 +6,5 @@ public class PlayerData : MonoBehaviour
     public int playerNumber;
     public Enums.CharacterName character =  Enums.CharacterName.None;
     public int playerMoney;
-    public int playerSabotages;
+    public int playerSabotages = 1;
 }

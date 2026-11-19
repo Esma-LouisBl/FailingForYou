@@ -318,6 +318,8 @@ public class UIManager : MonoBehaviour
         _hostQuestionGenreTMP.text = miniGame.genre.ToString();
         _hostMainUI.SetActive(true);
         _hostQuestionUI.SetActive(true);
+        _hostTextAnswersRevelationUI.SetActive(false);
+        _tieHostUI.SetActive(false);
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
@@ -622,6 +624,9 @@ public class UIManager : MonoBehaviour
     }
     
     #endregion
-    
-    
+
+    public void OnSabotageClicked()
+    {
+        _gameManagerNetwork.myLocalPlayer.TryToSendASabotage(1);
+    }
 }

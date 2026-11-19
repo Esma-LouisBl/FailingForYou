@@ -73,6 +73,15 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartMiniGame()
     {
+        Debug.Log(_gameManagerNetwork.sabotagedPlayers.Count + "is sabotages count");
+        if (_gameManagerNetwork.sabotagedPlayers.Count != 0)
+        {
+            foreach (int playerTargeted in _gameManagerNetwork.sabotagedPlayers) //Send sabotages to targeted players
+            {
+                _gameManagerNetwork.TransmitSabotage(playerTargeted);
+            }
+            _gameManagerNetwork.sabotagedPlayers.Clear(); //Clear the list after sabotages have been sent
+        }
         SetMiniGame(miniGamesDrawn[0]);
         miniGamesDrawn.RemoveAt(0);
         
@@ -342,6 +351,7 @@ public class MiniGameManager : NetworkBehaviour
                     break;
                 case 3:
                     _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 2;
+                    //ADD HERE A SABOTAGE WHEN THREE PLAYERS IN GAME
                     break;
                 case 4:
                     _gameManagerNetwork.myLocalPlayer.playerData.playerMoney += 1;

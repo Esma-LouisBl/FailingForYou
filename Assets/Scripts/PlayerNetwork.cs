@@ -85,6 +85,7 @@ public class PlayerNetwork : NetworkBehaviour
     public void AssignMyPlayerNumber(int myPlayerNumber)
     {
         playerData.playerNumber = myPlayerNumber;
+        playerData.playerSabotages = 1;
     }
 
     

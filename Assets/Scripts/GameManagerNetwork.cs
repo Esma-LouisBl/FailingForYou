@@ -39,7 +39,7 @@ public class GameManagerNetwork : NetworkBehaviour
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
     
-    private List<int> _sabotagedPlayers = new List<int>();
+    public List<int> sabotagedPlayers = new List<int>();
     
     #region CharacterSelection
     
@@ -65,15 +65,6 @@ public class GameManagerNetwork : NetworkBehaviour
 
         {
             miniGameManager.StartMiniGame();
-            if (_sabotagedPlayers.Count != 0)
-            {
-                foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
-                {
-                    TransmitSabotage(playerTargeted);
-                }
-                _sabotagedPlayers.Clear(); //Clear the list after sabotages have been sent
-            }
-
         }
     }
     
@@ -287,14 +278,14 @@ public class GameManagerNetwork : NetworkBehaviour
     
     public void ReceiveSabotage(int targetNumber)
     {
-        if (!_sabotagedPlayers.Contains(targetNumber))
+        if (!sabotagedPlayers.Contains(targetNumber))
         {
-            ReturnIfSabotageWorked(true);
-            _sabotagedPlayers.Add(targetNumber);
+            ReturnIfSabotageWorked(true, targetNumber);
+            sabotagedPlayers.Add(targetNumber);
         }
         else
         {
-            ReturnIfSabotageWorked(false);
+            ReturnIfSabotageWorked(false, targetNumber);
         }
     }
 
@@ -305,15 +296,18 @@ public class GameManagerNetwork : NetworkBehaviour
     }
     
     [ObserversRpc]
-    private void ReturnIfSabotageWorked(bool sabotageWorked) //Get the information if sabotage worked
+    private void ReturnIfSabotageWorked(bool sabotageWorked, int targetNumber) //Get the information if sabotage worked
     {
-        switch (sabotageWorked)
+        if (targetNumber == myLocalPlayer.playerData.playerNumber)
         {
-            case true:
-                myLocalPlayer.playerData.playerSabotages -= 1;
-                break;
-            case false:
-                break;
+            switch (sabotageWorked)
+            {
+                case true:
+                    myLocalPlayer.playerData.playerSabotages -= 1;
+                    break;
+                case false:
+                    break;
+            }
         }
     }
 
