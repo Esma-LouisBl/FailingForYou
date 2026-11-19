@@ -639,7 +639,7 @@ public class UIManager : MonoBehaviour
 
     public void OnLaunchGame()
     {
-        _gameManagerNetwork.PlayGame();
+        _gameManagerNetwork.myLocalPlayer.SwitchOnServerRpc();
     }
     
     #endregion

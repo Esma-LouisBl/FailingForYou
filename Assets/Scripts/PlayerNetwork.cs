@@ -122,4 +122,19 @@ public class PlayerNetwork : NetworkBehaviour
     }
     
     #endregion
+    
+    #region LaunchGame
+
+    public void SwitchOnServerRpc()
+    {
+        LaunchGameOnServer();
+    }
+
+    [ServerRpc]
+    private void LaunchGameOnServer()
+    {
+        gameManagerNetwork.PlayGame();
+    }
+    
+    #endregion
 }

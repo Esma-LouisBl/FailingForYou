@@ -73,7 +73,6 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartMiniGame()
     {
-        Debug.Log(_gameManagerNetwork.sabotagedPlayers.Count + "is sabotages count");
         if (_gameManagerNetwork.sabotagedPlayers.Count != 0)
         {
             foreach (int playerTargeted in _gameManagerNetwork.sabotagedPlayers) //Send sabotages to targeted players

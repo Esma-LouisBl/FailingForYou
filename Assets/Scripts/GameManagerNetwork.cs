@@ -58,10 +58,10 @@ public class GameManagerNetwork : NetworkBehaviour
 
     
     private int _incrementalValue = 0;
-
-    [ServerRpc]
+    
     public void PlayGame()
     {
+        miniGameManager.ChooseMiniGames(3);
         miniGameManager.StartMiniGame();
     }
     
