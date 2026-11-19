@@ -1052,6 +1052,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24631309}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _clientConnectionUIQRCode
+      value: 
+      objectReference: {fileID: 1268509704}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _playersImages.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -1996,6 +2000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &1268509704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8826604565368359510, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+  m_PrefabInstance: {fileID: 1615421982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1281857574 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1344618975539540316, guid: 426a73ccf287d4b45b48d694af7848eb, type: 3}
