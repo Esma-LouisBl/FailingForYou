@@ -59,13 +59,10 @@ public class GameManagerNetwork : NetworkBehaviour
     
     private int _incrementalValue = 0;
 
+    [ServerRpc]
     public void PlayGame()
     {
-        for (int i = 0; i <= _rounds; i++)
-
-        {
-            miniGameManager.StartMiniGame();
-        }
+        miniGameManager.StartMiniGame();
     }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
@@ -224,7 +221,7 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             _selectedCharacters.Add(characterName);
             //Show the player on Screen
-            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform);
+            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform); //Temporary
             _playerTransforms[0].gameObject.SetActive(true);
             ReturnSelectedCharacter(characterName, playerNumber);
         }
