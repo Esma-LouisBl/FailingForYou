@@ -59,13 +59,10 @@ public class GameManagerNetwork : NetworkBehaviour
     
     private int _incrementalValue = 0;
 
+    [ServerRpc]
     public void PlayGame()
     {
-        for (int i = 0; i <= _rounds; i++)
-
-        {
-            miniGameManager.StartMiniGame();
-        }
+        miniGameManager.StartMiniGame();
     }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)

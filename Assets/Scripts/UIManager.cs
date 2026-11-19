@@ -630,4 +630,13 @@ public class UIManager : MonoBehaviour
     {
         _gameManagerNetwork.myLocalPlayer.TryToSendASabotage(1);
     }
+    
+    #region LaunchGame
+
+    public void OnLaunchGame()
+    {
+        _gameManagerNetwork.PlayGame();
+    }
+    
+    #endregion
 }

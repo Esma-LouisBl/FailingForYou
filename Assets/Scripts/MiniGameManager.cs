@@ -431,7 +431,7 @@ public class MiniGameManager : NetworkBehaviour
         {
             SendPlayerReward(player, 2);
         }
-        Invoke("FinishMiniGame", 4f);
+        Invoke(nameof(FinishMiniGame), 4f);
     }
 
     public void FinishMiniGame()
@@ -442,6 +442,8 @@ public class MiniGameManager : NetworkBehaviour
             textAnswers[i] = "";
         }
         votes.Clear(); 
+        
+        Invoke(nameof(StartMiniGame), 5f);//Temporary
     }
 
     #endregion
