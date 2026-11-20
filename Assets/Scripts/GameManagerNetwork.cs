@@ -30,6 +30,8 @@ public class GameManagerNetwork : NetworkBehaviour
     [SerializeField]    //Required for function ConfirmVote
     private TextMeshProUGUI _answer1, _answer2, _answer3;
     private int _voteAnswerNumber;
+
+    public bool playerIsWaiting;
     
     private Dictionary<int, int> _instanceIdRepertory = new Dictionary<int, int>();
     private Dictionary<int, string> _playerNames = new Dictionary<int, string>();
@@ -37,7 +39,7 @@ public class GameManagerNetwork : NetworkBehaviour
 
     private bool _canSelectCharacter = true; //false when player selected its character (local)
     
-    private List<int> _sabotagedPlayers = new List<int>();
+    public List<int> sabotagedPlayers = new List<int>();
     
     #region CharacterSelection
     
@@ -56,23 +58,11 @@ public class GameManagerNetwork : NetworkBehaviour
 
     
     private int _incrementalValue = 0;
-
+    
     public void PlayGame()
     {
-        for (int i = 0; i <= _rounds; i++)
-
-        {
-            miniGameManager.StartMiniGame();
-            if (_sabotagedPlayers.Count != 0)
-            {
-                foreach (int playerTargeted in _sabotagedPlayers) //Send sabotages to targeted players
-                {
-                    TransmitSabotage(playerTargeted);
-                }
-                _sabotagedPlayers.Clear(); //Clear the list after sabotages have been sent
-            }
-
-        }
+        miniGameManager.ChooseMiniGames(3);
+        miniGameManager.StartMiniGame();
     }
     
     public void AddPlayer(PlayerNetwork playerToAdd, int instanceIdReceived)
@@ -113,6 +103,8 @@ public class GameManagerNetwork : NetworkBehaviour
         _answer2.text = "";
         _answer3.text = "";
         _voteAnswerNumber = 1;
+
+        playerIsWaiting = false;
     }
     
     // Used by a LOCAL GameManagerNetwork
@@ -133,6 +125,7 @@ public class GameManagerNetwork : NetworkBehaviour
                 break;
         }
         miniGameManager.WaitingScreenOnClient();
+        playerIsWaiting = true;
     }
     
     public void ConfirmTextAnswer()
@@ -228,7 +221,7 @@ public class GameManagerNetwork : NetworkBehaviour
         {
             _selectedCharacters.Add(characterName);
             //Show the player on Screen
-            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform);
+            Instantiate(_batPrefab, _playerTransforms[playerNumber - 1].transform); //Temporary
             _playerTransforms[0].gameObject.SetActive(true);
             ReturnSelectedCharacter(characterName, playerNumber);
         }
@@ -282,14 +275,14 @@ public class GameManagerNetwork : NetworkBehaviour
     
     public void ReceiveSabotage(int targetNumber)
     {
-        if (!_sabotagedPlayers.Contains(targetNumber))
+        if (!sabotagedPlayers.Contains(targetNumber))
         {
-            ReturnIfSabotageWorked(true);
-            _sabotagedPlayers.Add(targetNumber);
+            ReturnIfSabotageWorked(true, targetNumber);
+            sabotagedPlayers.Add(targetNumber);
         }
         else
         {
-            ReturnIfSabotageWorked(false);
+            ReturnIfSabotageWorked(false, targetNumber);
         }
     }
 
@@ -300,15 +293,18 @@ public class GameManagerNetwork : NetworkBehaviour
     }
     
     [ObserversRpc]
-    private void ReturnIfSabotageWorked(bool sabotageWorked) //Get the information if sabotage worked
+    private void ReturnIfSabotageWorked(bool sabotageWorked, int targetNumber) //Get the information if sabotage worked
     {
-        switch (sabotageWorked)
+        if (targetNumber == myLocalPlayer.playerData.playerNumber)
         {
-            case true:
-                myLocalPlayer.playerData.playerSabotages -= 1;
-                break;
-            case false:
-                break;
+            switch (sabotageWorked)
+            {
+                case true:
+                    myLocalPlayer.playerData.playerSabotages -= 1;
+                    break;
+                case false:
+                    break;
+            }
         }
     }
 

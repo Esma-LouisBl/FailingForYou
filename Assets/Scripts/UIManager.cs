@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
+    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUIQRCode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
 
     [Header("Tie (host)")]
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Image> _playersImages;
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
-    [SerializeField] private TextMeshProUGUI _answer, _winnerName;
+    [SerializeField] private TextMeshProUGUI _tieAnswer, _winnerName;
     
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
@@ -212,6 +212,7 @@ public class UIManager : MonoBehaviour
 
     public void SwitchOnCharacterSelectionUI()
     {
+        _clientConnectionUIQRCode.SetActive(false);
         _clientConnectionUICode.SetActive(false);
         _clientConnectionUICharacterSelection.SetActive(true);
     }
@@ -318,6 +319,8 @@ public class UIManager : MonoBehaviour
         _hostQuestionGenreTMP.text = miniGame.genre.ToString();
         _hostMainUI.SetActive(true);
         _hostQuestionUI.SetActive(true);
+        _hostTextAnswersRevelationUI.SetActive(false);
+        _tieHostUI.SetActive(false);
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
@@ -507,6 +510,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowTieOnHost(List<int> playersInTie, string question)
     {
+        _answerContainer.SetActive(false);
+        _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
@@ -514,10 +519,10 @@ public class UIManager : MonoBehaviour
     private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
     {
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
-        for (int i = 0; i < 1600; i++)
+        for (int i = 0; i < 260; i++)
         {
-            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+0.1f);
-            yield return new WaitForSeconds(0.0005f);
+            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+1);
+            yield return new WaitForSeconds(0.01f);
         }
         _tieAppearText.gameObject.SetActive(false);
 
@@ -546,6 +551,8 @@ public class UIManager : MonoBehaviour
 
         _winnerName.gameObject.SetActive(true);
         _winnerName.text = $"Le gagnant est le joueur {winnerNumber} !";
+        _tieAnswer.text = $"La réponse attendue était : {_gameManagerNetwork.miniGameManager.currentTieQuestion.answer}";
+        _answerContainer.SetActive(true);
     }
     public void ShowTieOnClientAfterBadAnswer()
     {
@@ -600,7 +607,7 @@ public class UIManager : MonoBehaviour
             case "Pito" :
                 _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Pito, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
                 break;
-            case "Kamé" :
+            case "Kame" :
                 _gameManagerNetwork.myLocalPlayer.TrySelectCharacter(Enums.CharacterName.Kame, _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
                 break;
         }
@@ -622,6 +629,18 @@ public class UIManager : MonoBehaviour
     }
     
     #endregion
+
+    public void OnSabotageClicked()
+    {
+        _gameManagerNetwork.myLocalPlayer.TryToSendASabotage(1);
+    }
     
+    #region LaunchGame
+
+    public void OnLaunchGame()
+    {
+        _gameManagerNetwork.myLocalPlayer.SwitchOnServerRpc();
+    }
     
+    #endregion
 }

@@ -10,8 +10,8 @@ public class SabotageManager : MonoBehaviour
     {
         if (_gameManagerNetwork.myLocalPlayer.playerData.playerNumber == targetNumber)
         {
-            Sabotage _sabotageToApply = _sabotages[Random.Range(0, _sabotages.Count-1)];
-            _sabotageToApply.ApplySabotage();
+            Sabotage sabotageToApply = _sabotages[Random.Range(0, _sabotages.Count-1)];
+            sabotageToApply.ApplySabotage();
         }
     }
 }

@@ -85,6 +85,7 @@ public class PlayerNetwork : NetworkBehaviour
     public void AssignMyPlayerNumber(int myPlayerNumber)
     {
         playerData.playerNumber = myPlayerNumber;
+        playerData.playerSabotages = 1;
     }
 
     
@@ -118,6 +119,21 @@ public class PlayerNetwork : NetworkBehaviour
     public void SendSabotageToPlayer(int targetNumber) //Send a sabotage on server to apply next round
     {
         gameManagerNetwork.ReceiveSabotage(targetNumber);
+    }
+    
+    #endregion
+    
+    #region LaunchGame
+
+    public void SwitchOnServerRpc()
+    {
+        LaunchGameOnServer();
+    }
+
+    [ServerRpc]
+    private void LaunchGameOnServer()
+    {
+        gameManagerNetwork.PlayGame();
     }
     
     #endregion
