@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
     [SerializeField] private TextMeshProUGUI _tieAnswer, _winnerName;
+
+    [SerializeField] [Tooltip("This text appears when some players have entered the same answer")]
+    private List<TextMeshProUGUI> _fastestPlayer;
     
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
@@ -513,6 +516,10 @@ public class UIManager : MonoBehaviour
         _answerContainer.SetActive(false);
         _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
+        foreach (var text in _fastestPlayer)
+        {
+            text.gameObject.SetActive(false);
+        }
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
 
@@ -528,6 +535,7 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
         {
+            Debug.Log("je capte pas");
             _playersInTieGO[i].gameObject.SetActive(true);
             // _playersNames[i].text = playersInTie[i].playerName;
         }
@@ -546,7 +554,16 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.miniGameManager.playersInTie.Count; i++)
         {
-            _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            if (_gameManagerNetwork.miniGameManager.collectedTieAnswers[
+                    _gameManagerNetwork.miniGameManager.playersInTie[i]] == -67.67f)
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[winnerNumber].ToString();
+                _fastestPlayer[i-1].gameObject.SetActive(true);
+            }
+            else
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            }
         }
 
         _winnerName.gameObject.SetActive(true);
