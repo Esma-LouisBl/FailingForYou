@@ -49,7 +49,8 @@ public class CrushCreationManager : NetworkBehaviour
 	{
 
 	}
-	public void StartCrush()
+	[ServerRpc(RequireOwnership = false)]
+    public void StartCrush()
 	{
         _gameManagerNetwork.uiManager.OpenCrushCreationPC();
 		Invoke("StartList", 5f);
@@ -59,6 +60,7 @@ public class CrushCreationManager : NetworkBehaviour
     {
 		CrushList();
     }
+	
     public void CrushList()
 	{
 		for (int i = 0; i < 4; i++) {
@@ -76,18 +78,19 @@ public class CrushCreationManager : NetworkBehaviour
 	public void initializationCrushCreation([NotNull] List<string> allPartsOnServer)
 	{
 		_gameManagerNetwork.uiManager.OpenCrushCreation();
-
+		
 
         // GetPlayerNetwork();
         Debug.Log("try is, playernumber : " + _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
 		partEnvoie = allPartsOnServer[_gameManagerNetwork.myLocalPlayer.playerData.playerNumber];
 		Debug.Log("my part is : "+partEnvoie);
-
-		switch (partEnvoie)
+        _gameManagerNetwork.uiManager.ShowPartsClients(partEnvoie);
+        switch (partEnvoie)
 		{
 			case "Faces":
                 //afficher tout ce qui est relatif à Face
                 faceImage.enabled = true;
+				
                 IndicationDressCrush(partEnvoie);
                 crushImage = faceImage;
                 crushSprites = facesSprites;

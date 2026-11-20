@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
     public GameObject crushCreationUI, crushCreationPC, intropresenter, codeBackgroundImage;
     public TextMeshProUGUI codeTextBackground;
     public GameObject choseCrushPart;
-    public Image hairImage, accessoriesImage, faceImage, clothesImage;
+    
     
 
     #endregion
@@ -726,13 +726,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void CrushPC()
+    public void ShowPartsClients(string part)
     {
-        //_hairDestockImage.enabled = true;
-        //_accessoriesDestockImage.enabled = true;
-        //_faceDestockImage.enabled = true;
-        //_clothesDestockImage.enabled = true;
-       
+        switch (part)
+        {
+            case "Hair":
+                _hairDestockImage.enabled = true;
+                break;
+            case "Accessories":
+                _accessoriesDestockImage.enabled = true;
+                break;
+            case "Faces":
+                _faceDestockImage.enabled = true;
+                break;
+            case "Clothes":
+                _clothesDestockImage.enabled = true;
+                break;
+        }
     }
 
     
@@ -750,6 +760,10 @@ public class UIManager : MonoBehaviour
     }
     public void OpenCrushCreationPC()
     {
+        //_hairDestockImage.enabled = false;
+        //_accessoriesDestockImage.enabled = false;
+        //_clothesDestockImage.enabled = false;
+        //_faceDestockImage.enabled = false;
         crushCreationPC.SetActive(true);
         codeBackgroundImage.SetActive(true);
 
@@ -763,10 +777,7 @@ public class UIManager : MonoBehaviour
     public void OpenCrushCreation()
     {
         crushCreationUI.SetActive(true);
-        hairImage.enabled = false;
-        accessoriesImage.enabled = false;
-        clothesImage.enabled = false;
-        faceImage.enabled = false;
+        
     }
     public void CloseCrushCreation()
     {

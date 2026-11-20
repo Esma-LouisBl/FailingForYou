@@ -15,7 +15,7 @@ public class GameManagerNetwork : NetworkBehaviour
     public SceneManager sceneManager;
     public SabotageManager sabotageManager;
     public CrushCreationManager crushCreationManager;
-	public UIManager uiManager;
+	
 
     #endregion
 
@@ -204,7 +204,8 @@ public class GameManagerNetwork : NetworkBehaviour
             uiManager.ShowTieOnClientAfterBadAnswer();
         }
     }
-    public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
+    
+    
   
     
     
