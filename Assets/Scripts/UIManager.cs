@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,11 +13,32 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
-    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits;
+    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits, _hostConnectionUIConnecting;
+    [Space(20)]
+    [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
     [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
+
+    [Header("Tie (host)")]
+    [SerializeField] private GameObject _tieHostUI;
+    [Tooltip("Use this to deform the band")]
+    [SerializeField] private RectTransform _bandTransform;
+    [SerializeField] private TextMeshProUGUI _tieAppearText;
+    [SerializeField] private TextMeshProUGUI _tieQuestionText;
+    [SerializeField] private List<GameObject> _playersInTieGO;
+    [SerializeField] private List<TextMeshProUGUI> _playersNames;
+    [SerializeField] private List<Image> _playersImages;
+    [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
+    [SerializeField] private GameObject _answerContainer;
+    [SerializeField] private TextMeshProUGUI _answer, _winnerName;
+    
+    [Header("Tie (client)")]
+    [SerializeField] private GameObject _tieClientUI;
+    [SerializeField] private TextMeshProUGUI _tieQuestionClient;
+    [SerializeField] private GameObject _errorAnswerAlreadyBeenEntered;
+    [Space(20)]
 
 
     #endregion
@@ -45,9 +67,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private InputActionReference _return;
     [SerializeField] private InputActionReference _space;
     [SerializeField] private InputActionReference _touchScreen;
+    [SerializeField] private InputActionReference _asterisk;
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
+
+    [SerializeField] private GameObject _background;
     
     #endregion
     
@@ -81,6 +106,7 @@ public class UIManager : MonoBehaviour
         _return.action.started += Return;
         _space.action.started += Space;
         _touchScreen.action.started += TouchScreen;
+        _asterisk.action.started += Asterisk;
     }
     
     private void OnDisable()
@@ -88,6 +114,7 @@ public class UIManager : MonoBehaviour
         _return.action.started -= Return;
         _space.action.started -= Space;
         _touchScreen.action.started -= TouchScreen;
+        _asterisk.action.started -= Asterisk;
     }
     
     private void Space(InputAction.CallbackContext obj)
@@ -138,6 +165,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Asterisk(InputAction.CallbackContext obj)
+    {
+        FindFirstObjectByType<DebugManager>().ShowHideDebugUI();
+    }
+
     #region returnSystem
 
     private void HideHostConnectionUICredits()
@@ -153,6 +185,7 @@ public class UIManager : MonoBehaviour
     private void HideHostConnectionUIMenu()
     {
         _hostConnectionUIMenu.SetActive(false);
+        _background.SetActive(true);
     }
 
     private void HideHostConnectionUIOptions()
@@ -164,6 +197,7 @@ public class UIManager : MonoBehaviour
     {
         selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
         _hostConnectionUIMenu.SetActive(true);
+        _background.SetActive(false);
     }
     
     private void ShowHostConnectionUIWelcome()
@@ -180,6 +214,31 @@ public class UIManager : MonoBehaviour
     {
         _clientConnectionUICode.SetActive(false);
         _clientConnectionUICharacterSelection.SetActive(true);
+    }
+    
+    public void SwitchOnHostConnectingUI()
+    {
+        _gameManagerNetwork.sceneManager.UpdateScene(Enums.MiniGamePlace.tv, Enums.MiniGameGenre.none, Enums.MiniGameType.none);
+        _gameManagerNetwork.sceneManager.ShowConnectingAssets();
+        _gameManagerNetwork.sceneManager.SwitchOnCamera(2);
+        
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIConnecting.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIConnecting;
+    }
+    
+    public void SwitchOnHostOptionsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUIOptions.SetActive(true);
+        selectedUI = Enums.SelectedUI.hostConnectionUIOptions;
+    }
+
+    public void SwitchOnCreditsUI()
+    {
+        _hostConnectionUIMenu.SetActive(false);
+        _hostConnectionUICredits.SetActive(true);
+        selectedUI =  Enums.SelectedUI.hostConnectionUICredits;
     }
 
     private void SwitchOnCodeUI()
@@ -205,14 +264,19 @@ public class UIManager : MonoBehaviour
         _hostConnectionUI.SetActive(false);
         _clientConnectionUI.SetActive(false);
     }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
+    }
     
-    public void UpdateServerConnectionUI()
+    public void UpdateServerConnectionUI() //Update every player profile according to its playerdata
     {
         for (int i = 0; i < _gameManagerNetwork.players.Count; i++)
         {
             if (_gameManagerNetwork.players[i] != null)
             {
-                _players[i].SetActive(false);
+                _players[i].SetActive(false); // ?
                 if (_gameManagerNetwork.players[i].playerData.playerName != "")
                 {
                     _playerNames[i].text = _gameManagerNetwork.players[i].playerData.playerName;
@@ -241,6 +305,12 @@ public class UIManager : MonoBehaviour
         _clientConnectionUI.SetActive(false);
     }
 
+    #region MiniGame
+
+    public void UpdateTimer(int time)
+    {
+        _timerText.text = time.ToString();
+    }
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
         _hostQuestionTMP.text = miniGame.question;
@@ -253,6 +323,7 @@ public class UIManager : MonoBehaviour
     {
         HideConnectionUI();
         ShowClientMainUI();
+        _clientWaitingScreen.SetActive(false);
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
@@ -299,6 +370,11 @@ public class UIManager : MonoBehaviour
             _randomOrderOfAnswersOnScreen.Add(0);   //List to see at which player belongs the answers in the order they are displayed on host screen
         }
 
+        if (fourPlayers)
+        {
+            _randomOrderOfAnswersOnScreen.Add(0);
+        }
+
         List<int> answerToAssign = new List<int>(); //Temporary list that repertories the answers which hasn't yet been assigned randomly
         answerToAssign.Add(1);
         answerToAssign.Add(2);
@@ -321,10 +397,6 @@ public class UIManager : MonoBehaviour
         {
             _answer4Host.text = answers[_randomOrderOfAnswersOnScreen[4]];
         }
-
-        Debug.Log(_randomOrderOfAnswersOnScreen[1] + " a la réponse en haut à gauche");
-        Debug.Log(_randomOrderOfAnswersOnScreen[2] + " a la réponse en haut à droite");
-        Debug.Log(_randomOrderOfAnswersOnScreen[3] + " a la réponse en bas à gauche");
         
         _hostTextAnswersRevelationUI.SetActive(true);
         StartCoroutine(LetAnswersAppear(fourPlayers));
@@ -370,15 +442,146 @@ public class UIManager : MonoBehaviour
         _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
+    public void ShowHostMainUIWhilePlayersAreVoting()
+    {
+        _hookSentence.text = "Votez pour la meilleure réponse !";
+        _hostMainUI.SetActive(true);
+        _hostTextAnswersRevelationUI.SetActive(false);
+    }
+
+    public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+    {
+        _hostTextAnswersRevelationUI.SetActive(true);
+        _hostMainUI.SetActive(false);
+    
+        StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
+    }
+
+    private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
+    {
+        List<int> votes = new List<int>();
+        votes.Add(0);
+        votes.Add(answer1Votes);
+        votes.Add(answer2Votes);
+        votes.Add(answer3Votes);
+        votes.Add(answer4Votes);
+        
+        if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
+        {
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
+            {
+                _answer1VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
+        {
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
+            {
+                _answer2VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
+        {
+            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
+            {
+                _answer3VoteTokens[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        if (_randomOrderOfAnswersOnScreen.Count > 4)
+        {
+            if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
+            {
+                for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
+                {
+                    _answer4VoteTokens[i].SetActive(true);
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+        }
+    }
+
+    #region Tie
+
+    public void ShowTieOnHost(List<int> playersInTie, string question)
+    {
+        _tieHostUI.SetActive(true);
+        StartCoroutine(TieStartAnimation(playersInTie, question));
+    }
+
+    private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
+    {
+        _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
+        for (int i = 0; i < 1600; i++)
+        {
+            _bandTransform.sizeDelta = new Vector2(_bandTransform.sizeDelta.x, _bandTransform.sizeDelta.y+0.1f);
+            yield return new WaitForSeconds(0.0005f);
+        }
+        _tieAppearText.gameObject.SetActive(false);
+
+        for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
+        {
+            _playersInTieGO[i].gameObject.SetActive(true);
+            // _playersNames[i].text = playersInTie[i].playerName;
+        }
+
+        _tieQuestionText.text = question;
+    }
+
+    public void ShowTieOnClient(string tieQuestion)
+    {
+        _tieClientUI.SetActive(true);
+        _clientWaitingScreen.SetActive(false);
+        _tieQuestionClient.text = tieQuestion;
+    }
+
+    public void ShowTieWinner(int winnerNumber)
+    {
+        for (int i = 0; i < _gameManagerNetwork.miniGameManager.playersInTie.Count; i++)
+        {
+            _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+        }
+
+        _winnerName.gameObject.SetActive(true);
+        _winnerName.text = $"Le gagnant est le joueur {winnerNumber} !";
+    }
+    public void ShowTieOnClientAfterBadAnswer()
+    {
+        _tieClientUI.SetActive(true);
+        _clientWaitingScreen.SetActive(false);
+        StartCoroutine(BadAnswerAnimation());
+    }
+
+    private IEnumerator BadAnswerAnimation()
+    {
+        _errorAnswerAlreadyBeenEntered.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _errorAnswerAlreadyBeenEntered.SetActive(false);
+    }
+
+    #endregion
+    
+
+    #endregion
+
+    public void ShowWaitingScreenAndShutDownEverythingElse()
+    {
+        _clientWaitingScreen.SetActive(true);
+        _clientQuestionUI.SetActive(false);
+        _clientVotingArea.SetActive(false);
+        _tieClientUI.SetActive(false);
+    }
 
     #region CharacterSelection
 
-    public void SetSelectedCharacter(string characterName)
+    public void SetSelectedCharacter(string characterName) //Set a selected character when click on Button
     {
-        _selectedCharacterName =  characterName;
+        _selectedCharacterName = characterName;
     }
 
-    public void OnSelectCharacter()
+    public void OnSelectCharacter() //When confirmed
     {
         switch (_selectedCharacterName)
         {
@@ -420,74 +623,5 @@ public class UIManager : MonoBehaviour
     
     #endregion
     
-    public void ShowHostMainUIWhilePlayersAreVoting()
-    {
-        _hookSentence.text = "Votez pour la meilleure réponse !";
-        _hostMainUI.SetActive(true);
-        _hostTextAnswersRevelationUI.SetActive(false);
-    }
-
-    public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-    {
-        _hostTextAnswersRevelationUI.SetActive(true);
-        _hostMainUI.SetActive(false);
     
-        StartCoroutine(ShowTokens(answer1Votes, answer2Votes, answer3Votes, answer4Votes));
-    }
-
-    private IEnumerator ShowTokens(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
-    {
-        Debug.Log("on entre dans la coroutine de tokens");
-        List<int> votes = new List<int>();
-        votes.Add(0);
-        votes.Add(answer1Votes);
-        votes.Add(answer2Votes);
-        votes.Add(answer3Votes);
-        votes.Add(answer4Votes);
-
-        Debug.Log("passe");
-        foreach (var VARIABLE in _randomOrderOfAnswersOnScreen)
-        {
-            Debug.Log(VARIABLE);
-        }
-        if (votes[_randomOrderOfAnswersOnScreen[1]] > 0)    //check if the answer on top left on screen has votes
-        {
-            Debug.Log($"le joueur en haut à gauche a eu {votes[_randomOrderOfAnswersOnScreen[1]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[1]]; i++)
-            {
-                _answer1VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (votes[_randomOrderOfAnswersOnScreen[2]] > 0)    //check if the answer on top right on screen has votes
-        {
-            Debug.Log($"le joueur en haut à droite a eu {votes[_randomOrderOfAnswersOnScreen[2]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[2]]; i++)
-            {
-                _answer2VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (votes[_randomOrderOfAnswersOnScreen[3]] > 0)    //check if the answer on bottom left on screen has votes
-        {
-            Debug.Log($"le joueur en bas à gauche a eu {votes[_randomOrderOfAnswersOnScreen[3]]} votes");
-            for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[3]]; i++)
-            {
-                _answer3VoteTokens[i].SetActive(true);
-                yield return new WaitForSeconds(1f);
-            }
-        }
-        if (_randomOrderOfAnswersOnScreen.Count > 4)
-        {
-            if (votes[_randomOrderOfAnswersOnScreen[4]] > 0)    //check if the answer on bottom right on screen has votes
-            {
-                Debug.Log($"le joueur en bas à droite a eu {votes[_randomOrderOfAnswersOnScreen[4]]} votes");
-                for (int i = 0; i < votes[_randomOrderOfAnswersOnScreen[4]]; i++)
-                {
-                    _answer4VoteTokens[i].SetActive(true);
-                    yield return new WaitForSeconds(1f);
-                }
-            }
-        }
-    } 
 }

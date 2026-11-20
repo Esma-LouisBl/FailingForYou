@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using FishNet.CodeGenerating;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -16,21 +17,22 @@ public class MiniGameManager : NetworkBehaviour
     public List<MiniGameData> allMiniGames = new List<MiniGameData>();
     [SerializeField]
     public List<MiniGameData> tieQuestions = new List<MiniGameData>();
+    public MiniGameData currentTieQuestion;
     
     public int amountOfMiniGames = 3;
-    
-    // public Enums.GamePhase serverGamePhase;
+
+    public int time = 40;
     
     // This list stocks text answers ordered like the players (textAnswers[2] -> player2's answer)
     [AllowMutableSyncType]
     public SyncList<string> textAnswers = new();
-    [SerializeField]
     // private List<int> _votes = new List<int>(); 
     public Dictionary<string, int> votes = new Dictionary<string, int>();
 
     public int collectedAnswers, collectedVotes;
     
-    // public Dictionary<PlayerNetwork, int> numberOfVotesByPlayer = new Dictionary<PlayerNetwork, int>();
+    public List<int> playersInTie = new List<int>();
+    public List<float> collectedTieAnswers = new List<float>(); //list of answers ordered like players
 
     #endregion
     
@@ -50,12 +52,6 @@ public class MiniGameManager : NetworkBehaviour
         {
             textAnswers.Add("");
         }
-
-        // _votes.Capacity = 5;
-        // for (int i = 0; i < 5; i++)
-        // {
-        //     _votes.Add(0);
-        // }
     }
 
     public void SendGamePhaseToGameManagerNetwork(Enums.GamePhase phase)
@@ -94,14 +90,36 @@ public class MiniGameManager : NetworkBehaviour
         _uiManager.HideConnectionUI();
         _uiManager.UpdateMiniGameUIHost(miniGame);
 
+        time = 40;
+        StartCoroutine(Timer());
+
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.answeringQuestion);
         
         LaunchMiniGameToClient(miniGame);
+    }
+
+    private IEnumerator Timer()
+    {
+        while (time > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            time--;
+            _uiManager.UpdateTimer(time);
+        }
+
+        ForceClientsToSend();
+    }
+
+    [ObserversRpc]
+    public void ForceClientsToSend()
+    {
+        _gameManagerNetwork.SendButton();
     }
     
     [ObserversRpc]
     public void LaunchMiniGameToClient(MiniGameData miniGame)
     {
+        _gameManagerNetwork.ResetVariablesOnStartMiniGame();
         _uiManager.UpdateMiniGameUIClient(miniGame);
     }
 
@@ -116,6 +134,9 @@ public class MiniGameManager : NetworkBehaviour
 
     public void StartVotePhase()
     {
+        StopCoroutine(Timer());
+        time = 40;
+        _uiManager.UpdateTimer(time);
         collectedVotes = 0; //variable reset
         votes.Clear();
         for (int i = 1; i < textAnswers.Count; i++)
@@ -179,66 +200,167 @@ public class MiniGameManager : NetworkBehaviour
     public void CollectTextVotes(string answerVoted, int playerNumber)
     {
         collectedVotes++;
-        // for (int i = 0; i < textAnswers.Count; i++)
-        // {
-        //     if (textAnswers[i] == answerVoted)
-        //     {
-        //         _votes[i]++;
-        //     }
-        // }
         votes[answerVoted]++;
+        
+        if (collectedVotes == 1)
+        {
+            StartCoroutine(Timer());
+        }
     }
 
     public void MiniGameWinnerElection()
     {
-        int winnerPlayerNumber = 1;
-        int maxVotes = 0;
+        StopCoroutine(Timer());
+        time = 40;
+        _uiManager.UpdateTimer(time);
+        
+        Dictionary<int, int> ranking = new Dictionary<int, int>();  //acts like a podium : the first int is the PLAYER, the second int is the RANK associated
+        ranking.Clear();
+        int votesToCheck = 3; //maximum of votes to check while ranking the players
+        int occupiedPlaces = 0; //just to know where are we when ranking the players
+        bool occupiedPlacesHasChanged = false;
+        
         List<int> votesOrdered = new List<int>();
-        for (int i = 0; i < 5; i++) //list initialization
+        votesOrdered.Clear();
+        for (int i = 0; i < 5; i++) //lists initialization
         {
             votesOrdered.Add(0);
         }
 
-        //this for loop order all the votes like textAnswers (so 1 is for player1 etc.)
+        //this for loop orders all the votes like textAnswers (so 1 is for player1 etc.)
         for (int i = 0; i < textAnswers.Count; i++)
         {
             if (votes.ContainsKey(textAnswers[i]))
             {
                 votesOrdered[i] = votes[textAnswers[i]];
-                Debug.Log(votesOrdered[i]);
             }
         }
 
-        for (int i = 0; i < votesOrdered.Count; i++)
+        while (ranking.Count < _gameManagerNetwork.players.Count)
         {
-            if (votesOrdered[i] > maxVotes)
+            for (int i = 1; i < votesOrdered.Count; i++)
             {
-                maxVotes = votesOrdered[i];
-                winnerPlayerNumber = i;
+                if (votesOrdered[i] == votesToCheck)
+                {
+                    ranking.Add(i, occupiedPlaces+1);
+                    occupiedPlacesHasChanged = true;
+                }
             }
+
+            if (occupiedPlacesHasChanged)
+            {
+                occupiedPlaces++;
+            }
+            votesToCheck--;
         }
 
-        Debug.Log($"Le gagnant est le joueur numéro {winnerPlayerNumber}");
+        //check if there are ties
+        for (int i = 1; i < 4; i++)     //we check for all the 4 possible ranks
+        {
+            playersInTie.Clear();
+            foreach (var values in ranking)
+            {
+                if (values.Value == i)  //if someone is in that rank, we add em to playersInTie
+                {
+                    playersInTie.Add(values.Key);
+                }
+            }
+
+            if (playersInTie.Count >= 1) //if there are multiple people on the same rank, there is a tie OR there is a person
+            {                            //who is alone but superior to the others, so the inferior ties aren't important
+                break;
+            }
+        }
 
         _uiManager.ShowMiniGameWinner(votesOrdered[1], votesOrdered[2], votesOrdered[3], votesOrdered[4]);
-        // FinishVotePhase();
+        
+        
+        if (playersInTie.Count > 1)
+        {
+            StartCoroutine(WaitBeforeTie());
+        }
+        else
+        {
+            FinishMiniGame();
+        }
     }
 
-    public void FinishVotePhase()
+    private IEnumerator WaitBeforeTie()
+    {
+        yield return new WaitForSeconds(5f);
+        Tie();
+    }
+    public void Tie()
+    {
+        collectedAnswers = 0;
+        collectedTieAnswers.Clear(); //reset variable
+        for (int i = 0; i < 5; i++) //list init
+        {
+            collectedTieAnswers.Add(0);
+        }
+        SendGamePhaseToGameManagerNetwork(Enums.GamePhase.tie);
+        currentTieQuestion = tieQuestions[Random.Range(0, tieQuestions.Count)];
+        _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
+
+        StartTieOnClient(playersInTie, currentTieQuestion.question);
+
+        StartCoroutine(Timer());
+    }
+
+    [ObserversRpc]
+    public void StartTieOnClient(List<int> playersConcerned, string question)
+    {
+        if (playersConcerned.Contains(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber)) //to launch only on concerned players
+        {
+            _uiManager.ShowTieOnClient(question);
+        }
+    }
+
+    public void CollectTieAnswer(float answer, int playerNumber)
+    {
+        collectedAnswers++;
+        collectedTieAnswers[playerNumber] = answer;
+
+        if (collectedAnswers == playersInTie.Count)
+        {
+            TieWinnerElection();
+            time = 40;
+            StopCoroutine(Timer());
+        }
+    }
+
+    public void TieWinnerElection()
+    {
+        int winner = playersInTie[0];
+        float closerAnswer = collectedTieAnswers[playersInTie[0]];
+        for (int i = 1; i < collectedTieAnswers.Count; i++)
+        {
+            if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < Math.Abs(currentTieQuestion.answer - closerAnswer) && playersInTie[i] > 0)
+            {
+                winner = i;
+                closerAnswer = collectedTieAnswers[i];
+            }
+        }
+        
+        _uiManager.ShowTieWinner(winner);
+        Invoke("FinishMiniGame", 4f);
+    }
+
+    public void FinishMiniGame()
     {
         //var reset
         for (int i = 0; i < 5; i++)
         {
             textAnswers[i] = "";
         }
-
-        // for (int i = 0; i < 5; i++)
-        // {
-        //     _votes[i] = 0;
-        // }
-        votes.Clear();
+        votes.Clear(); 
     }
 
     #endregion
+
+    public void WaitingScreenOnClient()
+    {
+        _uiManager.ShowWaitingScreenAndShutDownEverythingElse();
+    }
     
 }

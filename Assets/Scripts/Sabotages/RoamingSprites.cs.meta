@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: e49a5db30e5cef148bf447cc31b8c70d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - roamingSpritePrefab: {fileID: 5986494413934634643, guid: 9accb69a88bdab146a7d4f46bf9d7d74, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

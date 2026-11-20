@@ -55,6 +55,11 @@ MonoBehaviour:
   _hostConnectionUIOptions: {fileID: 0}
   _hostConnectionUICredits: {fileID: 0}
   _hostQuestionUI: {fileID: 0}
+  _hostTextAnswersRevelationUI: {fileID: 0}
+  _answerOnHost1: {fileID: 0}
+  _answerOnHost2: {fileID: 0}
+  _answerOnHost3: {fileID: 0}
+  _answerOnHost4: {fileID: 0}
   _clientQuestionUI: {fileID: 0}
   _clientQuestionTextualUI: {fileID: 0}
   _clientConfirmationFooter: {fileID: 0}
@@ -64,6 +69,7 @@ MonoBehaviour:
   _clientConnectionUINameSelection: {fileID: 0}
   _clientConnectionWelcome: {fileID: 0}
   _clientVotingArea: {fileID: 0}
+  _clientAnswerInCaseThereAreFourPlayers: {fileID: 0}
   _players: []
   _playerNames: []
   _playerCharacter1: {fileID: 0}
@@ -80,13 +86,35 @@ MonoBehaviour:
   _clientQuestionTMP: {fileID: 0}
   _clientQuestionTypeTMP: {fileID: 0}
   _clientQuestionGenreTMP: {fileID: 0}
+  _hookSentence: {fileID: 0}
   _gameManagerNetwork: {fileID: 0}
   _answer1: {fileID: 0}
   _answer2: {fileID: 0}
   _answer3: {fileID: 0}
+  _answer1Host: {fileID: 0}
+  _answer2Host: {fileID: 0}
+  _answer3Host: {fileID: 0}
+  _answer4Host: {fileID: 0}
+  _answer1VoteTokens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _answer2VoteTokens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _answer3VoteTokens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _answer4VoteTokens:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _return: {fileID: 3582032698785578260, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
   _space: {fileID: 6059057376064902435, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
   _touchScreen: {fileID: -2891421456843425003, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
+  _asterisk: {fileID: 7336435246433365556, guid: 522dc9a5a4652c64a84525dc32505578, type: 3}
   _deselectionButton: {fileID: 0}
   _nameEntered: {fileID: 0}
   selectedUI: 0
@@ -117,6 +145,6 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard/Mouse
-  m_DefaultActionMap: c4c4b63b-e475-4188-8026-3e8e34d73fd5
+  m_DefaultActionMap: MainActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

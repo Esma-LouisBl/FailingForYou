@@ -78,10 +78,10 @@
                 {
                     "name": "",
                     "id": "2ad1cb4c-b1e2-43ad-ac99-37cb2fe639c7",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard/Mouse",
+                    "groups": ";Mobile",
                     "action": "TouchScreen",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -123,6 +123,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Mobile",
+            "bindingGroup": "Mobile",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
                     "isOptional": false,
                     "isOR": false
                 }

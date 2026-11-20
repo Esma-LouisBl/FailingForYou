@@ -30,6 +30,16 @@ public class PlayerNetwork : NetworkBehaviour
 
         GetGameManagerNetworkLocally();
     }
+    
+    private new IEnumerator StartWithDelay() //Start after a delay to avoid trying to get an uncreated asset
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (IsOwner)
+        {
+            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
+            RegisterPlayerOnServer(_instanceId);
+        }
+    }
 
     #endregion
 
@@ -42,7 +52,7 @@ public class PlayerNetwork : NetworkBehaviour
         {
             gameManagerNetwork = FindFirstObjectByType<GameManagerNetwork>();
             gameManagerNetwork.myLocalPlayer = this;
-            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI();
+            gameManagerNetwork.uiManager.SwitchOnCharacterSelectionUI(); //Update UI
             gameManagerNetwork.uiManager.selectedUI = Enums.SelectedUI.clientConnectionUICode;
         }
     }
@@ -52,14 +62,17 @@ public class PlayerNetwork : NetworkBehaviour
     {
         gameManagerNetwork.ReceivePlayerTextAnswer(answer, playerNumber);
     }
-    private new IEnumerator StartWithDelay()
+
+    [ServerRpc]
+    public void SendPlayerTieAnswer(float answer, int playerNumber)
     {
-        yield return new WaitForSeconds(0.1f);
-        if (IsOwner)
-        {
-            _instanceId = FindFirstObjectByType<NetworkManager>().ClientManager.GetInstanceID();
-            RegisterPlayerOnServer(_instanceId);
-        }
+        gameManagerNetwork.ReceivePlayerTieAnswer(answer, playerNumber);
+    }
+    
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
     }
 
     [ServerRpc]
@@ -74,11 +87,6 @@ public class PlayerNetwork : NetworkBehaviour
         playerData.playerNumber = myPlayerNumber;
     }
 
-    [ServerRpc]
-    public void SendPlayerTextVote(string votedAnswer)
-    {
-        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
-    }
     
     #region CharacterSelection
 
@@ -92,6 +100,24 @@ public class PlayerNetwork : NetworkBehaviour
     public void RegisterName(string playerName, int sentPlayerNumber)
     {
         gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
+    }
+    
+    #endregion
+    
+    #region Sabotages
+
+    public void TryToSendASabotage(int targetNumber) //Check if player can send a sabotage
+    {
+        if (playerData.playerSabotages > 0)
+        {
+            SendSabotageToPlayer(targetNumber);
+        }
+    }
+
+    [ServerRpc]
+    public void SendSabotageToPlayer(int targetNumber) //Send a sabotage on server to apply next round
+    {
+        gameManagerNetwork.ReceiveSabotage(targetNumber);
     }
     
     #endregion

@@ -508,16 +508,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConnectionUI (Desktop)
       objectReference: {fileID: 0}
-    - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
+    - target: {fileID: 7066447388822458706, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
+    - target: {fileID: 7066447388822458706, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6659421467493425971, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
-      propertyPath: m_SizeDelta.y
+    - target: {fileID: 7066447388822458706, guid: 116927e2dbe9a75458f53bb81c588c49, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

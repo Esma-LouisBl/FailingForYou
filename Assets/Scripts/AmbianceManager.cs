@@ -1,6 +1,7 @@
 using FishNet.Serializing.Helping;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AmbianceManager : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class AmbianceManager : MonoBehaviour
 
     IEnumerator Changeambiance()
     {
-        ambiance.MorningSet();
-        yield return new WaitForSeconds(changeTps);
-        ambiance.AfternoonSet();
-        yield return new WaitForSeconds(changeTps);
-        ambiance.NightSet();
-        yield return new WaitForSeconds(changeTps);
-        ambiance.MorningRomSet();
+        while (true)
+        {
+            ambiance.MorningSet();
+            yield return new WaitForSeconds(changeTps);
+            ambiance.AfternoonSet();
+            yield return new WaitForSeconds(changeTps);
+            ambiance.NightSet();
+            yield return new WaitForSeconds(changeTps);
+            
+        }
+        
     }
 }
