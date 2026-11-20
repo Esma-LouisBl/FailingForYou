@@ -62,7 +62,7 @@ public class ServerManager : MonoBehaviour
             //_mobileCanvas.SetActive(true);
             
             _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
-            SetUpCamera();
+            StartCoroutine(SetUpCameraWithDelay());
             CreateClient();
         }
         else if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -220,7 +220,7 @@ public class ServerManager : MonoBehaviour
                 if (result.Text != "")
                 {
                     _canTryScanning = false;
-                    ConnectionDelay();
+                    StartCoroutine(ConnectionDelay());
                     _writtenAdress.text = result.Text;
                     CreateClient();
                 }
@@ -232,10 +232,17 @@ public class ServerManager : MonoBehaviour
         }
     }
 
-    private new IEnumerator ConnectionDelay() //Set a delay to avoid second scan of QR code
+    private IEnumerator ConnectionDelay() //Set a delay to avoid second scan of QR code
     {
         yield return new WaitForSeconds(0.5f);
         _canTryScanning = true;
+    }
+    
+    private IEnumerator SetUpCameraWithDelay() //Set a delay to avoid second scan of QR code
+    {
+        SetUpCamera();
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(SetUpCameraWithDelay());
     }
 }
 

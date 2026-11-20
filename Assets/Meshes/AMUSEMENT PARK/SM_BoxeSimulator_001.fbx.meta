@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Flute_S
-    second: {fileID: 2100000, guid: 150f7f4bebda819479416fd55966a137, type: 2}
+    second: {fileID: 2100000, guid: 7bb5107ff6648d249836059782ae482b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -23,7 +23,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Stickers_001
-    second: {fileID: 2100000, guid: f96268dd21f427a4385a4e97c3983369, type: 2}
+    second: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 912b373628d96904aaa377fab4499a02, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

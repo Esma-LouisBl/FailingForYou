@@ -64,6 +64,18 @@ public class PlayerNetwork : NetworkBehaviour
     }
 
     [ServerRpc]
+    public void SendPlayerTieAnswer(float answer, int playerNumber)
+    {
+        gameManagerNetwork.ReceivePlayerTieAnswer(answer, playerNumber);
+    }
+    
+    [ServerRpc]
+    public void SendPlayerTextVote(string votedAnswer)
+    {
+        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
+    }
+
+    [ServerRpc]
     public void RegisterPlayerOnServer(int instanceToSend)
     {
         gameManagerNetwork.AddPlayer(this, instanceToSend);
@@ -73,13 +85,9 @@ public class PlayerNetwork : NetworkBehaviour
     public void AssignMyPlayerNumber(int myPlayerNumber)
     {
         playerData.playerNumber = myPlayerNumber;
+        playerData.playerSabotages = 1;
     }
 
-    [ServerRpc]
-    public void SendPlayerTextVote(string votedAnswer)
-    {
-        gameManagerNetwork.ReceivePlayerTextVote(votedAnswer, playerData.playerNumber);
-    }
     
 
 	#region CharacterSelection
@@ -96,6 +104,39 @@ public class PlayerNetwork : NetworkBehaviour
         gameManagerNetwork.RegisterNameOnServer(playerName, sentPlayerNumber);
     }
  
+    
+    #endregion
+    
+    #region Sabotages
+
+    public void TryToSendASabotage(int targetNumber) //Check if player can send a sabotage
+    {
+        if (playerData.playerSabotages > 0)
+        {
+            SendSabotageToPlayer(targetNumber);
+        }
+    }
+
+    [ServerRpc]
+    public void SendSabotageToPlayer(int targetNumber) //Send a sabotage on server to apply next round
+    {
+        gameManagerNetwork.ReceiveSabotage(targetNumber);
+    }
+    
+    #endregion
+    
+    #region LaunchGame
+
+    public void SwitchOnServerRpc()
+    {
+        LaunchGameOnServer();
+    }
+
+    [ServerRpc]
+    private void LaunchGameOnServer()
+    {
+        gameManagerNetwork.PlayGame();
+    }
     
     #endregion
 }
