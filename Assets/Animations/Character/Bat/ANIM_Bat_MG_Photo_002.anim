@@ -423,7 +423,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: 35.241}
+        value: {x: 0, y: 0, z: 30.659}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -520,7 +520,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: -62.545}
+        value: {x: 0, y: 0, z: -55.886}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -530,8 +530,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.15
         value: {x: 0, y: 0, z: -62.545}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: -43.19349}
+        outSlope: {x: 0, y: 0, z: -43.19349}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -687,7 +687,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: 93.091}
+        value: {x: 0, y: 0, z: 82.485}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -825,7 +825,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: -80.298}
+        value: {x: 0, y: 0, z: -62.004}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -902,7 +902,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: -11.495}
+        value: {x: 0, y: 0, z: 8.48}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1390,7 +1390,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0, y: 0, z: -0.359}
+        value: {x: 0, y: 0, z: 6.548}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1455,6 +1455,38 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 107.165}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0, y: 0, z: 63.635}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -1798,7 +1830,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.009255584, y: 0.0017638092, z: 0.00000032084063}
+        value: {x: 0.008469742, y: 0.00839748, z: -0.00000051851384}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -1902,7 +1934,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.0034660078, y: 0.0050398936, z: 0.00000032084063}
+        value: {x: 0.0031838438, y: 0.007954674, z: -0.00000051851384}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -2440,6 +2472,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
+        time: 0
+        value: 2.3835026e-31
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
         time: 0.46666667
         value: 2.3835026e-31
         inSlope: Infinity
@@ -2496,6 +2537,15 @@ AnimationClip:
     curve:
       serializedVersion: 2
       m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.0562125e-36
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
         value: 1.0562125e-36
@@ -3299,6 +3349,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
+      path: 166077321
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
       path: 1327935474
       attribute: 1
       script: {fileID: 0}
@@ -3408,6 +3467,15 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
       path: 2146347382
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 4
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 166077321
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -3659,15 +3727,6 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 166077321
-      attribute: 1
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
-    - serializedVersion: 2
       path: 556209747
       attribute: 1
       script: {fileID: 0}
@@ -3713,7 +3772,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 166077321
+      path: 1687725334
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 4
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 2076092055
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -4738,6 +4806,15 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
+        time: 0
+        value: 2.3835026e-31
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
         time: 0.46666667
         value: 2.3835026e-31
         inSlope: Infinity
@@ -4794,6 +4871,15 @@ AnimationClip:
     curve:
       serializedVersion: 2
       m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.0562125e-36
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
         value: 1.0562125e-36
@@ -5714,7 +5800,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 35.241
+        value: 30.659
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6242,7 +6328,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -62.545
+        value: -55.886
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -6252,8 +6338,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.15
         value: -62.545
-        inSlope: 0
-        outSlope: 0
+        inSlope: -43.19349
+        outSlope: -43.19349
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -7409,7 +7495,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 93.091
+        value: 82.485
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -8474,7 +8560,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.009255584
+        value: 0.008469742
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -8531,7 +8617,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.0017638092
+        value: 0.00839748
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -8588,7 +8674,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.00000032084063
+        value: -0.00000051851384
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -8759,7 +8845,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -80.298
+        value: -62.004
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9455,7 +9541,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.0034660078
+        value: 0.0031838438
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9512,7 +9598,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.0050398936
+        value: 0.007954674
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9569,7 +9655,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.00000032084063
+        value: -0.00000051851384
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -9740,7 +9826,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -11.495
+        value: 8.48
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -12107,7 +12193,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.359
+        value: 6.548
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -12491,6 +12577,132 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
     flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 107.165
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 63.635
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 16
   m_EulerEditorCurves:
   - serializedVersion: 2
     curve:
@@ -12500,7 +12712,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12512,7 +12724,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12524,7 +12736,43 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12608,7 +12856,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
+    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12620,7 +12868,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
+    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12632,151 +12880,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R
+    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12824,7 +12928,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
+    path: Bat_Character/Body/bone_body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12836,7 +12940,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
+    path: Bat_Character/Body/bone_body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12848,7 +12952,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
+    path: Bat_Character/Body/bone_body
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12896,7 +13000,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12908,7 +13012,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12920,7 +13024,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12932,7 +13036,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Head/bone_head
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12944,7 +13048,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Head/bone_head
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -12956,7 +13060,43 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Head/bone_head
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Arm_L/bone_arm_L/Forearm_L/bone_forearm
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13004,7 +13144,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13016,7 +13156,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13028,7 +13168,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Leg_L/bone_leg_L/Calf_L/bone_calf_L
+    path: Bat_Character/Body/bone_body/Arm_R/bone_arm_R/Forearm_R/bone_forearm_R/Hand_R/bone_hand_R/Slot_Right/bone_Item
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13040,7 +13180,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13052,7 +13192,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13064,7 +13204,79 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_R/bone_ear_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Leg_L/bone_leg_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Leg_L/bone_leg_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Leg_L/bone_leg_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13112,6 +13324,114 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Head/bone_head/Eye_L/bone_eye_L/Iris_L/bone_Iris_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
     path: Bat_Character/Body/bone_body/Head/bone_head/Eye_R/bone_eye_R/Iris_R/bone_Iris_R
     classID: 4
     script: {fileID: 0}
@@ -13147,8 +13467,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R/Feet_R
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Head/bone_head
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13160,7 +13480,55 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R/Feet_R
+    path: Bat_Character/Body/bone_body/Head/bone_head
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Head/bone_head
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
+    classID: 4
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Bat_Character/Body/bone_body/Head/bone_head/Ear_L/bone_ear_L
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13183,56 +13551,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Leg_L/bone_leg_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Leg_L/bone_leg_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Leg_L/bone_leg_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
+    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R/Feet_R
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -13244,43 +13564,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Wing_L/bone_wing_L
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
-    classID: 4
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Bat_Character/Body/bone_body/Wing_R/bone_wing_R
+    path: Bat_Character/Leg_R/bone_leg_R/Calf_R/bone_calf_R/Feet_R
     classID: 4
     script: {fileID: 0}
     flags: 0
