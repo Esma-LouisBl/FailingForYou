@@ -68,6 +68,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _cameraSlot1: {fileID: 855132729562241376}
   _cameraSlot2: {fileID: 2585773896371511288}
+  _cameraSlot3: {fileID: 4533695258871018759}
 --- !u!1 &8785083236751737733
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,10 +623,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: START MENU
       objectReference: {fileID: 0}
-    - target: {fileID: 8285466813746614436, guid: 0e53dafc0a2cca643aaccbdae2bd1a4e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -639,6 +636,11 @@ Transform:
 --- !u!4 &855132729562241376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7408094978612579524, guid: 0e53dafc0a2cca643aaccbdae2bd1a4e, type: 3}
+  m_PrefabInstance: {fileID: 7859024950841103780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4533695258871018759 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6051208820425875619, guid: 0e53dafc0a2cca643aaccbdae2bd1a4e, type: 3}
   m_PrefabInstance: {fileID: 7859024950841103780}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8163949618919826764
