@@ -44,7 +44,12 @@ public class ServerManager : MonoBehaviour
     private bool _isCamAvailable, _canTryScanning = true;
     private WebCamTexture _cameraTexture;
     private Texture2D _storeEncodedTexture;
-    
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         //Ensures the right canvas is enable, and others are not

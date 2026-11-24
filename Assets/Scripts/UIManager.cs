@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
     [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
+    [SerializeField] private InputFieldPatch _textAnswerInputField, _tieInputField; //mandatory to reset InputFields
     
     //All the tokens that represent a vote for an answer on host screen
     [SerializeField] private List<GameObject> _answer1VoteTokens = new List<GameObject>();
@@ -330,6 +331,8 @@ public class UIManager : MonoBehaviour
         HideConnectionUI();
         ShowClientMainUI();
         _clientWaitingScreen.SetActive(false);
+        _textAnswerInputField.ResetText();
+        _tieInputField.ResetText();
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
@@ -535,7 +538,6 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
         {
-            Debug.Log("je capte pas");
             _playersInTieGO[i].gameObject.SetActive(true);
             // _playersNames[i].text = playersInTie[i].playerName;
         }
