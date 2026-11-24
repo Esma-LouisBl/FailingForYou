@@ -3,7 +3,22 @@ guid: 50c22d419dd710f47b1553f8e6362c65
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flute_M
+    second: {fileID: 2100000, guid: 0dd00a06ae5823c4aa394405c6114fb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Flute_S
+    second: {fileID: 2100000, guid: 7bb5107ff6648d249836059782ae482b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_KnifePainting_001
+    second: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

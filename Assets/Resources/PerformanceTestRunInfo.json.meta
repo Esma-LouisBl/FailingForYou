@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/PerformanceTestRunInfo.json.meta
 guid: 0e38324f8956dc645a1b32fb25a3029f
 TextScriptImporter:
+========
+guid: 8128d6196f9b7b6489b9daa4423af1e9
+NativeFormatImporter:
+>>>>>>>> Artists:Assets/Materials/M_NeonSign_001.mat.meta
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
