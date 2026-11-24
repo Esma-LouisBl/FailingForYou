@@ -35,6 +35,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
     [SerializeField] private TextMeshProUGUI _tieAnswer, _winnerName;
+
+    [SerializeField] [Tooltip("This text appears when some players have entered the same answer")]
+    private List<TextMeshProUGUI> _fastestPlayer;
     
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
@@ -56,6 +59,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
     [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
+    [SerializeField] private InputFieldPatch _textAnswerInputField, _tieInputField; //mandatory to reset InputFields
     
     //All the tokens that represent a vote for an answer on host screen
     [SerializeField] private List<GameObject> _answer1VoteTokens = new List<GameObject>();
@@ -288,6 +292,8 @@ public class UIManager : MonoBehaviour
         HideConnectionUI();
         ShowClientMainUI();
         _clientWaitingScreen.SetActive(false);
+        _textAnswerInputField.ResetText();
+        _tieInputField.ResetText();
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
@@ -474,6 +480,10 @@ public class UIManager : MonoBehaviour
         _answerContainer.SetActive(false);
         _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
+        foreach (var text in _fastestPlayer)
+        {
+            text.gameObject.SetActive(false);
+        }
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
 
@@ -507,7 +517,16 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.miniGameManager.playersInTie.Count; i++)
         {
-            _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            if (_gameManagerNetwork.miniGameManager.collectedTieAnswers[
+                    _gameManagerNetwork.miniGameManager.playersInTie[i]] == -67.67f)
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[winnerNumber].ToString();
+                _fastestPlayer[i-1].gameObject.SetActive(true);
+            }
+            else
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            }
         }
 
         _winnerName.gameObject.SetActive(true);
