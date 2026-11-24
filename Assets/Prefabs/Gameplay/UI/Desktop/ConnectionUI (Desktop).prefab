@@ -4672,6 +4672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3477065358567924009}
+  - component: {fileID: 3271138757390014420}
   m_Layer: 5
   m_Name: ConnectionUI (Desktop)
   m_TagString: Untagged
@@ -4704,6 +4705,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3271138757390014420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4550186865224298303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70b7fb9a55179c41b5e1fcace6e1c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostConnectionUIManager
+  _hostConnectionUIWelcome: {fileID: 5875236196840218738}
+  _hostConnectionUIMenu: {fileID: 4173161967439196374}
+  _hostConnectionUIOptions: {fileID: 1201437505448659963}
+  _hostConnectionUICredits: {fileID: 4551648760462795953}
+  _hostConnectionUIConnecting: {fileID: 2271079657178119009}
+  _background: {fileID: 7214273832056524375}
+  _uiManager: {fileID: 0}
 --- !u!1 &4551648760462795953
 GameObject:
   m_ObjectHideFlags: 0

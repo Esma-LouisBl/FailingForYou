@@ -61,7 +61,6 @@ public class ServerManager : MonoBehaviour
             //_mobileCanvas.SetActive(true);
             
             _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
-            //StartCoroutine(SetUpCameraWithDelay());
             SetUpCamera();
             CreateClient();
         }

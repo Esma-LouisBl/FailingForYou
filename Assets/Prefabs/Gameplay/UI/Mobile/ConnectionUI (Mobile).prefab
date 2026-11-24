@@ -1285,12 +1285,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5720708210383457877}
+  m_Father: {fileID: 8332098827761809005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -41}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -278}
+  m_SizeDelta: {x: -730, y: -150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8269591967169788388
 CanvasRenderer:
@@ -1695,6 +1695,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1157049481964663054}
+  - {fileID: 3292519107850224914}
   m_Father: {fileID: 6332377185777022707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -5188,7 +5189,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -350.94653, y: 0}
+  m_SizeDelta: {x: 0, y: -45.71428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8632241831039055552
 CanvasRenderer:
@@ -7860,14 +7861,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3292519107850224914}
+  m_Children: []
   m_Father: {fileID: 6332377185777022707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -566.67285, y: 0}
+  m_SizeDelta: {x: 0, y: -840}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7286004621207557574
 CanvasRenderer:
@@ -8939,6 +8939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4753332925968024369}
+  - component: {fileID: 6367365799231936863}
   m_Layer: 5
   m_Name: ConnectionUI (Mobile)
   m_TagString: Untagged
@@ -8972,6 +8973,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6367365799231936863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8867179689536936145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11edee7fa29f3ef42a281a8091d62570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClientConnectionUIManager
+  _clientConnectionUICode: {fileID: 8492178956154895932}
+  _clientConnectionUIQRCode: {fileID: 5500268248917239979}
+  _clientConnectionUICharacterSelection: {fileID: 2928725593161994104}
+  _clientConnectionUINameSelection: {fileID: 871104806016039054}
+  _clientConnectionUIWelcome: {fileID: 7691292277900818283}
+  _clientConnectionUIConnecting: {fileID: 6004922046560988868}
+  _uiManager: {fileID: 0}
 --- !u!1 &8954742062497478451
 GameObject:
   m_ObjectHideFlags: 0
