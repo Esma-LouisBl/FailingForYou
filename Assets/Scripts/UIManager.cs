@@ -353,6 +353,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
     {
+        _randomOrderOfAnswersOnScreen.Clear();
+        
         _hostMainUI.SetActive(false);
         _answerOnHost1.SetActive(false);
         _answerOnHost2.SetActive(false);
