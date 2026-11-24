@@ -48,6 +48,7 @@ public class ServerManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        //We set the FPS to 60 to avoid InputField lags on mobile
     }
 
     void Start()

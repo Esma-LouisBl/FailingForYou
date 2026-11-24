@@ -111,7 +111,7 @@ public class MiniGameManager : NetworkBehaviour
     private IEnumerator Timer()
     {
         time = 40;
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < 41; i++)
         {
             if (time == 0)
             {
@@ -413,6 +413,7 @@ public class MiniGameManager : NetworkBehaviour
             TieWinnerElection();
             _timerIsOn = false;
             time = 40;
+            _uiManager.UpdateTimer(time);
         }
     }
 
@@ -424,7 +425,7 @@ public class MiniGameManager : NetworkBehaviour
         {
             if (collectedTieAnswers[i] != -67.67f) //Detect if the answer has already been entered by someone faster
             {
-                if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < Math.Abs(currentTieQuestion.answer - closerAnswer) && playersInTie[i] > 0)
+                if (Math.Abs(currentTieQuestion.answer - collectedTieAnswers[i]) < Math.Abs(currentTieQuestion.answer - closerAnswer) && playersInTie[i-1] > 0)
                 {
                     winner = i;
                     closerAnswer = collectedTieAnswers[i];

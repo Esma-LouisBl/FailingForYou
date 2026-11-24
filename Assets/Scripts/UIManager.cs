@@ -314,6 +314,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
     {
+        _randomOrderOfAnswersOnScreen.Clear();
+        
         _hostMainUI.SetActive(false);
         _answerOnHost1.SetActive(false);
         _answerOnHost2.SetActive(false);
@@ -416,7 +418,7 @@ public class UIManager : MonoBehaviour
     {
         _hookSentence.text = "Votez pour la meilleure réponse !";
         _hostMainUI.SetActive(true);
-        _hostTextAnswersRevelationUI.SetActive(false);
+        // _hostTextAnswersRevelationUI.SetActive(false);
     }
 
     public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
@@ -480,6 +482,7 @@ public class UIManager : MonoBehaviour
         _answerContainer.SetActive(false);
         _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
+        _hostMainUI.SetActive(true);
         foreach (var text in _fastestPlayer)
         {
             text.gameObject.SetActive(false);
@@ -489,6 +492,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
     {
+        _tieQuestionText.text = question;
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
         for (int i = 0; i < 260; i++)
         {
@@ -503,7 +507,6 @@ public class UIManager : MonoBehaviour
             // _playersNames[i].text = playersInTie[i].playerName;
         }
 
-        _tieQuestionText.text = question;
     }
 
     public void ShowTieOnClient(string tieQuestion)
