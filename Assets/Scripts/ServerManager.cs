@@ -61,7 +61,8 @@ public class ServerManager : MonoBehaviour
             //_mobileCanvas.SetActive(true);
             
             _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
-            StartCoroutine(SetUpCameraWithDelay());
+            //StartCoroutine(SetUpCameraWithDelay());
+            SetUpCamera();
             CreateClient();
         }
         else if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -142,6 +143,7 @@ public class ServerManager : MonoBehaviour
         if (devices.Length == 0)
         {
             _isCamAvailable = false;
+            StartCoroutine(SetUpCameraWithDelay());
             return;
         }
 
@@ -237,12 +239,13 @@ public class ServerManager : MonoBehaviour
         _canTryScanning = true;
     }
     
+    
     private IEnumerator SetUpCameraWithDelay() //Set a delay to avoid second scan of QR code
     {
-        SetUpCamera();
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SetUpCameraWithDelay());
+        SetUpCamera();
     }
+    
 }
 
 // Transport Path : Assets/Plugins/FishNet/Runtime/Transporting/Transports/Tugboat/MyTransport.cs
