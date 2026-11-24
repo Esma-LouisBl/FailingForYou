@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using FishNet.Demo.AdditiveScenes;
 using FishNet.Object;
 using JetBrains.Annotations;
 using NUnit.Framework;
@@ -35,6 +36,8 @@ public class CrushCreationManager : NetworkBehaviour
 	public List<string> indexParts = new List<string>();
 	private string partEnvoie;
     public int index = 0;
+    public int PlayerCount = 0;
+	public int Answer = 0;
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,11 +52,20 @@ public class CrushCreationManager : NetworkBehaviour
 	{
 
 	}
+
+	
 	[ServerRpc(RequireOwnership = false)]
-    public void StartCrush()
+    public void StartCrush(int Player)
 	{
-        _gameManagerNetwork.uiManager.OpenCrushCreationPC();
-		Invoke("StartList", 5f);
+
+        PlayerCount = PlayerCount + Player;
+        Debug.Log("PlayerCount : " + PlayerCount);
+        if (PlayerCount == 4)
+        {
+            _gameManagerNetwork.uiManager.OpenCrushCreationPC();
+            Invoke("StartList", 5f);
+        }
+        
     }
 
 	public void StartList()
@@ -82,7 +94,7 @@ public class CrushCreationManager : NetworkBehaviour
 
         // GetPlayerNetwork();
         Debug.Log("try is, playernumber : " + _gameManagerNetwork.myLocalPlayer.playerData.playerNumber);
-		partEnvoie = allPartsOnServer[_gameManagerNetwork.myLocalPlayer.playerData.playerNumber];
+		partEnvoie = allPartsOnServer[_gameManagerNetwork.myLocalPlayer.playerData.playerNumber -1];
 		Debug.Log("my part is : "+partEnvoie);
         _gameManagerNetwork.uiManager.ShowPartsClients(partEnvoie);
         switch (partEnvoie)
@@ -90,7 +102,6 @@ public class CrushCreationManager : NetworkBehaviour
 			case "Faces":
                 //afficher tout ce qui est relatif à Face
                 faceImage.enabled = true;
-				
                 IndicationDressCrush(partEnvoie);
                 crushImage = faceImage;
                 crushSprites = facesSprites;
@@ -180,14 +191,18 @@ public class CrushCreationManager : NetworkBehaviour
         if (partEnvoie == "Hair")
 		{
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
-			int valeurSprite = index + 1;
+            NumberOfAnswer(1);
+            _gameManagerNetwork.uiManager.CloseCrushCreation();
+            int valeurSprite = index + 1;
 			//Debug.Log("Number: " + valeurSprite);
         }
 		else if (partEnvoie == "Accessories")
 		{
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
-			int valeurSprite = index + 7;
+            NumberOfAnswer(1);
+            _gameManagerNetwork.uiManager.CloseCrushCreation();
+            int valeurSprite = index + 7;
 			//Debug.Log("Number: " + valeurSprite);
             
         }
@@ -195,7 +210,9 @@ public class CrushCreationManager : NetworkBehaviour
 		{
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
-			int valeurSprite = index + 13;
+            NumberOfAnswer(1);
+            _gameManagerNetwork.uiManager.CloseCrushCreation();
+            int valeurSprite = index + 13;
 			//Debug.Log("Number: " + valeurSprite);
             
         }
@@ -203,6 +220,8 @@ public class CrushCreationManager : NetworkBehaviour
 		{
 
             EndReflectionPlayer(_gameManagerNetwork.myLocalPlayer.playerData.playerNumber - 1, partEnvoie, index);
+			NumberOfAnswer(1);
+			_gameManagerNetwork.uiManager.CloseCrushCreation();
 			int valeurSprite = index + 19;
 			//Debug.Log("Number: " + valeurSprite);
 			
@@ -241,5 +260,19 @@ public class CrushCreationManager : NetworkBehaviour
         }
 
     }
+	[ServerRpc(RequireOwnership = false)]
+	public void NumberOfAnswer(int countAnswer)
+	{
+		Answer = Answer + countAnswer;
+		Debug.Log("Answer : " + Answer);
+		if (Answer == 4 ) 
+		{
+
+			_gameManagerNetwork.uiManager.OpenCabinePoupee();
+
+			_gameManagerNetwork.PlayGame();
+            
+        }
+	}
 }
 

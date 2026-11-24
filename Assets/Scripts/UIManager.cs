@@ -43,7 +43,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _clothImage, _hairImage, _accessoriesImage, _faceImage, _crushImage;
     [SerializeField] private List<Sprite> _crushSprites = new List<Sprite>();
-    [SerializeField] private Image _hairDestockImage, _faceDestockImage, _accessoriesDestockImage, _clothesDestockImage;
+    [SerializeField] public Image _hairDestockImage, _faceDestockImage, _accessoriesDestockImage, _clothesDestockImage;
+    [SerializeField] private GameObject _partHair, _partFace, _partAccessorie, _partClothe;
     [SerializeField] private GameObject _cabinePoupee;
     public GameObject crushCreationUI, crushCreationPC, intropresenter, codeBackgroundImage;
     public TextMeshProUGUI codeTextBackground;
@@ -704,26 +705,34 @@ public class UIManager : MonoBehaviour
     }
     public void SpriteCrush(Sprite crush, string part)
     {
-        _cabinePoupee.SetActive(false);
+        
+        
         switch (part)
         {
             case "Hair":
                 
                 _hairDestockImage.sprite = crush;
+                
+
                 break;
             case "Accessories":
+
+               _accessoriesDestockImage.sprite = crush;
                
-                _accessoriesDestockImage.sprite = crush;
                 break;
             case "Faces":
                
                 _faceDestockImage.sprite = crush;
+                
                 break;
             case "Clothes":
                 
                 _clothesDestockImage.sprite = crush;
+                
                 break;
+
         }
+        
     }
 
     public void ShowPartsClients(string part)
@@ -732,15 +741,23 @@ public class UIManager : MonoBehaviour
         {
             case "Hair":
                 _hairDestockImage.enabled = true;
+                _partHair.SetActive(true);
+                
                 break;
             case "Accessories":
                 _accessoriesDestockImage.enabled = true;
+                _partAccessorie.SetActive(true);
+                ;
                 break;
             case "Faces":
                 _faceDestockImage.enabled = true;
+                _partFace.SetActive(true);
+                
                 break;
             case "Clothes":
                 _clothesDestockImage.enabled = true;
+                _partClothe.SetActive(true);
+                
                 break;
         }
     }
@@ -760,12 +777,10 @@ public class UIManager : MonoBehaviour
     }
     public void OpenCrushCreationPC()
     {
-        //_hairDestockImage.enabled = false;
-        //_accessoriesDestockImage.enabled = false;
-        //_clothesDestockImage.enabled = false;
-        //_faceDestockImage.enabled = false;
+        
         crushCreationPC.SetActive(true);
         codeBackgroundImage.SetActive(true);
+        
 
 
         codeBackgroundImage.SetActive(true);
@@ -783,6 +798,14 @@ public class UIManager : MonoBehaviour
     {
         crushCreationUI.SetActive(false);
     }
+
+
+    public void OpenCabinePoupee()
+    {
+        Debug.Log("Open cabine poupe");
+        _cabinePoupee.SetActive(false);
+    }
+
 
     internal void SpriteCrush(object value, string partPlayer)
     {

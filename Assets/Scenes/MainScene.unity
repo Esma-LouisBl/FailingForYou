@@ -1051,6 +1051,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1621020228}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _partFace
+      value: 
+      objectReference: {fileID: 724900087}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _partHair
+      value: 
+      objectReference: {fileID: 724900086}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: hairImage
       value: 
       objectReference: {fileID: 1855842112}
@@ -1090,6 +1098,10 @@ PrefabInstance:
       propertyPath: _hostMainUI
       value: 
       objectReference: {fileID: 1351799293}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _partClothe
+      value: 
+      objectReference: {fileID: 724900089}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: _winnerName
       value: 
@@ -1166,6 +1178,10 @@ PrefabInstance:
       propertyPath: _hostQuestionUI
       value: 
       objectReference: {fileID: 7125555430828116583}
+    - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
+      propertyPath: _partAccessorie
+      value: 
+      objectReference: {fileID: 724900088}
     - target: {fileID: 7409393059945295673, guid: f2c0954263018104f979e9ed8a07a4e5, type: 3}
       propertyPath: crushCreationPC
       value: 
@@ -1578,10 +1594,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 322531223601765239, guid: 245783ee634d5c845943190ee833f530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667889988561227030, guid: 245783ee634d5c845943190ee833f530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1672918670242504930, guid: 245783ee634d5c845943190ee833f530, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 45833640}
+    - target: {fileID: 3241800864623850412, guid: 245783ee634d5c845943190ee833f530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499609297136512194, guid: 245783ee634d5c845943190ee833f530, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5189518151740060040, guid: 245783ee634d5c845943190ee833f530, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1679,6 +1711,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 245783ee634d5c845943190ee833f530, type: 3}
+--- !u!1 &724900086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 322531223601765239, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &724900087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1667889988561227030, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &724900088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3241800864623850412, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &724900089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4499609297136512194, guid: 245783ee634d5c845943190ee833f530, type: 3}
+  m_PrefabInstance: {fileID: 724900085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &768527169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8572561381960642704, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
@@ -3232,7 +3284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512027005514304714, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2512027005514304714, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3285,6 +3337,10 @@ PrefabInstance:
     - target: {fileID: 2512027005514304714, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: CrushCreationManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512027005514304714, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2512027005514304714, guid: 46775b4032e3f2d41852b8eecee04be2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
