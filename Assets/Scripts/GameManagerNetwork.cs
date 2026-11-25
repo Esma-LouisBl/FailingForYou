@@ -79,6 +79,11 @@ public class GameManagerNetwork : NetworkBehaviour
         
         playerToAdd.AssignMyPlayerNumber(_incrementalValue);//_instanceIdRepertory[instanceIdReceived]
     }
+
+    public string GetPlayerName(int playerNumberToGet)
+    {
+        return _playerNames[playerNumberToGet];
+    }
     
     public void UpdateGamePhaseOnServer(Enums.GamePhase phase)
     {

@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private HostConnectionUIManager  _hostConnectionUIManager;
     [SerializeField] private ClientConnectionUIManager _clientConnectionUIManager;
-    [SerializeField] private MiniGameUIManager _miniGameUIManager;
+    public MiniGameUIManager miniGameUIManager;
     
     #endregion
     
@@ -211,61 +211,61 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimer(int time)
     {
-        _miniGameUIManager.UpdateTimer(time);
+        miniGameUIManager.UpdateTimer(time);
     }
     public void UpdateMiniGameUIHost(MiniGameData miniGame)
     {
-        _miniGameUIManager.UpdateMiniGameUIHost(miniGame);
+        miniGameUIManager.UpdateMiniGameUIHost(miniGame);
         _hostMainUI.SetActive(true);
     }
     public void UpdateMiniGameUIClient(MiniGameData miniGame)
     {
         HideConnectionUI();
         ShowClientMainUI();
-        _miniGameUIManager.UpdateMiniGameUIClient(miniGame);
+        miniGameUIManager.UpdateMiniGameUIClient(miniGame);
         _clientWaitingScreen.SetActive(false);
     }
 
     public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
     {
         _hostMainUI.SetActive(false);
-        _miniGameUIManager.ShowHostVotingPhase(fourPlayers, ans1, ans2, ans3, ans4);
+        miniGameUIManager.ShowHostVotingPhase(fourPlayers, ans1, ans2, ans3, ans4);
     }
 
     public void ShowClientVotingArea(string answer1, string answer2, string answer3)
     {
-        _miniGameUIManager.ShowClientVotingArea(answer1, answer2, answer3);
+        miniGameUIManager.ShowClientVotingArea(answer1, answer2, answer3);
         _clientWaitingScreen.SetActive(false);
     }
     public void ShowHostMainUIWhilePlayersAreVoting()
     {
-        _miniGameUIManager.ShowHostMainUIWhilePlayersAreVoting();
+        miniGameUIManager.ShowHostMainUIWhilePlayersAreVoting();
         _hostMainUI.SetActive(true);
         // _hostTextAnswersRevelationUI.SetActive(false);
     }
 
     public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
     {
-        _miniGameUIManager.ShowMiniGameWinner(answer1Votes, answer2Votes, answer3Votes, answer4Votes);
+        miniGameUIManager.ShowMiniGameWinner(answer1Votes, answer2Votes, answer3Votes, answer4Votes);
         _hostMainUI.SetActive(false);
     }
 
     #region Tie
 
-    public void ShowTieOnHost(List<int> playersInTie, string question)
+    public void ShowTieOnHost(List<int> playersInTie, List<string> playersInTieNames, string question)
     {
-        _miniGameUIManager.ShowTieOnHost(playersInTie, question);
+        miniGameUIManager.ShowTieOnHost(playersInTie, playersInTieNames, question);
         _hostMainUI.SetActive(true);
     }
     public void ShowTieOnClient(string tieQuestion)
     {
-        _miniGameUIManager.ShowTieOnClient(tieQuestion);
+        miniGameUIManager.ShowTieOnClient(tieQuestion);
         _clientWaitingScreen.SetActive(false);
     }
 
     public void ShowTieWinner(int winnerNumber)
     {
-        _miniGameUIManager.ShowTieWinner(winnerNumber, _gameManagerNetwork.miniGameManager.playersInTie,
+        miniGameUIManager.ShowTieWinner(winnerNumber, _gameManagerNetwork.miniGameManager.playersInTie,
             _gameManagerNetwork.miniGameManager.collectedTieAnswers, _gameManagerNetwork.miniGameManager.currentTieQuestion.answer);
     }
     #endregion
@@ -276,7 +276,7 @@ public class UIManager : MonoBehaviour
     public void ShowWaitingScreenAndShutDownEverythingElse()
     {
         _clientWaitingScreen.SetActive(true);
-        _miniGameUIManager.ShowWaitingScreenAndShutDownEverythingElse();
+        miniGameUIManager.ShowWaitingScreenAndShutDownEverythingElse();
     }
 
     #region CharacterSelection

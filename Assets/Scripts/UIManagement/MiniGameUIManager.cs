@@ -247,7 +247,7 @@ public class MiniGameUIManager : MonoBehaviour
     
     #region Tie
 
-    public void ShowTieOnHost(List<int> playersInTie, string question)
+    public void ShowTieOnHost(List<int> playersInTie, List<string> playersInTieNames, string question)
     {
         _answerContainer.SetActive(false);
         _winnerName.gameObject.SetActive(false);
@@ -257,10 +257,10 @@ public class MiniGameUIManager : MonoBehaviour
         {
             text.gameObject.SetActive(false);
         }
-        StartCoroutine(TieStartAnimation(playersInTie, question));
+        StartCoroutine(TieStartAnimation(playersInTie, playersInTieNames, question));
     }
 
-    private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
+    private IEnumerator TieStartAnimation(List<int> playersInTie, List<string> playersInTieNames, string question)
     {
         _tieQuestionText.text = question;
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
@@ -274,7 +274,7 @@ public class MiniGameUIManager : MonoBehaviour
         for (int i = 0; i < playersInTie.Count; i++)    //how many players should appear
         {
             _playersInTieGO[i].gameObject.SetActive(true);
-            // _playersNames[i].text = playersInTie[i].playerName;
+            _playersNames[i].text = playersInTieNames[i];
         }
 
     }

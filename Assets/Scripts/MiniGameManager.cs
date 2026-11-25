@@ -375,9 +375,20 @@ public class MiniGameManager : NetworkBehaviour
         }
         SendGamePhaseToGameManagerNetwork(Enums.GamePhase.tie);
         currentTieQuestion = tieQuestions[Random.Range(0, tieQuestions.Count)];
-        _uiManager.ShowTieOnHost(playersInTie, currentTieQuestion.question);
 
         StartTieOnClient(playersInTie, currentTieQuestion.question);
+        List<string> playersNames = new List<string>(); //to get players in tie names
+        playersNames.Clear();
+        for (int i = 0; i < playersInTie.Count; i++)
+        {
+            playersNames.Add(_gameManagerNetwork.GetPlayerName(i+1));
+        }
+
+        foreach (var player in playersNames)
+        {
+            Debug.Log(player);
+        }
+        _uiManager.ShowTieOnHost(playersInTie, playersNames, currentTieQuestion.question);
     }
 
     [ObserversRpc]
