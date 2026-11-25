@@ -14,6 +14,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: M_KnifePainting_001
     second: {fileID: 2100000, guid: 5a9b7d170c51764499471c3b5e92dc68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Stickers_001
+    second: {fileID: 2100000, guid: 34a66a859ff3b624788a7c4a980a1d71, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
