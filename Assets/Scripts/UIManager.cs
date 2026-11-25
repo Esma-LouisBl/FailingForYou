@@ -14,12 +14,14 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject _hostUI, _clientMainUI, _hostMainUI, _crushCreationUI;
     [SerializeField] private GameObject _hostConnectionUI, _clientConnectionUI;
-    [SerializeField] private GameObject _hostConnectionUIWelcome, _hostConnectionUIMenu, _hostConnectionUIOptions, _hostConnectionUICredits, _hostConnectionUIConnecting;
+    
     [Space(20)]
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _hostQuestionUI;
     [SerializeField] private GameObject _hostTextAnswersRevelationUI, _answerOnHost1, _answerOnHost2, _answerOnHost3, _answerOnHost4;
-    [SerializeField] private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen, _clientConnectionUICode, _clientConnectionUIQRCode, _clientConnectionUICharacterSelection, _clientConnectionUINameSelection, _clientConnectionWelcome;
+
+    [SerializeField]
+    private GameObject _clientQuestionUI, _clientQuestionTextualUI, _clientConfirmationFooter, _clientWaitingScreen;
     [SerializeField] private GameObject _clientVotingArea, _clientAnswerInCaseThereAreFourPlayers;
 
     [Header("Tie (host)")]
@@ -34,6 +36,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> _playersAnswers;
     [SerializeField] private GameObject _answerContainer;
     [SerializeField] private TextMeshProUGUI _tieAnswer, _winnerName;
+
+    [SerializeField] [Tooltip("This text appears when some players have entered the same answer")]
+    private List<TextMeshProUGUI> _fastestPlayer;
     
     [Header("Tie (client)")]
     [SerializeField] private GameObject _tieClientUI;
@@ -58,8 +63,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> _players = new List<GameObject>();
     [SerializeField] private List<TextMeshProUGUI> _playerNames = new List<TextMeshProUGUI>();
-    [SerializeField] private GameObject _playerCharacter1, _playerCharacter2, _playerCharacter3, _playerCharacter4;
-    [SerializeField] private TextMeshProUGUI _player1Name, _player2Name, _player3Name, _player4Name;
     
     [SerializeField] private TextMeshProUGUI _hostQuestionTMP, _hostQuestionTypeTMP, _hostQuestionGenreTMP;
     [SerializeField] private TextMeshProUGUI _clientQuestionTMP, _clientQuestionTypeTMP, _clientQuestionGenreTMP, _hookSentence;
@@ -67,6 +70,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _answer1, _answer2, _answer3; //for clients
     [SerializeField] private TextMeshProUGUI _answer1Host, _answer2Host, _answer3Host, _answer4Host;
+    [SerializeField] private InputFieldPatch _textAnswerInputField, _tieInputField; //mandatory to reset InputFields
     
     //All the tokens that represent a vote for an answer on host screen
     [SerializeField] private List<GameObject> _answer1VoteTokens = new List<GameObject>();
@@ -82,8 +86,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Button _deselectionButton;
     [SerializeField] private TMP_InputField _nameEntered;
+    
+    #endregion
 
-    [SerializeField] private GameObject _background;
+    #region Managers
+    
+    [SerializeField] private HostConnectionUIManager  _hostConnectionUIManager;
+    [SerializeField] private ClientConnectionUIManager _clientConnectionUIManager;
     
     #endregion
     
@@ -95,17 +104,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        // setting lists of players and their names
-        _players.Add(_playerCharacter1);
-        _players.Add(_playerCharacter2);
-        _players.Add(_playerCharacter3);
-        _players.Add(_playerCharacter4);
-        
-        _playerNames.Add(_player1Name);
-        _playerNames.Add(_player2Name);
-        _playerNames.Add(_player3Name);
-        _playerNames.Add(_player4Name);
-        
         // Hide some UI we don't want to see
         _hostTextAnswersRevelationUI.SetActive(false);
     }
@@ -133,8 +131,8 @@ public class UIManager : MonoBehaviour
         switch (selectedUI)
         {
             case Enums.SelectedUI.hostConnectionUIWelcome :
-                HideHostConnectionUIWelcome();
-                ShowHostConnectionUIMenu();
+                _hostConnectionUIManager.HideHostConnectionUIWelcome();
+                _hostConnectionUIManager.ShowHostConnectionUIMenu();
                 break;
             case Enums.SelectedUI.clientConnectionUIWelcome :
                 SwitchOnCodeUI();
@@ -160,16 +158,16 @@ public class UIManager : MonoBehaviour
                 //not implemented
                 break;
             case Enums.SelectedUI.hostConnectionUICredits :
-                HideHostConnectionUICredits();
-                ShowHostConnectionUIMenu();
+                _hostConnectionUIManager.HideHostConnectionUICredits();
+                _hostConnectionUIManager.ShowHostConnectionUIMenu();
                 break;
             case Enums.SelectedUI.hostConnectionUIMenu :
-                HideHostConnectionUIMenu();
-                ShowHostConnectionUIWelcome();
+                _hostConnectionUIManager.HideHostConnectionUIMenu();
+                _hostConnectionUIManager.ShowHostConnectionUIWelcome();
                 break;
             case Enums.SelectedUI.hostConnectionUIOptions :
-                HideHostConnectionUIOptions();
-                ShowHostConnectionUIMenu();
+                _hostConnectionUIManager.HideHostConnectionUIOptions();
+                _hostConnectionUIManager.ShowHostConnectionUIMenu();
                 break;
             case Enums.SelectedUI.hostConnectionUIWelcome :
                 break;
@@ -180,52 +178,14 @@ public class UIManager : MonoBehaviour
     {
         FindFirstObjectByType<DebugManager>().ShowHideDebugUI();
     }
-
-    #region returnSystem
-
-    private void HideHostConnectionUICredits()
-    {
-        _hostConnectionUICredits.SetActive(false);
-    }
-    
-    private void HideHostConnectionUIWelcome()
-    {
-        _hostConnectionUIWelcome.SetActive(false);
-    }
-
-    private void HideHostConnectionUIMenu()
-    {
-        _hostConnectionUIMenu.SetActive(false);
-        _background.SetActive(true);
-    }
-
-    private void HideHostConnectionUIOptions()
-    {
-        _hostConnectionUIOptions.SetActive(false);
-    }
-    
-    private void ShowHostConnectionUIMenu()
-    {
-        selectedUI = Enums.SelectedUI.hostConnectionUIMenu;
-        _hostConnectionUIMenu.SetActive(true);
-        _background.SetActive(false);
-    }
-    
-    private void ShowHostConnectionUIWelcome()
-    {
-        selectedUI = Enums.SelectedUI.hostConnectionUIWelcome;
-        _hostConnectionUIWelcome.SetActive(true);
-    }
-
-    #endregion
     
     #endregion
 
     public void SwitchOnCharacterSelectionUI()
     {
-        _clientConnectionUIQRCode.SetActive(false);
-        _clientConnectionUICode.SetActive(false);
-        _clientConnectionUICharacterSelection.SetActive(true);
+        _clientConnectionUIManager.HideClientConnectionUIQRCode();
+        _clientConnectionUIManager.HideClientConnectionUICode();
+        _clientConnectionUIManager.ShowClientConnectionUICharacterSelection();
     }
     
     public void SwitchOnHostConnectingUI()
@@ -233,36 +193,41 @@ public class UIManager : MonoBehaviour
         _gameManagerNetwork.sceneManager.UpdateScene(Enums.MiniGamePlace.tv, Enums.MiniGameGenre.none, Enums.MiniGameType.none);
         _gameManagerNetwork.sceneManager.ShowConnectingAssets();
         _gameManagerNetwork.sceneManager.SwitchOnCamera(2);
-        
-        _hostConnectionUIMenu.SetActive(false);
-        _hostConnectionUIConnecting.SetActive(true);
-        selectedUI = Enums.SelectedUI.hostConnectionUIConnecting;
+
+        _hostConnectionUIManager.HideHostConnectionUIMenu();
+        _hostConnectionUIManager.ShowHostConnectionUIConnecting();
     }
     
-    public void SwitchOnHostOptionsUI()
+    public void SwitchOnHostOptionsUIFromMenu()
     {
-        _hostConnectionUIMenu.SetActive(false);
-        _hostConnectionUIOptions.SetActive(true);
+        _hostConnectionUIManager.HideHostConnectionUIMenu();
+        _hostConnectionUIManager.ShowHostConnectionUIOptions();
         selectedUI = Enums.SelectedUI.hostConnectionUIOptions;
     }
 
     public void SwitchOnCreditsUI()
     {
-        _hostConnectionUIMenu.SetActive(false);
-        _hostConnectionUICredits.SetActive(true);
+        _hostConnectionUIManager.HideHostConnectionUIMenu();
+        _hostConnectionUIManager.ShowHostConnectionUICredits();
         selectedUI =  Enums.SelectedUI.hostConnectionUICredits;
     }
 
     private void SwitchOnCodeUI()
     {
-        _clientConnectionWelcome.SetActive(false);
-        _clientConnectionUICode.SetActive(true);
+        _clientConnectionUIManager.HideClientConnectionUIWelcome();
+        _clientConnectionUIManager.ShowClientConnectionUICode();
     }
     
     public void SwitchOnNameSelectionUI()
     {
-        _clientConnectionUICharacterSelection.SetActive(false);
-        _clientConnectionUINameSelection.SetActive(true);
+        _clientConnectionUIManager.HideClientConnectionUICharacterSelection();
+        _clientConnectionUIManager.ShowClientConnectionUINameSelection();  
+    }
+
+    public void SwitchOnClientConnectingUI()
+    {
+        _clientConnectionUIManager.HideClientConnectionUINameSelection();
+        _clientConnectionUIManager.ShowClientConnectionUIConnecting();
     }
     
     public void ShowConnectionUI()
@@ -338,6 +303,8 @@ public class UIManager : MonoBehaviour
         HideConnectionUI();
         ShowClientMainUI();
         _clientWaitingScreen.SetActive(false);
+        _textAnswerInputField.ResetText();
+        _tieInputField.ResetText();
         //assign the common parts
         _clientQuestionTypeTMP.text = miniGame.type.ToString();
         _clientQuestionGenreTMP.text = miniGame.genre.ToString();
@@ -358,6 +325,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowHostVotingPhase(bool fourPlayers, string ans1, string ans2, string ans3, string ans4)
     {
+        _randomOrderOfAnswersOnScreen.Clear();
+        
         _hostMainUI.SetActive(false);
         _answerOnHost1.SetActive(false);
         _answerOnHost2.SetActive(false);
@@ -460,7 +429,7 @@ public class UIManager : MonoBehaviour
     {
         _hookSentence.text = "Votez pour la meilleure réponse !";
         _hostMainUI.SetActive(true);
-        _hostTextAnswersRevelationUI.SetActive(false);
+        // _hostTextAnswersRevelationUI.SetActive(false);
     }
 
     public void ShowMiniGameWinner(int answer1Votes, int answer2Votes, int answer3Votes, int answer4Votes)
@@ -524,11 +493,17 @@ public class UIManager : MonoBehaviour
         _answerContainer.SetActive(false);
         _winnerName.gameObject.SetActive(false);
         _tieHostUI.SetActive(true);
+        _hostMainUI.SetActive(true);
+        foreach (var text in _fastestPlayer)
+        {
+            text.gameObject.SetActive(false);
+        }
         StartCoroutine(TieStartAnimation(playersInTie, question));
     }
 
     private IEnumerator TieStartAnimation(List<int> playersInTie, string question)
     {
+        _tieQuestionText.text = question;
         _tieAppearText.gameObject.SetActive(true);  //little animation when tie is appearing
         for (int i = 0; i < 260; i++)
         {
@@ -543,7 +518,6 @@ public class UIManager : MonoBehaviour
             // _playersNames[i].text = playersInTie[i].playerName;
         }
 
-        _tieQuestionText.text = question;
     }
 
     public void ShowTieOnClient(string tieQuestion)
@@ -557,7 +531,16 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < _gameManagerNetwork.miniGameManager.playersInTie.Count; i++)
         {
-            _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            if (_gameManagerNetwork.miniGameManager.collectedTieAnswers[
+                    _gameManagerNetwork.miniGameManager.playersInTie[i]] == -67.67f)
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[winnerNumber].ToString();
+                _fastestPlayer[i-1].gameObject.SetActive(true);
+            }
+            else
+            {
+                _playersAnswers[i].text = _gameManagerNetwork.miniGameManager.collectedTieAnswers[_gameManagerNetwork.miniGameManager.playersInTie[i]].ToString();
+            }
         }
 
         _winnerName.gameObject.SetActive(true);

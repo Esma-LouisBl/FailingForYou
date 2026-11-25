@@ -45,7 +45,13 @@ public class ServerManager : MonoBehaviour
     private bool _isCamAvailable, _canTryScanning = true;
     private WebCamTexture _cameraTexture;
     private Texture2D _storeEncodedTexture;
-    
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+        //We set the FPS to 60 to avoid InputField lags on mobile
+    }
+
     void Start()
     {
         //Ensures the right canvas is enable, and others are not
@@ -62,7 +68,7 @@ public class ServerManager : MonoBehaviour
             //_mobileCanvas.SetActive(true);
             
             _uiManager.GetComponent<PlayerInput>().defaultControlScheme = "Mobile";
-            StartCoroutine(SetUpCameraWithDelay());
+            SetUpCamera();
             CreateClient();
         }
         else if (SystemInfo.deviceType == DeviceType.Desktop)
@@ -143,6 +149,7 @@ public class ServerManager : MonoBehaviour
         if (devices.Length == 0)
         {
             _isCamAvailable = false;
+            StartCoroutine(SetUpCameraWithDelay());
             return;
         }
 
@@ -238,12 +245,13 @@ public class ServerManager : MonoBehaviour
         _canTryScanning = true;
     }
     
+    
     private IEnumerator SetUpCameraWithDelay() //Set a delay to avoid second scan of QR code
     {
-        SetUpCamera();
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(SetUpCameraWithDelay());
+        SetUpCamera();
     }
+    
 }
 
 // Transport Path : Assets/Plugins/FishNet/Runtime/Transporting/Transports/Tugboat/MyTransport.cs

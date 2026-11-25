@@ -13,7 +13,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private GameObject _textualAssets, _soundAssets, _photographicAssets;
 
     [SerializeField] private GameObject _camera;
-    [SerializeField] private Transform _cameraSlot1, _cameraSlot2;
+    [SerializeField] private Transform _cameraSlot1, _cameraSlot2, _cameraSlot3;
     
     private List<GameObject> _scenes = new List<GameObject>();
 
@@ -120,6 +120,10 @@ public class SceneManager : MonoBehaviour
             case 2:
                 _camera.GetComponent<Transform>().position = _cameraSlot2.position;
                 _camera.GetComponent<Transform>().rotation = _cameraSlot2.rotation;
+                break;
+            case 3:
+                _camera.GetComponent<Transform>().position = _cameraSlot3.position;
+                _camera.GetComponent<Transform>().rotation = _cameraSlot3.rotation;
                 break;
         }
     }

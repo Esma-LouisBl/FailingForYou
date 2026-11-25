@@ -188,31 +188,23 @@ public class GameManagerNetwork : NetworkBehaviour
         //check if the answer has already been entered by someone else
         if (miniGameManager.collectedTieAnswers.Contains(answer))
         {
-            CannotReceiveAnswer(playerNumber);
+            miniGameManager.CollectTieAnswer(answer, playerNumber, true);
         }
         else
         {
-            miniGameManager.CollectTieAnswer(answer, playerNumber);
+            miniGameManager.CollectTieAnswer(answer, playerNumber, false);
         }
     }
 
-    [ObserversRpc]
-    private void CannotReceiveAnswer(int playerNumber)
-    {
-        if (myLocalPlayer.playerData.playerNumber == playerNumber)
-        {
-            uiManager.ShowTieOnClientAfterBadAnswer();
-        }
-    }
-    
-    
-  
-    
-    
-    
-    
-   
-	public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
+    // [ObserversRpc]
+    // private void CannotReceiveAnswer(int playerNumber)
+    // {
+    //     if (myLocalPlayer.playerData.playerNumber == playerNumber)
+    //     {
+    //         uiManager.ShowTieOnClientAfterBadAnswer();
+    //     }
+    // }
+    public void ReceivePlayerTextVote(string votedAnswer, int playerNumber)
     {
         miniGameManager.CollectTextVotes(votedAnswer, playerNumber);
         
