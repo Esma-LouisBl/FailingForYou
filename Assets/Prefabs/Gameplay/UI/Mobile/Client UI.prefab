@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7416409971976290392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baf71ee4e003b8458e7cf0237c7ea34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputFieldPatch
-  _textEntered: {fileID: 3970393781071221739}
+  _textEntered: {fileID: 0}
 --- !u!1 &8564380012506961755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,6 +2030,10 @@ PrefabInstance:
       propertyPath: m_AspectRatio
       value: NaN
       objectReference: {fileID: 0}
+    - target: {fileID: 6004922046560988868, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7132550436823421150, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_HideMobileInput
       value: 1
@@ -2064,19 +2068,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7691292277900818283, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8131495646536604189, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8131495646536604189, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8131495646536604189, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -45.75284
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8492178956154895932, guid: f954200106b0b4448b9aba48ccfb89d6, type: 3}
       propertyPath: m_IsActive
@@ -2609,17 +2613,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &6858777975765210833 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1901100259344763920, guid: bfcce88f32a12e34c9c37362e1620df8, type: 3}
-  m_PrefabInstance: {fileID: 4993742840546187969}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &7588815128003186456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3178896478132917721, guid: bfcce88f32a12e34c9c37362e1620df8, type: 3}
@@ -2661,4 +2654,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baf71ee4e003b8458e7cf0237c7ea34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputFieldPatch
-  _textEntered: {fileID: 6858777975765210833}
+  _textEntered: {fileID: 0}
