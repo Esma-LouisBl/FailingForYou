@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7341304453590692352}
   - component: {fileID: 6893154601742159226}
   - component: {fileID: 1690207244831805854}
+  - component: {fileID: 4859706925655091968}
   m_Layer: 0
   m_Name: MiniGameManager
   m_TagString: Untagged
@@ -56,13 +57,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0cfd6fa2a2befd746ad06515d2687fd8, type: 2}
   tieQuestions:
   - {fileID: 11400000, guid: 4deb0a12e8af9e548a1b4513cc670057, type: 2}
+  currentTieQuestion: {fileID: 0}
   amountOfMiniGames: 3
+  time: 40
   textAnswers:
     NetworkManager: {fileID: 0}
     NetworkBehaviour: {fileID: 0}
     Collection: []
   collectedAnswers: 0
   collectedVotes: 0
+  playersInTie: 
+  collectedTieAnswers: []
   _uiManager: {fileID: 0}
   _gameManagerNetwork: {fileID: 0}
 --- !u!114 &6893154601742159226
@@ -138,3 +143,62 @@ MonoBehaviour:
   _overrideType: 3
   _updateHostVisibility: 1
   _observerConditions: []
+--- !u!114 &4859706925655091968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5916383051711755134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda1ec1170f3ff84e9f82a9763e34473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniGameUIManager
+  _timerText: {fileID: 0}
+  _hostQuestionTMP: {fileID: 0}
+  _hostQuestionTypeTMP: {fileID: 0}
+  _hostQuestionGenreTMP: {fileID: 0}
+  _hostQuestionUI: {fileID: 0}
+  _hostTextAnswersRevelationUI: {fileID: 0}
+  _answer1: {fileID: 0}
+  _answer2: {fileID: 0}
+  _answer3: {fileID: 0}
+  _answer1Host: {fileID: 0}
+  _answer2Host: {fileID: 0}
+  _answer3Host: {fileID: 0}
+  _answer4Host: {fileID: 0}
+  _textAnswerInputField: {fileID: 0}
+  _tieInputField: {fileID: 0}
+  _clientQuestionTMP: {fileID: 0}
+  _clientQuestionTypeTMP: {fileID: 0}
+  _clientQuestionGenreTMP: {fileID: 0}
+  _hookSentence: {fileID: 0}
+  _clientVotingArea: {fileID: 0}
+  _clientAnswerInCaseThereAreFourPlayers: {fileID: 0}
+  _clientQuestionUI: {fileID: 0}
+  _clientQuestionTextualUI: {fileID: 0}
+  _clientConfirmationFooter: {fileID: 0}
+  _answerOnHost1: {fileID: 0}
+  _answerOnHost2: {fileID: 0}
+  _answerOnHost3: {fileID: 0}
+  _answerOnHost4: {fileID: 0}
+  _answer1VoteTokens: []
+  _answer2VoteTokens: []
+  _answer3VoteTokens: []
+  _answer4VoteTokens: []
+  _tieHostUI: {fileID: 0}
+  _bandTransform: {fileID: 0}
+  _tieAppearText: {fileID: 0}
+  _tieQuestionText: {fileID: 0}
+  _playersInTieGO: []
+  _playersNames: []
+  _playersImages: []
+  _playersAnswers: []
+  _answerContainer: {fileID: 0}
+  _tieAnswer: {fileID: 0}
+  _winnerName: {fileID: 0}
+  _fastestPlayer: []
+  _tieClientUI: {fileID: 0}
+  _tieQuestionClient: {fileID: 0}
+  _errorAnswerAlreadyBeenEntered: {fileID: 0}
