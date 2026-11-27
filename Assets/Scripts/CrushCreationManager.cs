@@ -269,7 +269,7 @@ public class CrushCreationManager : NetworkBehaviour
 		{
 
 			_gameManagerNetwork.uiManager.OpenCabinePoupee();
-
+			_gameManagerNetwork.uiManager.CloseCrushCreationPC();
 			_gameManagerNetwork.PlayGame();
             
         }
