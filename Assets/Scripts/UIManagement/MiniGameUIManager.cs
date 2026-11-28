@@ -183,7 +183,7 @@ public class MiniGameUIManager : MonoBehaviour
         
         //What to show on screen
         _clientVotingArea.SetActive(true);
-        _clientQuestionTextualUI.SetActive(false);
+        // _clientQuestionTextualUI.SetActive(false);
         _clientQuestionUI.SetActive(true);
     }
     
